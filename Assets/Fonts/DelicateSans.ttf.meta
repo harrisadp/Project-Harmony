@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 3c2a9a0029d8c49aebec45435d6c629d
+timeCreated: 1483038892
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DelicateSans
+  fontNames:
+  - DelicateSans
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

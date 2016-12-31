@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 29d51fbff06394ba2a35d26bbef9265a
+timeCreated: 1483040793
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Desyrel
+  fontNames:
+  - Desyrel
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
