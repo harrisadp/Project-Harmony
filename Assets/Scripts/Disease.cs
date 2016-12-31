@@ -24,6 +24,7 @@ private int respiratoryRate;
 		systolicBP = Random.Range(115, 130);
 		diastolicBP = Random.Range (75, 90);
 		respiratoryRate = Random.Range (10, 14);
+		Debug.Log ("Started");
 	}
 	
 	// Update is called once per frame
