@@ -15,7 +15,8 @@ public class RPGTalkEditor : Editor
 		//Instance of our RPGTalk class
 		RPGTalk rpgTalk = (RPGTalk)target;
 
-		EditorGUIUtility.LookLikeInspector();
+		EditorGUIUtility.labelWidth = 0;
+ 		EditorGUIUtility.fieldWidth = 0;
 		EditorGUI.BeginChangeCheck();
 
 		EditorGUILayout.LabelField("Put below the Text file to be parsed and become the talks!");
@@ -211,7 +212,8 @@ public class RPGTalkEditor : Editor
 
 		if(EditorGUI.EndChangeCheck())
 			serializedObject.ApplyModifiedProperties();
-		EditorGUIUtility.LookLikeControls();
+		EditorGUIUtility.labelWidth = 25;
+ 		EditorGUIUtility.fieldWidth = 50;
 
 	}
 }

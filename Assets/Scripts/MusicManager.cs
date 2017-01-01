@@ -36,9 +36,7 @@ public class MusicManager : MonoBehaviour {
 			audioSource.clip = thisLevelMusic;
 			audioSource.loop = true;
 			audioSource.Play ();
-			Debug.Log (thisLevelMusic);
 			oldMusic = thisLevelMusic;
-			Debug.Log (oldMusic);
 		}
 	}
 	

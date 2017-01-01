@@ -107,7 +107,7 @@ public class RPGTalk : MonoBehaviour {
 	public AudioClip textAudio;
 	[Tooltip("Audio to be played when player passes the Talk")]
 	public AudioClip passAudio;
-	AudioSource rpgAudioSorce;
+	AudioSource rpgAudioSource;
 
 
 	[Tooltip("Pass with mouse Click")]
@@ -150,8 +150,8 @@ public class RPGTalk : MonoBehaviour {
 		actualLineToStart = lineToStart-1;
 
 		if (textAudio != null) {
-			if (rpgAudioSorce == null) {
-				rpgAudioSorce = gameObject.AddComponent<AudioSource> ();
+			if (rpgAudioSource == null) {
+				rpgAudioSource = gameObject.AddComponent<AudioSource> ();
 			}
 		}
 
@@ -322,9 +322,9 @@ public class RPGTalk : MonoBehaviour {
 					(passWithInputButton != "" && Input.GetButtonDown(passWithInputButton))
 				)){
 					//if have an audio... playit
-					if (passAudio != null && !rpgAudioSorce.isPlaying) {
-						rpgAudioSorce.clip = passAudio;
-						rpgAudioSorce.Play ();
+					if (passAudio != null && !rpgAudioSource.isPlaying) {
+						rpgAudioSource.clip = passAudio;
+						rpgAudioSource.Play ();
 					}
 					if(callbackScript != null){
 						callbackScript.Invoke(callbackFunction,0f);
@@ -350,8 +350,8 @@ public class RPGTalk : MonoBehaviour {
 				(passWithInputButton != "" && Input.GetButtonDown(passWithInputButton))
 			) {//if have an audio... playit
 				if (passAudio != null) {
-					rpgAudioSorce.clip = passAudio;
-					rpgAudioSorce.Play ();
+					rpgAudioSource.clip = passAudio;
+					rpgAudioSource.Play ();
 				}
 				textUI.enabled = false;
 				PlayNext ();
@@ -379,9 +379,9 @@ public class RPGTalk : MonoBehaviour {
 
 
 				//if have an audio... playit
-				if (textAudio != null && !rpgAudioSorce.isPlaying) {
-					rpgAudioSorce.clip = textAudio;
-					rpgAudioSorce.Play ();
+				if (textAudio != null && !rpgAudioSource.isPlaying) {
+					rpgAudioSource.clip = textAudio;
+					rpgAudioSource.Play ();
 				}
 
 			} 

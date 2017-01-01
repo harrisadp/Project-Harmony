@@ -10,12 +10,14 @@ public Text hrText;
 public Text sbpText;
 public Text dbpText;
 public Text rrText;
+public Text spO2Text;
 
 private float temperature;
 private int heartRate;
 private int systolicBP;
 private int diastolicBP;
 private int respiratoryRate;
+private float spO2;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +26,7 @@ private int respiratoryRate;
 		systolicBP = Random.Range(115, 130);
 		diastolicBP = Random.Range (75, 90);
 		respiratoryRate = Random.Range (10, 14);
+		spO2 = Random.Range (0.9f, 1.0f);
 	}
 	
 	// Update is called once per frame
@@ -33,6 +36,7 @@ private int respiratoryRate;
 		sbpText.text = systolicBP.ToString ();
 		dbpText.text = diastolicBP.ToString ();
 		rrText.text = respiratoryRate.ToString ();
+		spO2Text.text = spO2.ToString("P0");
 	}
 
 }
