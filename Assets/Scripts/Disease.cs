@@ -12,12 +12,8 @@ public Text dbpText;
 public Text rrText;
 public Text spO2Text;
 
-private float temperature;
-private int heartRate;
-private int systolicBP;
-private int diastolicBP;
-private int respiratoryRate;
-private float spO2;
+private float temperature, spO2;
+private int heartRate, systolicBP, diastolicBP, respiratoryRate;
 
 	// Use this for initialization
 	void Start () {

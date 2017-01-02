@@ -17,7 +17,7 @@ public class DemoScript : MonoBehaviour {
 
 	public GameObject askWho;
 
-	public InputField name;
+	public InputField playerName;
 
 	public GameObject wall;
 	public GameObject particle;
@@ -112,12 +112,12 @@ public class DemoScript : MonoBehaviour {
 	public void WhoAreYou(){
 		//controls = true;
 		askWho.SetActive(true);
-		name.Select ();
+		playerName.Select ();
 	}
 
 	public void IKnowYouNow(){
 		askWho.SetActive (false);
-		rpgTalk.variables [0].variableValue = name.text;
+		rpgTalk.variables [0].variableValue = playerName.text;
 		rpgTalk.lineToStart = 17;
 		rpgTalk.lineToBreak = 25;
 		rpgTalk.callbackFunction = "ByeWall";

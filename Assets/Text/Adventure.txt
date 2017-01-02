@@ -1,1 +1,1 @@
-Player: What a wide open landscape! Guess I’ll go exploring.
+Player: What a wide open landscape! Guess I’ll go exploring. Press “A” to move left, “D” to move right, “W” to move back, and “S” to move forward.
