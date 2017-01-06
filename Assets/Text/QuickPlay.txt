@@ -1,4 +1,6 @@
 Patient: I’m not feeling so great. Help a poor guy out!
 Player: I’ll do my best!
-Patient: What's my CBC show?
-Player: Your white blood cell count is [WBC], your hemoglobin count is [HGB], and your platelet count is [PLT].
+Player: What's the CBC show?
+Turtle: The white blood cell count is [WBC], the hemoglobin count is [HGB], and the platelet count is [PLT].
+Player: What's my BMP show?
+Turtle: The sodium level is [Na], the potassium level is [K], the chloride level is [Cl], the HCO3 level is [HCO3], the BUN level is [BUN], the creatinine level is [Cr], and the glucose level is [Glu].
