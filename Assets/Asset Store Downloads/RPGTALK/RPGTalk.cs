@@ -129,11 +129,15 @@ public class RPGTalk : MonoBehaviour {
 	public int maxCharInWidth = 50;
 	public int maxCharInHeight = 4;
 
+	private DefaultLabValues defaultLabValues;
 
 	void Awake(){
+		defaultLabValues = FindObjectOfType<DefaultLabValues> ();
+		Debug.Log (defaultLabValues.labValues["WBC"]);
 		if (startOnAwake) {
 			NewTalk ();
 		}
+
 	}
 
 	/// <summary>
@@ -248,7 +252,7 @@ public class RPGTalk : MonoBehaviour {
 		//replace any variable that may exist on the text
 		for (int i = 0; i < variables.Length; i++) {
 			if (line.Contains (variables[i].variableName)) {
-				line = line.Replace (variables[i].variableName, variables[i].variableValue);
+				line = line.Replace (variables[i].variableName, defaultLabValues.labValues[variables[i].variableValue].ToString());
 			}
 		}
 
@@ -583,7 +587,7 @@ public class RPGTalk : MonoBehaviour {
 
 //A class to be the variables a text could have
 [System.Serializable]
-public class RPGTalkVariable{
+public class RPGTalkVariable {
 	public string variableName;
 	public string variableValue;
 }

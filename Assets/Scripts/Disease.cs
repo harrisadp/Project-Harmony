@@ -11,8 +11,7 @@ public class Disease : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		labs = GetComponent<DefaultLabValues> ();
-		labs.labValues ["WBC"] = UnityEngine.Random.Range (15.0f, 25.0f);
-		Debug.Log ("New WBC value is: " + labs.labValues ["WBC"]);
+		Debug.Log ("Disease changed WBC value to " + labs.labValues ["WBC"]);
 	}
 	
 	// Update is called once per frame

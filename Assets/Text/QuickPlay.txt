@@ -1,2 +1,4 @@
 Patient: I’m not feeling so great. Help a poor guy out!
 Player: I’ll do my best!
+Patient: What's my CBC show?
+Player: Your white blood cell count is [WBC], your hemoglobin count is [HGB], and your platelet count is [PLT].
