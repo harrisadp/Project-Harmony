@@ -133,7 +133,6 @@ public class RPGTalk : MonoBehaviour {
 
 	void Awake(){
 		defaultLabValues = FindObjectOfType<DefaultLabValues> ();
-		Debug.Log (defaultLabValues.labValues["WBC"]);
 		if (startOnAwake) {
 			NewTalk ();
 		}
