@@ -19,9 +19,6 @@ public class DefaultLabValues : MonoBehaviour {
 		labValues ["Glu"] = Mathf.Round(Random.Range (70f, 100f));
 		labValues ["AST"] = Mathf.Round(Random.Range (8f, 48f));
 		labValues ["ALT"] = Mathf.Round(Random.Range (7f, 55f));
-		Debug.Log ("Default WBC value set to: " + labValues["WBC"]);
-		Debug.Log ("Default Cl value set to: " + labValues["Cl"]);
-		Debug.Log ("Default ALT value set to: " + labValues["ALT"]);
 	}
 	
 	// Update is called once per frame
