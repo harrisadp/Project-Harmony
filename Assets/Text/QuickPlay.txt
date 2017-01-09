@@ -1,6 +1,79 @@
+// Introduction
 Patient: I’m not feeling so great. Help a poor guy out!
 Player: I’ll do my best!
-Player: What's the CBC show?
+
+// History
+Player: Can you tell me what happened?
+Patient: [HPI]
+Player: Have you had any medical problems in the past?
+Patient: [PMH]
+Player: Have you ever had surgery?
+Patient: [PSH]
+Player: Do you smoke or drink alcohol?
+Patient: [SH]
+Player: Do any diseases run in your family?
+Patient: [FH]
+
+// Physical
+Player: I'm going to examine your head, eyes, ears, nose, and throat now.
+Player: ...
+Player: [HEENT]
+Player: I'm going to perform a cardiac exam now.
+Player: ...
+Player: [CARD]
+Player: I'm going to perform a pulmonary exam now.
+Player: ...
+Player: [PULM]
+Player: I'm going to perform an abdominal exam now.
+Player: ...
+Player: [ABD]
+Player: I'm going to perform a neurologic exam now.
+Player: ...
+Player: [NEURO]
+Player: I'm going to perform a musculoskeletal exam now.
+Player: ...
+Player: [MSK]
+Player: I'm going to examine your skin now.
+Player: ...
+Player: [SKIN]
+
+// Labs
+
+// Blood
+Player: Let's get a CBC.
+Turtle: Collecting...
+Turtle: Analyzing...
+Turtle: Done!
 Turtle: The white blood cell count is [WBC], the hemoglobin count is [HGB], and the platelet count is [PLT].
-Player: What's the BMP show?
+Player: Let's get a BMP.
+Turtle: Collecting...
+Turtle: Analyzing...
+Turtle: Done!
 Turtle: The sodium level is [Na], the potassium level is [K], the chloride level is [Cl], the HCO3 level is [HCO3], the BUN level is [BUN], the creatinine level is [Cr], and the glucose level is [Glu].
+Player: Let's get LFTs.
+Turtle: Collecting...
+Turtle: Analyzing...
+Turtle: Done!
+Turtle: The AST level is [AST], the ALT level is [ALT], the alkaline phosphatase level is [AlkPhos], the calcium level is [Ca], the total protein level is [TotalProt], the albumin level is [Albumin], and the total bilirubin level is [TotalBili].
+Player: Let's get coags.
+Turtle: Collecting...
+Turtle: Analyzing...
+Turtle: Done!
+Turtle: The PT is [PT], the PTT is [PTT], and the INR is [INR].
+
+// Imaging
+Player: Let's get an X-ray.
+Turtle: Scanning...
+Turtle: Here you go!
+Player: Let's get a CT scan.
+Turtle: Scanning...
+Turtle: Here you go!
+Player: Let's get an MRI.
+Turtle: Scanning...
+Turtle: Here you go!
+Player: Let's get an ultrasound.
+Turtle: Scanning...
+Turtle: Here you go!
+Player: Let's get a PET scan.
+Turtle: Scanning...
+Turtle: Here you go!
