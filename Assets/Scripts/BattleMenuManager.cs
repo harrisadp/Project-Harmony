@@ -50,6 +50,8 @@ public class BattleMenuManager : MonoBehaviour {
 	public GameObject pet;
 	public GameObject backImaging;
 
+	public GameObject ddx;
+
 	// Use this for initialization
 	void Start () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
@@ -66,6 +68,7 @@ public class BattleMenuManager : MonoBehaviour {
 		physical.SetActive (true);
 		labs.SetActive (true);
 		imaging.SetActive (true);
+		ddx.SetActive (true);
 	}
 
 	public void History () {
