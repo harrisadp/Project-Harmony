@@ -129,9 +129,13 @@ public class RPGTalk : MonoBehaviour {
 	public int maxCharInWidth = 50;
 	public int maxCharInHeight = 4;
 
+	private DefaultHistory defaultHistory;
+	private DefaultPhysicalExam defaultPhysicalExam;
 	private DefaultLabValues defaultLabValues;
 
 	void Awake(){
+		defaultHistory = FindObjectOfType<DefaultHistory> ();
+		defaultPhysicalExam = FindObjectOfType<DefaultPhysicalExam> ();
 		defaultLabValues = FindObjectOfType<DefaultLabValues> ();
 		if (startOnAwake) {
 			NewTalk ();
@@ -250,8 +254,12 @@ public class RPGTalk : MonoBehaviour {
 
 		//replace any variable that may exist on the text
 		for (int i = 0; i < variables.Length; i++) {
-			if (line.Contains (variables[i].variableName)) {
-				line = line.Replace (variables[i].variableName, defaultLabValues.labValues[variables[i].variableValue].ToString());
+			if (line.Contains (variables [i].variableName) && defaultHistory.history.ContainsKey (variables [i].variableValue) == true) {
+				line = line.Replace (variables [i].variableName, defaultHistory.history [variables [i].variableValue].ToString ());
+			} else if (line.Contains (variables [i].variableName) && defaultPhysicalExam.physical.ContainsKey (variables [i].variableValue) == true) {
+				line = line.Replace (variables [i].variableName, defaultPhysicalExam.physical [variables [i].variableValue].ToString ());
+			} else if (line.Contains (variables [i].variableName) && defaultLabValues.labValues.ContainsKey (variables [i].variableValue) == true) {
+				line = line.Replace (variables [i].variableName, defaultLabValues.labValues [variables [i].variableValue].ToString ());
 			}
 		}
 

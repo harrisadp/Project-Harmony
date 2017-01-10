@@ -28,9 +28,5 @@ public class DefaultLabValues : MonoBehaviour {
 		labValues ["PTT"] = Mathf.Round(10*(Random.Range (22.1f, 35.1f)))/10;
 		labValues ["INR"] = Mathf.Round(10*(Random.Range (0.8f, 1.2f)))/10;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
