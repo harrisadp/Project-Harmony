@@ -14,8 +14,6 @@ public class DefaultVitals : MonoBehaviour {
 		vitals ["RR"] = Mathf.Round(Random.Range (10f, 14f));
 		vitals ["SpO2"] = Mathf.Round(10*(Random.Range (90.0f, 100.0f)))/10;
 
-		Debug.Log (vitals ["T"]);
-
 	}
 	
 	// Update is called once per frame
