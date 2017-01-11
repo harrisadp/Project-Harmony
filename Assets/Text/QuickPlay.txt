@@ -77,3 +77,12 @@ Turtle: Here you go!
 Player: Let's get a PET scan.
 Turtle: Scanning...
 Turtle: Here you go!
+
+// Victory
+Turtle: That's the correct diagnosis!
+
+// Try again
+Turtle: That's not the correct diagnosis. Try again!
+
+// No top diagnosis
+Turtle: You need a diagnosis in the top slot of your differential!

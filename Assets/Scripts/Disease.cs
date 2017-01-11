@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Disease : MonoBehaviour {
 
+	public string diseaseName;
 	private DefaultDialogue dialogue;
 	private DefaultVitals vitals;
 	private DefaultHistory history;
@@ -12,6 +13,7 @@ public class Disease : MonoBehaviour {
 	private DefaultLabValues labs;
 
 	void Awake () {
+		diseaseName = "GERD";
 		dialogue = GetComponent<DefaultDialogue> ();
 		vitals = GetComponent<DefaultVitals> ();
 		history = GetComponent<DefaultHistory> ();
