@@ -26,16 +26,20 @@ public class DragAndDropItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         sourceCell = GetComponentInParent<DragAndDropCell>();                       // Remember source cell
         draggedItem = this;                                                         // Set as dragged item
         icon = new GameObject("Icon");                                              // Create object for item's icon
-        Image image = icon.AddComponent<Image>();
+		Canvas canvas = GetComponentInParent<Canvas>();                             // Get parent canvas
+		Image image = icon.AddComponent<Image>();
         image.sprite = GetComponent<Image>().sprite;
+		image.type = Image.Type.Sliced;
         image.raycastTarget = false;                                                // Disable icon's raycast for correct drop handling
 		Color color = GetComponent<Image>().color;
 		image.color = color;
 		RectTransform iconRect = icon.GetComponent<RectTransform>();
         // Set icon's dimensions
+		iconRect.localScale = new Vector3 ((canvas.GetComponent<RectTransform>().localScale.x * transform.parent.parent.GetComponentInParent<RectTransform>().localScale.x),
+											(canvas.GetComponent<RectTransform>().localScale.y * transform.parent.parent.GetComponentInParent<RectTransform>().localScale.y),
+											(canvas.GetComponent<RectTransform>().localScale.z * transform.parent.parent.GetComponentInParent<RectTransform>().localScale.z));
         iconRect.sizeDelta = new Vector2(   GetComponent<RectTransform>().sizeDelta.x,
                                             GetComponent<RectTransform>().sizeDelta.y);
-        Canvas canvas = GetComponentInParent<Canvas>();                             // Get parent canvas
         if (canvas != null)
         {
             // Display on top of all GUI (in parent canvas)
