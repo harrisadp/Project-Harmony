@@ -23,7 +23,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
         public DragAndDropCell sourceCell;                                  // From this cell item was dragged
         public DragAndDropCell destinationCell;                             // Into this cell item was dropped
         public DragAndDropItem item;                                        // dropped item
-    }
+	}
 
     public Color empty = new Color();                                       // Sprite color for empty cell
     public Color full = new Color();                                        // Sprite color for filled cell
@@ -52,7 +52,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
     private void OnAnyItemDragStart(DragAndDropItem item)
     {
         DragAndDropItem myItem = GetComponentInChildren<DragAndDropItem>(); // Get item from current cell
-        if (myItem != null)
+		if (myItem != null)
         {
             myItem.MakeRaycast(false);                                      // Disable item's raycast for correct drop handling
             if (myItem == item)                                             // If item dragged from this cell
@@ -68,7 +68,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                         break;
                     default:
                         item.MakeVisible(false);                            // Hide item in cell till dragging
-                        SetBackgroundState(false);
+						SetBackgroundState(false);
                         break;
                 }
             }
