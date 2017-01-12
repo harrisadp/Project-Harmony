@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class DefaultVitals : MonoBehaviour {
 
 	public Dictionary<string, float> vitals = new Dictionary<string, float>();
-	public Text tText, hrText, sbpText, dbpText, rrText, spo2Text;
+
+	private Text tText, hrText, sbpText, dbpText, rrText, spo2Text;
 
 	void Awake () {
 		vitals ["T"] = Mathf.Round(10*(Random.Range (36.5f, 37.3f)))/10;
@@ -19,6 +20,12 @@ public class DefaultVitals : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		tText = GameObject.Find ("T Text").GetComponent<Text>();
+		hrText = GameObject.Find ("HR Text").GetComponent<Text>();
+		sbpText = GameObject.Find ("SBP Text").GetComponent<Text>();
+		dbpText = GameObject.Find ("DBP Text").GetComponent<Text>();
+		rrText = GameObject.Find ("RR Text").GetComponent<Text>();
+		spo2Text = GameObject.Find ("SpO2 Text").GetComponent<Text>();
 		tText.text = vitals ["T"].ToString ();
 		hrText.text = vitals ["HR"].ToString ();
 		sbpText.text = vitals ["SBP"].ToString ();
