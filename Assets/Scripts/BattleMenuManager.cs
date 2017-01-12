@@ -52,14 +52,17 @@ public class BattleMenuManager : MonoBehaviour {
 
 	public GameObject ddx;
 	public DifferentialManager differentialManager;
+	public bool victory = false;
 
 	private bool isFirstTurn = true;
 	private DialogueManager dialogueManager;
+	private LevelManager levelManager;
 
 	// Use this for initialization
 	void Start () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		dialogueManager = FindObjectOfType<DialogueManager> ();
+		levelManager = FindObjectOfType<LevelManager> ();
 	}
 
 	public void Reset () {
@@ -71,6 +74,8 @@ public class BattleMenuManager : MonoBehaviour {
 
 		if (isFirstTurn) {
 			FirstTurn ();
+		} else if (victory) {
+			levelManager.LoadLevel ("01a_Start");
 		} else {
 			history.SetActive (true);
 			physical.SetActive (true);

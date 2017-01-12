@@ -29,6 +29,7 @@ public class Disease : MonoBehaviour {
 	}
 
 	void Test (){
+		diseaseName = "Pneumonia";
 		Debug.Log (diseaseName);
 		Debug.Log (dialogue.dialogue["Intro"]);
 		Debug.Log (demographics.patientRace);

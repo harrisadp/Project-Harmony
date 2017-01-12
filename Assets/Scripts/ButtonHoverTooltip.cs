@@ -33,21 +33,28 @@ public class ButtonHoverTooltip : MonoBehaviour {
 	public void Tooltip () {
 		tooltipPanel = new GameObject ("Tooltip Panel");
 		tooltipPanel.transform.SetParent (thisButton.transform);
-		tooltipPanel.transform.localPosition = new Vector3 (0, 100f, 0);
 		Image tooltipPanelImage = tooltipPanel.AddComponent<Image> ();
 		Color tooltipPanelImageColor = tooltipPanelImage.color = Color.gray;
-		tooltipPanelImageColor.a = 0.5f;
+		tooltipPanelImageColor.a = 0.8f;
 		tooltipPanelImage.color = tooltipPanelImageColor;
-		tooltipPanel.GetComponent<RectTransform> ().sizeDelta = new Vector2 (300f, 25f);
+		tooltipPanel.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 1);
+		tooltipPanel.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 1);
+		tooltipPanel.GetComponent<RectTransform> ().pivot = new Vector2 (0, 1);
+		tooltipPanel.GetComponent<RectTransform> ().sizeDelta = new Vector2 (300f, 250f);
+		tooltipPanel.transform.localPosition = new Vector3 (-700f, 0, 0);
 
 		tooltipObject = new GameObject ("Tooltip");
 		tooltipObject.transform.SetParent (thisButton.transform);
-		tooltipObject.transform.localPosition = new Vector3 (0, 100f, 0);
+		tooltipObject.transform.localPosition = new Vector3 (-675f, -25f, 0);
 		Text tooltipText = tooltipObject.AddComponent<Text> ();
-		tooltipText.GetComponent<RectTransform> ().sizeDelta = new Vector2 (300f, 25f);
+		tooltipObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 1);
+		tooltipObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 1);
+		tooltipObject.GetComponent<RectTransform> ().pivot = new Vector2 (0, 1);
+		tooltipObject.GetComponent<RectTransform> ().sizeDelta = new Vector2 (275f, 225f);
 		tooltipText.text = thisTooltip;
 		tooltipText.font = font;
-		tooltipText.alignment = TextAnchor.MiddleCenter;
+		tooltipText.fontSize = 18;
+		tooltipText.alignment = TextAnchor.UpperLeft;
 		tooltipVisible = true;
 	}
 
