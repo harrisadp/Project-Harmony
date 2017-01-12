@@ -23,17 +23,14 @@ public class DiagnoseButton : MonoBehaviour {
 
 	public void CheckDiagnosis (){
 		if (topDiagnosis.transform.childCount <= 0) {
-			Debug.Log ("There is no diagnosis in the top slot!");
 			dialogueManager.LineStart (88);
 			dialogueManager.LineBreak (88);
 			dialogueManager.NewTalk ();
 		} else if (disease.diseaseName != topDiagnosis.GetComponentInChildren<Text> ().text) {
-			Debug.Log ("Top diagnosis is incorrect. Try again!");
 			dialogueManager.LineStart (85);
 			dialogueManager.LineBreak (85);
 			dialogueManager.NewTalk ();
 		} else if (disease.diseaseName == topDiagnosis.GetComponentInChildren<Text> ().text) {
-			Debug.Log ("Top diagnosis is correct!");
 			dialogueManager.LineStart (82);
 			dialogueManager.LineBreak (82);
 			dialogueManager.NewTalk ();
