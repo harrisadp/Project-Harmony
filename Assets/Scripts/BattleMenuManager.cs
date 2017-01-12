@@ -51,24 +51,43 @@ public class BattleMenuManager : MonoBehaviour {
 	public GameObject backImaging;
 
 	public GameObject ddx;
+	public DifferentialManager differentialManager;
+
+	private bool isFirstTurn = true;
+	private DialogueManager dialogueManager;
 
 	// Use this for initialization
 	void Start () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		dialogueManager = FindObjectOfType<DialogueManager> ();
 	}
 
 	public void Reset () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 	}
 
-	public void Initialize () {
+	public void NewTurn () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		
-		history.SetActive (true);
-		physical.SetActive (true);
-		labs.SetActive (true);
-		imaging.SetActive (true);
-		ddx.SetActive (true);
+
+		if (isFirstTurn) {
+			FirstTurn ();
+		} else {
+			history.SetActive (true);
+			physical.SetActive (true);
+			labs.SetActive (true);
+			imaging.SetActive (true);
+			ddx.SetActive (true);
+		}
+
+	}
+
+	public void FirstTurn() {
+		isFirstTurn = false;
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		differentialManager.Enable ();
+		dialogueManager.LineStart (91);
+		dialogueManager.LineBreak (91);
+		dialogueManager.NewTalk ();
 	}
 
 	public void History () {

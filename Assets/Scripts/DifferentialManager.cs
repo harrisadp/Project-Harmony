@@ -18,7 +18,7 @@ public class DifferentialManager : MonoBehaviour {
 
 	public void NextTurn () {
 		gameObject.SetActive (false);
-		battleMenuManager.Initialize ();
+		battleMenuManager.NewTurn ();
 	}
 
 }
