@@ -50,19 +50,28 @@ public class BattleMenuManager : MonoBehaviour {
 	public GameObject pet;
 	public GameObject backImaging;
 
+	// Proceed from viewing imaging
+	public GameObject proceedAfterImaging;
+
 	public GameObject ddx;
 	public DifferentialManager differentialManager;
 	public bool victory = false;
+	public bool displayImage = false;
 
 	private bool isFirstTurn = true;
 	private DialogueManager dialogueManager;
 	private LevelManager levelManager;
+	private Disease disease;
+	private Canvas menuCanvas;
+	private string imageToDisplay;
 
 	// Use this for initialization
 	void Start () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		levelManager = FindObjectOfType<LevelManager> ();
+		disease = FindObjectOfType<Disease> ();
+		menuCanvas = GetComponentInParent<Canvas> ();
 	}
 
 	public void Reset () {
@@ -72,10 +81,16 @@ public class BattleMenuManager : MonoBehaviour {
 	public void NewTurn () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 
+		if (GameObject.Find ("Image") != null) {
+			Destroy (GameObject.Find ("Image"));
+		}
+
 		if (isFirstTurn) {
 			FirstTurn ();
 		} else if (victory) {
 			levelManager.LoadLevel ("01a_Start");
+		} else if (displayImage) {
+			DisplayImage ();
 		} else {
 			history.SetActive (true);
 			physical.SetActive (true);
@@ -93,6 +108,40 @@ public class BattleMenuManager : MonoBehaviour {
 		dialogueManager.LineStart (91);
 		dialogueManager.LineBreak (91);
 		dialogueManager.NewTalk ();
+	}
+
+	public void HasImage(string imageType){
+		displayImage = true;
+		imageToDisplay = imageType;
+	}
+
+	public void DisplayImage(){
+		Debug.Log ("Image to display: " + imageToDisplay);
+		GameObject image = new GameObject ("Image");
+		image.transform.SetParent (menuCanvas.transform);
+		image.AddComponent<RectTransform> ();
+		image.AddComponent<CanvasRenderer> ();
+		image.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 0.5f);
+		image.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 0.5f);
+		image.GetComponent<RectTransform> ().pivot = new Vector2 (0.5f, 0.5f);
+		image.GetComponent<RectTransform> ().localPosition = new Vector3 (0, 0, 0);
+		image.GetComponent<RectTransform> ().sizeDelta = new Vector2 (450f, 450f);
+		image.AddComponent<Image> ();
+		if (imageToDisplay == "xray") {
+			image.GetComponent<Image> ().sprite = disease.xray;
+		} else if (imageToDisplay == "ct") {
+			image.GetComponent<Image> ().sprite = disease.ct;
+		} else if (imageToDisplay == "mri") {
+			image.GetComponent<Image> ().sprite = disease.mri;
+		} else if (imageToDisplay == "us") {
+			image.GetComponent<Image> ().sprite = disease.us;
+		} else if (imageToDisplay == "pet") {
+			image.GetComponent<Image> ().sprite = disease.pet;
+		} else if (imageToDisplay == null) {
+			Debug.LogError ("No sprite exists for this image type");
+		}
+		proceedAfterImaging.SetActive (true);
+		displayImage = false;
 	}
 
 	public void History () {

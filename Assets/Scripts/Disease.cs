@@ -11,6 +11,12 @@ public class Disease : MonoBehaviour {
 	public Sprite asian;
 	public Sprite hispanic;
 
+	public Sprite xray;
+	public Sprite ct;
+	public Sprite mri;
+	public Sprite us;
+	public Sprite pet;
+
 	private DefaultDialogue dialogue;
 	private DefaultDemographics demographics;
 	private DefaultVitals vitals;
