@@ -14,6 +14,11 @@ public class DifferentialManager : MonoBehaviour {
 
 	public void Enable () {
 		gameObject.SetActive (true);
+		if (battleMenuManager.isFirstTurn) {
+			GameObject.Find ("Diagnose Button").SetActive (false);
+		} else {
+			foreach (Transform child in transform) {child.gameObject.SetActive (true);}
+		}
 	}
 
 	public void NextTurn () {

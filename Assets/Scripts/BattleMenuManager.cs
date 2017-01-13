@@ -57,8 +57,8 @@ public class BattleMenuManager : MonoBehaviour {
 	public DifferentialManager differentialManager;
 	public bool victory = false;
 	public bool displayImage = false;
+	public bool isFirstTurn = true;
 
-	private bool isFirstTurn = true;
 	private DialogueManager dialogueManager;
 	private LevelManager levelManager;
 	private Disease disease;
@@ -102,9 +102,9 @@ public class BattleMenuManager : MonoBehaviour {
 	}
 
 	public void FirstTurn() {
-		isFirstTurn = false;
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		differentialManager.Enable ();
+		isFirstTurn = false;
 		dialogueManager.LineStart (91);
 		dialogueManager.LineBreak (91);
 		dialogueManager.NewTalk ();
