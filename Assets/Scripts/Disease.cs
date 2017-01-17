@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class Disease : MonoBehaviour {
 
 	public string diseaseName;
-	public Sprite white;
-	public Sprite black;
-	public Sprite asian;
-	public Sprite hispanic;
+//	public Sprite white;
+//	public Sprite black;
+//	public Sprite asian;
+//	public Sprite hispanic;
 
 	public Sprite xray;
 	public Sprite ct;
@@ -43,15 +43,14 @@ public class Disease : MonoBehaviour {
 		Debug.Log (history.history["HPI"]);
 		Debug.Log (physical.physical["CARD"]);
 		Debug.Log (labs.labValues["WBC"]);
-		if (demographics.patientRace == DefaultDemographics.Race.asian) {
-			GetComponent<SpriteRenderer> ().sprite = asian;
-		} else if (demographics.patientRace == DefaultDemographics.Race.black) {
-			GetComponent<SpriteRenderer> ().sprite = black;
-		} else if (demographics.patientRace == DefaultDemographics.Race.hispanic) {
-			GetComponent<SpriteRenderer> ().sprite = hispanic;
-		} else if (demographics.patientRace == DefaultDemographics.Race.white) {
-			GetComponent<SpriteRenderer> ().sprite = white;
-		}
+//		if (demographics.patientRace == DefaultDemographics.Race.asian) {
+//			GetComponent<SpriteRenderer> ().sprite = asian;
+//		} else if (demographics.patientRace == DefaultDemographics.Race.black) {
+//			GetComponent<SpriteRenderer> ().sprite = black;
+//		} else if (demographics.patientRace == DefaultDemographics.Race.hispanic) {
+//			GetComponent<SpriteRenderer> ().sprite = hispanic;
+//		} else if (demographics.patientRace == DefaultDemographics.Race.white) {
+//			GetComponent<SpriteRenderer> ().sprite = white;
 	}
 
 }
