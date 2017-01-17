@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultDialogue : MonoBehaviour {
+public class Dialogue : MonoBehaviour {
 
 	public Dictionary<string, string> dialogue = new Dictionary<string, string>();
 

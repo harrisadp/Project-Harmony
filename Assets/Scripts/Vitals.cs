@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DefaultVitals : MonoBehaviour {
+public class Vitals : MonoBehaviour {
 
 	public Dictionary<string, float> vitals = new Dictionary<string, float>();
 

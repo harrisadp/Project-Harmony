@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DefaultDemographics : MonoBehaviour {
+public class Demographics : MonoBehaviour {
 
 	public int age;
 	public bool male;

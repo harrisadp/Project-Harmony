@@ -127,19 +127,19 @@ public class BattleMenuManager : MonoBehaviour {
 		image.GetComponent<RectTransform> ().localPosition = new Vector3 (0, 0, 0);
 		image.GetComponent<RectTransform> ().sizeDelta = new Vector2 (450f, 450f);
 		image.AddComponent<Image> ();
-		if (imageToDisplay == "xray") {
-			image.GetComponent<Image> ().sprite = disease.xray;
-		} else if (imageToDisplay == "ct") {
-			image.GetComponent<Image> ().sprite = disease.ct;
-		} else if (imageToDisplay == "mri") {
-			image.GetComponent<Image> ().sprite = disease.mri;
-		} else if (imageToDisplay == "us") {
-			image.GetComponent<Image> ().sprite = disease.us;
-		} else if (imageToDisplay == "pet") {
-			image.GetComponent<Image> ().sprite = disease.pet;
-		} else if (imageToDisplay == null) {
-			Debug.LogError ("No sprite exists for this image type");
-		}
+//		if (imageToDisplay == "xray") {
+//			image.GetComponent<Image> ().sprite = disease.xray;
+//		} else if (imageToDisplay == "ct") {
+//			image.GetComponent<Image> ().sprite = disease.ct;
+//		} else if (imageToDisplay == "mri") {
+//			image.GetComponent<Image> ().sprite = disease.mri;
+//		} else if (imageToDisplay == "us") {
+//			image.GetComponent<Image> ().sprite = disease.us;
+//		} else if (imageToDisplay == "pet") {
+//			image.GetComponent<Image> ().sprite = disease.pet;
+//		} else if (imageToDisplay == null) {
+//			Debug.LogError ("No sprite exists for this image type");
+//		}
 		proceedAfterImaging.SetActive (true);
 		displayImage = false;
 	}

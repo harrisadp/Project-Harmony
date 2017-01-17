@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultPhysicalExam : MonoBehaviour {
+public class PhysicalExam : MonoBehaviour {
 
 	public Dictionary<string, string> physical = new Dictionary<string, string>();
 

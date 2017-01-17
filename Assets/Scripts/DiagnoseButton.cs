@@ -23,21 +23,21 @@ public class DiagnoseButton : MonoBehaviour {
 		
 	}
 
-	public void CheckDiagnosis (){
-		if (topDiagnosis.transform.childCount <= 0) {
-			dialogueManager.LineStart (88);
-			dialogueManager.LineBreak (88);
-			dialogueManager.NewTalk ();
-		} else if (disease.diseaseName != topDiagnosis.GetComponentInChildren<Text> ().text) {
-			dialogueManager.LineStart (85);
-			dialogueManager.LineBreak (85);
-			dialogueManager.NewTalk ();
-		} else if (disease.diseaseName == topDiagnosis.GetComponentInChildren<Text> ().text) {
-			dialogueManager.LineStart (82);
-			dialogueManager.LineBreak (82);
-			battleMenuManager.victory = true;
-			dialogueManager.NewTalk ();
-		}
-	}
+//	public void CheckDiagnosis (){
+//		if (topDiagnosis.transform.childCount <= 0) {
+//			dialogueManager.LineStart (88);
+//			dialogueManager.LineBreak (88);
+//			dialogueManager.NewTalk ();
+//		} else if (disease.diseaseName != topDiagnosis.GetComponentInChildren<Text> ().text) {
+//			dialogueManager.LineStart (85);
+//			dialogueManager.LineBreak (85);
+//			dialogueManager.NewTalk ();
+//		} else if (disease.diseaseName == topDiagnosis.GetComponentInChildren<Text> ().text) {
+//			dialogueManager.LineStart (82);
+//			dialogueManager.LineBreak (82);
+//			battleMenuManager.victory = true;
+//			dialogueManager.NewTalk ();
+//		}
+//	}
 
 }

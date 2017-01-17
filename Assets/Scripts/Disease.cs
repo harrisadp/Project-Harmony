@@ -5,52 +5,55 @@ using UnityEngine.UI;
 
 public class Disease : MonoBehaviour {
 
-	public string diseaseName;
-//	public Sprite white;
-//	public Sprite black;
-//	public Sprite asian;
-//	public Sprite hispanic;
-
-	public Sprite xray;
-	public Sprite ct;
-	public Sprite mri;
-	public Sprite us;
-	public Sprite pet;
-
-	private DefaultDialogue dialogue;
-	private DefaultDemographics demographics;
-	private DefaultVitals vitals;
-	private DefaultHistory history;
-	private DefaultPhysicalExam physical;
-	private DefaultLabValues labs;
+	private DiseaseChooser diseaseChooser;
+	private enum Race {asian, black, hispanic, white};
+	private enum Personality {personality1, personality2, personality3};
 
 	void Start () {
-		dialogue = GetComponent<DefaultDialogue> ();
-		demographics = GetComponent<DefaultDemographics> ();
-		vitals = GetComponent<DefaultVitals> ();
-		history = GetComponent<DefaultHistory> ();
-		physical = GetComponent<DefaultPhysicalExam> ();
-		labs = GetComponent<DefaultLabValues> ();
-		Test ();
+		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
+		new Disease (diseaseChooser.diseaseChosen.ToString());
 	}
 
-	void Test (){
-		diseaseName = "Pneumonia";
-		Debug.Log (diseaseName);
-		Debug.Log (dialogue.dialogue["Intro"]);
-		Debug.Log (demographics.patientRace);
-		Debug.Log (vitals.vitals["HR"]);
-		Debug.Log (history.history["HPI"]);
-		Debug.Log (physical.physical["CARD"]);
-		Debug.Log (labs.labValues["WBC"]);
-//		if (demographics.patientRace == DefaultDemographics.Race.asian) {
-//			GetComponent<SpriteRenderer> ().sprite = asian;
-//		} else if (demographics.patientRace == DefaultDemographics.Race.black) {
-//			GetComponent<SpriteRenderer> ().sprite = black;
-//		} else if (demographics.patientRace == DefaultDemographics.Race.hispanic) {
-//			GetComponent<SpriteRenderer> ().sprite = hispanic;
-//		} else if (demographics.patientRace == DefaultDemographics.Race.white) {
-//			GetComponent<SpriteRenderer> ().sprite = white;
+	public Disease (string diseaseName) {
+		Debug.Log ("Disease constructor run");
+		Debug.Log ("Disease name is " + diseaseName);
+		PersonGenerator (20, 50, 0.5f, 0.1f, 0.1f, 0.3f, 0.5f);
 	}
+
+	private void PersonGenerator (int minAge, int maxAge, float maleProb, float asianProb, float blackProb, float hispanicProb, float whiteProb) {
+		int age = Random.Range (minAge, maxAge);
+		bool male;
+		Race race;
+		float blackThreshold = asianProb + blackProb;
+		float hispanicThreshold = asianProb + blackProb + hispanicProb;
+		float randomSex = Random.value;
+		float randomRace = Random.value;
+		// Sex determination
+		if (randomSex <= maleProb) {
+			male = true;
+		} else {
+			male = false;
+		}
+		// Race determination
+		if (randomRace <= asianProb) {
+			race = Race.asian;
+		} else if (randomRace > asianProb && randomRace <= blackThreshold) {
+			race = Race.black;
+		} else if (randomRace > blackThreshold && randomRace <= hispanicThreshold) {
+			race = Race.hispanic;
+		} else {
+			race = Race.white;
+		}
+		// Debug
+		Debug.Log (age);
+		Debug.Log (male);
+		Debug.Log (race);
+	}
+
+//	private void PersonalityChooser () {
+//	
+//	}
+
+//	Where do the diseases go?!
 
 }

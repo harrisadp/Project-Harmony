@@ -129,16 +129,16 @@ public class RPGTalk : MonoBehaviour {
 	public int maxCharInWidth = 50;
 	public int maxCharInHeight = 4;
 
-	private DefaultDialogue defaultDialogue;
-	private DefaultHistory defaultHistory;
-	private DefaultPhysicalExam defaultPhysicalExam;
-	private DefaultLabValues defaultLabValues;
+	private Dialogue defaultDialogue;
+	private History defaultHistory;
+	private PhysicalExam defaultPhysicalExam;
+	private LabValues defaultLabValues;
 
 	void Awake(){
-		defaultDialogue = FindObjectOfType<DefaultDialogue> ();
-		defaultHistory = FindObjectOfType<DefaultHistory> ();
-		defaultPhysicalExam = FindObjectOfType<DefaultPhysicalExam> ();
-		defaultLabValues = FindObjectOfType<DefaultLabValues> ();
+		defaultDialogue = FindObjectOfType<Dialogue> ();
+		defaultHistory = FindObjectOfType<History> ();
+		defaultPhysicalExam = FindObjectOfType<PhysicalExam> ();
+		defaultLabValues = FindObjectOfType<LabValues> ();
 		if (startOnAwake) {
 			NewTalk ();
 		}

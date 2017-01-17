@@ -5,22 +5,22 @@ using UnityEngine;
 public class PatientGenerator : MonoBehaviour {
 
 	public Sprite patientSprite;
-	private DefaultDemographics demographicsScript;
-	private DefaultDialogue dialogueScript;
-	private DefaultVitals vitalsScript;
-	private DefaultHistory historyScript;
-	private DefaultPhysicalExam physicalExamScript;
-	private DefaultLabValues labsScript;
+	private Demographics demographicsScript;
+	private Dialogue dialogueScript;
+	private Vitals vitalsScript;
+	private History historyScript;
+	private PhysicalExam physicalExamScript;
+	private LabValues labsScript;
 	private Disease disease;
 
 	// Use this for initialization
 	void Start () {
-		demographicsScript = gameObject.AddComponent <DefaultDemographics> ();
-		dialogueScript = gameObject.AddComponent <DefaultDialogue> ();
-		vitalsScript = gameObject.AddComponent <DefaultVitals> ();
-		historyScript = gameObject.AddComponent <DefaultHistory> ();
-		physicalExamScript = gameObject.AddComponent <DefaultPhysicalExam> ();
-		labsScript = gameObject.AddComponent <DefaultLabValues> ();
+		demographicsScript = gameObject.AddComponent <Demographics> ();
+		dialogueScript = gameObject.AddComponent <Dialogue> ();
+		vitalsScript = gameObject.AddComponent <Vitals> ();
+		historyScript = gameObject.AddComponent <History> ();
+		physicalExamScript = gameObject.AddComponent <PhysicalExam> ();
+		labsScript = gameObject.AddComponent <LabValues> ();
 		disease = gameObject.AddComponent<Disease> ();
 		gameObject.AddComponent<SpriteRenderer> ();
 		GetComponent<SpriteRenderer> ().sprite = patientSprite;
@@ -41,7 +41,6 @@ public class PatientGenerator : MonoBehaviour {
 		Debug.Log ("Patient generator generated " + historyScript);
 		Debug.Log ("Patient generator generated " + physicalExamScript);
 		Debug.Log ("Patient generator generated " + labsScript);
-		Debug.Log ("Patient generator generated " + disease.diseaseName);
 	}
 
 }

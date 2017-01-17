@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultLabValues : MonoBehaviour {
+public class LabValues : MonoBehaviour {
 
 	public Dictionary<string, float> labValues = new Dictionary<string, float>();
 
