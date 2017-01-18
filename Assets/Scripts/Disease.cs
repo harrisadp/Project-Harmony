@@ -5,22 +5,17 @@ using UnityEngine.UI;
 
 public class Disease : MonoBehaviour {
 
-	private DiseaseChooser diseaseChooser;
+	private enum DiseaseList {disease1, disease2, disease3};
 	private enum Race {asian, black, hispanic, white};
 	private enum Personality {personality1, personality2, personality3};
 
-	void Start () {
-		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
-		new Disease (diseaseChooser.diseaseChosen.ToString());
-	}
-
-	public Disease (string diseaseName) {
-		Debug.Log ("Disease constructor run");
-		Debug.Log ("Disease name is " + diseaseName);
+	private Disease () {
+		Debug.Log ("Disease constructor running");
 		int age = AgeGenerator (20,60);
 		bool male = SexGenerator (0.5f);
 		Race race = RaceGenerator (0.1f, 0.1f, 0.3f, 0.5f);
 		Personality personality = PersonalityGenerator (age, male, race);
+		Debug.Log ("Personality chosen is: " + personality);
 	}
 
 	private int AgeGenerator (int minAge, int maxAge){

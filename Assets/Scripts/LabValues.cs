@@ -27,6 +27,22 @@ public class LabValues : MonoBehaviour {
 		labValues ["PT"] = Mathf.Round(10*(Random.Range (11.1f, 13.1f)))/10;
 		labValues ["PTT"] = Mathf.Round(10*(Random.Range (22.1f, 35.1f)))/10;
 		labValues ["INR"] = Mathf.Round(10*(Random.Range (0.8f, 1.2f)))/10;
+		labValues ["Amylase"] = Mathf.Round(Random.Range (23f, 85f));
+		labValues ["Lipase"] = Mathf.Round(Random.Range (0f, 160f));
+		labValues ["Lactate"] = Mathf.Round(10*(Random.Range (0.5f, 1.0f)))/10;
+		labValues ["Troponin I"] = Mathf.Round(100*(Random.Range (0.00f, 0.00f)))/100;
+		labValues ["CK"] = Mathf.Round(Random.Range (50f, 200f));
+		labValues ["CRP"] = Mathf.Round(10*(Random.Range (0.0f, 1.0f)))/10;
+		labValues ["Cortisol (random)"] = Mathf.Round(Random.Range (0f, 20f));
+		labValues ["TSH"] = Mathf.Round(10*(Random.Range (0.5f, 6.0f)))/10;
+		labValues ["T3"] = Mathf.Round(Random.Range (80f, 180f));
+		labValues ["T4"] = Mathf.Round(10*(Random.Range (4.6f, 12.0f)))/10;
+		labValues ["pH"] = Mathf.Round(100*(Random.Range (7.35f, 7.45f)))/100;
+		labValues ["paCO2"] = Mathf.Round(Random.Range (35f, 45f));
+		labValues ["paO2"] = Mathf.Round(Random.Range (80f, 100f));
+		labValues ["upH"] = Mathf.Round(10*(Random.Range (4.5f, 8.0f)))/10;
+		labValues ["uSpGrav"] = Mathf.Round(1000*(Random.Range (1.005f, 1.025f)))/1000;
+		labValues ["uGluc"] = Mathf.Round(Random.Range (0f, 130f));
 	}
 
 }

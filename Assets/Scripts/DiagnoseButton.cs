@@ -5,24 +5,24 @@ using UnityEngine.UI;
 
 public class DiagnoseButton : MonoBehaviour {
 
-	public GameObject topDiagnosis;
-
-	private Disease disease;
-	private DialogueManager dialogueManager;
-	private BattleMenuManager battleMenuManager;
-
-	// Use this for initialization
-	void Start () {
-		disease = FindObjectOfType<Disease> ();
-		dialogueManager = FindObjectOfType<DialogueManager> ();
-		battleMenuManager = FindObjectOfType<BattleMenuManager> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+//	public GameObject topDiagnosis;
+//
+//	private Disease disease;
+//	private DialogueManager dialogueManager;
+//	private BattleMenuManager battleMenuManager;
+//
+//	// Use this for initialization
+//	void Start () {
+//		disease = FindObjectOfType<Disease> ();
+//		dialogueManager = FindObjectOfType<DialogueManager> ();
+//		battleMenuManager = FindObjectOfType<BattleMenuManager> ();
+//	}
+//	
+//	// Update is called once per frame
+//	void Update () {
+//		
+//	}
+//
 //	public void CheckDiagnosis (){
 //		if (topDiagnosis.transform.childCount <= 0) {
 //			dialogueManager.LineStart (88);

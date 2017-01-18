@@ -61,7 +61,7 @@ public class BattleMenuManager : MonoBehaviour {
 
 	private DialogueManager dialogueManager;
 	private LevelManager levelManager;
-	private Disease disease;
+//	private Disease disease;
 	private Canvas menuCanvas;
 	private string imageToDisplay;
 
@@ -70,7 +70,7 @@ public class BattleMenuManager : MonoBehaviour {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		levelManager = FindObjectOfType<LevelManager> ();
-		disease = FindObjectOfType<Disease> ();
+//		disease = FindObjectOfType<Disease> ();
 		menuCanvas = GetComponentInParent<Canvas> ();
 	}
 
