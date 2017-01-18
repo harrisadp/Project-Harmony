@@ -17,42 +17,44 @@ public class Disease : MonoBehaviour {
 	public Disease (string diseaseName) {
 		Debug.Log ("Disease constructor run");
 		Debug.Log ("Disease name is " + diseaseName);
-		PersonGenerator (20, 50, 0.5f, 0.1f, 0.1f, 0.3f, 0.5f);
+		int age = AgeGenerator (20,60);
+		bool male = SexGenerator (0.5f);
+		Race race = RaceGenerator (0.1f, 0.1f, 0.3f, 0.5f);
+		Personality personality = PersonalityGenerator (age, male, race);
 	}
 
-	private void PersonGenerator (int minAge, int maxAge, float maleProb, float asianProb, float blackProb, float hispanicProb, float whiteProb) {
+	private int AgeGenerator (int minAge, int maxAge){
 		int age = Random.Range (minAge, maxAge);
-		bool male;
-		Race race;
-		float blackThreshold = asianProb + blackProb;
-		float hispanicThreshold = asianProb + blackProb + hispanicProb;
-		float randomSex = Random.value;
-		float randomRace = Random.value;
-		// Sex determination
-		if (randomSex <= maleProb) {
-			male = true;
-		} else {
-			male = false;
-		}
-		// Race determination
-		if (randomRace <= asianProb) {
-			race = Race.asian;
-		} else if (randomRace > asianProb && randomRace <= blackThreshold) {
-			race = Race.black;
-		} else if (randomRace > blackThreshold && randomRace <= hispanicThreshold) {
-			race = Race.hispanic;
-		} else {
-			race = Race.white;
-		}
-		// Debug
-		Debug.Log (age);
-		Debug.Log (male);
-		Debug.Log (race);
+		return age;
 	}
 
-//	private void PersonalityChooser () {
-//	
-//	}
+	private bool SexGenerator (float maleProbability){
+		bool male;
+		float randomSex = Random.value;
+		if (randomSex <= maleProbability) {male = true;}
+		else {male = false;}
+		return male;
+	}
+
+	private Race RaceGenerator (float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability) {
+		Race race;
+		float blackThreshold = asianProbability + blackProbability;
+		float hispanicThreshold = asianProbability + blackProbability + hispanicProbability;
+		float randomRace = Random.value;
+		if (randomRace <= asianProbability) {race = Race.asian;}
+		else if (randomRace > asianProbability && randomRace <= blackThreshold) {race = Race.black;}
+		else if (randomRace > blackThreshold && randomRace <= hispanicThreshold) {race = Race.hispanic;}
+		else {race = Race.white;}
+		return race;
+	}
+
+	private Personality PersonalityGenerator (int age, bool male, Race race) {
+		Personality personality = Personality.personality1;
+		if (age <= 20 && age > 59 && male == true && race == Race.white) {
+			personality = Personality.personality1;
+		}
+		return personality;
+	}
 
 //	Where do the diseases go?!
 
