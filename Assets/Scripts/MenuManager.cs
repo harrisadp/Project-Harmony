@@ -21,30 +21,69 @@ public class MenuManager : MonoBehaviour {
 		private GameObject backToMainFromHistory;
 
 			// History of Present Illness
-				private GameObject whenWereYouLastCompletelyWell;
-				private GameObject whenDidThePainFirstStart;
-				private GameObject howWouldYouDescribeYourPain;
-				private GameObject whereIsThePainLocated;
-				private GameObject doesThePainMoveAnywhere;
-				private GameObject howDidThePainFirstStart;
-				private GameObject howSevereIsYourPain;
-				private GameObject haveYouEverHadASimilarPainInThePast;
-				private GameObject doesAnythingMakeThePainBetterOrWorse;
-				private GameObject whatHasBeenTheImpactOfThisProblemOnYourLife;
-				private GameObject hpiNextPage;
-				private GameObject backToHistoryFromHPI;
-				private GameObject whoElseHaveYouSeenAboutThisProblem;
-				private GameObject whatTreatmentsHaveBeenRecommendedForThisProblem;
-				private GameObject whatMedicationsIncludingNonPrescriptionMedicationsHaveYouUsedForThisProblem;
-				private GameObject haveYouHadAnyTestsRelatedToThisProblem;
-				private GameObject isThereAnythingElseBotheringYou;
-				private GameObject hpiPrevousPage;
+			private GameObject whenWereYouLastCompletelyWell;
+			private GameObject whenDidThePainFirstStart;
+			private GameObject howWouldYouDescribeYourPain;
+			private GameObject whereIsThePainLocated;
+			private GameObject doesThePainMoveAnywhere;
+			private GameObject howDidThePainFirstStart;
+			private GameObject howSevereIsYourPain;
+			private GameObject haveYouEverHadASimilarPainInThePast;
+			private GameObject doesAnythingMakeThePainBetterOrWorse;
+			private GameObject whatHasBeenTheImpactOfThisProblemOnYourLife;
+			private GameObject hpiNextPage;
+			private GameObject backToHistoryFromHPI;
+			private GameObject whoElseHaveYouSeenAboutThisProblem;
+			private GameObject whatTreatmentsHaveBeenRecommendedForThisProblem;
+			private GameObject whatMedicationsIncludingNonPrescriptionMedicationsHaveYouUsedForThisProblem;
+			private GameObject haveYouHadAnyTestsRelatedToThisProblem;
+			private GameObject isThereAnythingElseBotheringYou;
+			private GameObject hpiPrevousPage;
 
 			// Past Medical History
-
-			// Social History
+			private GameObject whatMedicalConditionsHaveYouBeenDiagnosedWith;
+			private GameObject haveYouEverHadAnyOperations;
+			private GameObject whatDiseasesHaveYouHadAsAChild;
+			private GameObject whatPrescriptionMedicationsDoYouTake;
+			private GameObject doYouTakeAnyOverTheCounterMedications;
+			private GameObject areYouAllergicToAnyMedications;
+			private GameObject areYouAdherentWithYourMedications;
+			private GameObject backToHistoryFromPMH;
 
 			// Family History
+			private GameObject wereYouAdopted;
+			private GameObject tellMeAboutYourParentsHealth;
+			private GameObject didAnyoneInYourFamilyIncludingGrandparentsDieAtAYoungAge;
+			private GameObject whatWasTheCauseOfDeath;
+			private GameObject doAnyMembersOfYourFamilyHaveBloodClottingProblems;
+			private GameObject isThereAnyHistoryOfCancerInYourFamily;
+			private GameObject doAnyMembersOfYourFamilyHaveHeartProblems;
+			private GameObject isThereAnyHistoryOfAutoimmuneDisordersInYourFamily;
+			private GameObject areThereAnyOtherChronicMedicalConditionsThatRunInYourFamily;
+			private GameObject backToHistoryFromFH;
+
+			// Social History
+			private GameObject describeYourLifestyleAndWhereYouAreLiving;
+			private GameObject AreYouCurrentlyEmployed;
+			private GameObject whatIsYourMaritalStatus;
+			private GameObject isYourPreferredSexualPartnerOfTheOppositeSexOrTheSameSex;
+			private GameObject whoLivesAtHomeWithYou;
+			private GameObject doYouDrinkAnyAlcohol;
+			private GameObject howMuchDoYouDrinkInAWeek;
+			private GameObject HaveYouEverThoughtAboutCuttingDown;
+			private GameObject doYouSmoke;
+			private GameObject howManyYearsHaveYouSmoked;
+			private GameObject shNextPage;
+			private GameObject backToHistoryFromSH;
+			private GameObject howManyPacksPerDayHaveYouSmoked;
+			private GameObject haveyoueverthoughtaboutquitting;
+			private GameObject doYouDoAnyIllicitOrRecreationalDrugs;
+			private GameObject whichDrugsDoYouUseAndHowFrequentlyDoYouUseThem;
+			private GameObject haveYouEverTriedToQuitUsingDrugsOrHaveBeenInADetoxificationProgram;
+			private GameObject whereWereYouBorn;
+			private GameObject whatIsYourFinancialSituation;
+			private GameObject howActiveAreYou;
+			private GameObject shPreviousPage;
 
 			// Review of Systems
 
@@ -99,7 +138,6 @@ public class MenuManager : MonoBehaviour {
 		// Boring menu button identifiers
 
 		// Main Menu
-
 		history = GameObject.Find ("History");
 		physical = GameObject.Find ("Physical");
 		labs = GameObject.Find ("Labs");
@@ -107,32 +145,54 @@ public class MenuManager : MonoBehaviour {
 		ddx = GameObject.Find ("DDX");
 
 			// History
-				hpi = GameObject.Find("HPI");
-				pmh = GameObject.Find ("PMH");
-				fh = GameObject.Find ("FH");
-				sh = GameObject.Find ("SH");
-				ros = GameObject.Find ("ROS");
-				backToMainFromHistory = GameObject.Find ("Back to Main from History");
+			hpi = GameObject.Find("HPI");
+			pmh = GameObject.Find ("PMH");
+			fh = GameObject.Find ("FH");
+			sh = GameObject.Find ("SH");
+			ros = GameObject.Find ("ROS");
+			backToMainFromHistory = GameObject.Find ("Back to Main from History");
 
 				// History of Present Illness
-					whenWereYouLastCompletelyWell = GameObject.Find("When were you last completely well");
-					whenDidThePainFirstStart = GameObject.Find("When did the pain first start");
-					howWouldYouDescribeYourPain = GameObject.Find("How would you describe your pain");
-					whereIsThePainLocated = GameObject.Find("Where is the pain located");
-					doesThePainMoveAnywhere = GameObject.Find("Does the pain move anywhere");
-					howDidThePainFirstStart = GameObject.Find("How did the pain first start");
-					howSevereIsYourPain = GameObject.Find("How severe is your pain");
-					haveYouEverHadASimilarPainInThePast = GameObject.Find("Have you ever had a similar pain in the past");
-					doesAnythingMakeThePainBetterOrWorse = GameObject.Find("Does anything make the pain better or worse");
-					whatHasBeenTheImpactOfThisProblemOnYourLife = GameObject.Find("What has been the impact of this problem on your life");
-					hpiNextPage = GameObject.Find("HPI Next Page");
-					backToHistoryFromHPI = GameObject.Find ("Back to History from HPI");			
-					whoElseHaveYouSeenAboutThisProblem = GameObject.Find("Who else have you seen about this problem");
-					whatTreatmentsHaveBeenRecommendedForThisProblem = GameObject.Find("What treatments have been recommended for this problem");
-					whatMedicationsIncludingNonPrescriptionMedicationsHaveYouUsedForThisProblem = GameObject.Find("What medications, including non-prescription medications, have you used for this problem");
-					haveYouHadAnyTestsRelatedToThisProblem = GameObject.Find("Have you had any tests related to this problem");
-					isThereAnythingElseBotheringYou = GameObject.Find("Is there anything else bothering you");
-					hpiPrevousPage = GameObject.Find("HPI Previous Page");
+				whenWereYouLastCompletelyWell = GameObject.Find("When were you last completely well");
+				whenDidThePainFirstStart = GameObject.Find("When did the pain first start");
+				howWouldYouDescribeYourPain = GameObject.Find("How would you describe your pain");
+				whereIsThePainLocated = GameObject.Find("Where is the pain located");
+				doesThePainMoveAnywhere = GameObject.Find("Does the pain move anywhere");
+				howDidThePainFirstStart = GameObject.Find("How did the pain first start");
+				howSevereIsYourPain = GameObject.Find("How severe is your pain");
+				haveYouEverHadASimilarPainInThePast = GameObject.Find("Have you ever had a similar pain in the past");
+				doesAnythingMakeThePainBetterOrWorse = GameObject.Find("Does anything make the pain better or worse");
+				whatHasBeenTheImpactOfThisProblemOnYourLife = GameObject.Find("What has been the impact of this problem on your life");
+				hpiNextPage = GameObject.Find("HPI Next Page");
+				backToHistoryFromHPI = GameObject.Find ("Back to History from HPI");			
+				whoElseHaveYouSeenAboutThisProblem = GameObject.Find("Who else have you seen about this problem");
+				whatTreatmentsHaveBeenRecommendedForThisProblem = GameObject.Find("What treatments have been recommended for this problem");
+				whatMedicationsIncludingNonPrescriptionMedicationsHaveYouUsedForThisProblem = GameObject.Find("What medications, including non-prescription medications, have you used for this problem");
+				haveYouHadAnyTestsRelatedToThisProblem = GameObject.Find("Have you had any tests related to this problem");
+				isThereAnythingElseBotheringYou = GameObject.Find("Is there anything else bothering you");
+				hpiPrevousPage = GameObject.Find("HPI Previous Page");
+
+				// Past Medical History
+				whatMedicalConditionsHaveYouBeenDiagnosedWith = GameObject.Find("What medical conditions have you been diagnosed with");
+				haveYouEverHadAnyOperations = GameObject.Find("Have you ever had any operations");
+				whatDiseasesHaveYouHadAsAChild = GameObject.Find("What diseases have you had as a child");
+				whatPrescriptionMedicationsDoYouTake = GameObject.Find("What prescription medications do you take");
+				doYouTakeAnyOverTheCounterMedications = GameObject.Find("Do you take any over-the-counter medications");
+				areYouAllergicToAnyMedications = GameObject.Find("Are you allergic to any medications");
+				areYouAdherentWithYourMedications = GameObject.Find("Are you adherent with your medications");
+				backToHistoryFromPMH = GameObject.Find("Back to History from PMH");
+
+				// Family History
+				wereYouAdopted = GameObject.Find("Were you adopted");
+				tellMeAboutYourParentsHealth = GameObject.Find("Tell me about your parents health");
+				didAnyoneInYourFamilyIncludingGrandparentsDieAtAYoungAge = GameObject.Find("Did anyone in your family, including grandparents, die at a young age");
+				whatWasTheCauseOfDeath = GameObject.Find("What was the cause of death");
+				doAnyMembersOfYourFamilyHaveBloodClottingProblems = GameObject.Find("Do any members of your family have blood clotting problems");
+				isThereAnyHistoryOfCancerInYourFamily = GameObject.Find("Is there any history of cancer in your family");
+				doAnyMembersOfYourFamilyHaveHeartProblems = GameObject.Find("Do any members of your family have heart problems");
+				isThereAnyHistoryOfAutoimmuneDisordersInYourFamily = GameObject.Find("Is there any history of autoimmune disorders in your family");
+				areThereAnyOtherChronicMedicalConditionsThatRunInYourFamily = GameObject.Find("Are there any other chronic medical conditions that run in your family");
+				backToHistoryFromFH = GameObject.Find("Back to History from FH");
 
 		// Other things to identify
 
@@ -253,6 +313,32 @@ public class MenuManager : MonoBehaviour {
 		haveYouHadAnyTestsRelatedToThisProblem.SetActive (true);
 		isThereAnythingElseBotheringYou.SetActive (true);
 		hpiPrevousPage.SetActive (true);
+	}
+
+	public void PMH () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		whatMedicalConditionsHaveYouBeenDiagnosedWith.SetActive(true);
+		haveYouEverHadAnyOperations.SetActive(true);
+		whatDiseasesHaveYouHadAsAChild.SetActive(true);
+		whatPrescriptionMedicationsDoYouTake.SetActive(true);
+		doYouTakeAnyOverTheCounterMedications.SetActive(true);
+		areYouAllergicToAnyMedications.SetActive(true);
+		areYouAdherentWithYourMedications.SetActive(true);
+		backToHistoryFromPMH.SetActive(true);
+	}
+
+	public void FH () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		wereYouAdopted.SetActive(true);
+		tellMeAboutYourParentsHealth.SetActive(true);
+		didAnyoneInYourFamilyIncludingGrandparentsDieAtAYoungAge.SetActive(true);
+		whatWasTheCauseOfDeath.SetActive(true);
+		doAnyMembersOfYourFamilyHaveBloodClottingProblems.SetActive(true);
+		isThereAnyHistoryOfCancerInYourFamily.SetActive(true);
+		doAnyMembersOfYourFamilyHaveHeartProblems.SetActive(true);
+		isThereAnyHistoryOfAutoimmuneDisordersInYourFamily.SetActive(true);
+		areThereAnyOtherChronicMedicalConditionsThatRunInYourFamily.SetActive(true);
+		backToHistoryFromFH.SetActive(true);
 	}
 
 	public void Physical () {
