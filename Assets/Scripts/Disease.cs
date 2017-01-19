@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]                                                           //  Our Representation of an InventoryItem
+[System.Serializable]
 public class Disease 
 {
 	public string diseaseName = "New Disease";

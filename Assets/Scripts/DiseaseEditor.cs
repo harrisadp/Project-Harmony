@@ -181,9 +181,9 @@ public class DiseaseEditor : EditorWindow {
 
 	void AddItem () 
 	{
-		Disease newItem = new Disease();
-		newItem.diseaseName = "New Disease";
-		diseaseList.diseaseList.Add (newItem);
+		Disease newDisease = new Disease();
+		newDisease.diseaseName = "New Disease";
+		diseaseList.diseaseList.Add (newDisease);
 		viewIndex = diseaseList.diseaseList.Count;
 	}
 
