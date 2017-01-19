@@ -137,27 +137,6 @@ public class DiseaseEditor : EditorWindow {
 
 				GUILayout.Space(10);
 
-				GUILayout.BeginHorizontal ();
-				diseaseList.diseaseList[viewIndex-1].introPersonality1 = EditorGUILayout.TextField("Intro Personality 1", diseaseList.diseaseList[viewIndex-1].introPersonality1,  GUILayout.ExpandWidth(true));
-				GUILayout.EndHorizontal ();
-				GUILayout.BeginHorizontal ();
-				diseaseList.diseaseList[viewIndex-1].introPersonality2 = EditorGUILayout.TextField("Intro Personality 2", diseaseList.diseaseList[viewIndex-1].introPersonality2,  GUILayout.ExpandWidth(true));
-				GUILayout.EndHorizontal ();
-				GUILayout.BeginHorizontal ();
-				diseaseList.diseaseList[viewIndex-1].introPersonality3 = EditorGUILayout.TextField("Intro Personality 3", diseaseList.diseaseList[viewIndex-1].introPersonality3,  GUILayout.ExpandWidth(true));
-				GUILayout.EndHorizontal ();
-				GUILayout.BeginHorizontal ();
-				diseaseList.diseaseList[viewIndex-1].introPersonality4 = EditorGUILayout.TextField("Intro Personality 4", diseaseList.diseaseList[viewIndex-1].introPersonality4,  GUILayout.ExpandWidth(true));
-				GUILayout.EndHorizontal ();
-				GUILayout.BeginHorizontal ();
-				diseaseList.diseaseList[viewIndex-1].introPersonality5 = EditorGUILayout.TextField("Intro Personality 5", diseaseList.diseaseList[viewIndex-1].introPersonality5,  GUILayout.ExpandWidth(true));
-				GUILayout.EndHorizontal ();
-				GUILayout.BeginHorizontal ();
-				diseaseList.diseaseList[viewIndex-1].introPersonality6 = EditorGUILayout.TextField("Intro Personality 6", diseaseList.diseaseList[viewIndex-1].introPersonality6,  GUILayout.ExpandWidth(true));
-				GUILayout.EndHorizontal ();
-
-				GUILayout.Space(10);
-
 			} 
 			else 
 			{

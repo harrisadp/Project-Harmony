@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DifferentialManager : MonoBehaviour {
 
-	private BattleMenuManager battleMenuManager;
+	private MenuManager battleMenuManager;
 
 	// Use this for initialization
 	void Start () {
-		battleMenuManager = FindObjectOfType<BattleMenuManager> ();
+		battleMenuManager = FindObjectOfType<MenuManager> ();
 		gameObject.SetActive (false);
 	}
 
