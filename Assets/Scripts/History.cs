@@ -8,7 +8,7 @@ public class History : MonoBehaviour {
 
 	void Awake () {
 		// Introduction
-		history ["Intro"] = "Intro";
+		history ["Intro"] = "[Intro]";
 		// History of Presenting Illness
 		history ["When were you last completely well"] = "[When were you last completely well]";
 		history ["When did the pain first start"] = "[When did the pain first start]";
