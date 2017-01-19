@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class DiseaseChooser : MonoBehaviour {
 
-	public enum DiseaseID {disease1, disease2, disease3};
-	private DiseaseStruct diseaseStruct;
-	private int diseaseChosen;
-	private Person disease_data;
+	public enum DiseaseID {disease1, disease2, disease3, disease4, disease5};
+	public DiseaseStruct diseaseStruct;
+	public int diseaseChosen;
+	public Person disease_data;
 
-	// Use this for initialization
-	void Start () {
+	public void ChooseDisease () {
 		diseaseStruct = FindObjectOfType<DiseaseStruct> ();
-		diseaseChosen = (int)(DiseaseID)Random.Range (0, 3);
+		Debug.Log (diseaseStruct);
+		diseaseChosen = (int)(DiseaseID)Random.Range (0, 5);
+		Debug.Log (diseaseChosen);
 		disease_data = diseaseStruct.GetDiseaseFromList(diseaseChosen);
+		Debug.Log (disease_data);
 
 		// since all data should exist with the disease_data you just pulled, you only need to call the methods for that data. Don't need to worry about passing any other information.
 		// LOTS OF METHODS GO HERE

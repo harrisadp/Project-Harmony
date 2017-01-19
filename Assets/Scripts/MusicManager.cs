@@ -9,7 +9,6 @@ public class MusicManager : MonoBehaviour {
 	private AudioSource audioSource;
 	private AudioClip oldMusic;
 
-	// Use this for initialization
 	void Awake () {
 		DontDestroyOnLoad (gameObject);
 	}
