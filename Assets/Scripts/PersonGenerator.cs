@@ -78,19 +78,12 @@ public class PersonGenerator : MonoBehaviour {
 	}
 
 	void OverwriteHistory (int disease, int personality){
-		if (personality == 0) {
-			history.history ["HPI"] = diseaseList.diseaseList [disease].introPersonality1;
-		} else if (personality == 1) {
-			history.history ["HPI"] = diseaseList.diseaseList [disease].introPersonality2;
-		} else if (personality == 2) {
-			history.history ["HPI"] = diseaseList.diseaseList [disease].introPersonality3;
-		} else if (personality == 3) {
-			history.history ["HPI"] = diseaseList.diseaseList [disease].introPersonality4;
-		} else if (personality == 4) {
-			history.history ["HPI"] = diseaseList.diseaseList [disease].introPersonality5;
-		} else if (personality == 5) {
-			history.history ["HPI"] = diseaseList.diseaseList [disease].introPersonality6;
-		}
+		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
+		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
+		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
+		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
+		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
+		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
 	}
 
 }

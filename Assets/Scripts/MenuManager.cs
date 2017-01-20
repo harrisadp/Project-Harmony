@@ -70,7 +70,7 @@ public class MenuManager : MonoBehaviour {
 			private GameObject whoLivesAtHomeWithYou;
 			private GameObject doYouDrinkAnyAlcohol;
 			private GameObject howMuchDoYouDrinkInAWeek;
-			private GameObject HaveYouEverThoughtAboutCuttingDown;
+			private GameObject haveYouEverThoughtAboutCuttingDown;
 			private GameObject doYouSmoke;
 			private GameObject howManyYearsHaveYouSmoked;
 			private GameObject shNextPage;
@@ -86,6 +86,158 @@ public class MenuManager : MonoBehaviour {
 			private GameObject shPreviousPage;
 
 			// Review of Systems
+			// General
+			private GameObject howAreYourEnergyLevels;
+			private GameObject haveYouNoticedAnySignificantWeightGain;
+			private GameObject haveYouNoticedAnySignificantWeightLoss;
+			private GameObject doYouHaveAnyDifficultySleeping;
+			private GameObject haveYouExperiencedAnyFeversOrChills;
+			private GameObject haveYouExperiencedAnyDrenchingNightSweats;
+			//Musculoskeletal
+			private GameObject doYouHaveAnyPainsStiffnessOrSwellingInYourJoints;
+			private GameObject doYouHaveBackAches;
+			private GameObject doYouHavePainsInYourLegs;
+			private GameObject doYouHavePainsOrCrampsinYourMuscles;
+			//Psychiatric
+			private GameObject doYouFeelNervous;
+			private GameObject doYouFeelAnxious;
+			private GameObject doYouFeelDepressed;
+			//Respiratory
+			private GameObject doYouEverFeelShortOfBreathOnExertion;
+			private GameObject hasYourBreathingChangedOverThePastMonth;
+			private GameObject doYouSufferFromACough;
+			private GameObject isYourCoughProductive;
+			private GameObject whatColorIsTheSputum;
+			private GameObject haveYouTraveledAnywhereOutsideOfTheCountryRecently;
+			private GameObject didYouTravelByAirplaneForLongDistances;
+			private GameObject haveYouBeenInContactWithAnyIndividualsWhoAreSick;
+			private GameObject doYouWorkInOrFrequentlyVisitAHealthCareFacility;
+			private GameObject haveYouEverLivedInAShelterOrPrison;
+			private GameObject haveYouEverWorkedInAShipyard;
+			private GameObject haveYouEverBeenExposedOrInContactWithAnIndividualWhoIsDiagnosedWithTuberculosis;
+			private GameObject haveYouEverHadATuberculosisSkinTest;
+			//Cardiovascular
+			private GameObject haveYouEverExperiencedChestPainOnExertionBefore;
+			private GameObject doYouExperiencePalpitations;
+			private GameObject haveYouEverHadAHeartAttack;
+			private GameObject haveYouNoticedAnySwellingInYourAnkles;
+			private GameObject haveYouNoticedAnyChangeInWaistCircumference;
+			private GameObject doYouEverWakeUpInTheMiddleOfTheNightGaspingForAir;
+			private GameObject doYouExperienceAnyDifficultyWithYourBreathingWhenYouLieFlat;
+			private GameObject howManyPillowsDoYouSleepWithAtNight;
+			private GameObject haveYouEverFainted;
+			private GameObject haveYouExperiencedAnyPainInYourLegsWhileWalking;
+			private GameObject doYourLegsFeelCold;
+			private GameObject isThereAnyHistoryInYourFamilyOfSuddenCardiacDeath;
+			private GameObject haveYouRecentlyHadAColdOrFlu;
+			private GameObject haveYouEverBeenToldYouHaveAHeartMurmur;
+			private GameObject didYouEverHaveRheumaticHeartDiseaseAsAChild;
+			//Gastrointestinal
+			private GameObject howIsYourAppetite;
+			private GameObject doesFoodEverGetStuckInYourThroat;
+			private GameObject doYouEverExperiencePainWhileSwallowing;
+			private GameObject doYouHaveDifficultySwallowingSolidsOrLiquidsOrBoth;
+			private GameObject doYouSufferFromHeartBurn;
+			private GameObject haveYouEverFeltThatYouGetFullReallyQuicklyDuringMeals;
+			private GameObject haveYouExperiencedAnyNauseaOrVomiting;
+			private GameObject haveYouExperiencedAnyAbdominalBloating;
+			private GameObject haveYouHadAnyDiarrhea;
+			private GameObject haveYouHadAnyConstipation;
+			private GameObject haveYouEverHadAnyBloodInYourStool;
+			private GameObject haveYouEverHadAnyBlackTarryStools;
+			private GameObject doYouExperienceAnyPainWhilePassingBowelMovements;
+			private GameObject doYouEverHaveAnyPaleFattyStools;
+			private GameObject haveYouTakenAnyAntibioticsRecently;
+			private GameObject areYourStoolsFoulSmelling;
+			private GameObject haveYouEverVomitedBlood;
+			private GameObject wasItBrightRedBlood;
+			private GameObject didItLookLikeCoffeeGrounds;
+			private GameObject haveYouEverHadAColonoscopy;
+			private GameObject haveYouEverHadAGastroscopy;
+			private GameObject haveYouHadAnyRecentTravelOutsideOfTheCountry;
+			private GameObject haveYouNoticedAnyYellowingOfTheEyesOrSkin;
+			private GameObject haveYouExperiencedAnyEasyBruisingOrBleeding;
+			private GameObject haveYouNoticedAnyEnlargementofYourBreastTissue;
+			private GameObject haveYouNoticedAnyMuscleWasting;
+			//Neurologic
+			private GameObject haveYouEverHadAStroke;
+			private GameObject WasItDueToABloodClotOrABleed;
+			private GameObject DoYouHaveAnyResidualSymptoms;
+			private GameObject haveYouEverHadASeizure;
+			private GameObject haveYouExperiencedDoubleVision;
+			private GameObject haveYouExperiencedBlurredVision;
+			private GameObject haveYouOrOthersNoticedAnyAsymmetryInYourFace;
+			private GameObject haveYouExperiencedAnySlurringOfYourSpeech;
+			private GameObject haveYouExperiencedAnyNumbnessOrTinglingInYourBody;
+			private GameObject haveYouExperiencedAnyWeaknessOnOneSideOfYourBody;
+			private GameObject haveYouEverLostControlOfYourBowelsOrBladder;
+			private GameObject doYouUseAnyWalkingAids;
+			private GameObject doYouHaveDifficultyButtoningYourShirts;
+			private GameObject haveYouNoticedATremor;
+			private GameObject haveYouHadAnyProblemsWithBalanceOrCoordination;
+			private GameObject haveYouNoticedAnyChangesInYourVoice;
+			private GameObject doYouFindThatYouChokeOrCoughWhenYouEatOrDrink;
+			private GameObject haveYouNoticedAnyChangesWithYourMemory;
+			private GameObject haveYouEverLeftTheTapOrTheStoveOnInYourHouse;
+			private GameObject doYouDriveACar;
+			private GameObject doYouSufferFromAnyHeadache;
+			private GameObject isItTheWorstHeadacheYouveEverDad;
+			private GameObject haveYouHadAnyAssociatedNauseaOrVomiting;
+			private GameObject haveYouExperiencedAnyScalpTendernessOrPainInYourJaw;
+			//Hematologic
+			private GameObject howDifficultIsItToStopBleedingWhenYouHaveASmallCut;
+			private GameObject doYouHaveAnemia;
+			private GameObject haveYouEverHadABloodTransfusion;
+			private GameObject didYouExperienceAnyProblemsWithTheBloodTransfusion;
+			private GameObject doYouBruiseEasily;
+			//Endocrine
+			private GameObject howWellDoYouTolerateTheHeat;
+			private GameObject howWellDoYouTolerateTheCold;
+			private GameObject doYouUrinateFrequently;
+			private GameObject areYouExcessivelyHungry;
+			private GameObject areYouExcessivelyThirsty;
+			private GameObject doYouSweatExcessively;
+			private GameObject haveYouNoticedAnyChangesToYourSkinOrHair;
+			//Genitourinary
+			private GameObject doYouHaveAnyPainOnUrination;
+			private GameObject haveYouExperiencedAnIncreasedFrequencyInUrinating;
+			private GameObject howOftenDoYouUrinateAtNight;
+			private GameObject doYouOftenFeelTheUrgeToUrinate;
+			private GameObject doYouFindItDifficultToBeginUrinating;
+			private GameObject haveYouEverHadBloodInYourUrine;
+			private GameObject isYourUrineFoamy;
+			private GameObject haveYouBeenExperiencingAnyFlankPain;
+			private GameObject haveYouNoticedAnySkinChangesToYourExternalGenitalia;
+			//Oropharynx
+			private GameObject haveYouExperiencedAnyChangeInYourVoice;
+			private GameObject doYouGetFrequentSoreThroats;
+			private GameObject doYouHaveAnyProblemsWithYourTeethOrGums;
+			private GameObject doYouHaveAnyBleedingInYourMouth;
+			//NoseandSinus
+			private GameObject howOftenDoYouHaveNosebleeds;
+			private GameObject doYouHaveAnyDischargeFromYourNose;
+			private GameObject doYouHaveDifficultyBreathingThroughYourNose;
+			private GameObject haveYouHadARecentColdOrInfectionInYourSinuses;
+			//Ears
+			private GameObject doYouHaveProblemsHearing;
+			private GameObject haveYouExperiencedARingingInYourEars;
+			private GameObject doYouHaveEaraches;
+			private GameObject haveYouHadAnInfectionOrDischargeFromYourEars;
+			//Eyes
+			private GameObject doYouWearGlassesOrContactLenses;
+			private GameObject whenWasYourLastEyeExamination;
+			private GameObject haveYouHadAnyRecentChangesToYourVision;
+			private GameObject doYouHaveExcessiveTearingInYourEyes;
+			private GameObject haveYouHadAnyPainOrRednessInYourEyes;
+			//Head
+			private GameObject haveYouHadAnyInjuryToYourHead;
+			private GameObject haveYouHadAStiffNeck;
+			//Dermatologic
+			private GameObject doYouHaveAnyLumpsOnYourSkin;
+			private GameObject doYouHaveAnyRashesOnYourSkin;
+			private GameObject doYouHaveAnyItchingOrDrySkin;
+			private GameObject haveYouNoticedAnyChangesToYourFingernails;
+			private GameObject haveYouNoticedAnyChangesToYourHairGrowth;
 
 	// Physical
 	private GameObject heent;
