@@ -533,7 +533,7 @@ public class MenuManager : MonoBehaviour {
 					didItLookLikeCoffeeGrounds = GameObject.Find("Did it look like coffee grounds");
 					haveYouEverHadAColonoscopy = GameObject.Find("Have you ever had a colonoscopy");
 					giROSToPage3 = GameObject.Find("GI ROS to Page 3");
-					backToGIROSPage1 = GameObject.Find("Back to GI ROS Page 2");
+					backToGIROSPage1 = GameObject.Find("Back to GI ROS Page 1");
 					haveYouEverHadAGastroscopy = GameObject.Find("Have you ever had a gastroscopy");
 					haveYouHadAnyRecentTravelOutsideOfTheCountry = GameObject.Find("Have you had any recent travel outside of the country");
 					haveYouNoticedAnyYellowingOfTheEyesOrSkin = GameObject.Find("Have you noticed any yellowing of the eyes or skin");
@@ -552,7 +552,7 @@ public class MenuManager : MonoBehaviour {
 					haveYouOrOthersNoticedAnyAsymmetryInYourFace = GameObject.Find("Have you or others noticed any asymmetry in your face");
 					haveYouExperiencedAnySlurringOfYourSpeech = GameObject.Find("Have you experienced any slurring of your speech");
 					haveYouExperiencedAnyNumbnessOrTinglingInYourBody = GameObject.Find("Have you experienced any numbness or tingling in your body");
-					haveYouExperiencedAnyWeaknessOnOneSideOfYourBody = GameObject.Find("Have you experienced any weakness on one side of your body\"");
+					haveYouExperiencedAnyWeaknessOnOneSideOfYourBody = GameObject.Find("Have you experienced any weakness on one side of your body");
 					neuroROSToPage2 = GameObject.Find("Neuro ROS to Page 2");
 					backToROSFromNeuroROS = GameObject.Find("Back to ROS from Neuro ROS");
 					haveYouEverLostControlOfYourBowelsOrBladder = GameObject.Find("Have you ever lost control of your bowels or bladder");
