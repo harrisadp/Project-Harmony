@@ -698,8 +698,8 @@ public class MenuManager : MonoBehaviour {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		differentialManager.Enable ();
 		isFirstTurn = false;
-		dialogueManager.LineStart (91);
-		dialogueManager.LineBreak (91);
+		dialogueManager.LineStart (490);
+		dialogueManager.LineBreak (490);
 		dialogueManager.NewTalk ();
 	}
 

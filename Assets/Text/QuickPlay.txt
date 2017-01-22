@@ -2,17 +2,416 @@
 Patient: [Intro]
 Player: [Response]
 
-// History
-Player: Can you tell me what happened?
-Patient: [HPI]
-Player: Have you had any medical problems in the past?
-Patient: [PMH]
-Player: Have you ever had surgery?
-Patient: [PSH]
-Player: Do you smoke or drink alcohol?
-Patient: [SH]
-Player: Do any diseases run in your family?
-Patient: [FH]
+// History of Presenting Illness
+Player: When were you last completely well?
+Patient: [When were you last completely well]
+Player: When did the pain first start?
+Patient: [When did the pain first start]
+Player: How would you describe your pain?
+Patient: [How would you describe your pain]
+Player: Where is the pain located?
+Patient: [Where is the pain located]
+Player: Does the pain move anywhere?
+Patient: [Does the pain move anywhere]
+Player: How did the pain first start?
+Patient: [How did the pain first start]
+Player: How severe is your pain?
+Patient: [How severe is your pain]
+Player: Have you ever had a similar pain in the past?
+Patient: [Have you ever had a similar pain in the past]
+Player: Does anything make the pain better or worse?
+Patient: [Does anything make the pain better or worse]
+Player: What has been the impact of this problem on your life?
+Patient: [What has been the impact of this problem on your life]
+Player: Who else have you seen about this problem?
+Patient: [Who else have you seen about this problem]
+Player: What treatments have been recommended for this problem?
+Patient: [What treatments have been recommended for this problem]
+Player: What medications, including non-prescription medication, have you used for this problem?
+Patient: [What medications, including non-prescription medication, have you used for this problem]
+Player: Have you had any tests related to this problem?
+Patient: [Have you had any tests related to this problem]
+Player: Is there anything else bothering you?
+Patient: [Is there anything else bothering you]
+
+// Past Medical History
+Player: What medical conditions have you been diagnosed with?
+Patient: [What medical conditions have you been diagnosed with]
+Player: Have you ever had any operations?
+Patient: [Have you ever had any operations]
+Player: What diseases have you had as a child?
+Patient: [What diseases have you had as a child]
+Player: What prescription medications do you take?
+Patient: [What prescription medications do you take]
+Player: Do you take any over-the-counter medications?
+Patient: [Do you take any over-the-counter medications]
+Player: Are you allergic to any medications?
+Patient: [Are you allergic to any medications]
+Player: Are you adherent with your medications?
+Patient: [Are you adherent with your medications]
+
+// Family History
+Player: Were you adopted?
+Patient: [Were you adopted]
+Player: Tell me about your parents health?
+Patient: [Tell me about your parents health]
+Player: Did anyone in your family, including grandparents, die at a young age?
+Patient: [Did anyone in your family, including grandparents, die at a young age]
+Player: What was the cause of death?
+Patient: [What was the cause of death]
+Player: Do any members of your family have blood clotting problems?
+Patient: [Do any members of your family have blood clotting problems]
+Player: Is there any history of cancer in your family?
+Patient: [Is there any history of cancer in your family]
+Player: Do any members of your family have heart problems?
+Patient: [Do any members of your family have heart problems]
+Player: Is there any history of autoimmune disorders in your family?
+Patient: [Is there any history of autoimmune disorders in your family]
+Player: Are there any other chronic medical conditions that run in your family?
+Patient: [Are there any other chronic medical conditions that run in your family]
+
+// Psychosocial History
+Player: Describe your lifestyle and where you are living?
+Patient: [Describe your lifestyle and where you are living]
+Player: Are you currently employed?
+Patient: [Are you currently employed]
+Player: What is your marital status?
+Patient: [What is your marital status]
+Player: Is your preferred sexual partner of the opposite sex or the same sex?
+Patient: [Is your preferred sexual partner of the opposite sex or the same sex]
+Player: Who lives at home with you?
+Patient: [Who lives at home with you]
+Player: Do you drink any alcohol?
+Patient: [Do you drink any alcohol]
+Player: How much do you drink in a week?
+Patient: [How much do you drink in a week]
+Player: Have you ever thought about cutting down?
+Patient: [Have you ever thought about cutting down]
+Player: Do you smoke?
+Patient: [Do you smoke]
+Player: How many years have you smoked?
+Patient: [How many years have you smoked]
+Player: How many packs per day have you smoked?
+Patient: [How many packs per day have you smoked]
+Player: Have you ever thought about quitting?
+Patient: [Have you ever thought about quitting]
+Player: Do you do any illicit or recreational drugs?
+Patient: [Do you do any illicit or recreational drugs]
+Player: Which drugs do you use and how frequently do you use them?
+Patient: [Which drugs do you use and how frequently do you use them]
+Player: Have you ever tried to quit using drugs or have been in a detoxification program?
+Patient: [Have you ever tried to quit using drugs or have been in a detoxification program]
+Player: Where were you born?
+Patient: [Where were you born]
+Player: What is your financial situation?
+Patient: [What is your financial situation]
+Player: How active are you?
+Patient: [How active are you]
+
+// Review of Systems
+// General
+Player: How are your energy levels?
+Patient: [How are your energy levels]
+Player: Have you noticed any significant weight gain?
+Patient: [Have you noticed any significant weight gain]
+Player: Have you noticed any significant weight loss?
+Patient: [Have you noticed any significant weight loss]
+Player: Do you have any difficulty sleeping?
+Patient: [Do you have any difficulty sleeping]
+Player: Have you experienced any fevers or chills?
+Patient: [Have you experienced any fevers or chills]
+Player: Have you experienced any drenching night sweats?
+Patient: [Have you experienced any drenching night sweats]
+
+// Musculoskeletal
+Player: Do you have any pains, stiffness, or swelling in your joints?
+Patient: [Do you have any pains, stiffness, or swelling in your joints]
+Player: Do you have backaches?
+Patient: [Do you have backaches]
+Player: Do you have pains in your legs?
+Patient: [Do you have pains in your legs]
+Player: Do you have pains or cramps in your muscles?
+Patient: [Do you have pains or cramps in your muscles]
+
+// Psychiatric
+Player: Do you feel nervous?
+Patient: [Do you feel nervous]
+Player: Do you feel anxious?
+Patient: [Do you feel anxious]
+Player: Do you feel depressed?
+Patient: [Do you feel depressed]
+
+// Respiratory
+Player: Do you ever feel short of breath on exertion?
+Patient: [Do you ever feel short of breath on exertion]
+Player: Has your breathing changed over the past month?
+Patient: [Has your breathing changed over the past month]
+Player: Do you suffer from a cough?
+Patient: [Do you suffer from a cough]
+Player: Is your cough productive?
+Patient: [Is your cough productive]
+Player: What color is the sputum?
+Patient: [What color is the sputum]
+Player: Have you traveled anywhere outside of the country recently?
+Patient: [Have you traveled anywhere outside of the country recently]
+Player: Did you travel by airplane for long distances?
+Patient: [Did you travel by airplane for long distances]
+Player: Have you been in contact with any individuals who are sick?
+Patient: [Have you been in contact with any individuals who are sick]
+Player: Do you work in or frequently visit a healthcare facility?
+Patient: [Do you work in or frequently visit a healthcare facility]
+Player: Have you ever lived in a shelter or prison?
+Patient: [Have you ever lived in a shelter or prison]
+Player: Have you ever worked in a shipyard?
+Patient: [Have you ever worked in a shipyard]
+Player: Have you ever been exposed or in contact with an individual who is diagnosed with tuberculosis?
+Patient: [Have you ever been exposed or in contact with an individual who is diagnosed with tuberculosis]
+Player: Have you ever had a tuberculosis skin test?
+Patient: [Have you ever had a tuberculosis skin test]
+
+// Cardiovascular
+Player: Have you ever experienced chest pain on exertion before?
+Patient: [Have you ever experienced chest pain on exertion before]
+Player: Do you experience palpitations?
+Patient: [Do you experience palpitations]
+Player: Have you ever had a heart attack?
+Patient: [Have you ever had a heart attack]
+Player: Have you noticed any swelling in your ankles?
+Patient: [Have you noticed any swelling in your ankles]
+Player: Have you noticed any change in waist circumference?
+Patient: [Have you noticed any change in waist circumference]
+Player: Do you ever wake up in the middle of the night gasping for air?
+Patient: [Do you ever wake up in the middle of the night gasping for air]
+Player: Do you experience any difficulty with your breathing when you lie flat?
+Patient: [Do you experience any difficulty with your breathing when you lie flat]
+Player: How many pillows do you sleep with at night?
+Patient: [How many pillows do you sleep with at night]
+Player: Have you ever fainted?
+Patient: [Have you ever fainted]
+Player: Have you experienced any pain in your legs while walking?
+Patient: [Have you experienced any pain in your legs while walking]
+Player: Do your legs feel cold?
+Patient: [Do your legs feel cold]
+Player: Is there any history in your family of sudden cardiac death?
+Patient: [Is there any history in your family of sudden cardiac death]
+Player: Have you recently had a cold or flu?
+Patient: [Have you recently had a cold or flu]
+Player: Have you ever been told you have a heart murmur?
+Patient: [Have you ever been told you have a heart murmur]
+Player: Did you ever have rheumatic heart disease as a child?
+Patient: [Did you ever have rheumatic heart disease as a child]
+
+// Gastrointestinal
+Player: How is your appetite?
+Patient: [How is your appetite]
+Player: Does food ever get stuck in your throat?
+Patient: [Does food ever get stuck in your throat]
+Player: Do you ever experience pain while swallowing?
+Patient: [Do you ever experience pain while swallowing]
+Player: Do you have difficulty swallowing solids, or liquids, or both?
+Patient: [Do you have difficulty swallowing solids, or liquids, or both]
+Player: Do you suffer from heartburn?
+Patient: [Do you suffer from heartburn]
+Player: Have you ever felt that you get full really quickly during meals?
+Patient: [Have you ever felt that you get full really quickly during meals]
+Player: Have you experienced any nausea or vomiting?
+Patient: [Have you experienced any nausea or vomiting]
+Player: Have you experienced any abdominal bloating?
+Patient: [Have you experienced any abdominal bloating]
+Player: Have you had any diarrhea?
+Patient: [Have you had any diarrhea]
+Player: Have you had any constipation?
+Patient: [Have you had any constipation]
+Player: Have you ever had any blood in your stool?
+Patient: [Have you ever had any blood in your stool]
+Player: Have you ever had any black, tarry stools?
+Patient: [Have you ever had any black, tarry stools]
+Player: Do you experience any pain while passing bowel movements?
+Patient: [Do you experience any pain while passing bowel movements]
+Player: Do you ever have any pale, fatty stools?
+Patient: [Do you ever have any pale, fatty stools]
+Player: Have you taken any antibiotics recently?
+Patient: [Have you taken any antibiotics recently]
+Player: Are your stools foul-smelling?
+Patient: [Are your stools foul-smelling]
+Player: Have you ever vomited blood?
+Patient: [Have you ever vomited blood]
+Player: Was it bright red blood?
+Patient: [Was it bright red blood]
+Player: Did it look like coffee grounds?
+Patient: [Did it look like coffee grounds]
+Player: Have you ever had a colonoscopy?
+Patient: [Have you ever had a colonoscopy]
+Player: Have you ever had a gastroscopy?
+Patient: [Have you ever had a gastroscopy]
+Player: Have you had any recent travel outside of the country?
+Patient: [Have you had any recent travel outside of the country]
+Player: Have you noticed any yellowing of the eyes or skin?
+Patient: [Have you noticed any yellowing of the eyes or skin]
+Player: Have you experienced any easy bruising or bleeding?
+Patient: [Have you experienced any easy bruising or bleeding]
+Player: Have you noticed any enlargement of your breast tissue?
+Patient: [Have you noticed any enlargement of your breast tissue]
+Player: Have you noticed any muscle wasting?
+Patient: [Have you noticed any muscle wasting]
+
+// Neurologic
+Player: Have you ever had a stroke?
+Patient: [Have you ever had a stroke]
+Player: Was it due to a blood clot or a bleed?
+Patient: [Was it due to a blood clot or a bleed]
+Player: Do you have any residual symptoms?
+Patient: [Do you have any residual symptoms]
+Player: Have you ever had a seizure?
+Patient: [Have you ever had a seizure]
+Player: Have you experienced double-vision?
+Patient: [Have you experienced double-vision]
+Player: Have you experienced blurred vision?
+Patient: [Have you experienced blurred vision]
+Player: Have you or others noticed any asymmetry in your face?
+Patient: [Have you or others noticed any asymmetry in your face]
+Player: Have you experienced any slurring of your speech?
+Patient: [Have you experienced any slurring of your speech]
+Player: Have you experienced any numbness or tingling in your body?
+Patient: [Have you experienced any numbness or tingling in your body]
+Player: Have you experienced any weakness on one side of your body?
+Patient: [Have you experienced any weakness on one side of your body]
+Player: Have you ever lost control of your bowels or bladder?
+Patient: [Have you ever lost control of your bowels or bladder]
+Player: Do you use any walking aids?
+Patient: [Do you use any walking aids]
+Player: Do you have difficulty buttoning your shirts?
+Patient: [Do you have difficulty buttoning your shirts]
+Player: Have you noticed a tremor?
+Patient: [Have you noticed a tremor]
+Player: Have you had any problems with balance or coordination?
+Patient: [Have you had any problems with balance or coordination]
+Player: Have you noticed any changes in your voice?
+Patient: [Have you noticed any changes in your voice]
+Player: Do you find that you choke or cough when you eat or drink?
+Patient: [Do you find that you choke or cough when you eat or drink]
+Player: Have you noticed any changes with your memory?
+Patient: [Have you noticed any changes with your memory]
+Player: Have you ever left the tap or the stove on in your house?
+Patient: [Have you ever left the tap or the stove on in your house]
+Player: Do you drive a car?
+Patient: [Do you drive a car]
+Player: Do you suffer from any headache?
+Patient: [Do you suffer from any headache]
+Player: Is it the worst headache you’ve ever had?
+Patient: [Is it the worst headache you’ve ever had]
+Player: Have you had any associated nausea or vomiting?
+Patient: [Have you had any associated nausea or vomiting]
+Player: Have you experienced any scalp tenderness or pain in your jaw?
+Patient: [Have you experienced any scalp tenderness or pain in your jaw]
+
+// Hematologic
+Player: How difficult is it to stop bleeding when you have a small cut?
+Patient: [How difficult is it to stop bleeding when you have a small cut]
+Player: Do you have anemia?
+Patient: [Do you have anemia]
+Player: Have you ever had a blood transfusion?
+Patient: [Have you ever had a blood transfusion]
+Player: Did you experience any problems with the blood transfusion?
+Patient: [Did you experience any problems with the blood transfusion]
+Player: Do you bruise easily?
+Patient: [Do you bruise easily]
+
+// Endocrine
+Player: How well do you tolerate the heat?
+Patient: [How well do you tolerate the heat]
+Player: How well do you tolerate the cold?
+Patient: [How well do you tolerate the cold]
+Player: Do you urinate frequently?
+Patient: [Do you urinate frequently]
+Player: Are you excessively hungry?
+Patient: [Are you excessively hungry]
+Player: Are you excessively thirsty?
+Patient: [Are you excessively thirsty]
+Player: Do you sweat excessively?
+Patient: [Do you sweat excessively]
+Player: Have you noticed any changes to your skin or hair?
+Patient: [Have you noticed any changes to your skin or hair]
+
+// Genitourinary
+Player: Do you have any pain on urination?
+Patient: [Do you have any pain on urination]
+Player: Have you experienced an increased frequency in urinating?
+Patient: [Have you experienced an increased frequency in urinating]
+Player: How often do you urinate at night?
+Patient: [How often do you urinate at night]
+Player: Do you often feel the urge to urinate?
+Patient: [Do you often feel the urge to urinate]
+Player: Do you find it difficult to begin urinating?
+Patient: [Do you find it difficult to begin urinating]
+Player: Have you ever had blood in your urine?
+Patient: [Have you ever had blood in your urine]
+Player: Is your urine foamy?
+Patient: [Is your urine foamy]
+Player: Have you been experiencing any flank pain?
+Patient: [Have you been experiencing any flank pain]
+Player: Have you noticed any skin changes to your external genitalia?
+Patient: [Have you noticed any skin changes to your external genitalia]
+
+// Oropharynx
+Player: Have you experienced any change in your voice?
+Patient: [Have you experienced any change in your voice]
+Player: Do you get frequent sore throats?
+Patient: [Do you get frequent sore throats]
+Player: Do you have any problems with your teeth or gums?
+Patient: [Do you have any problems with your teeth or gums]
+Player: Do you have any bleeding in your mouth?
+Patient: [Do you have any bleeding in your mouth]
+
+// Nose and Sinus
+Player: How often do you have nosebleeds?
+Patient: [How often do you have nosebleeds]
+Player: Do you have any discharge from your nose?
+Patient: [Do you have any discharge from your nose]
+Player: Do you have difficulty breathing through your nose?
+Patient: [Do you have difficulty breathing through your nose]
+Player: Have you had a recent cold or infection in your sinuses?
+Patient: [Have you had a recent cold or infection in your sinuses]
+
+// Ears
+Player: Do you have problems hearing?
+Patient: [Do you have problems hearing]
+Player: Have you experienced a ringing in your ears?
+Patient: [Have you experienced a ringing in your ears]
+Player: Do you have earaches?
+Patient: [Do you have earaches]
+Player: Have you had an infection or discharge from your ears?
+Patient: [Have you had an infection or discharge from your ears]
+
+// Eyes
+Player: Do you wear glasses or contact lenses?
+Patient: [Do you wear glasses or contact lenses]
+Player: When was your last eye examination?
+Patient: [When was your last eye examination]
+Player: Have you had any recent changes to your vision?
+Patient: [Have you had any recent changes to your vision]
+Player: Do you have excessive tearing in your eyes?
+Patient: [Do you have excessive tearing in your eyes]
+Player: Have you had any pain or redness in your eyes?
+Patient: [Have you had any pain or redness in your eyes]
+
+// Head
+Player: Have you had any injury to your head?
+Patient: [Have you had any injury to your head]
+Player: Have you had a stiff neck?
+Patient: [Have you had a stiff neck]
+
+// Dermatologic
+Player: Do you have any lumps on your skin?
+Patient: [Do you have any lumps on your skin]
+Player: Do you have any rashes on your skin?
+Patient: [Do you have any rashes on your skin]
+Player: Do you have any itching, or dry skin?
+Patient: [Do you have any itching, or dry skin]
+Player: Have you noticed any changes to your finger nails?
+Patient: [Have you noticed any changes to your finger nails]
+Player: Have you noticed any changes to your hair growth?
+Patient: [Have you noticed any changes to your hair growth]
 
 // Physical
 Player: I'm going to examine your head, eyes, ears, nose, and throat now.
