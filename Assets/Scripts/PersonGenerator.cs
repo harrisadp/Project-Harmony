@@ -19,7 +19,7 @@ public class PersonGenerator : MonoBehaviour {
 	}
 
 	public void GeneratePerson(){
-		int randomDisease = Random.Range (0, 6);
+		int randomDisease = Random.Range (0, 2);
 		RandomAge (diseaseList.diseaseList [randomDisease].ageMin, diseaseList.diseaseList [randomDisease].ageMax);
 		RandomSex (diseaseList.diseaseList [randomDisease].maleProbability);
 		RandomRace (diseaseList.diseaseList [randomDisease].asianProbability, diseaseList.diseaseList [randomDisease].blackProbability, diseaseList.diseaseList [randomDisease].hispanicProbability, diseaseList.diseaseList [randomDisease].whiteProbability);
@@ -30,7 +30,8 @@ public class PersonGenerator : MonoBehaviour {
 		Debug.Log (male);
 		Debug.Log (race);
 		Debug.Log (personality);
-		Debug.Log (history.history ["Intro"]);
+		Debug.Log ("Intro for this patient is: " + history.history ["Intro"]);
+		Debug.Log ("Answer 1 for this patient is: " + history.history ["When were you last completely well"]);
 	}
 
 	int RandomAge(int ageMin, int ageMax){
@@ -60,18 +61,8 @@ public class PersonGenerator : MonoBehaviour {
 	}
 
 	Personality RandomPersonality (){
-		if (age <= 20 && male) {
+		if (age <= 20) {
 			return personality = Personality.personality1;
-		} else if (age <= 20 && !male) {
-			return personality = Personality.personality2;
-		} else if (age > 20 && age <= 60 && male) {
-			return personality = Personality.personality3;
-		} else if (age > 20 && age <= 60 && !male) {
-			return personality = Personality.personality4;
-		} else if (age > 60 && male) {
-			return personality = Personality.personality5;
-		} else if (age > 60 && !male) {
-			return personality = Personality.personality6;
 		} else {
 			return personality = Personality.personality1;
 		}
@@ -79,11 +70,21 @@ public class PersonGenerator : MonoBehaviour {
 
 	void OverwriteHistory (int disease, int personality){
 		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
-		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
-		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
-		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
-		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
-		history.history ["Intro"] = diseaseList.diseaseList [disease].intro[personality];
+		history.history ["When were you last completely well"] = diseaseList.diseaseList [disease].whenWereYouLastCompletelyWell[personality];
+		history.history ["When did the pain first start"] = diseaseList.diseaseList [disease].whenDidThePainFirstStart [personality];
+		history.history ["How would you describe your pain"] = diseaseList.diseaseList [disease].howWouldYouDescribeYourPain [personality];
+		history.history ["Where is the pain located"] = diseaseList.diseaseList [disease].whereIsThePainLocated [personality];
+		history.history ["Does the pain move anywhere"] = diseaseList.diseaseList [disease].doesThePainMoveAnywhere [personality];
+		history.history ["How did the pain first start"] = diseaseList.diseaseList [disease].howDidThePainFirstStart [personality];
+		history.history ["How severe is your pain"] = diseaseList.diseaseList [disease].howSevereIsYourPain [personality];
+		history.history ["Have you ever had a similar pain in the past"] = diseaseList.diseaseList [disease].haveYouEverHadASimilarPainInThePast [personality];
+		history.history ["Does anything make the pain better or worse"] = diseaseList.diseaseList [disease].doesAnythingMakeThePainBetterOrWorse [personality];
+		history.history ["What has been the impact of this problem on your life"] = diseaseList.diseaseList [disease].whatHasBeenTheImpactOfThisProblemOnYourLife [personality];
+		history.history ["Who else have you seen about this problem"] = diseaseList.diseaseList [disease].whoElseHaveYouSeenAboutThisProblem [personality];
+		history.history ["What treatments have been recommended for this problem"] = diseaseList.diseaseList [disease].whatTreatmentsHaveBeenRecommendedForThisProblem [personality];
+		history.history ["What medications, including non-prescription medication, have you used for this problem"] = diseaseList.diseaseList [disease].whatMedicationsIncludingNonPrescriptionMedicationsHaveYouUsedForThisProblem [personality];
+		history.history ["Have you had any tests related to this problem"] = diseaseList.diseaseList [disease].haveYouHadAnyTestsRelatedToThisProblem [personality];
+		history.history ["Is there anything else bothering you"] = diseaseList.diseaseList [disease].isThereAnythingElseBotheringYou [personality];
 	}
 
 }

@@ -129,14 +129,14 @@ public class RPGTalk : MonoBehaviour {
 	public int maxCharInWidth = 50;
 	public int maxCharInHeight = 4;
 
-	private History defaultHistory;
-	private PhysicalExam defaultPhysicalExam;
-	private LabValues defaultLabValues;
+	private History history;
+	private PhysicalExam physicalExam;
+	private LabValues labValues;
 
 	void Awake(){
-		defaultHistory = FindObjectOfType<History> ();
-		defaultPhysicalExam = FindObjectOfType<PhysicalExam> ();
-		defaultLabValues = FindObjectOfType<LabValues> ();
+		history = FindObjectOfType<History> ();
+		physicalExam = FindObjectOfType<PhysicalExam> ();
+		labValues = FindObjectOfType<LabValues> ();
 		if (startOnAwake) {
 			NewTalk ();
 		}
@@ -254,12 +254,13 @@ public class RPGTalk : MonoBehaviour {
 
 		//replace any variable that may exist on the text
 		for (int i = 0; i < variables.Length; i++) {
-			if (line.Contains (variables [i].variableName) && defaultHistory.history.ContainsKey (variables [i].variableValue) == true) {
-				line = line.Replace (variables [i].variableName, defaultHistory.history [variables [i].variableValue].ToString ());
-			} else if (line.Contains (variables [i].variableName) && defaultPhysicalExam.physical.ContainsKey (variables [i].variableValue) == true) {
-				line = line.Replace (variables [i].variableName, defaultPhysicalExam.physical [variables [i].variableValue].ToString ());
-			} else if (line.Contains (variables [i].variableName) && defaultLabValues.labValues.ContainsKey (variables [i].variableValue) == true) {
-				line = line.Replace (variables [i].variableName, defaultLabValues.labValues [variables [i].variableValue].ToString ());
+			if (line.Contains (variables [i].variableName) && history.history.ContainsKey (variables [i].variableValue) == true) {
+				line = line.Replace (variables [i].variableName, history.history [variables [i].variableValue].ToString ());
+				Debug.Log ("Successfully replaced line of dialogue");
+			} else if (line.Contains (variables [i].variableName) && physicalExam.physical.ContainsKey (variables [i].variableValue) == true) {
+				line = line.Replace (variables [i].variableName, physicalExam.physical [variables [i].variableValue].ToString ());
+			} else if (line.Contains (variables [i].variableName) && labValues.labValues.ContainsKey (variables [i].variableValue) == true) {
+				line = line.Replace (variables [i].variableName, labValues.labValues [variables [i].variableValue].ToString ());
 			}
 		}
 
