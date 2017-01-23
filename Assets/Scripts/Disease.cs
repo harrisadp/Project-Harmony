@@ -14,6 +14,9 @@ public class Disease
 	public float blackProbability = 0.25f;
 	public float hispanicProbability = 0.25f;
 	public float whiteProbability = 0.25f;
+	// Performance tracking
+	public string[] goodQuestions;
+	public string[] badQuestions;
 	// Dialogue
 	// Intro
 	public string[] intro;

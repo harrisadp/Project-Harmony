@@ -13,13 +13,16 @@ public class PersonGenerator : MonoBehaviour {
 	private Race race;
 	private Personality personality;
 	private History history;
+	private PerformanceTracker performanceTracker;
 
 	void Start (){
 		history = FindObjectOfType <History> ();
+		performanceTracker = FindObjectOfType<PerformanceTracker> ();
 	}
 
 	public void GeneratePerson(){
-		int randomDisease = Random.Range (0, 2);
+		int randomDisease = Random.Range (0, 1);
+		performanceTracker.diseaseChosen = randomDisease;
 		RandomAge (diseaseList.diseaseList [randomDisease].ageMin, diseaseList.diseaseList [randomDisease].ageMax);
 		RandomSex (diseaseList.diseaseList [randomDisease].maleProbability);
 		RandomRace (diseaseList.diseaseList [randomDisease].asianProbability, diseaseList.diseaseList [randomDisease].blackProbability, diseaseList.diseaseList [randomDisease].hispanicProbability, diseaseList.diseaseList [randomDisease].whiteProbability);
