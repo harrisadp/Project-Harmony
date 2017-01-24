@@ -2,23 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using AssemblyCSharp;
 
 public class DiseaseChooser : MonoBehaviour {
 
 	public enum DiseaseID {disease1, disease2, disease3};
-	private DiseaseStruct diseaseStruct;
-	private int diseaseChosen;
-	private DiseaseInstance disease_data;
+	public DiseaseStruct diseaseStruct;
+	public int diseaseChosen;
+	public DiseaseInstance disease_data;
 	private History history;
+	private Text ageText, sexText;
 
 	// Use this for initialization
 	void Start () {
 		diseaseStruct = RunOnStart.global_disease_list;
 		history = FindObjectOfType<History> ();
-//		for (int disease_index = 0; disease_index < 3; disease_index++) {
-//			diseaseStruct.OutputData (disease_index);
-//		}
+		ageText = GameObject.Find ("Age Text").GetComponent<Text> ();
+		sexText = GameObject.Find ("Sex Text").GetComponent<Text> ();
 	}
 
 	public void ChooseDisease() {
@@ -29,21 +30,22 @@ public class DiseaseChooser : MonoBehaviour {
 		DiseaseInstance.Race race = disease_data.RandomRace (disease_data.asian_probability, disease_data.black_probability, disease_data.hispanic_probability, disease_data.white_probability);
 		DiseaseInstance.Personality personality = disease_data.RandomPersonality (age, male, race);
 		Debug.Log ("Disease chosen by DiseaseChooser is " + disease_data.disease_name);
-		Debug.Log ("Age chosen by Disease Chooser is: " + age);
-		Debug.Log ("This patient is male: " + male);
+		ageText.text = age.ToString ();
+		if (male) {
+			sexText.text = "Male";
+		} else {
+			sexText.text = "Female";
+		}
 		Debug.Log ("Race chosen by DiseaseChooser is " + race);
 		Debug.Log ("Personality chosen by DiseaseChooser is " + personality);
 		foreach (string question in disease_data.questions) {
 			disease_data.OverwriteHistory (history, question, disease_data.answers [Array.IndexOf(disease_data.questions, question), (int)(personality)]);
-			if (disease_data.goodQuestions.Contains (Array.IndexOf(disease_data.questions, question))){
-				Debug.Log ("Question #" + Array.IndexOf(disease_data.questions, question) + " is a good one");
-			} else {
-				Debug.Log ("Question #" + Array.IndexOf(disease_data.questions, question) + " is a bad one");
-			}
+//			if (disease_data.goodQuestions.Contains (Array.IndexOf(disease_data.questions, question))){
+//				Debug.Log ("Question #" + Array.IndexOf(disease_data.questions, question) + " is a good one");
+//			} else {
+//				Debug.Log ("Question #" + Array.IndexOf(disease_data.questions, question) + " is a bad one");
+//			}
 		}
-		Debug.Log (history.history ["Intro"]);
-		Debug.Log (history.history ["When were you last completely well"]);
-		Debug.Log (history.history ["When did the pain first start"]);
 	}
 
 }
