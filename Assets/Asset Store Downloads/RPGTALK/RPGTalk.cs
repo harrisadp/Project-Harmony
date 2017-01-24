@@ -129,14 +129,14 @@ public class RPGTalk : MonoBehaviour {
 	public int maxCharInWidth = 50;
 	public int maxCharInHeight = 4;
 
-	private History defaultHistory;
-	private PhysicalExam defaultPhysicalExam;
-	private LabValues defaultLabValues;
+	private History history;
+	private PhysicalExam physicalExam;
+	private LabValues labValues;
 
 	void Awake(){
-		defaultHistory = FindObjectOfType<History> ();
-		defaultPhysicalExam = FindObjectOfType<PhysicalExam> ();
-		defaultLabValues = FindObjectOfType<LabValues> ();
+		history = FindObjectOfType<History> ();
+		physicalExam = FindObjectOfType<PhysicalExam> ();
+		labValues = FindObjectOfType<LabValues> ();
 		if (startOnAwake) {
 			NewTalk ();
 		}
