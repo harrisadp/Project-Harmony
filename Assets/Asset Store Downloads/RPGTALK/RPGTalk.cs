@@ -256,7 +256,6 @@ public class RPGTalk : MonoBehaviour {
 		for (int i = 0; i < variables.Length; i++) {
 			if (line.Contains (variables [i].variableName) && history.history.ContainsKey (variables [i].variableValue) == true) {
 				line = line.Replace (variables [i].variableName, history.history [variables [i].variableValue].ToString ());
-				Debug.Log ("Successfully replaced line of dialogue");
 			} else if (line.Contains (variables [i].variableName) && physicalExam.physical.ContainsKey (variables [i].variableValue) == true) {
 				line = line.Replace (variables [i].variableName, physicalExam.physical [variables [i].variableValue].ToString ());
 			} else if (line.Contains (variables [i].variableName) && labValues.labValues.ContainsKey (variables [i].variableValue) == true) {
