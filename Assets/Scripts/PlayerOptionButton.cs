@@ -7,11 +7,11 @@ public class PlayerOptionButton : MonoBehaviour {
 
 	public TextAsset textAsset;
 
-	private DialogueManager dialogueManager;
+//	private DialogueManager dialogueManager;
 
 	// Use this for initialization
 	void Start () {
-		dialogueManager = FindObjectOfType<DialogueManager> ();
+//		dialogueManager = FindObjectOfType<DialogueManager> ();
 	}
 	
 	// Update is called once per frame
