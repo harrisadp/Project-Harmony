@@ -35,6 +35,11 @@ public class DiseaseChooser : MonoBehaviour {
 		Debug.Log ("Personality chosen by DiseaseChooser is " + personality);
 		foreach (string question in disease_data.questions) {
 			disease_data.OverwriteHistory (history, question, disease_data.answers [Array.IndexOf(disease_data.questions, question), (int)(personality)]);
+			if (disease_data.goodQuestions.Contains (Array.IndexOf(disease_data.questions, question))){
+				Debug.Log ("Question #" + Array.IndexOf(disease_data.questions, question) + " is a good one");
+			} else {
+				Debug.Log ("Question #" + Array.IndexOf(disease_data.questions, question) + " is a bad one");
+			}
 		}
 		Debug.Log (history.history ["Intro"]);
 		Debug.Log (history.history ["When were you last completely well"]);

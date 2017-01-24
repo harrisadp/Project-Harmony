@@ -22,10 +22,19 @@ public class DiseaseInstance{
 	// Questions
 	public string[] questions = new string[3] {"Intro", "When were you last completely well", "When did the pain first start"};
 
-	// History Dialogue
+	// Answers
 	public string[,] answers = new string[3,2];
 
-	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability, string introA, string introB, string question1A, string question1B, string question2A, string question2B) {
+	// Physical Exam Maneuvers
+	public string[] physicalExamManeuvers = new string[3] {"HEENT", "Card", "Resp"};
+
+	// Lab Keys
+	public string[] labKeys = new string[3] {"WBC", "HGB", "PLT"};
+
+	// Performance Tracking
+	public List<int> goodQuestions = new List<int>();
+
+	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability, string introA, string introB, string question1A, string question1B, string question2A, string question2B, int[] goodQuestionIDs) {
 		Debug.Log ("Instance of disease " + diseaseName + " created.");
 		this.disease_name = diseaseName;
 		this.age_min = ageMin;
@@ -41,7 +50,9 @@ public class DiseaseInstance{
 		this.answers [1, 1] = question1B;
 		this.answers [2, 0] = question2A;
 		this.answers [2, 1] = question2B;
-
+		foreach (int i in goodQuestionIDs) {
+			goodQuestions.Add (i);
+		}
 	}
 
 	public int RandomAge (int ageMin, int ageMax) {
