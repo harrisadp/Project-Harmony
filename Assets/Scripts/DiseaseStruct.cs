@@ -17,6 +17,10 @@ namespace AssemblyCSharp {
 		public Person GetDiseaseFromList(int index) {
 			return disease_list [index];
 		}
+
+		public void OutputData(int index) {
+			Debug.Log(disease_list[index].disease_name);
+		}
 	}
 
 }

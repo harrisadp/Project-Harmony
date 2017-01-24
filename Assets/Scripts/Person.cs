@@ -8,7 +8,7 @@ public class Person {
 	private enum Race {asian, black, hispanic, white};
 	private enum Personality {personality1, personality2, personality3};
 
-	private string disease_name;
+	public string disease_name;
 	private int age_min;
 	private int age_max;
 	private float male_probability;
@@ -36,6 +36,11 @@ public class Person {
 		Debug.Log (black_probability);
 		Debug.Log (hispanic_probability);
 		Debug.Log (white_probability);
+	}
+
+	public int age_gen()
+	{
+		return Random.Range (this.age_min, this.age_max);
 	}
 
 }
