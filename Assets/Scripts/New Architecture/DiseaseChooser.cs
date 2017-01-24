@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AssemblyCSharp;
@@ -9,17 +10,19 @@ public class DiseaseChooser : MonoBehaviour {
 	private DiseaseStruct diseaseStruct;
 	private int diseaseChosen;
 	private DiseaseInstance disease_data;
+	private History history;
 
 	// Use this for initialization
 	void Start () {
 		diseaseStruct = RunOnStart.global_disease_list;
+		history = FindObjectOfType<History> ();
 //		for (int disease_index = 0; disease_index < 3; disease_index++) {
 //			diseaseStruct.OutputData (disease_index);
 //		}
 	}
 
 	public void ChooseDisease() {
-		diseaseChosen = (int)(DiseaseID)Random.Range (0, 3);
+		diseaseChosen = (int)(DiseaseID)UnityEngine.Random.Range (0, 3);
 		disease_data = diseaseStruct.GetDiseaseFromList(diseaseChosen);
 		int age = disease_data.RandomAge (disease_data.age_min, disease_data.age_max);
 		bool male = disease_data.RandomSex (disease_data.male_probability);
@@ -30,6 +33,12 @@ public class DiseaseChooser : MonoBehaviour {
 		Debug.Log ("This patient is male: " + male);
 		Debug.Log ("Race chosen by DiseaseChooser is " + race);
 		Debug.Log ("Personality chosen by DiseaseChooser is " + personality);
+		foreach (string question in disease_data.questions) {
+			disease_data.OverwriteHistory (history, question, disease_data.answers [Array.IndexOf(disease_data.questions, question), (int)(personality)]);
+		}
+		Debug.Log (history.history ["Intro"]);
+		Debug.Log (history.history ["When were you last completely well"]);
+		Debug.Log (history.history ["When did the pain first start"]);
 	}
 
 }

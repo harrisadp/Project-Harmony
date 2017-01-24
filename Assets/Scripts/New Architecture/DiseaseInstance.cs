@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DiseaseInstance {
+public class DiseaseInstance{
 
+	// Disease ID
 	public string disease_name;
+
+	// Demographics
 	public int age_min;
 	public int age_max;
 	public float male_probability;
@@ -14,9 +17,15 @@ public class DiseaseInstance {
 	public float hispanic_probability;
 	public float white_probability;
 	public enum Race {asian, black, hispanic, white};
-	public enum Personality {personality1, personality2, personality3};
+	public enum Personality {personalityA, personalityB};
 
-	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability) {
+	// Questions
+	public string[] questions = new string[3] {"Intro", "When were you last completely well", "When did the pain first start"};
+
+	// History Dialogue
+	public string[,] answers = new string[3,2];
+
+	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability, string introA, string introB, string question1A, string question1B, string question2A, string question2B) {
 		Debug.Log ("Instance of disease " + diseaseName + " created.");
 		this.disease_name = diseaseName;
 		this.age_min = ageMin;
@@ -26,6 +35,13 @@ public class DiseaseInstance {
 		this.black_probability = blackProbability;
 		this.hispanic_probability = hispanicProbability;
 		this.white_probability = whiteProbability;
+		this.answers [0, 0] = introA;
+		this.answers [0, 1] = introB;
+		this.answers [1, 0] = question1A;
+		this.answers [1, 1] = question1B;
+		this.answers [2, 0] = question2A;
+		this.answers [2, 1] = question2B;
+
 	}
 
 	public int RandomAge (int ageMin, int ageMax) {
@@ -56,10 +72,14 @@ public class DiseaseInstance {
 
 	public Personality RandomPersonality (int age, bool male, Race race){
 		if (age <= 50) {
-			return Personality.personality1;
+			return Personality.personalityA;
 		} else {
-			return Personality.personality2;
+			return Personality.personalityB;
 		}
+	}
+
+	public void OverwriteHistory (History history, string historyKey, string historyValue){
+		history.history [historyKey] = historyValue;
 	}
 
 }
