@@ -8,7 +8,7 @@ public class History : MonoBehaviour {
 
 	void Awake () {
 		// Introduction
-		history ["Intro"] = "Intro";
+		history ["Intro"] = "[Intro]";
 		// History of Presenting Illness
 		history ["When were you last completely well"] = "[When were you last completely well]";
 		history ["When did the pain first start"] = "[When did the pain first start]";
@@ -45,9 +45,9 @@ public class History : MonoBehaviour {
 		history ["Are there any other chronic medical conditions that run in your family"] = "[Are there any other chronic medical conditions that run in your family]";
 		// Psychosocial History
 		history ["Describe your lifestyle and where you are living"] = "[Describe your lifestyle and where you are living]";
-		history ["Are you currently employed"] = "[]";
-		history ["What is your marital status"] = "[]";
-		history ["Is your preferred sexual partner of the opposite sex or the same sex"] = "[]";
+		history ["Are you currently employed"] = "[Are you currently employed]";
+		history ["What is your marital status"] = "[What is your marital status]";
+		history ["Is your preferred sexual partner of the opposite sex or the same sex"] = "[Is your preferred sexual partner of the opposite sex of the same sex]";
 		history ["Who lives at home with you"] = "[Who lives at home with you]";
 		history ["Do you drink any alcohol"] = "[Do you drink any alcohol]";
 		history ["How much do you drink in a week"] = "[How much do you drink in a week]";
