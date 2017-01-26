@@ -11,12 +11,14 @@ public class PlayerOptionButton : MonoBehaviour {
 	private DialogueManager dialogueManager;
 	private MenuManager menuManager;
 	private DiseaseChooser diseaseChooser;
+	private PerformanceTracker performanceTracker;
 
 	// Use this for initialization
 	void Start () {
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		menuManager = FindObjectOfType<MenuManager> ();
 		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
+		performanceTracker = FindObjectOfType<PerformanceTracker> ();
 	}
 	
 	// Update is called once per frame
@@ -26,10 +28,10 @@ public class PlayerOptionButton : MonoBehaviour {
 
 	public void ButtonPushed () {		
 		PlayDialogue ();
-		PerformanceCheckingMethod ();
+		CheckIfGoodQuestion ();
 	}
 
-	public void PlayDialogue () {
+	private void PlayDialogue () {
 		int lineNum = 0;
 		using (StringReader reader = new StringReader (textAsset.text)) {
 			string line;
@@ -46,7 +48,7 @@ public class PlayerOptionButton : MonoBehaviour {
 		}
 	}
 
-	public void PerformanceCheckingMethod () {
+	private void CheckIfGoodQuestion () {
 		int questionNumber = 0;
 		foreach (string question in diseaseChooser.disease_data.questions) {
 			if (question == this.name) {
@@ -54,9 +56,11 @@ public class PlayerOptionButton : MonoBehaviour {
 			}	
 		}
 		if (diseaseChooser.disease_data.goodQuestions.Contains (questionNumber)) {
-			Debug.Log ("Question number " + questionNumber + " is a good question.");
+			performanceTracker.score += 100;
+			performanceTracker.UpdateScore ();
 		} else {
-			Debug.Log ("Question number " + questionNumber + " is a bad question.");
+			performanceTracker.score -= 100;
+			performanceTracker.UpdateScore ();
 		}
 	}
 

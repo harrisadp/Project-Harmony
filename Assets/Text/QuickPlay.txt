@@ -1,6 +1,6 @@
 // Introduction
 Patient: [Intro]
-Player: [Response]
+Player: I'll do the best I can!
 
 // History of Presenting Illness
 Player: When were you last completely well?
@@ -487,4 +487,4 @@ Emdee: That's not the correct diagnosis. Try again!
 Emdee: You need a diagnosis in the top slot of your differential!
 
 // First turn
-Emdee: Based on your patient's concerns, what do you think might be going on? Drag all of the diagnoses that you're considering into the right column with the most likely at the top and the least likely at the bottom. You can always reassess after you've gathered more information!
+Emdee: Time to build your differential! What do you think might be going on? You can always reassess after you've gathered more information!

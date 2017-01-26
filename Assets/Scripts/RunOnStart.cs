@@ -9,10 +9,6 @@ public class RunOnStart : MonoBehaviour {
 
 	void Awake () {
 		DontDestroyOnLoad (gameObject);
-	}
-
-	// Use this for initialization
-	void Start () {
 		global_disease_list = new DiseaseStruct (3);
 	}
 

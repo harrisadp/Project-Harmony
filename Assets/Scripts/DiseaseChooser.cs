@@ -15,11 +15,12 @@ public class DiseaseChooser : MonoBehaviour {
 	private Text ageText, sexText;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		diseaseStruct = RunOnStart.global_disease_list;
 		history = FindObjectOfType<History> ();
 		ageText = GameObject.Find ("Age Text").GetComponent<Text> ();
 		sexText = GameObject.Find ("Sex Text").GetComponent<Text> ();
+		ChooseDisease ();
 	}
 
 	public void ChooseDisease() {
@@ -40,11 +41,6 @@ public class DiseaseChooser : MonoBehaviour {
 		Debug.Log ("Personality chosen by DiseaseChooser is " + personality);
 		foreach (string question in disease_data.questions) {
 			disease_data.OverwriteHistory (history, question, disease_data.answers [Array.IndexOf(disease_data.questions, question), (int)(personality)]);
-//			if (disease_data.goodQuestions.Contains (Array.IndexOf(disease_data.questions, question))){
-//				Debug.Log ("Question #" + Array.IndexOf(disease_data.questions, question) + " is a good one");
-//			} else {
-//				Debug.Log ("Question #" + Array.IndexOf(disease_data.questions, question) + " is a bad one");
-//			}
 		}
 	}
 
