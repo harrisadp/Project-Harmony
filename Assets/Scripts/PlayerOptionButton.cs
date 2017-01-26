@@ -57,9 +57,15 @@ public class PlayerOptionButton : MonoBehaviour {
 		}
 		if (diseaseChooser.disease_data.goodQuestions.Contains (questionNumber)) {
 			performanceTracker.score += 100;
+			if (performanceTracker.energyValue < 10) {
+				performanceTracker.energyValue += 2;
+			}
 			performanceTracker.UpdateScore ();
 		} else {
 			performanceTracker.score -= 100;
+			if (performanceTracker.energyValue > 0) {
+				performanceTracker.energyValue -= 2;
+			}
 			performanceTracker.UpdateScore ();
 		}
 	}
