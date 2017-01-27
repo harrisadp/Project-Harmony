@@ -301,14 +301,158 @@ public class MenuManager : MonoBehaviour {
 				private GameObject backToROSFromDermROS;
 
 	// Physical
-	private GameObject heent;
-	private GameObject card;
-	private GameObject pulm;
-	private GameObject abd;
-	private GameObject neuro;
-	private GameObject msk;
-	private GameObject skin;
-	private GameObject backPhysical;
+	private GameObject generalExam;
+	private GameObject pulmonaryExam;
+	private GameObject cardiovascularExam;
+	private GameObject abdominalExam;
+	private GameObject HEENTExam;
+	private GameObject mskExam;
+	private GameObject neuroExam;
+	private GameObject backToMainFromPhysical;
+
+	// General
+	private GameObject generalApperance;
+	private GameObject glasgowComaScale;
+	private GameObject backToPhysicalFromGeneral;
+
+	// Pulmonary
+	private GameObject pulmInspection;
+	private GameObject pulmPalpation;
+	private GameObject pulmPercussion;
+	private GameObject pulmAuscultation;
+	private GameObject tactileFremitus;
+	private GameObject whispheredPectoriloquy;
+	private GameObject egophony;
+	private GameObject backToPhysicalFromPulmonary;
+
+	// Cardiovascular
+	private GameObject cardInspection;
+	private GameObject cardPalpation;
+	private GameObject cardAuscultation;
+	private GameObject abdVascInspectionPalpationAndAuscultation;
+	private GameObject upperLimbVascInspectionPalpationAndAuscultation;
+	private GameObject lowerLimbVascInspectionPalpationAndAuscultation;
+	private GameObject elevationOfLowerLimb;
+	private GameObject dependenceOfLowerLimb;
+	private GameObject backToPhysicalFromCardiovascular;
+
+	// Abdominal
+	private GameObject abdInspection;
+	private GameObject abdInspectionFromTheSideEyesAtBedsideLevel;
+	private GameObject abdPalpationSuperficial;
+	private GameObject abdPalpationDeep;
+	private GameObject abdPercussion;
+	private GameObject abdAuscultation;
+	private GameObject backToPhysicalFromAbdominal;
+
+	// HEENT
+	private GameObject jvp;
+	private GameObject thyroidGland;
+	private GameObject carotids;
+	private GameObject lymphNodePalpation;
+	private GameObject ophGeneralInspection;
+	private GameObject fundoscopy;
+	private GameObject slitLampExam;
+	private GameObject earsGeneralExamination;
+	private GameObject otoscopicExamination;
+	private GameObject oroGeneralInspection;
+	private GameObject backToPhysicalFromHEENT;
+
+	// MSK
+	private GameObject knees;
+		// Knees
+		private GameObject kneesInspectionAndGaitAssessment;
+		private GameObject kneesRangeOfMovement;
+		private GameObject kneesPalpation;
+		private GameObject kneesSpecialTests;
+		private GameObject backToMSKFromKnees;
+	private GameObject hips;
+		// Hips
+		private GameObject hipsGait;
+		private GameObject hipsInspection;
+		private GameObject hipsRangeOfMovement;
+		private GameObject hipsPalpation;
+		private GameObject thomasTest;
+		private GameObject trendelenbergSign;
+		private GameObject backToMSKFromHips;
+	private GameObject shoulder;
+		// Shoulder
+		private GameObject shoulderInspection;
+		private GameObject shoulderRangeOfMovementActive;
+		private GameObject shoulderRangeOfMovementPassive;
+		private GameObject shoulderPalpation;
+		private GameObject liftOffTest;
+		private GameObject speedsTest;
+		private GameObject yergasonsTest;
+		private GameObject backToMSKFromShoulder;
+	private GameObject back;
+		// Back
+		private GameObject backInspection;
+		private GameObject backRangeOfMovement;
+		private GameObject backPalpation;
+		private GameObject straightLegTest;
+		private GameObject shobersTest;
+		private GameObject leseaguesTest;
+		private GameObject backToMSKFromBack;
+	private GameObject backToPhysicalFromMSK;
+
+	// Neuro
+	private GameObject cranialNerves;
+		// Cranial Nerves
+		private GameObject olfactoryNerveCNI;
+		private GameObject opticNerveCNII;
+		private GameObject oculomotorNerveCNIII;
+			// CN III
+			private GameObject cnIIIInspection;
+			private GameObject ocularMovements;
+			private GameObject backToCNFromCNIII;
+		private GameObject trigeminalNerveCNV;	
+			// CN V
+			private GameObject cnVSensationLightTouch;
+			private GameObject cnVSensationPainAndTemperature;
+			private GameObject cnVSensationCornealReflex;
+			private GameObject cnVMotorTemporalisAndMasseters;
+			private GameObject cnVMotorJawJerkReflex;
+			private GameObject cnVMotorLateralAndMedialPterygoids;
+			private GameObject backToCNFromCNV;
+		private GameObject facialNerveCNVII;
+			// CN VII
+			private GameObject cnVIIInspection;
+			private GameObject cnVIIMotorMusclesOfFacialExpression;
+			private GameObject cnVIIReflexes;
+			private GameObject backToCNFromCNVII;
+		private GameObject vestibulocochlearNerveCNVIII;
+		private GameObject glosspharyngealAndVagusNervesCNIXX;
+		private GameObject spinalAccessoryNerveCNXI;
+			// CN XI
+			private GameObject cnXIInspection;
+			private GameObject cnXIMotor;
+			private GameObject backToCNFromCNXI;
+		private GameObject hypoglossalNerveCNXII;
+			// CN XII
+			private GameObject cnXIIInspection;
+			private GameObject cnXIIMotor;
+			private GameObject backToCNFromCNXII;
+		private GameObject backToNeuroFromCN;
+	private GameObject peripheralNervousSystem;
+		// Peripheral Nervous System
+		private GameObject neuroGeneralInspection;
+		private GameObject neuroTone;
+		private GameObject neuroPower;
+		private GameObject neuroSensation;
+		private GameObject neuroVibration;
+		private GameObject neuroProprioception;
+		private GameObject neuroReflexes;
+		private GameObject backToNeuroFromPeripheral;
+	private GameObject cerebellarExamination;
+		// Cerebellar Examination
+		private GameObject cereGeneralInspection;
+		private GameObject cereGait;
+		private GameObject cereSpeech;
+		private GameObject cereCoordination;
+		private GameObject cereMotor;
+		private GameObject backToNeuroFromCerebellar;
+	private GameObject backToPhysicalFromNeuro;
 
 	// Labs
 	private GameObject blood;
@@ -335,7 +479,6 @@ public class MenuManager : MonoBehaviour {
 	private GameObject proceedAfterImaging;
 
 	// Other random things
-
 	public DifferentialManager differentialManager;
 	public bool victory = false;
 	public bool displayImage = false;
@@ -645,7 +788,159 @@ public class MenuManager : MonoBehaviour {
 					haveYouNoticedAnyChangesToYourHairGrowth = GameObject.Find("Have you noticed any changes to your hair growth");
 					backToROSFromDermROS = GameObject.Find("Back to ROS from Derm ROS");
 
-		// Other things to identify
+		// Physical
+		generalExam = GameObject.Find("General Exam");
+		pulmonaryExam = GameObject.Find("Pulmonary Exam");
+		cardiovascularExam = GameObject.Find("Cardiovascular Exam");
+		abdominalExam = GameObject.Find("Abdominal Exam");
+		HEENTExam = GameObject.Find("HEENT Exam");
+		mskExam = GameObject.Find("MSK Exam");
+		neuroExam = GameObject.Find("Neuro Exam");
+		backToMainFromPhysical = GameObject.Find("Back to Main from Physical");
+
+			// General
+			generalApperance = GameObject.Find("General appearance");
+			glasgowComaScale = GameObject.Find("Glasgow Coma Scale");
+			backToPhysicalFromGeneral = GameObject.Find("Back to Physical from General");
+
+			// Pulmonary
+			pulmInspection = GameObject.Find("Resp - Inspection");
+			pulmPalpation = GameObject.Find("Resp - Palpation");
+			pulmPercussion = GameObject.Find("Resp - Percussion");
+			pulmAuscultation = GameObject.Find("Resp - Auscultation");
+			tactileFremitus = GameObject.Find("Tactile fremitus");
+			whispheredPectoriloquy = GameObject.Find("Whispered pectoriloquy");
+			egophony = GameObject.Find("Egophony");
+			backToPhysicalFromPulmonary = GameObject.Find("Back to Physical from Pulmonary");
+
+			// Cardiovascular
+			cardInspection = GameObject.Find("Card - Inspection");
+			cardPalpation = GameObject.Find("Card - Palpation");
+			cardAuscultation = GameObject.Find("Card - Auscultation");
+			abdVascInspectionPalpationAndAuscultation = GameObject.Find("Abd vasc - Inspection, palpation, and auscultation");
+			upperLimbVascInspectionPalpationAndAuscultation = GameObject.Find("Upper limb vasc - Inspection, palpation, and auscultation");
+			lowerLimbVascInspectionPalpationAndAuscultation = GameObject.Find("Lower limb vasc - Inspection, palpation, and auscultation");
+			elevationOfLowerLimb = GameObject.Find("Elevation of lower limb");
+			dependenceOfLowerLimb = GameObject.Find("Dependence of lower limb");
+			backToPhysicalFromCardiovascular = GameObject.Find("Back to Physical from Cardiovascular");
+
+			// Abdominal
+			abdInspection = GameObject.Find("Abd - Inspection");
+			abdInspectionFromTheSideEyesAtBedsideLevel = GameObject.Find("Abd - Inspection from the side, eyes at bedside level");
+			abdPalpationSuperficial = GameObject.Find("Abd - Palpation - Superficial");
+			abdPalpationDeep = GameObject.Find("Abd - Palpation - Deep");
+			abdPercussion = GameObject.Find("Abd - Percussion");
+			abdAuscultation = GameObject.Find("Abd - Auscultation");
+			backToPhysicalFromAbdominal = GameObject.Find("Back to Physical from Abdominal");
+
+			// HEENT
+			jvp = GameObject.Find("JVP");
+			thyroidGland = GameObject.Find("Thyroid gland");
+			carotids = GameObject.Find("Carotids");
+			lymphNodePalpation = GameObject.Find("Lymph node palpation");
+			ophGeneralInspection = GameObject.Find("Oph - General inspection");
+			fundoscopy = GameObject.Find("Fundoscopy");
+			slitLampExam = GameObject.Find("Slit lamp exam");
+			earsGeneralExamination = GameObject.Find("Ears - General examination");
+			otoscopicExamination = GameObject.Find("Otoscopic examination");
+			oroGeneralInspection = GameObject.Find("Oro - General inspection");
+			backToPhysicalFromHEENT = GameObject.Find("Back to Physical from HEENT");
+
+			// MSK
+			knees = GameObject.Find("Knees");
+				// Knees
+				kneesInspectionAndGaitAssessment = GameObject.Find("Knees - Inspection and gait assessment");
+				kneesRangeOfMovement = GameObject.Find("Knees - Range of movement");
+				kneesPalpation = GameObject.Find("Knees - Palpation");
+				kneesSpecialTests = GameObject.Find("Knees - Special tests");
+				backToMSKFromKnees = GameObject.Find("Back to MSK from Knees");
+			hips = GameObject.Find("Hips");
+				// Hips
+				hipsGait = GameObject.Find("Hips - Gait");
+				hipsInspection = GameObject.Find("Hips - Inspection");
+				hipsRangeOfMovement = GameObject.Find("Hips - Range of movement");
+				hipsPalpation = GameObject.Find("Hips - Palpation");
+				thomasTest = GameObject.Find("Thomas Test");
+				trendelenbergSign = GameObject.Find("Trendelenberg Sign");
+				backToMSKFromHips = GameObject.Find("Back to MSK from Hips");
+			shoulder = GameObject.Find("Shoulder");
+				// Shoulder
+				shoulderInspection = GameObject.Find("Shoulder - Inspection");
+				shoulderRangeOfMovementActive = GameObject.Find("Shoulder - Range of movement - active");
+				shoulderRangeOfMovementPassive = GameObject.Find("Shoulder - Range of movement - passive");
+				shoulderPalpation = GameObject.Find("Shoulder - Palpation");
+				liftOffTest = GameObject.Find("Lift-off Test");
+				speedsTest = GameObject.Find("Speed’s Test");
+				yergasonsTest = GameObject.Find("Yergason’s Test");
+				backToMSKFromShoulder = GameObject.Find("Back to MSK from Shoulder");
+			back = GameObject.Find("Back");
+				// Back
+				backInspection = GameObject.Find("Back - Inspection");
+				backRangeOfMovement = GameObject.Find("Back - Range of movement");
+				backPalpation = GameObject.Find("Back - Palpation");
+				straightLegTest = GameObject.Find("Straight Leg Test");
+				shobersTest = GameObject.Find("Shober’s Test");
+				leseaguesTest = GameObject.Find("Leseague’s Test");
+				backToMSKFromBack = GameObject.Find("Back to MSK from Back");
+			backToPhysicalFromMSK = GameObject.Find("Back to Physical from MSK");
+
+			// Neuro
+			cranialNerves = GameObject.Find("Cranial Nerves");
+				// Cranial Nerves
+				olfactoryNerveCNI = GameObject.Find("Olfactory Nerve (CN I)");
+				opticNerveCNII = GameObject.Find("Optic Nerve (CN II)");
+				oculomotorNerveCNIII = GameObject.Find("Oculomotor Nerve (CN III)");
+					// CN III
+					cnIIIInspection = GameObject.Find("CN III - Inspection");
+					ocularMovements = GameObject.Find("Ocular Movements");
+					backToCNFromCNIII = GameObject.Find("Back to CN from CNIII");
+				trigeminalNerveCNV = GameObject.Find("Trigeminal Nerve (CN V)");	
+					// CN V
+					cnVSensationLightTouch = GameObject.Find("CN V - Sensation - Light touch");
+					cnVSensationPainAndTemperature = GameObject.Find("CN V - Sensation - Pain and Temperature");
+					cnVSensationCornealReflex = GameObject.Find("CN V - Sensation - Corneal Reflex");
+					cnVMotorTemporalisAndMasseters = GameObject.Find("CN V - Motor - Temporalis and masseters");
+					cnVMotorJawJerkReflex = GameObject.Find("CN V - Motor - Jaw Jerk Reflex");
+					cnVMotorLateralAndMedialPterygoids = GameObject.Find("CN V - Motor - Lateral and Medial pterygoids");
+					backToCNFromCNV = GameObject.Find("Back to CN From CN V");
+				facialNerveCNVII = GameObject.Find("Facial Nerve (CN VII)");
+					// CN VII
+					cnVIIInspection = GameObject.Find("CN VII - Inspection");
+					cnVIIMotorMusclesOfFacialExpression = GameObject.Find("CN VII - Motor - Muscles of facial expression");
+					cnVIIReflexes = GameObject.Find("CN VII - Reflexes");
+					backToCNFromCNVII = GameObject.Find("Back to CN from CN VII");
+				vestibulocochlearNerveCNVIII = GameObject.Find("Vestibulocochlear Nerve (CN VIII)");
+				glosspharyngealAndVagusNervesCNIXX = GameObject.Find("Glosspharyngeal and Vagus Nerves (CN IX, X)");
+				spinalAccessoryNerveCNXI = GameObject.Find("Spinal Accessory Nerve (CN XI)");
+					// CN XI
+					cnXIInspection = GameObject.Find("CN XI - Inspection");
+					cnXIMotor = GameObject.Find("CN XI - Motor");
+					backToCNFromCNXI = GameObject.Find("Back to CN from CN XI");
+				hypoglossalNerveCNXII = GameObject.Find("Hypoglossal Nerve (CN XII)");
+					// CN XII
+					cnXIIInspection = GameObject.Find("CN XII - Inspection");
+					cnXIIMotor = GameObject.Find("CN XII - Motor");
+					backToCNFromCNXII = GameObject.Find("Back to CN from CN XII");
+				backToNeuroFromCN = GameObject.Find("Back to Neuro from CN");
+			peripheralNervousSystem = GameObject.Find("Peripheral Nervous System");
+				// Peripheral Nervous System
+				neuroGeneralInspection = GameObject.Find("Neuro - General inspection");
+				neuroTone = GameObject.Find("Neuro - Tone");
+				neuroPower = GameObject.Find("Neuro - Power");
+				neuroSensation = GameObject.Find("Neuro - Sensation");
+				neuroVibration = GameObject.Find("Neuro - Vibration");
+				neuroProprioception = GameObject.Find("Neuro - Proprioception");
+				neuroReflexes = GameObject.Find("Neuro - Reflexes");
+				backToNeuroFromPeripheral = GameObject.Find("Back to Neuro from Peripheral");
+			cerebellarExamination = GameObject.Find("Cerebellar Examination");
+				// Cerebellar Examination
+				cereGeneralInspection = GameObject.Find("Cere - General inspection");
+				cereGait = GameObject.Find("Cere - Gait");
+				cereSpeech = GameObject.Find("Cere - Speech");
+				cereCoordination = GameObject.Find("Cere - Coordination");
+				cereMotor = GameObject.Find("Cere - Motor");
+				backToNeuroFromCerebellar = GameObject.Find("Back to Neuro from Cerebellar");
+			backToPhysicalFromNeuro = GameObject.Find("Back to Physical from Neuro");
 
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		levelManager = FindObjectOfType<LevelManager> ();
@@ -1103,16 +1398,210 @@ public class MenuManager : MonoBehaviour {
 		backToROSFromDermROS.SetActive(true);
 	}
 
-	public void Physical () {
+	public void PhysicalMain () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		heent.SetActive (true);
-		card.SetActive (true);
-		pulm.SetActive (true);
-		abd.SetActive (true);
-		neuro.SetActive (true);
-		msk.SetActive (true);
-		skin.SetActive (true);
-		backPhysical.SetActive (true);
+		generalExam.SetActive(true);
+		pulmonaryExam.SetActive(true);
+		cardiovascularExam.SetActive(true);
+		abdominalExam.SetActive(true);
+		HEENTExam.SetActive(true);
+		mskExam.SetActive(true);
+		neuroExam.SetActive(true);
+		backToMainFromPhysical.SetActive(true);
+	}
+
+	public void PhysicalGeneral () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		generalApperance.SetActive(true);
+		glasgowComaScale.SetActive(true);
+		backToPhysicalFromGeneral.SetActive(true);
+	}
+
+	public void PhysicalPulmonary () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		pulmInspection.SetActive(true);
+		pulmPalpation.SetActive(true);
+		pulmPercussion.SetActive(true);
+		pulmAuscultation.SetActive(true);
+		tactileFremitus.SetActive(true);
+		whispheredPectoriloquy.SetActive(true);
+		egophony.SetActive(true);
+		backToPhysicalFromPulmonary.SetActive(true);
+	}
+
+	public void PhysicalCardiovascular () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		cardInspection.SetActive(true);
+		cardPalpation.SetActive(true);
+		cardAuscultation.SetActive(true);
+		abdVascInspectionPalpationAndAuscultation.SetActive(true);
+		upperLimbVascInspectionPalpationAndAuscultation.SetActive(true);
+		lowerLimbVascInspectionPalpationAndAuscultation.SetActive(true);
+		elevationOfLowerLimb.SetActive(true);
+		dependenceOfLowerLimb.SetActive(true);
+		backToPhysicalFromCardiovascular.SetActive(true);
+	}
+
+	public void PhysicalAbdominal () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		abdInspection.SetActive(true);
+		abdInspectionFromTheSideEyesAtBedsideLevel.SetActive(true);
+		abdPalpationSuperficial.SetActive(true);
+		abdPalpationDeep.SetActive(true);
+		abdPercussion.SetActive(true);
+		abdAuscultation.SetActive(true);
+		backToPhysicalFromAbdominal.SetActive(true);
+	}
+
+	public void PhysicalHEENT () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		jvp.SetActive(true);
+		thyroidGland.SetActive(true);
+		carotids.SetActive(true);
+		lymphNodePalpation.SetActive(true);
+		ophGeneralInspection.SetActive(true);
+		fundoscopy.SetActive(true);
+		slitLampExam.SetActive(true);
+		earsGeneralExamination.SetActive(true);
+		otoscopicExamination.SetActive(true);
+		oroGeneralInspection.SetActive(true);
+		backToPhysicalFromHEENT.SetActive(true);
+	}
+
+	public void PhysicalMSK () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		knees.SetActive(true);
+		hips.SetActive(true);
+		shoulder.SetActive(true);
+		back.SetActive(true);
+		backToPhysicalFromMSK.SetActive(true);
+	}
+
+	public void PhysicalKnees () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		kneesInspectionAndGaitAssessment.SetActive(true);
+		kneesRangeOfMovement.SetActive(true);
+		kneesPalpation.SetActive(true);
+		kneesSpecialTests.SetActive(true);
+		backToMSKFromKnees.SetActive(true);
+	}
+
+	public void PhysicalHips () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		hipsGait.SetActive(true);
+		hipsInspection.SetActive(true);
+		hipsRangeOfMovement.SetActive(true);
+		hipsPalpation.SetActive(true);
+		thomasTest.SetActive(true);
+		trendelenbergSign.SetActive(true);
+		backToMSKFromHips.SetActive(true);
+	}
+
+	public void PhysicalShoulder () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		shoulderInspection.SetActive(true);
+		shoulderRangeOfMovementActive.SetActive(true);
+		shoulderRangeOfMovementPassive.SetActive(true);
+		shoulderPalpation.SetActive(true);
+		liftOffTest.SetActive(true);
+		speedsTest.SetActive(true);
+		yergasonsTest.SetActive(true);
+		backToMSKFromShoulder.SetActive(true);
+	}
+
+	public void PhysicalBack () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		backInspection.SetActive(true);
+		backRangeOfMovement.SetActive(true);
+		backPalpation.SetActive(true);
+		straightLegTest.SetActive(true);
+		shobersTest.SetActive(true);
+		leseaguesTest.SetActive(true);
+		backToMSKFromBack.SetActive(true);
+	}
+
+	public void PhysicalNeurologic () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		cranialNerves.SetActive(true);
+		peripheralNervousSystem.SetActive(true);
+		cerebellarExamination.SetActive(true);
+		backToPhysicalFromNeuro.SetActive(true);
+	}
+
+	public void PhysicalCranialNerves () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		olfactoryNerveCNI.SetActive(true);
+		opticNerveCNII.SetActive(true);
+		oculomotorNerveCNIII.SetActive(true);
+		trigeminalNerveCNV.SetActive(true);
+		facialNerveCNVII.SetActive(true);
+		vestibulocochlearNerveCNVIII.SetActive(true);
+		glosspharyngealAndVagusNervesCNIXX.SetActive(true);
+		spinalAccessoryNerveCNXI.SetActive(true);
+		hypoglossalNerveCNXII.SetActive(true);
+		backToNeuroFromCN.SetActive(true);
+	}
+
+	public void PhysicalCNIII () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		cnIIIInspection.SetActive(true);
+		ocularMovements.SetActive(true);
+		backToCNFromCNIII.SetActive(true);
+	}
+
+	public void PhysicalCNV () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		cnVSensationLightTouch.SetActive(true);
+		cnVSensationPainAndTemperature.SetActive(true);
+		cnVSensationCornealReflex.SetActive(true);
+		cnVMotorTemporalisAndMasseters.SetActive(true);
+		cnVMotorJawJerkReflex.SetActive(true);
+		cnVMotorLateralAndMedialPterygoids.SetActive(true);
+		backToCNFromCNV.SetActive(true);
+	}
+
+	public void PhysicalCNVII () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		cnVIIInspection.SetActive(true);
+		cnVIIMotorMusclesOfFacialExpression.SetActive(true);
+		cnVIIReflexes.SetActive(true);
+		backToCNFromCNVII.SetActive(true);
+	}
+
+	public void PhysicalCNXI () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		cnXIInspection.SetActive(true);
+		cnXIMotor.SetActive(true);
+		backToCNFromCNXI.SetActive(true);
+	}
+
+	public void PhysicalCNXII () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		cnXIIInspection.SetActive(true);
+		cnXIIMotor.SetActive(true);
+		backToCNFromCNXII.SetActive(true);
+	}
+
+	public void PhysicalPeripheralNervousSystem () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		neuroGeneralInspection.SetActive(true);
+		neuroTone.SetActive(true);
+		neuroPower.SetActive(true);
+		neuroSensation.SetActive(true);
+		neuroVibration.SetActive(true);
+		neuroProprioception.SetActive(true);
+		neuroReflexes.SetActive(true);
+		backToNeuroFromPeripheral.SetActive(true);
+	}
+
+	public void PhysicalCerebellar () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		cereGeneralInspection.SetActive(true);
+		cereGait.SetActive(true);
+		cereSpeech.SetActive(true);
+		cereCoordination.SetActive(true);
+		cereMotor.SetActive(true);
+		backToNeuroFromCerebellar.SetActive(true);
 	}
 
 	public void Labs () {

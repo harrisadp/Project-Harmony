@@ -23,7 +23,6 @@ public class PerformanceTracker : MonoBehaviour {
 
 	public void UpdateScore () {
 		scoreText.text = score.ToString ();
-		Debug.Log (energyValue);
 		guiBar.Value = (float)energyValue / 10;
 	}
 

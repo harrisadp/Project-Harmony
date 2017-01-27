@@ -88,11 +88,33 @@ public class DiseaseInstance {
 	// Answers
 	public string[,] answers = new string[186,2];
 
+	// Physical Exam Maneuvers
+	public string[] physicalManeuvers = new string[87]
+		{"General appearance", "Glasgow Coma Scale", "Resp - Inspection", "Resp - Palpation", "Resp - Percussion", "Resp - Auscultation", "Tactile fremitus",
+		"Whispered pectoriloquy", "Egophony", "Card - Inspection", "Card - Palpation", "Card - Auscultation", "Abd vasc - Inspection, palpation, and auscultation",
+		"Upper limb vasc - Inspection, palpation, and auscultation", "Lower limb vasc - Inspection, palpation, and auscultation", "Elevation of lower limb",
+		"Dependence of lower limb", "Abd - Inspection", "Abd - Inspection from the side, eyes at bedside level", "Abd - Palpation - Superficial",
+		"Abd - Palpation - Deep", "Abd - Percussion", "Abd - Auscultation", "JVP", "Thyroid gland", "Carotids", "Lymph node palpation", "Oph - General inspection",
+		"Fundoscopy", "Slit lamp exam", "Ears - General examination", "Otoscopic examination", "Oro - General inspection",
+		"Knees - Inspection and gait assessment", "Knees - Range of movement", "Knees - Palpation", "Knees - Special tests", "Hips - Gait", "Hips - Inspection",
+		"Hips - Range of movement", "Hips - Palpation", "Thomas Test", "Trendelenberg Sign", "Shoulder - Inspection", "Shoulder - Range of movement - active",
+		"Shoulder - Range of movement - passive", "Shoulder - Palpation", "Lift-off Test", "Speed’s Test", "Yergason’s Test", "Back - Inspection",
+		"Back - Range of movement", "Back - Palpation", "Straight Leg Test", "Shober’s Test", "Leseague’s Test", "Olfactory Nerve (CN I)", "Optic Nerve (CN II)",
+		"CN III - Inspection", "Ocular Movements", "CN V - Sensation - Light touch", "CN V - Sensation - Pain and Temperature",
+		"CN V - Sensation - Corneal Reflex", "CN V - Motor - Temporalis and masseters", "CN V - Motor - Jaw Jerk Reflex",
+		"CN V - Motor - Lateral and Medial pterygoids", "CN VII - Inspection", "CN VII - Motor - Muscles of facial expression", "CN VII - Reflexes",
+		"Vestibulocochlear Nerve (CN VIII)", "Glosspharyngeal and Vagus Nerves (CN IX, X)", "CN XI - Inspection", "CN XI - Motor", "CN XII - Inspection",
+		"CN XII - Motor", "Neuro - General inspection", "Neuro - Tone", "Neuro - Power", "Neuro - Sensation", "Neuro - Vibration", "Neuro - Proprioception",
+		"Neuro - Reflexes", "Cere - General inspection", "Cere - Gait", "Cere - Speech", "Cere - Coordination", "Cere - Motor"};
+
+	// Physical Exam Results
+	public string[] physicalResults = new string[87];
+
 	// Performance Tracking
 	public List<int> goodQuestions = new List<int>();
 
 	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability,
-							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, int[] goodQuestionIDs) {
+							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, string[] diseasePhysical, int[] goodQuestionIDs) {
 		Debug.Log ("Instance of disease " + diseaseName + " created.");
 		this.disease_name = diseaseName;
 		this.age_min = ageMin;
@@ -103,6 +125,7 @@ public class DiseaseInstance {
 		this.hispanic_probability = hispanicProbability;
 		this.white_probability = whiteProbability;
 		this.answers = diseaseAnswers;
+		this.physicalResults = diseasePhysical;
 		foreach (int i in goodQuestionIDs) {
 			goodQuestions.Add (i);
 		}
@@ -112,7 +135,7 @@ public class DiseaseInstance {
 		return Random.Range (ageMin, ageMax);
 	}
 
-	public bool RandomSex (float maleProbability){
+	public bool RandomSex (float maleProbability) {
 		float randomSex = Random.value;
 		if (maleProbability <= randomSex) {
 			return true;
@@ -121,7 +144,7 @@ public class DiseaseInstance {
 		}
 	}
 
-	public Race RandomRace (float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability){
+	public Race RandomRace (float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability) {
 		float randomRace = Random.value;
 		if (randomRace <= asianProbability) {
 			return Race.asian;
@@ -134,7 +157,7 @@ public class DiseaseInstance {
 		}
 	}
 
-	public Personality RandomPersonality (int age, bool male, Race race){
+	public Personality RandomPersonality (int age, bool male, Race race) {
 		if (age <= 50) {
 			return Personality.personalityA;
 		} else {
@@ -142,8 +165,16 @@ public class DiseaseInstance {
 		}
 	}
 
-	public void OverwriteHistory (History history, string historyKey, string historyValue){
+	public void OverwriteHistory (History history, string historyKey, string historyValue) {
 		history.history [historyKey] = historyValue;
+	}
+
+	public void OverwritePhysical (PhysicalExam physical, string physicalKey, string physicalValue) {
+		if (physicalValue != "x") {
+			physical.physical [physicalKey] = physicalValue;
+		} else {
+			return;
+		}
 	}
 
 }

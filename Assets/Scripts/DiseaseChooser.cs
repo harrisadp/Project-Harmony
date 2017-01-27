@@ -12,12 +12,14 @@ public class DiseaseChooser : MonoBehaviour {
 	public int diseaseChosen;
 	public DiseaseInstance disease_data;
 	private History history;
+	private PhysicalExam physical;
 	private Text ageText, sexText;
 
 	// Use this for initialization
 	void Awake () {
 		diseaseStruct = RunOnStart.global_disease_list;
 		history = FindObjectOfType<History> ();
+		physical = FindObjectOfType<PhysicalExam> ();
 		ageText = GameObject.Find ("Age Text").GetComponent<Text> ();
 		sexText = GameObject.Find ("Sex Text").GetComponent<Text> ();
 		ChooseDisease ();
@@ -41,6 +43,9 @@ public class DiseaseChooser : MonoBehaviour {
 		Debug.Log ("Personality chosen by DiseaseChooser is " + personality);
 		foreach (string question in disease_data.questions) {
 			disease_data.OverwriteHistory (history, question, disease_data.answers [Array.IndexOf(disease_data.questions, question), (int)(personality)]);
+		}
+		foreach (string physicalManeuver in disease_data.physicalManeuvers) {
+			disease_data.OverwritePhysical (physical, physicalManeuver, disease_data.physicalResults [Array.IndexOf(disease_data.physicalManeuvers, physicalManeuver)]);
 		}
 	}
 
