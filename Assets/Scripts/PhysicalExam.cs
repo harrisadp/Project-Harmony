@@ -26,8 +26,6 @@ public class PhysicalExam : MonoBehaviour {
 		physical ["Abd vasc - Inspection, palpation, and auscultation"] = "No abnormalities";
 		physical ["Upper limb vasc - Inspection, palpation, and auscultation"] = "No abnormalities";
 		physical ["Lower limb vasc - Inspection, palpation, and auscultation"] = "No abnormalities";
-		physical ["Elevation of lower limb"] = "No abnormalities";
-		physical ["Dependence of lower limb"] = "No abnormalities";
 		// Abdominal
 		physical ["Abd - Inspection"] = "No abnormalities";
 		physical ["Abd - Inspection from the side, eyes at bedside level"] = "No abnormalities";
@@ -67,21 +65,18 @@ public class PhysicalExam : MonoBehaviour {
 		physical ["Shoulder - Range of movement - passive"] = "No abnormalities";
 		physical ["Shoulder - Palpation"] = "No abnormalities";
 		physical ["Lift-off Test"] = "No abnormalities";
-		physical ["Speed’s Test"] = "No abnormalities";
-		physical ["Yergason’s Test"] = "No abnormalities";
-		// Musculoskeletal - Back
-		physical ["Back - Inspection"] = "No abnormalities";
-		physical ["Back - Range of movement"] = "No abnormalities";
-		physical ["Back - Palpation"] = "No abnormalities";
+		physical ["Speed's Test"] = "No abnormalities";
+		physical ["Yergason's Test"] = "No abnormalities";
+		// Musculoskeletal - Spine
+		physical ["Spine - Inspection"] = "No abnormalities";
+		physical ["Spine - Range of movement"] = "No abnormalities";
+		physical ["Spine - Palpation"] = "No abnormalities";
 		physical ["Straight Leg Test"] = "No abnormalities";
-		physical ["Shober’s Test"] = "No abnormalities";
-		physical ["Leseague’s Test"] = "No abnormalities";
+		physical ["Schober's Test"] = "No abnormalities";
 		// Neurological - Cranial nerves
 		physical ["Olfactory Nerve (CN I)"] = "No abnormalities";
 		physical ["Optic Nerve (CN II)"] = "No abnormalities";
-		// CN III
-		physical ["CN III - Inspection"] = "No abnormalities";
-		physical ["Ocular Movements"] = "No abnormalities";
+		physical ["Oculomotor, Trochlear, and Abducens Nerves (CN III, IV, VI)"] = "No abnormalities";
 		// CN V
 		physical ["CN V - Sensation - Light touch"] = "No abnormalities";
 		physical ["CN V - Sensation - Pain and Temperature"] = "No abnormalities";

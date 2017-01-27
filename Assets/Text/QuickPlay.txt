@@ -414,27 +414,345 @@ Player: Have you noticed any changes to your hair growth?
 Patient: [Have you noticed any changes to your hair growth]
 
 // Physical
-Player: I'm going to examine your head, eyes, ears, nose, and throat now.
+
+// General appearance
+Player: I'm going to examine your general appearance.
 Player: ...
-Player: [HEENT]
-Player: I'm going to perform a cardiac exam now.
+Player: [General appearance]
+// Glasgow Coma Scale
+Player: I'm going to calculate your score on the Glasgow Coma Scale.
 Player: ...
-Player: [CARD]
-Player: I'm going to perform a pulmonary exam now.
+Player: [Glasgow Coma Scale]
+
+// Pulm - Inspection
+Player: I'm going to inspect your back and work of breathing.
 Player: ...
-Player: [PULM]
-Player: I'm going to perform an abdominal exam now.
+Player: [Pulm - Inspection]
+// Pulm - Palpation
+Player: I'm going to palpate your back while you breathe.
 Player: ...
-Player: [ABD]
-Player: I'm going to perform a neurologic exam now.
+Player: [Pulm - Palpation]
+// Pulm - Percussion
+Player: I'm going to gently tap on your back.
 Player: ...
-Player: [NEURO]
-Player: I'm going to perform a musculoskeletal exam now.
+Player: [Pulm - Percussion]
+// Pulm - Auscultation
+Player: I'm going to listen to your lungs.
 Player: ...
-Player: [MSK]
-Player: I'm going to examine your skin now.
+Player: [Pulm - Auscultation]
+// Tactile fremitus
+Player: I'm going to assess the vibration of your lungs while you say the words "ninety-nine."
 Player: ...
-Player: [SKIN]
+Player: [Tactile fremitus]
+// Whispered pectoriloquy
+Player: I'm going to listen to your lungs while you whisper the words "blue moon."
+Player: ...
+Player: [Whispered pectoriloquy]
+// Egophony
+Player: I'm going to listen to your lungs while you say the letter "E."
+Player: ...
+Player: [Egophony]
+
+// Card - Inspection
+Player: I'm going to inspect your chest wall.
+Player: ...
+Player: [Card - Inspection]
+// Card - Palpation
+Player: I'm going to assess for any heart enlargement.
+Player: ...
+Player: [Card - Palpation]
+// Card - Auscultation
+Player: I'm going to listen to your heart.
+Player: ...
+Player: [Card - Auscultation]
+// Abd vasc - Inspection, palpation, and auscultation
+Player: I'm going to assess your abdominal aorta and renal arteries.
+Player: ...
+Player: [Abd vasc - Inspection, palpation, and auscultation]
+// Upper limb vasc - Inspection, palpation, and auscultation
+Player: I'm going to assess the blood vessels in your upper limbs.
+Player: ...
+Player: [Upper limb vasc - Inspection, palpation, and auscultation]
+// Lower limb vasc - Inspection, palpation, and auscultation
+Player: I'm going to assess the blood vessels in your lower limbs.
+Player: ...
+Player: [Lower limb vasc - Inspection, palpation, and auscultation]
+
+// Abd - Inspection
+Player: I'm going to inspect your abdomen.
+Player: ...
+Player: [Abd - Inspection]
+// Abd - Inspection from the side, eyes at bedside level
+Player: I'm going to inspect your abdomen from the side.
+Player: ...
+Player: [Abd - Inspection from the side, eyes at bedside level]
+// Abd - Palpation - Superficial
+Player: I'm going to lightly press on your abdomen.
+Player: ...
+Player: [Abd - Palpation - Superficial]
+// Abd - Palpation - Deep
+Player: I'm going to firmly press on your abdomen.
+Player: ...
+Player: [Abd - Palpation - Deep]
+// Abd - Percussion
+Player: I'm going to gently tap on your abdomen.
+Player: ...
+Player: [Abd - Percussion]
+// Abd - Auscultation
+Player: I'm going to listen to your bowel sounds.
+Player: ...
+Player: [Abd - Auscultation]
+
+// JVP
+Player: I'm going to assess the pressure in your jugular veins.
+Player: ...
+Player: [JVP]
+// Thyroid gland
+Player: I'm going to assess your thyroid gland.
+Player: ...
+Player: [Thyroid gland]
+// Carotids
+Player: I'm going to assess your carotid arteries.
+Player: ...
+Player: [Carotids]
+// Lymph node palpation
+Player: I'm going to palpate your lymph nodes.
+Player: ...
+Player: [Lymph node palpation]
+// Oph - General inspection
+Player: I'm going to inspect your eyes.
+Player: ...
+Player: [Oph - General inspection]
+// Fundoscopy
+Player: I'm going to use a fundoscope to examine your eyes.
+Player: ...
+Player: [Fundoscopy]
+// Slit lamp exam
+Player: I'm going to use a slit lamp to examine your eyes.
+Player: ...
+Player: [Slit lamp exam]
+// Ears - General examination
+Player: I'm going to examine your ears.
+Player: ...
+Player: [Ears - General examination]
+// Otoscopic examination
+Player: I'm going to use an otoscope to examine your ears.
+Player: ...
+Player: [Otoscopic examination]
+// Oro - General inspection
+Player: I'm going to examine your throat.
+Player: ...
+Player: [Oro - General inspection]
+
+// Knees - Inspection and gait assessment
+Player: I'm going to examine your knees and your gait.
+Player: ...
+Player: [Knees - Inspection and gait assessment]
+// Knees - Range of movement
+Player: I'm going to assess the range of movement of your knees.
+Player: ...
+Player: [Knees - Range of movement]
+// Knees - Palpation
+Player: I'm going to palpate your knees.
+Player: ...
+Player: [Knees - Palpation]
+// Knees - Special tests
+Player: I'm going to perform some special tests on your knees.
+Player: ...
+Player: [Knees - Special tests]
+// Hips - Gait
+Player: I'm going to examine your hips while you walk.
+Player: ...
+Player: [Hips - Gait]
+// Hips - Inspection
+Player: I'm going to inspect your hips.
+Player: ...
+Player: [Hips - Inspection]
+// Hips - Range of movement
+Player: I'm going to assess the range of movement of your hips.
+Player: ...
+Player: [Hips - Range of movement]
+// Hips - Palpation
+Player: I'm going to palpate your hips.
+Player: ...
+Player: [Hips - Palpation]
+// Thomas Test
+Player: I'm going to have you lie flat and hold one knee to your chest while I inspect the the other leg.
+Player: ...
+Player: [Thomas Test]
+// Trendelenberg Sign
+Player: I'm going to assess the valves of the veins in your legs.
+Player: ...
+Player: [Trendelenberg Sign]
+// Shoulder - Inspection
+Player: I'm going to inspect your shoulder.
+Player: ...
+Player: [Shoulder - Inspection]
+// Shoulder - Range of movement - active
+Player: I'm going to assess the range of movement of your shoulder while you move it on your own.
+Player: ...
+Player: [Shoulder - Range of movement - active]
+// Shoulder - Range of movement - passive
+Player: I'm going to assess the range of movement of your shoulder while I move it for you.
+Player: ...
+Player: [Shoulder - Range of movement - passive]
+// Shoulder - Palpation
+Player: I'm going to palpate your shoulder.
+Player: ...
+Player: [Shoulder - Palpation]
+// Lift-off Test
+Player: I'm going to have you place the back of your hand on your back while I try to lift if off.
+Player: ...
+Player: [Lift-off Test]
+// Speed’s Test
+Player: I'm going to have you hold your arm out and try to keep it elevated while I gently press down on it.
+Player: ...
+Player: [Speed’s Test]
+// Yergason’s Test
+Player: I'm going to assess for tenderness in the bicipital groove.
+Player: ...
+Player: [Yergason’s Test]
+// Spine - Inspection
+Player: I'm going to inspect your spine.
+Player: ...
+Player: [Spine - Inspection]
+// Spine - Range of movement
+Player: I'm going to assess the range of movement of your spine.
+Player: ...
+Player: [Spine - Range of movement]
+// Spine - Palpation
+Player: I'm going to palpate along your spine.
+Player: ...
+Player: [Spine - Palpation]
+// Straight Leg Test
+Player: I'm going to have you lie down while I slowly raise your leg.
+Player: ...
+Player: [Straight Leg Test]
+// Schober’s Test
+Player: I'm going have you bend forward and touch your toes.
+Player: ...
+Player: [Schober’s Test]
+
+// Olfactory Nerve (CN I)
+Player: I'm going to have you try to smell this coffee.
+Player: ...
+Player: [Olfactory Nerve (CN I)]
+// Optic Nerve (CN II)
+Player: I'm going to test your vision.
+Player: ...
+Player: [Optic Nerve (CN II)]
+// Oculomotor, Trochlear, and Abducens Nerves (CN III, IV, VI)
+Player: I'm going to assess your eye movements.
+Player: ...
+Player: [Oculomotor, Trochlear, and Abducens Nerves (CN III, IV, VI)]
+// CN V - Sensation - Light touch
+Player: I'm going to assess your face's sensation to light touch.
+Player: ...
+Player: [CN V - Sensation - Light touch]
+// CN V - Sensation - Pain and Temperature
+Player: I'm going to assess your face's sensation to pain and temperature.
+Player: ...
+Player: [CN V - Sensation - Pain and Temperature]
+// CN V - Sensation - Corneal Reflex
+Player: I'm going to assess your corneal reflex.
+Player: ...
+Player: [CN V - Sensation - Corneal Reflex]
+// CN V - Motor - Temporalis and masseters
+Player: I'm going to assess the strength of your temporalis and masseter muscles.
+Player: ...
+Player: [CN V - Motor - Temporalis and masseters]
+// CN V - Motor - Jaw Jerk Reflex
+Player: I'm going to assess your jaw jerk reflex.
+Player: ...
+Player: [CN V - Motor - Jaw Jerk Reflex]
+// CN V - Motor - Lateral and Medial pterygoids
+Player: I'm going to assess the strength of your lateral and medial pterygoid muscles.
+Player: ...
+Player: [CN V - Motor - Lateral and Medial pterygoids]
+// CN VII - Inspection
+Player: I'm going to look for any signs of facial droop.
+Player: ...
+Player: [CN VII - Inspection]
+// CN VII - Motor - Muscles of facial expression
+Player: I'm going to assess the strength of the muscles in your face.
+Player: ...
+Player: [CN VII - Motor - Muscles of facial expression]
+// CN VII - Reflexes
+Player: I'm going to assess the reflexes of your facial nerve.
+Player: ...
+Player: [CN VII - Reflexes]
+// Vestibulocochlear Nerve (CN VIII)
+Player: I'm going to assess your hearing.
+Player: ...
+Player: [Vestibulocochlear Nerve (CN VIII)]
+// Glossopharyngeal and Vagus Nerves (CN IX, X)
+Player: I'm going to assess your glossopharyngeal and vagus nerves.
+Player: ...
+Player: [Glossopharyngeal and Vagus Nerves (CN IX, X)]
+// CN XI - Inspection
+Player: I'm going to look for any signs of shoulder droop.
+Player: ...
+Player: [CN XI - Inspection]
+// CN XI - Motor
+Player: I'm going to assess the strength of your shoulder muscles.
+Player: ...
+Player: [CN XI - Motor]
+// CN XII - Inspection
+Player: I'm going to look for any signs of hypoglossal nerve damage.
+Player: ...
+Player: [CN XII - Inspection]
+// CN XII - Motor
+Player: I'm going to have you move your tongue back and forth.
+Player: ...
+Player: [CN XII - Motor]
+// Neuro - General inspection
+Player: I'm going to look for any obvious signs of neurological abnormalities.
+Player: ...
+Player: [Neuro - General inspection]
+// Neuro - Tone
+Player: I'm going to assess your overall muscle tone.
+Player: ...
+Player: [Neuro - Tone]
+// Neuro - Power
+Player: I'm going to assess your overall muscle strength.
+Player: ...
+Player: [Neuro - Power]
+// Neuro - Sensation
+Player: I'm going to assess your ability to sense light touch.
+Player: ...
+Player: [Neuro - Sensation]
+// Neuro - Vibration
+Player: I'm going to assess your ability to sense vibration.
+Player: ...
+Player: [Neuro - Vibration]
+// Neuro - Proprioception
+Player: I'm going to assess your ability to detect your position in space.
+Player: ...
+Player: [Neuro - Proprioception]
+// Neuro - Reflexes
+Player: I'm going to assess your reflexes.
+Player: ...
+Player: [Neuro - Reflexes]
+// Cere - General inspection
+Player: I'm going to assess your overall balance.
+Player: ...
+Player: [Cere - General inspection]
+// Cere - Gait
+Player: I'm going to assess your gait.
+Player: ...
+Player: [Cere - Gait]
+// Cere - Speech
+Player: I'm going to assess for any slurred speech.
+Player: ...
+Player: [Cere - Speech]
+// Cere - Coordination
+Player: I'm going to assess your coordination.
+Player: ...
+Player: [Cere - Coordination]
+// Cere - Motor
+Player: I'm going to assess your fine motor skills.
+Player: ...
+Player: [Cere - Motor]
 
 // Labs
 

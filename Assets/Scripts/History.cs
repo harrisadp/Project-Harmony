@@ -159,7 +159,7 @@ public class History : MonoBehaviour {
 		history ["Do you drive a car"] = "[Do you drive a car]";
 		history ["Have you ever fainted"] = "[Have you ever fainted]";
 		history ["Do you suffer from any headache"] = "[Do you suffer from any headache]";
-		history ["Is it the worst headache you’ve ever had"] = "[Is it the worst headache you’ve ever had]";
+		history ["Is it the worst headache you've ever had"] = "[Is it the worst headache you've ever had]";
 		history ["Have you had any associated nausea or vomiting"] = "[Have you had any associated nausea or vomiting]";
 		history ["Have you experienced any scalp tenderness or pain in your jaw"] = "[Have you experienced any scalp tenderness or pain in your jaw]";
 		// Hematologic

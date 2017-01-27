@@ -12,6 +12,8 @@ public class PlayerOptionButton : MonoBehaviour {
 	private MenuManager menuManager;
 	private DiseaseChooser diseaseChooser;
 	private PerformanceTracker performanceTracker;
+	private History history;
+	private PhysicalExam physical;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +21,8 @@ public class PlayerOptionButton : MonoBehaviour {
 		menuManager = FindObjectOfType<MenuManager> ();
 		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
 		performanceTracker = FindObjectOfType<PerformanceTracker> ();
+		history = FindObjectOfType<History> ();
+		physical = FindObjectOfType<PhysicalExam> ();
 	}
 	
 	// Update is called once per frame
@@ -37,9 +41,15 @@ public class PlayerOptionButton : MonoBehaviour {
 			string line;
 			while ((line = reader.ReadLine ()) != null) {
 				lineNum++;
-				if (line.Contains (this.name)) {
-					dialogueManager.LineStart(lineNum);
-					dialogueManager.LineBreak (lineNum+1);
+				if (line.Contains (this.name) && history.history.ContainsKey(this.name)) {
+					dialogueManager.LineStart (lineNum);
+					dialogueManager.LineBreak (lineNum + 1);
+					dialogueManager.NewTalk ();
+					menuManager.Reset ();
+					return;
+				} else if (line.Contains (this.name) && physical.physical.ContainsKey(this.name)) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 3);
 					dialogueManager.NewTalk ();
 					menuManager.Reset ();
 					return;
@@ -53,6 +63,11 @@ public class PlayerOptionButton : MonoBehaviour {
 		foreach (string question in diseaseChooser.disease_data.questions) {
 			if (question == this.name) {
 				questionNumber = Array.IndexOf (diseaseChooser.disease_data.questions, this.name);
+			}	
+		}
+		foreach (string physicalManeuver in diseaseChooser.disease_data.physicalManeuvers) {
+			if (physicalManeuver == this.name) {
+				questionNumber = Array.IndexOf (diseaseChooser.disease_data.physicalManeuvers, this.name);
 			}	
 		}
 		if (diseaseChooser.disease_data.goodQuestions.Contains (questionNumber)) {

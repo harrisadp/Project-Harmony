@@ -68,7 +68,7 @@ public class DiseaseInstance {
 		"Do you have difficulty buttoning your shirts", "Have you noticed a tremor", "Have you had any problems with balance or coordination",
 		"Have you noticed any changes in your voice", "Do you find that you choke or cough when you eat or drink",
 		"Have you noticed any changes with your memory", "Have you ever left the tap or the stove on in your house", "Do you drive a car",
-		"Do you suffer from any headache", "Is it the worst headache you’ve ever had", "Have you had any associated nausea or vomiting",
+		"Do you suffer from any headache", "Is it the worst headache you've ever had", "Have you had any associated nausea or vomiting",
 		"Have you experienced any scalp tenderness or pain in your jaw", "How difficult is it to stop bleeding when you have a small cut", "Do you have anemia",
 		"Have you ever had a blood transfusion", "Did you experience any problems with the blood transfusion", "Do you bruise easily",
 		"How well do you tolerate the heat", "How well do you tolerate the cold", "Do you urinate frequently", "Are you excessively hungry",
@@ -89,26 +89,25 @@ public class DiseaseInstance {
 	public string[,] answers = new string[186,2];
 
 	// Physical Exam Maneuvers
-	public string[] physicalManeuvers = new string[87]
+	public string[] physicalManeuvers = new string[83]
 		{"General appearance", "Glasgow Coma Scale", "Resp - Inspection", "Resp - Palpation", "Resp - Percussion", "Resp - Auscultation", "Tactile fremitus",
 		"Whispered pectoriloquy", "Egophony", "Card - Inspection", "Card - Palpation", "Card - Auscultation", "Abd vasc - Inspection, palpation, and auscultation",
-		"Upper limb vasc - Inspection, palpation, and auscultation", "Lower limb vasc - Inspection, palpation, and auscultation", "Elevation of lower limb",
-		"Dependence of lower limb", "Abd - Inspection", "Abd - Inspection from the side, eyes at bedside level", "Abd - Palpation - Superficial",
+		"Upper limb vasc - Inspection, palpation, and auscultation", "Lower limb vasc - Inspection, palpation, and auscultation", "Abd - Inspection", "Abd - Inspection from the side, eyes at bedside level", "Abd - Palpation - Superficial",
 		"Abd - Palpation - Deep", "Abd - Percussion", "Abd - Auscultation", "JVP", "Thyroid gland", "Carotids", "Lymph node palpation", "Oph - General inspection",
 		"Fundoscopy", "Slit lamp exam", "Ears - General examination", "Otoscopic examination", "Oro - General inspection",
 		"Knees - Inspection and gait assessment", "Knees - Range of movement", "Knees - Palpation", "Knees - Special tests", "Hips - Gait", "Hips - Inspection",
 		"Hips - Range of movement", "Hips - Palpation", "Thomas Test", "Trendelenberg Sign", "Shoulder - Inspection", "Shoulder - Range of movement - active",
-		"Shoulder - Range of movement - passive", "Shoulder - Palpation", "Lift-off Test", "Speed’s Test", "Yergason’s Test", "Back - Inspection",
-		"Back - Range of movement", "Back - Palpation", "Straight Leg Test", "Shober’s Test", "Leseague’s Test", "Olfactory Nerve (CN I)", "Optic Nerve (CN II)",
-		"CN III - Inspection", "Ocular Movements", "CN V - Sensation - Light touch", "CN V - Sensation - Pain and Temperature",
+		"Shoulder - Range of movement - passive", "Shoulder - Palpation", "Lift-off Test", "Speed's Test", "Yergason's Test", "Back - Inspection",
+		"Back - Range of movement", "Back - Palpation", "Straight Leg Test", "Schober's Test", "Olfactory Nerve (CN I)", "Optic Nerve (CN II)",
+		"Oculomotor, Trochlear, and Abducens Nerves (CN III, IV, VI)", "CN V - Sensation - Light touch", "CN V - Sensation - Pain and Temperature",
 		"CN V - Sensation - Corneal Reflex", "CN V - Motor - Temporalis and masseters", "CN V - Motor - Jaw Jerk Reflex",
 		"CN V - Motor - Lateral and Medial pterygoids", "CN VII - Inspection", "CN VII - Motor - Muscles of facial expression", "CN VII - Reflexes",
-		"Vestibulocochlear Nerve (CN VIII)", "Glosspharyngeal and Vagus Nerves (CN IX, X)", "CN XI - Inspection", "CN XI - Motor", "CN XII - Inspection",
+		"Vestibulocochlear Nerve (CN VIII)", "Glossopharyngeal and Vagus Nerves (CN IX, X)", "CN XI - Inspection", "CN XI - Motor", "CN XII - Inspection",
 		"CN XII - Motor", "Neuro - General inspection", "Neuro - Tone", "Neuro - Power", "Neuro - Sensation", "Neuro - Vibration", "Neuro - Proprioception",
 		"Neuro - Reflexes", "Cere - General inspection", "Cere - Gait", "Cere - Speech", "Cere - Coordination", "Cere - Motor"};
 
 	// Physical Exam Results
-	public string[] physicalResults = new string[87];
+	public string[] physicalResults = new string[83];
 
 	// Performance Tracking
 	public List<int> goodQuestions = new List<int>();

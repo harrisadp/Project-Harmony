@@ -332,8 +332,6 @@ public class MenuManager : MonoBehaviour {
 	private GameObject abdVascInspectionPalpationAndAuscultation;
 	private GameObject upperLimbVascInspectionPalpationAndAuscultation;
 	private GameObject lowerLimbVascInspectionPalpationAndAuscultation;
-	private GameObject elevationOfLowerLimb;
-	private GameObject dependenceOfLowerLimb;
 	private GameObject backToPhysicalFromCardiovascular;
 
 	// Abdominal
@@ -385,15 +383,14 @@ public class MenuManager : MonoBehaviour {
 		private GameObject speedsTest;
 		private GameObject yergasonsTest;
 		private GameObject backToMSKFromShoulder;
-	private GameObject back;
+	private GameObject spine;
 		// Back
-		private GameObject backInspection;
-		private GameObject backRangeOfMovement;
-		private GameObject backPalpation;
+		private GameObject spineInspection;
+		private GameObject spineRangeOfMovement;
+		private GameObject spinePalpation;
 		private GameObject straightLegTest;
-		private GameObject shobersTest;
-		private GameObject leseaguesTest;
-		private GameObject backToMSKFromBack;
+		private GameObject schobersTest;
+		private GameObject backToMSKFromSpine;
 	private GameObject backToPhysicalFromMSK;
 
 	// Neuro
@@ -401,11 +398,7 @@ public class MenuManager : MonoBehaviour {
 		// Cranial Nerves
 		private GameObject olfactoryNerveCNI;
 		private GameObject opticNerveCNII;
-		private GameObject oculomotorNerveCNIII;
-			// CN III
-			private GameObject cnIIIInspection;
-			private GameObject ocularMovements;
-			private GameObject backToCNFromCNIII;
+		private GameObject oculomotorTrochlearAndAbducensNervesCNIIIIVVI;
 		private GameObject trigeminalNerveCNV;	
 			// CN V
 			private GameObject cnVSensationLightTouch;
@@ -422,7 +415,7 @@ public class MenuManager : MonoBehaviour {
 			private GameObject cnVIIReflexes;
 			private GameObject backToCNFromCNVII;
 		private GameObject vestibulocochlearNerveCNVIII;
-		private GameObject glosspharyngealAndVagusNervesCNIXX;
+		private GameObject glossopharyngealAndVagusNervesCNIXX;
 		private GameObject spinalAccessoryNerveCNXI;
 			// CN XI
 			private GameObject cnXIInspection;
@@ -711,7 +704,7 @@ public class MenuManager : MonoBehaviour {
 					neuroROSToPage3 = GameObject.Find("Neuro ROS to Page 3");
 					backToNeuroROSPage1 = GameObject.Find("Back to Neuro ROS Page 1");
 					doYouSufferFromAnyHeadache = GameObject.Find("Do you suffer from any headache");
-					isItTheWorstHeadacheYouveEverDad = GameObject.Find("Is it the worst headache you’ve ever had");
+					isItTheWorstHeadacheYouveEverDad = GameObject.Find("Is it the worst headache you've ever had");
 					haveYouHadAnyAssociatedNauseaOrVomiting = GameObject.Find("Have you had any associated nausea or vomiting");
 					haveYouExperiencedAnyScalpTendernessOrPainInYourJaw = GameObject.Find("Have you experienced any scalp tenderness or pain in your jaw");
 					backToNeuroROSPage2 = GameObject.Find("Back to Neuro ROS Page 2");
@@ -804,10 +797,10 @@ public class MenuManager : MonoBehaviour {
 			backToPhysicalFromGeneral = GameObject.Find("Back to Physical from General");
 
 			// Pulmonary
-			pulmInspection = GameObject.Find("Resp - Inspection");
-			pulmPalpation = GameObject.Find("Resp - Palpation");
-			pulmPercussion = GameObject.Find("Resp - Percussion");
-			pulmAuscultation = GameObject.Find("Resp - Auscultation");
+			pulmInspection = GameObject.Find("Pulm - Inspection");
+			pulmPalpation = GameObject.Find("Pulm - Palpation");
+			pulmPercussion = GameObject.Find("Pulm - Percussion");
+			pulmAuscultation = GameObject.Find("Pulm - Auscultation");
 			tactileFremitus = GameObject.Find("Tactile fremitus");
 			whispheredPectoriloquy = GameObject.Find("Whispered pectoriloquy");
 			egophony = GameObject.Find("Egophony");
@@ -820,8 +813,6 @@ public class MenuManager : MonoBehaviour {
 			abdVascInspectionPalpationAndAuscultation = GameObject.Find("Abd vasc - Inspection, palpation, and auscultation");
 			upperLimbVascInspectionPalpationAndAuscultation = GameObject.Find("Upper limb vasc - Inspection, palpation, and auscultation");
 			lowerLimbVascInspectionPalpationAndAuscultation = GameObject.Find("Lower limb vasc - Inspection, palpation, and auscultation");
-			elevationOfLowerLimb = GameObject.Find("Elevation of lower limb");
-			dependenceOfLowerLimb = GameObject.Find("Dependence of lower limb");
 			backToPhysicalFromCardiovascular = GameObject.Find("Back to Physical from Cardiovascular");
 
 			// Abdominal
@@ -870,18 +861,17 @@ public class MenuManager : MonoBehaviour {
 				shoulderRangeOfMovementPassive = GameObject.Find("Shoulder - Range of movement - passive");
 				shoulderPalpation = GameObject.Find("Shoulder - Palpation");
 				liftOffTest = GameObject.Find("Lift-off Test");
-				speedsTest = GameObject.Find("Speed’s Test");
-				yergasonsTest = GameObject.Find("Yergason’s Test");
+				speedsTest = GameObject.Find("Speed's Test");
+				yergasonsTest = GameObject.Find("Yergason's Test");
 				backToMSKFromShoulder = GameObject.Find("Back to MSK from Shoulder");
-			back = GameObject.Find("Back");
-				// Back
-				backInspection = GameObject.Find("Back - Inspection");
-				backRangeOfMovement = GameObject.Find("Back - Range of movement");
-				backPalpation = GameObject.Find("Back - Palpation");
+			spine = GameObject.Find("Spine");
+				// Spine
+				spineInspection = GameObject.Find("Spine - Inspection");
+				spineRangeOfMovement = GameObject.Find("Spine - Range of movement");
+				spinePalpation = GameObject.Find("Spine - Palpation");
 				straightLegTest = GameObject.Find("Straight Leg Test");
-				shobersTest = GameObject.Find("Shober’s Test");
-				leseaguesTest = GameObject.Find("Leseague’s Test");
-				backToMSKFromBack = GameObject.Find("Back to MSK from Back");
+				schobersTest = GameObject.Find("Schober's Test");
+				backToMSKFromSpine = GameObject.Find("Back to MSK from Spine");
 			backToPhysicalFromMSK = GameObject.Find("Back to Physical from MSK");
 
 			// Neuro
@@ -889,11 +879,7 @@ public class MenuManager : MonoBehaviour {
 				// Cranial Nerves
 				olfactoryNerveCNI = GameObject.Find("Olfactory Nerve (CN I)");
 				opticNerveCNII = GameObject.Find("Optic Nerve (CN II)");
-				oculomotorNerveCNIII = GameObject.Find("Oculomotor Nerve (CN III)");
-					// CN III
-					cnIIIInspection = GameObject.Find("CN III - Inspection");
-					ocularMovements = GameObject.Find("Ocular Movements");
-					backToCNFromCNIII = GameObject.Find("Back to CN from CNIII");
+				oculomotorTrochlearAndAbducensNervesCNIIIIVVI = GameObject.Find("Oculomotor, Trochlear, and Abducens Nerves (CN III, IV, VI");
 				trigeminalNerveCNV = GameObject.Find("Trigeminal Nerve (CN V)");	
 					// CN V
 					cnVSensationLightTouch = GameObject.Find("CN V - Sensation - Light touch");
@@ -910,7 +896,7 @@ public class MenuManager : MonoBehaviour {
 					cnVIIReflexes = GameObject.Find("CN VII - Reflexes");
 					backToCNFromCNVII = GameObject.Find("Back to CN from CN VII");
 				vestibulocochlearNerveCNVIII = GameObject.Find("Vestibulocochlear Nerve (CN VIII)");
-				glosspharyngealAndVagusNervesCNIXX = GameObject.Find("Glosspharyngeal and Vagus Nerves (CN IX, X)");
+				glossopharyngealAndVagusNervesCNIXX = GameObject.Find("Glossopharyngeal and Vagus Nerves (CN IX, X)");
 				spinalAccessoryNerveCNXI = GameObject.Find("Spinal Accessory Nerve (CN XI)");
 					// CN XI
 					cnXIInspection = GameObject.Find("CN XI - Inspection");
@@ -993,8 +979,8 @@ public class MenuManager : MonoBehaviour {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		differentialManager.Enable ();
 		isFirstTurn = false;
-		dialogueManager.LineStart (490);
-		dialogueManager.LineBreak (490);
+		dialogueManager.LineStart (808);
+		dialogueManager.LineBreak (808);
 		dialogueManager.NewTalk ();
 	}
 
@@ -1437,8 +1423,6 @@ public class MenuManager : MonoBehaviour {
 		abdVascInspectionPalpationAndAuscultation.SetActive(true);
 		upperLimbVascInspectionPalpationAndAuscultation.SetActive(true);
 		lowerLimbVascInspectionPalpationAndAuscultation.SetActive(true);
-		elevationOfLowerLimb.SetActive(true);
-		dependenceOfLowerLimb.SetActive(true);
 		backToPhysicalFromCardiovascular.SetActive(true);
 	}
 
@@ -1473,7 +1457,7 @@ public class MenuManager : MonoBehaviour {
 		knees.SetActive(true);
 		hips.SetActive(true);
 		shoulder.SetActive(true);
-		back.SetActive(true);
+		spine.SetActive(true);
 		backToPhysicalFromMSK.SetActive(true);
 	}
 
@@ -1509,15 +1493,14 @@ public class MenuManager : MonoBehaviour {
 		backToMSKFromShoulder.SetActive(true);
 	}
 
-	public void PhysicalBack () {
+	public void PhysicalSpine () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		backInspection.SetActive(true);
-		backRangeOfMovement.SetActive(true);
-		backPalpation.SetActive(true);
+		spineInspection.SetActive(true);
+		spineRangeOfMovement.SetActive(true);
+		spinePalpation.SetActive(true);
 		straightLegTest.SetActive(true);
-		shobersTest.SetActive(true);
-		leseaguesTest.SetActive(true);
-		backToMSKFromBack.SetActive(true);
+		schobersTest.SetActive(true);
+		backToMSKFromSpine.SetActive(true);
 	}
 
 	public void PhysicalNeurologic () {
@@ -1532,23 +1515,16 @@ public class MenuManager : MonoBehaviour {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		olfactoryNerveCNI.SetActive(true);
 		opticNerveCNII.SetActive(true);
-		oculomotorNerveCNIII.SetActive(true);
+		oculomotorTrochlearAndAbducensNervesCNIIIIVVI.SetActive (true);
 		trigeminalNerveCNV.SetActive(true);
 		facialNerveCNVII.SetActive(true);
 		vestibulocochlearNerveCNVIII.SetActive(true);
-		glosspharyngealAndVagusNervesCNIXX.SetActive(true);
+		glossopharyngealAndVagusNervesCNIXX.SetActive(true);
 		spinalAccessoryNerveCNXI.SetActive(true);
 		hypoglossalNerveCNXII.SetActive(true);
 		backToNeuroFromCN.SetActive(true);
 	}
-
-	public void PhysicalCNIII () {
-		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		cnIIIInspection.SetActive(true);
-		ocularMovements.SetActive(true);
-		backToCNFromCNIII.SetActive(true);
-	}
-
+		
 	public void PhysicalCNV () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		cnVSensationLightTouch.SetActive(true);
