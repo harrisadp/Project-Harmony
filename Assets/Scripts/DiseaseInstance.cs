@@ -90,7 +90,7 @@ public class DiseaseInstance {
 
 	// Physical Exam Maneuvers
 	public string[] physicalManeuvers = new string[83]
-		{"General appearance", "Glasgow Coma Scale", "Resp - Inspection", "Resp - Palpation", "Resp - Percussion", "Resp - Auscultation", "Tactile fremitus",
+		{"General appearance", "Glasgow Coma Scale", "Pulm - Inspection", "Pulm - Palpation", "Pulm - Percussion", "Pulm - Auscultation", "Tactile fremitus",
 		"Whispered pectoriloquy", "Egophony", "Card - Inspection", "Card - Palpation", "Card - Auscultation", "Abd vasc - Inspection, palpation, and auscultation",
 		"Upper limb vasc - Inspection, palpation, and auscultation", "Lower limb vasc - Inspection, palpation, and auscultation", "Abd - Inspection", "Abd - Inspection from the side, eyes at bedside level", "Abd - Palpation - Superficial",
 		"Abd - Palpation - Deep", "Abd - Percussion", "Abd - Auscultation", "JVP", "Thyroid gland", "Carotids", "Lymph node palpation", "Oph - General inspection",
@@ -111,9 +111,13 @@ public class DiseaseInstance {
 
 	// Performance Tracking
 	public List<int> goodQuestions = new List<int>();
+	public List<int> badQuestions = new List<int>();
+	public List<int> goodPhysicalManeuvers = new List<int>();
+	public List<int> badPhysicalManeuvers = new List<int>();
 
 	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability,
-							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, string[] diseasePhysical, int[] goodQuestionIDs) {
+		float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, string[] diseasePhysical, int[] goodQuestionIDs, int[] badQuestionIDs,
+		int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs) {
 		Debug.Log ("Instance of disease " + diseaseName + " created.");
 		this.disease_name = diseaseName;
 		this.age_min = ageMin;
@@ -127,6 +131,15 @@ public class DiseaseInstance {
 		this.physicalResults = diseasePhysical;
 		foreach (int i in goodQuestionIDs) {
 			goodQuestions.Add (i);
+		}
+		foreach (int i in badQuestionIDs) {
+			badQuestions.Add (i);
+		}
+		foreach (int i in goodPhysicalManeuverIDs) {
+			goodPhysicalManeuvers.Add (i);
+		}
+		foreach (int i in badPhysicalManeuverIDs) {
+			badPhysicalManeuvers.Add (i);
 		}
 	}
 

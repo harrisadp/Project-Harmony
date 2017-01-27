@@ -879,7 +879,7 @@ public class MenuManager : MonoBehaviour {
 				// Cranial Nerves
 				olfactoryNerveCNI = GameObject.Find("Olfactory Nerve (CN I)");
 				opticNerveCNII = GameObject.Find("Optic Nerve (CN II)");
-				oculomotorTrochlearAndAbducensNervesCNIIIIVVI = GameObject.Find("Oculomotor, Trochlear, and Abducens Nerves (CN III, IV, VI");
+				oculomotorTrochlearAndAbducensNervesCNIIIIVVI = GameObject.Find("Oculomotor, Trochlear, and Abducens Nerves (CN III, IV, VI)");
 				trigeminalNerveCNV = GameObject.Find("Trigeminal Nerve (CN V)");	
 					// CN V
 					cnVSensationLightTouch = GameObject.Find("CN V - Sensation - Light touch");

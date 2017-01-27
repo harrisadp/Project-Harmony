@@ -32,7 +32,13 @@ public class PlayerOptionButton : MonoBehaviour {
 
 	public void ButtonPushed () {		
 		PlayDialogue ();
-		CheckIfGoodQuestion ();
+		if (history.history.ContainsKey (this.name)) {
+			CheckIfGoodQuestion ();
+		} else if (physical.physical.ContainsKey (this.name)) {
+			CheckIfGoodPhysical ();
+		} else {
+			return;
+		}
 	}
 
 	private void PlayDialogue () {
@@ -63,12 +69,7 @@ public class PlayerOptionButton : MonoBehaviour {
 		foreach (string question in diseaseChooser.disease_data.questions) {
 			if (question == this.name) {
 				questionNumber = Array.IndexOf (diseaseChooser.disease_data.questions, this.name);
-			}	
-		}
-		foreach (string physicalManeuver in diseaseChooser.disease_data.physicalManeuvers) {
-			if (physicalManeuver == this.name) {
-				questionNumber = Array.IndexOf (diseaseChooser.disease_data.physicalManeuvers, this.name);
-			}	
+			}
 		}
 		if (diseaseChooser.disease_data.goodQuestions.Contains (questionNumber)) {
 			performanceTracker.score += 100;
@@ -78,9 +79,25 @@ public class PlayerOptionButton : MonoBehaviour {
 			performanceTracker.UpdateScore ();
 		} else {
 			performanceTracker.score -= 100;
-			if (performanceTracker.energyValue > 0) {
-				performanceTracker.energyValue -= 2;
+			performanceTracker.UpdateScore ();
+		}
+	}
+
+	private void CheckIfGoodPhysical () {
+		int physicalNumber = 0;
+		foreach (string physicalManeuver in diseaseChooser.disease_data.physicalManeuvers) {
+			if (physicalManeuver == this.name) {
+				physicalNumber = Array.IndexOf (diseaseChooser.disease_data.physicalManeuvers, this.name);
 			}
+		}
+		if (diseaseChooser.disease_data.goodPhysicalManeuvers.Contains (physicalNumber)) {
+			performanceTracker.score += 100;
+			if (performanceTracker.energyValue < 10) {
+				performanceTracker.energyValue += 2;
+			}
+			performanceTracker.UpdateScore ();
+		} else {
+			performanceTracker.score -= 100;
 			performanceTracker.UpdateScore ();
 		}
 	}

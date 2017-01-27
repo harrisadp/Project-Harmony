@@ -298,8 +298,8 @@ Player: Do you drive a car?
 Patient: [Do you drive a car]
 Player: Do you suffer from any headache?
 Patient: [Do you suffer from any headache]
-Player: Is it the worst headache you’ve ever had?
-Patient: [Is it the worst headache you’ve ever had]
+Player: Is it the worst headache you've ever had?
+Patient: [Is it the worst headache you've ever had]
 Player: Have you had any associated nausea or vomiting?
 Patient: [Have you had any associated nausea or vomiting]
 Player: Have you experienced any scalp tenderness or pain in your jaw?
@@ -604,14 +604,14 @@ Player: [Shoulder - Palpation]
 Player: I'm going to have you place the back of your hand on your back while I try to lift if off.
 Player: ...
 Player: [Lift-off Test]
-// Speed’s Test
+// Speed's Test
 Player: I'm going to have you hold your arm out and try to keep it elevated while I gently press down on it.
 Player: ...
-Player: [Speed’s Test]
-// Yergason’s Test
+Player: [Speed's Test]
+// Yergason's Test
 Player: I'm going to assess for tenderness in the bicipital groove.
 Player: ...
-Player: [Yergason’s Test]
+Player: [Yergason's Test]
 // Spine - Inspection
 Player: I'm going to inspect your spine.
 Player: ...
@@ -628,10 +628,10 @@ Player: [Spine - Palpation]
 Player: I'm going to have you lie down while I slowly raise your leg.
 Player: ...
 Player: [Straight Leg Test]
-// Schober’s Test
+// Schober's Test
 Player: I'm going have you bend forward and touch your toes.
 Player: ...
-Player: [Schober’s Test]
+Player: [Schober's Test]
 
 // Olfactory Nerve (CN I)
 Player: I'm going to have you try to smell this coffee.
