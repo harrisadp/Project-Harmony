@@ -480,6 +480,7 @@ public class MenuManager : MonoBehaviour {
 	// Other random things
 	public DifferentialManager differentialManager;
 	public TextAsset textAsset;
+	public GameObject playerOptionButtonPrefab;
 	public bool victory = false;
 	public bool displayImage = false;
 	public bool isFirstTurn = true;
@@ -1062,6 +1063,14 @@ public class MenuManager : MonoBehaviour {
 		fh.SetActive (true);
 		ros.SetActive (true);
 		backToMainFromHistory.SetActive (true);
+		// Testing menu autopopulation
+		string[] menuOptions = new string[5] {"History of Present Illness", "Past Medical History", "Social History", "Family History", "Review of Systems"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerOptionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
 	}
 
 	public void HPIPage1 () {
