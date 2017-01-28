@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -110,10 +111,11 @@ public class DiseaseInstance {
 	public string[] labStudies = new string[36]
 		{"WBC", "HGB", "PLT", "Na", "K", "Cl", "HCO3", "BUN", "Cr", "Glu", "AST", "ALT", "AlkPhos", "Ca", "TotalProt", "Albumin", "TotalBili", "PT", "PTT", "INR",
 		"Amylase", "Lipase", "Lactate", "Troponin I", "CK", "CRP", "Cortisol (random)", "TSH", "T3", "T4", "pH", "paCO2", "paO2", "upH", "uSpGrav", "uGluc"};
-	public float[,] labMaxMin = new float[36,2];
-	public float[] labResults = new float[36];
-
+	
 	// Lab Results
+	public float[] labResults = new float[36]
+		{-1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f,
+		-1f, -1f, -1f, -1f, -1f, -1f,};
 
 	// Performance Tracking
 	public List<int> goodQuestions = new List<int>();
@@ -134,6 +136,7 @@ public class DiseaseInstance {
 		this.physicalResults = diseasePhysical;
 
 		//TODO labs
+		RandomLabValue(diseaseLabMaxMin);
 
 		foreach (int i in goodQuestionIDs) {goodQuestions.Add (i);}
 		foreach (int i in badQuestionIDs) {badQuestions.Add (i);}
@@ -142,17 +145,17 @@ public class DiseaseInstance {
 	}
 
 	public int RandomAge (int ageMin, int ageMax) {
-		return Random.Range (ageMin, ageMax);
+		return UnityEngine.Random.Range (ageMin, ageMax);
 	}
 
 	public bool RandomSex (float maleProbability) {
-		float randomSex = Random.value;
+		float randomSex = UnityEngine.Random.value;
 		if (maleProbability <= randomSex) {return true;}
 		else {return false;}
 	}
 
 	public Race RandomRace (float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability) {
-		float randomRace = Random.value;
+		float randomRace = UnityEngine.Random.value;
 		if (randomRace <= asianProbability) {return Race.asian;}
 		else if (randomRace > asianProbability && randomRace <= (asianProbability + blackProbability)){return Race.black;}
 		else if (randomRace > (asianProbability + blackProbability) && randomRace <= (asianProbability + blackProbability + hispanicProbability)) {return Race.hispanic;}
@@ -164,11 +167,13 @@ public class DiseaseInstance {
 		else {return Personality.personalityB;}
 	}
 
-//	public float RandomLabValue (float[,] diseaseLabMaxMin){
-//		foreach (float i in diseaseLabMaxMin) {
-//			
-//		}
-//	}
+	public void RandomLabValue (float[,] diseaseLabMaxMin){
+		foreach (string i in labStudies) {
+			if (diseaseLabMaxMin [Array.IndexOf (labStudies, i), 0] != -1f && diseaseLabMaxMin [Array.IndexOf (labStudies, i), 1] != -1f) {
+				labResults [Array.IndexOf (labStudies, i)] = UnityEngine.Random.Range (diseaseLabMaxMin [Array.IndexOf (labStudies, i), 0], diseaseLabMaxMin [Array.IndexOf (labStudies, i), 1]);
+			}
+		}
+	}
 
 	public void OverwriteHistory (History history, string historyKey, string historyValue) {
 		history.history [historyKey] = historyValue;
@@ -177,13 +182,13 @@ public class DiseaseInstance {
 	public void OverwritePhysical (PhysicalExam physical, string physicalKey, string physicalValue) {
 		if (physicalValue != "x") {
 			physical.physical [physicalKey] = physicalValue;
-		} else {
-			return;
 		}
 	}
 
-//	public void OverwriteLabs (LabValues labValues, string labKey, float labValue){
-//		
-//	}
+	public void OverwriteLabs (LabValues labValues, string labKey, float labValue){
+		if (labValue != -1f) {
+			labValues.labValues [labKey] = labValue;
+		}
+	}
 
 }

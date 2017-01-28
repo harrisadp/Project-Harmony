@@ -13,6 +13,7 @@ public class DiseaseChooser : MonoBehaviour {
 	public DiseaseInstance disease_data;
 	private History history;
 	private PhysicalExam physical;
+	private LabValues labValues;
 	private Text ageText, sexText;
 
 	// Use this for initialization
@@ -20,6 +21,7 @@ public class DiseaseChooser : MonoBehaviour {
 		diseaseStruct = RunOnStart.global_disease_list;
 		history = FindObjectOfType<History> ();
 		physical = FindObjectOfType<PhysicalExam> ();
+		labValues = FindObjectOfType<LabValues> ();
 		ageText = GameObject.Find ("Age Text").GetComponent<Text> ();
 		sexText = GameObject.Find ("Sex Text").GetComponent<Text> ();
 		ChooseDisease ();
@@ -38,6 +40,10 @@ public class DiseaseChooser : MonoBehaviour {
 		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the history object without using MonoBehaviour (at least with my limited knowledge)
 		foreach (string physicalManeuver in disease_data.physicalManeuvers) {
 			disease_data.OverwritePhysical (physical, physicalManeuver, disease_data.physicalResults [Array.IndexOf(disease_data.physicalManeuvers, physicalManeuver)]);
+		}
+		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the history object without using MonoBehaviour (at least with my limited knowledge)
+		foreach (string labStudy in disease_data.labStudies) {
+			disease_data.OverwriteLabs (labValues, labStudy, disease_data.labResults [Array.IndexOf(disease_data.labStudies, labStudy)]);
 		}
 		UpdateDisplays ();
 	}
