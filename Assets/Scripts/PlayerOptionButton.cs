@@ -14,6 +14,7 @@ public class PlayerOptionButton : MonoBehaviour {
 	private PerformanceTracker performanceTracker;
 	private History history;
 	private PhysicalExam physical;
+	private LabValues labValues;
 
 	// Use this for initialization
 	void Start () {
@@ -23,11 +24,7 @@ public class PlayerOptionButton : MonoBehaviour {
 		performanceTracker = FindObjectOfType<PerformanceTracker> ();
 		history = FindObjectOfType<History> ();
 		physical = FindObjectOfType<PhysicalExam> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		labValues = FindObjectOfType<LabValues> ();
 	}
 
 	public void ButtonPushed () {		
@@ -47,15 +44,21 @@ public class PlayerOptionButton : MonoBehaviour {
 			string line;
 			while ((line = reader.ReadLine ()) != null) {
 				lineNum++;
-				if (line.Contains (this.name) && history.history.ContainsKey(this.name)) {
+				if (line.Contains (this.name) && history.history.ContainsKey (this.name)) {
 					dialogueManager.LineStart (lineNum);
 					dialogueManager.LineBreak (lineNum + 1);
 					dialogueManager.NewTalk ();
 					menuManager.Reset ();
 					return;
-				} else if (line.Contains (this.name) && physical.physical.ContainsKey(this.name)) {
+				} else if (line.Contains (this.name) && physical.physical.ContainsKey (this.name)) {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 3);
+					dialogueManager.NewTalk ();
+					menuManager.Reset ();
+					return;
+				} else if (line.Contains (this.name) && labValues.labStudies.Contains (this.name)) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 5);
 					dialogueManager.NewTalk ();
 					menuManager.Reset ();
 					return;

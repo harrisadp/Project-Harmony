@@ -132,15 +132,24 @@ public class RPGTalk : MonoBehaviour {
 	private History history;
 	private PhysicalExam physicalExam;
 	private LabValues labValues;
+	private Dictionary <string, string> variableDict = new Dictionary <string, string> ();
 
 	void Awake(){
 		history = FindObjectOfType<History> ();
 		physicalExam = FindObjectOfType<PhysicalExam> ();
 		labValues = FindObjectOfType<LabValues> ();
+		foreach (string i in history.history.Keys) {
+			variableDict ["[" + i + "]"] = i;
+		}
+		foreach (string i in physicalExam.physical.Keys) {
+			variableDict ["[" + i + "]"] = i;
+		}
+		foreach (string i in labValues.labValues.Keys) {
+			variableDict ["[" + i + "]"] = i;
+		}
 		if (startOnAwake) {
 			NewTalk ();
 		}
-
 	}
 
 	/// <summary>
@@ -253,13 +262,13 @@ public class RPGTalk : MonoBehaviour {
 		newElement.originalSpeakerName = line;
 
 		//replace any variable that may exist on the text
-		for (int i = 0; i < variables.Length; i++) {
-			if (line.Contains (variables [i].variableName) && history.history.ContainsKey (variables [i].variableValue) == true) {
-				line = line.Replace (variables [i].variableName, history.history [variables [i].variableValue].ToString ());
-			} else if (line.Contains (variables [i].variableName) && physicalExam.physical.ContainsKey (variables [i].variableValue) == true) {
-				line = line.Replace (variables [i].variableName, physicalExam.physical [variables [i].variableValue].ToString ());
-			} else if (line.Contains (variables [i].variableName) && labValues.labValues.ContainsKey (variables [i].variableValue) == true) {
-				line = line.Replace (variables [i].variableName, labValues.labValues [variables [i].variableValue].ToString ());
+		foreach (string i in variableDict.Keys){
+			if (line.Contains (i) && history.history.ContainsKey(variableDict[i])){
+				line = line.Replace(i, history.history[variableDict[i]]);
+			} else if (line.Contains (i) && physicalExam.physical.ContainsKey(variableDict[i])){
+				line = line.Replace(i, physicalExam.physical[variableDict[i]]);
+			} else if (line.Contains (i) && labValues.labValues.ContainsKey(variableDict[i])){
+				line = line.Replace(i, labValues.labValues[variableDict[i]].ToString());
 			}
 		}
 

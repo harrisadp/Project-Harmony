@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class LabValues : MonoBehaviour {
 
+	public List <string> labStudies = new List <string>();
 	public Dictionary<string, float> labValues = new Dictionary<string, float>();
 
 	void Awake () {
+		labStudies.Add ("CBC");
+		labStudies.Add ("BMP");
+		labStudies.Add ("Coag");
+		labStudies.Add ("LFT");
+		labStudies.Add ("ABG");
+		labStudies.Add ("ESR, CRP");
+		labStudies.Add ("Amylase, lipase");
+		labStudies.Add ("Thyroid hormones");
+		labStudies.Add ("Troponin I");
+		labStudies.Add ("Cortisol (random)");
+		labStudies.Add ("Urinalysis");
 		labValues ["WBC"] = Mathf.Round(10*(Random.Range (3.5f, 10.5f)))/10;
 		labValues ["HGB"] = Mathf.Round(10*(Random.Range (13.5f, 15.5f)))/10;
 		labValues ["PLT"] = Mathf.Round(Random.Range (150f, 450f));
@@ -33,6 +45,7 @@ public class LabValues : MonoBehaviour {
 		labValues ["Troponin I"] = Mathf.Round(100*(Random.Range (0.00f, 0.00f)))/100;
 		labValues ["CK"] = Mathf.Round(Random.Range (50f, 200f));
 		labValues ["CRP"] = Mathf.Round(10*(Random.Range (0.0f, 1.0f)))/10;
+		labValues ["ESR"] = Mathf.Round(Random.Range(0f, 22f));
 		labValues ["Cortisol (random)"] = Mathf.Round(Random.Range (0f, 20f));
 		labValues ["TSH"] = Mathf.Round(10*(Random.Range (0.5f, 6.0f)))/10;
 		labValues ["T3"] = Mathf.Round(Random.Range (80f, 180f));

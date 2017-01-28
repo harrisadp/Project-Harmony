@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -449,16 +450,21 @@ public class MenuManager : MonoBehaviour {
 
 	// Labs
 	private GameObject blood;
-	private GameObject urine;
-	private GameObject csf;
-	private GameObject backLabs;
+	private GameObject urinalysis;
+	private GameObject backToMainFromLabs;
 
 	// Blood
 	private GameObject cbc;
 	private GameObject bmp;
+	private GameObject coag;
 	private GameObject lft;
-	private GameObject coags;
-	private GameObject backBlood;
+	private GameObject abg;
+	private GameObject esrCrp;
+	private GameObject amylaseLipase;
+	private GameObject thyroidHormones;
+	private GameObject troponinI;
+	private GameObject cortisolRandom;
+	private GameObject backToLabsFromBlood;
 
 	// Imaging
 	private GameObject xray;
@@ -473,6 +479,7 @@ public class MenuManager : MonoBehaviour {
 
 	// Other random things
 	public DifferentialManager differentialManager;
+	public TextAsset textAsset;
 	public bool victory = false;
 	public bool displayImage = false;
 	public bool isFirstTurn = true;
@@ -928,6 +935,24 @@ public class MenuManager : MonoBehaviour {
 				backToNeuroFromCerebellar = GameObject.Find("Back to Neuro from Cerebellar");
 			backToPhysicalFromNeuro = GameObject.Find("Back to Physical from Neuro");
 
+			// Labs
+			blood = GameObject.Find("Blood");
+			urinalysis = GameObject.Find("Urinalysis");
+			backToMainFromLabs = GameObject.Find("Back to Main from Labs");
+
+				// Blood
+				cbc = GameObject.Find("CBC");
+				bmp = GameObject.Find("BMP");
+				coag = GameObject.Find("Coag");
+				lft = GameObject.Find("LFT");
+				abg = GameObject.Find("ABG");
+				esrCrp = GameObject.Find("ESR, CRP");
+				amylaseLipase = GameObject.Find("Amylase, lipase");
+				thyroidHormones = GameObject.Find("Thyroid hormones");
+				troponinI = GameObject.Find("Troponin I");
+				cortisolRandom = GameObject.Find("Cortisol (random)");
+				backToLabsFromBlood = GameObject.Find("Back to Labs from Blood");
+
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		levelManager = FindObjectOfType<LevelManager> ();
 		menuCanvas = GetComponentInParent<Canvas> ();
@@ -979,9 +1004,18 @@ public class MenuManager : MonoBehaviour {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		differentialManager.Enable ();
 		isFirstTurn = false;
-		dialogueManager.LineStart (808);
-		dialogueManager.LineBreak (808);
-		dialogueManager.NewTalk ();
+		int lineNum = 0;
+		using (StringReader reader = new StringReader (textAsset.text)) {
+			string line;
+			while ((line = reader.ReadLine ()) != null) {
+				lineNum++;
+				if (line.Contains ("First turn")) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 1);
+					dialogueManager.NewTalk ();
+				}
+			}
+		}
 	}
 
 	public void HasImage(string imageType){
@@ -1583,18 +1617,23 @@ public class MenuManager : MonoBehaviour {
 	public void Labs () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		blood.SetActive (true);
-		urine.SetActive (true);
-		csf.SetActive (true);
-		backLabs.SetActive (true);
+		urinalysis.SetActive (true);
+		backToMainFromLabs.SetActive (true);
 	}
 
 	public void Blood () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		cbc.SetActive (true);
 		bmp.SetActive (true);
+		coag.SetActive (true);
 		lft.SetActive (true);
-		coags.SetActive (true);
-		backBlood.SetActive (true);
+		abg.SetActive (true);
+		esrCrp.SetActive (true);
+		amylaseLipase.SetActive (true);
+		thyroidHormones.SetActive (true);
+		troponinI.SetActive (true);
+		cortisolRandom.SetActive (true);
+		backToLabsFromBlood.SetActive (true);
 	}
 
 	public void Imaging () {

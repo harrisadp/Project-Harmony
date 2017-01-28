@@ -108,14 +108,14 @@ public class DiseaseInstance {
 	public string[] physicalResults = new string[83];
 
 	// Lab Studies
-	public string[] labStudies = new string[36]
+	public string[] labStudies = new string[37]
 		{"WBC", "HGB", "PLT", "Na", "K", "Cl", "HCO3", "BUN", "Cr", "Glu", "AST", "ALT", "AlkPhos", "Ca", "TotalProt", "Albumin", "TotalBili", "PT", "PTT", "INR",
-		"Amylase", "Lipase", "Lactate", "Troponin I", "CK", "CRP", "Cortisol (random)", "TSH", "T3", "T4", "pH", "paCO2", "paO2", "upH", "uSpGrav", "uGluc"};
+		"Amylase", "Lipase", "Lactate", "Troponin I", "CK", "CRP", "ESR", "Cortisol (random)", "TSH", "T3", "T4", "pH", "paCO2", "paO2", "upH", "uSpGrav", "uGluc"};
 	
 	// Lab Results
-	public float[] labResults = new float[36]
+	public float[] labResults = new float[37]
 		{-1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f,
-		-1f, -1f, -1f, -1f, -1f, -1f,};
+		-1f, -1f, -1f, -1f, -1f, -1f, 1f};
 
 	// Performance Tracking
 	public List<int> goodQuestions = new List<int>();
@@ -134,10 +134,7 @@ public class DiseaseInstance {
 		this.personality = RandomPersonality (age, male, race);
 		this.answers = diseaseAnswers;
 		this.physicalResults = diseasePhysical;
-
-		//TODO labs
 		RandomLabValue(diseaseLabMaxMin);
-
 		foreach (int i in goodQuestionIDs) {goodQuestions.Add (i);}
 		foreach (int i in badQuestionIDs) {badQuestions.Add (i);}
 		foreach (int i in goodPhysicalManeuverIDs) {goodPhysicalManeuvers.Add (i);}
