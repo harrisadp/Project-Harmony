@@ -9,15 +9,12 @@ public class DiseaseInstance {
 	public string disease_name;
 
 	// Demographics
-	public int age_min;
-	public int age_max;
-	public float male_probability;
-	public float asian_probability;
-	public float black_probability;
-	public float hispanic_probability;
-	public float white_probability;
+	public int age;
+	public bool male;
 	public enum Race {asian, black, hispanic, white};
+	public Race race;
 	public enum Personality {personalityA, personalityB};
+	public Personality personality;
 
 	// Questions
 	public string[] questions = new string[186]
@@ -92,22 +89,31 @@ public class DiseaseInstance {
 	public string[] physicalManeuvers = new string[83]
 		{"General appearance", "Glasgow Coma Scale", "Pulm - Inspection", "Pulm - Palpation", "Pulm - Percussion", "Pulm - Auscultation", "Tactile fremitus",
 		"Whispered pectoriloquy", "Egophony", "Card - Inspection", "Card - Palpation", "Card - Auscultation", "Abd vasc - Inspection, palpation, and auscultation",
-		"Upper limb vasc - Inspection, palpation, and auscultation", "Lower limb vasc - Inspection, palpation, and auscultation", "Abd - Inspection", "Abd - Inspection from the side, eyes at bedside level", "Abd - Palpation - Superficial",
-		"Abd - Palpation - Deep", "Abd - Percussion", "Abd - Auscultation", "JVP", "Thyroid gland", "Carotids", "Lymph node palpation", "Oph - General inspection",
-		"Fundoscopy", "Slit lamp exam", "Ears - General examination", "Otoscopic examination", "Oro - General inspection",
-		"Knees - Inspection and gait assessment", "Knees - Range of movement", "Knees - Palpation", "Knees - Special tests", "Hips - Gait", "Hips - Inspection",
-		"Hips - Range of movement", "Hips - Palpation", "Thomas Test", "Trendelenberg Sign", "Shoulder - Inspection", "Shoulder - Range of movement - active",
-		"Shoulder - Range of movement - passive", "Shoulder - Palpation", "Lift-off Test", "Speed's Test", "Yergason's Test", "Back - Inspection",
-		"Back - Range of movement", "Back - Palpation", "Straight Leg Test", "Schober's Test", "Olfactory Nerve (CN I)", "Optic Nerve (CN II)",
-		"Oculomotor, Trochlear, and Abducens Nerves (CN III, IV, VI)", "CN V - Sensation - Light touch", "CN V - Sensation - Pain and Temperature",
-		"CN V - Sensation - Corneal Reflex", "CN V - Motor - Temporalis and masseters", "CN V - Motor - Jaw Jerk Reflex",
-		"CN V - Motor - Lateral and Medial pterygoids", "CN VII - Inspection", "CN VII - Motor - Muscles of facial expression", "CN VII - Reflexes",
-		"Vestibulocochlear Nerve (CN VIII)", "Glossopharyngeal and Vagus Nerves (CN IX, X)", "CN XI - Inspection", "CN XI - Motor", "CN XII - Inspection",
-		"CN XII - Motor", "Neuro - General inspection", "Neuro - Tone", "Neuro - Power", "Neuro - Sensation", "Neuro - Vibration", "Neuro - Proprioception",
-		"Neuro - Reflexes", "Cere - General inspection", "Cere - Gait", "Cere - Speech", "Cere - Coordination", "Cere - Motor"};
+		"Upper limb vasc - Inspection, palpation, and auscultation", "Lower limb vasc - Inspection, palpation, and auscultation", "Abd - Inspection",
+		"Abd - Inspection from the side, eyes at bedside level", "Abd - Palpation - Superficial", "Abd - Palpation - Deep", "Abd - Percussion",
+		"Abd - Auscultation", "JVP", "Thyroid gland", "Carotids", "Lymph node palpation", "Oph - General inspection", "Fundoscopy", "Slit lamp exam",
+		"Ears - General examination", "Otoscopic examination", "Oro - General inspection", "Knees - Inspection and gait assessment", "Knees - Range of movement",
+		"Knees - Palpation", "Knees - Special tests", "Hips - Gait", "Hips - Inspection", "Hips - Range of movement", "Hips - Palpation", "Thomas Test",
+		"Trendelenberg Sign", "Shoulder - Inspection", "Shoulder - Range of movement - active", "Shoulder - Range of movement - passive", "Shoulder - Palpation",
+		"Lift-off Test", "Speed's Test", "Yergason's Test", "Back - Inspection", "Back - Range of movement", "Back - Palpation", "Straight Leg Test",
+		"Schober's Test", "Olfactory Nerve (CN I)", "Optic Nerve (CN II)", "Oculomotor, Trochlear, and Abducens Nerves (CN III, IV, VI)",
+		"CN V - Sensation - Light touch", "CN V - Sensation - Pain and Temperature", "CN V - Sensation - Corneal Reflex", "CN V - Motor - Temporalis and masseters",
+		"CN V - Motor - Jaw Jerk Reflex", "CN V - Motor - Lateral and Medial pterygoids", "CN VII - Inspection", "CN VII - Motor - Muscles of facial expression",
+		"CN VII - Reflexes", "Vestibulocochlear Nerve (CN VIII)", "Glossopharyngeal and Vagus Nerves (CN IX, X)", "CN XI - Inspection", "CN XI - Motor",
+		"CN XII - Inspection", "CN XII - Motor", "Neuro - General inspection", "Neuro - Tone", "Neuro - Power", "Neuro - Sensation", "Neuro - Vibration",
+		"Neuro - Proprioception", "Neuro - Reflexes", "Cere - General inspection", "Cere - Gait", "Cere - Speech", "Cere - Coordination", "Cere - Motor"};
 
 	// Physical Exam Results
 	public string[] physicalResults = new string[83];
+
+	// Lab Studies
+	public string[] labStudies = new string[36]
+		{"WBC", "HGB", "PLT", "Na", "K", "Cl", "HCO3", "BUN", "Cr", "Glu", "AST", "ALT", "AlkPhos", "Ca", "TotalProt", "Albumin", "TotalBili", "PT", "PTT", "INR",
+		"Amylase", "Lipase", "Lactate", "Troponin I", "CK", "CRP", "Cortisol (random)", "TSH", "T3", "T4", "pH", "paCO2", "paO2", "upH", "uSpGrav", "uGluc"};
+	public float[,] labMaxMin = new float[36,2];
+	public float[] labResults = new float[36];
+
+	// Lab Results
 
 	// Performance Tracking
 	public List<int> goodQuestions = new List<int>();
@@ -116,31 +122,23 @@ public class DiseaseInstance {
 	public List<int> badPhysicalManeuvers = new List<int>();
 
 	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability,
-		float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, string[] diseasePhysical, int[] goodQuestionIDs, int[] badQuestionIDs,
-		int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs) {
+							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, string[] diseasePhysical, float[,] diseaseLabMaxMin,
+							int[] goodQuestionIDs, int[] badQuestionIDs, int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs) {
 		Debug.Log ("Instance of disease " + diseaseName + " created.");
 		this.disease_name = diseaseName;
-		this.age_min = ageMin;
-		this.age_max = ageMax;
-		this.male_probability = maleProbability;
-		this.asian_probability = asianProbability;
-		this.black_probability = blackProbability;
-		this.hispanic_probability = hispanicProbability;
-		this.white_probability = whiteProbability;
+		this.age = RandomAge (ageMin, ageMax);
+		this.male = RandomSex (maleProbability);
+		this.race = RandomRace (asianProbability, blackProbability, hispanicProbability, whiteProbability);
+		this.personality = RandomPersonality (age, male, race);
 		this.answers = diseaseAnswers;
 		this.physicalResults = diseasePhysical;
-		foreach (int i in goodQuestionIDs) {
-			goodQuestions.Add (i);
-		}
-		foreach (int i in badQuestionIDs) {
-			badQuestions.Add (i);
-		}
-		foreach (int i in goodPhysicalManeuverIDs) {
-			goodPhysicalManeuvers.Add (i);
-		}
-		foreach (int i in badPhysicalManeuverIDs) {
-			badPhysicalManeuvers.Add (i);
-		}
+
+		//TODO labs
+
+		foreach (int i in goodQuestionIDs) {goodQuestions.Add (i);}
+		foreach (int i in badQuestionIDs) {badQuestions.Add (i);}
+		foreach (int i in goodPhysicalManeuverIDs) {goodPhysicalManeuvers.Add (i);}
+		foreach (int i in badPhysicalManeuverIDs) {badPhysicalManeuvers.Add (i);}
 	}
 
 	public int RandomAge (int ageMin, int ageMax) {
@@ -149,33 +147,28 @@ public class DiseaseInstance {
 
 	public bool RandomSex (float maleProbability) {
 		float randomSex = Random.value;
-		if (maleProbability <= randomSex) {
-			return true;
-		} else {
-			return false;
-		}
+		if (maleProbability <= randomSex) {return true;}
+		else {return false;}
 	}
 
 	public Race RandomRace (float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability) {
 		float randomRace = Random.value;
-		if (randomRace <= asianProbability) {
-			return Race.asian;
-		} else if (randomRace > asianProbability && randomRace <= (asianProbability + blackProbability)){
-			return Race.black;
-		} else if (randomRace > (asianProbability + blackProbability) && randomRace <= (asianProbability + blackProbability + hispanicProbability)) {
-			return Race.hispanic;
-		} else {
-			return Race.white;
-		}
+		if (randomRace <= asianProbability) {return Race.asian;}
+		else if (randomRace > asianProbability && randomRace <= (asianProbability + blackProbability)){return Race.black;}
+		else if (randomRace > (asianProbability + blackProbability) && randomRace <= (asianProbability + blackProbability + hispanicProbability)) {return Race.hispanic;}
+		else {return Race.white;}
 	}
 
 	public Personality RandomPersonality (int age, bool male, Race race) {
-		if (age <= 50) {
-			return Personality.personalityA;
-		} else {
-			return Personality.personalityB;
-		}
+		if (age <= 50) {return Personality.personalityA;}
+		else {return Personality.personalityB;}
 	}
+
+//	public float RandomLabValue (float[,] diseaseLabMaxMin){
+//		foreach (float i in diseaseLabMaxMin) {
+//			
+//		}
+//	}
 
 	public void OverwriteHistory (History history, string historyKey, string historyValue) {
 		history.history [historyKey] = historyValue;
@@ -188,5 +181,9 @@ public class DiseaseInstance {
 			return;
 		}
 	}
+
+//	public void OverwriteLabs (LabValues labValues, string labKey, float labValue){
+//		
+//	}
 
 }
