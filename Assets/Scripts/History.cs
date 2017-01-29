@@ -22,7 +22,7 @@ public class History : MonoBehaviour {
 		history ["What has been the impact of this problem on your life"] = "[What has been the impact of this problem on your life]";
 		history ["Who else have you seen about this problem"] = "[Who else have you seen about this problem]";
 		history ["What treatments have been recommended for this problem"] = "[What treatments have been recommended for this problem]";
-		history ["What medications, including non-prescription medication, have you used for this problem"] = "[What medications, including non-prescription medication, have you used for this problem]";
+		history ["What medications, including non-prescription medications, have you used for this problem"] = "[What medications, including non-prescription medications, have you used for this problem]";
 		history ["Have you had any tests related to this problem"] = "[Have you had any tests related to this problem]";
 		history ["Is there anything else bothering you"] = "[Is there anything else bothering you]";
 		// Past Medical History
@@ -214,7 +214,7 @@ public class History : MonoBehaviour {
 		history ["Do you have any lumps on your skin"] = "[Do you have any lumps on your skin]";
 		history ["Do you have any rashes on your skin"] = "[Do you have any rashes on your skin]";
 		history ["Do you have any itching, or dry skin"] = "[Do you have any itching, or dry skin]";
-		history ["Have you noticed any changes to your finger nails"] = "[Have you noticed any changes to your finger nails]";
+		history ["Have you noticed any changes to your fingernails"] = "[Have you noticed any changes to your finger nails]";
 		history ["Have you noticed any changes to your hair growth"] = "[Have you noticed any changes to your hair growth]";
 	}
 

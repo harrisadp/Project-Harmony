@@ -27,8 +27,8 @@ Player: Who else have you seen about this problem?
 Patient: [Who else have you seen about this problem]
 Player: What treatments have been recommended for this problem?
 Patient: [What treatments have been recommended for this problem]
-Player: What medications, including non-prescription medication, have you used for this problem?
-Patient: [What medications, including non-prescription medication, have you used for this problem]
+Player: What medications, including non-prescription medications, have you used for this problem?
+Patient: [What medications, including non-prescription medications, have you used for this problem]
 Player: Have you had any tests related to this problem?
 Patient: [Have you had any tests related to this problem]
 Player: Is there anything else bothering you?
@@ -408,8 +408,8 @@ Player: Do you have any rashes on your skin?
 Patient: [Do you have any rashes on your skin]
 Player: Do you have any itching, or dry skin?
 Patient: [Do you have any itching, or dry skin]
-Player: Have you noticed any changes to your finger nails?
-Patient: [Have you noticed any changes to your finger nails]
+Player: Have you noticed any changes to your fingernails?
+Patient: [Have you noticed any changes to your fingernails]
 Player: Have you noticed any changes to your hair growth?
 Patient: [Have you noticed any changes to your hair growth]
 

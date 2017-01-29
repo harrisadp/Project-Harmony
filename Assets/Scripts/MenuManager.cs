@@ -224,7 +224,7 @@ public class MenuManager : MonoBehaviour {
 				private GameObject neuroROSToPage3;
 				private GameObject backToNeuroROSPage1;
 				private GameObject doYouSufferFromAnyHeadache;
-				private GameObject isItTheWorstHeadacheYouveEverDad;
+				private GameObject isItTheWorstHeadacheYouveEverHad;
 				private GameObject haveYouHadAnyAssociatedNauseaOrVomiting;
 				private GameObject haveYouExperiencedAnyScalpTendernessOrPainInYourJaw;
 				private GameObject backToNeuroROSPage2;
@@ -714,7 +714,7 @@ public class MenuManager : MonoBehaviour {
 					neuroROSToPage3 = GameObject.Find("Neuro ROS to Page 3");
 					backToNeuroROSPage1 = GameObject.Find("Back to Neuro ROS Page 1");
 					doYouSufferFromAnyHeadache = GameObject.Find("Do you suffer from any headache");
-					isItTheWorstHeadacheYouveEverDad = GameObject.Find("Is it the worst headache you've ever had");
+					isItTheWorstHeadacheYouveEverHad = GameObject.Find("Is it the worst headache you’ve ever had");
 					haveYouHadAnyAssociatedNauseaOrVomiting = GameObject.Find("Have you had any associated nausea or vomiting");
 					haveYouExperiencedAnyScalpTendernessOrPainInYourJaw = GameObject.Find("Have you experienced any scalp tenderness or pain in your jaw");
 					backToNeuroROSPage2 = GameObject.Find("Back to Neuro ROS Page 2");
@@ -963,16 +963,27 @@ public class MenuManager : MonoBehaviour {
 		// Actual initialization
 
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
 
 	}
 
 	public void Reset () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
 	}
 
 	public void NewTurn () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
 		// Destroys an image, if there is one
 		if (GameObject.Find ("Image") != null) {
 			Destroy (GameObject.Find ("Image"));
@@ -990,9 +1001,8 @@ public class MenuManager : MonoBehaviour {
 			labs.SetActive (true);
 			imaging.SetActive (true);
 			ddx.SetActive (true);
+			}
 		}
-
-	}
 
 	public void MainMenu () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
@@ -1001,6 +1011,10 @@ public class MenuManager : MonoBehaviour {
 		labs.SetActive (true);
 		imaging.SetActive (true);
 		ddx.SetActive (true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
 	}
 
 	public void FirstTurn() {
@@ -1069,7 +1083,7 @@ public class MenuManager : MonoBehaviour {
 		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
 			Destroy (child.gameObject);
 		}
-		string[] menuOptions = new string[5] {"History of Present Illness", "Past Medical History", "Social History", "Family History", "Review of Systems"};
+		string[] menuOptions = new string[5] {"History of Present Illness", "Past Medical History", "Family History", "Social History", "Review of Systems"};
 		foreach (string i in menuOptions) {
 			GameObject menuOption = Instantiate (playerMenuButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
 			menuOption.name = i;
@@ -1084,7 +1098,7 @@ public class MenuManager : MonoBehaviour {
 			} else if (menuOption.name == "Family History") {
 				menuOption.GetComponent<Button> ().onClick.AddListener( () => { FH (); } );
 			} else if (menuOption.name == "Review of Systems") {
-				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROS (); } );
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSPage1 (); } );
 			}
 		}
 		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
@@ -1106,6 +1120,27 @@ public class MenuManager : MonoBehaviour {
 		whatHasBeenTheImpactOfThisProblemOnYourLife.SetActive (true);
 		hpiNextPage.SetActive (true);
 		backToHistoryFromHPI.SetActive (true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"When were you last completely well", "When did the pain first start", "How would you describe your pain",
+												"Where is the pain located", "Does the pain move anywhere", "How did the pain first start", "How severe is your pain",
+												"Have you ever had a similar pain in the past", "Does anything make the pain better or worse",
+												"What has been the impact of this problem on your life"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		GameObject nextButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		nextButton.GetComponentInChildren<Text> ().text = "Next";
+		nextButton.GetComponent<Button>().onClick.AddListener (() => { HPIPage2 (); } );
+		nextButton.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { History (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void HPIPage2 () {
@@ -1116,6 +1151,28 @@ public class MenuManager : MonoBehaviour {
 		haveYouHadAnyTestsRelatedToThisProblem.SetActive (true);
 		isThereAnythingElseBotheringYou.SetActive (true);
 		hpiPrevousPage.SetActive (true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[5] 	{"Who else have you seen about this problem", "What treatments have been recommended for this problem",
+												"What medications, including non-prescription medications, have you used for this problem",
+												"Have you had any tests related to this problem", "Is there anything else bothering you"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "What treatments have been recommended for this problem") {
+				menuOption.GetComponentInChildren<Text>().text = "What treatments have been recommended?";
+			}
+			if (menuOption.name == "What medications, including non-prescription medications, have you used for this problem") {
+				menuOption.GetComponentInChildren<Text>().text = "What medications have you used for this problem?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { HPIPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PMH () {
@@ -1128,6 +1185,26 @@ public class MenuManager : MonoBehaviour {
 		areYouAllergicToAnyMedications.SetActive(true);
 		areYouAdherentWithYourMedications.SetActive(true);
 		backToHistoryFromPMH.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[7] 	{"What medical conditions have you been diagnosed with", "Have you ever had any operations",
+												"What diseases have you had as a child", "What prescription medications do you take",
+												"Do you take any over-the-counter medications", "Are you allergic to any medications",
+												"Are you adherent with your medications"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "What medical conditions have you been diagnosed with") {
+				menuOption.GetComponentInChildren<Text>().text = "What medical conditions do you have?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { History (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void FH () {
@@ -1142,6 +1219,39 @@ public class MenuManager : MonoBehaviour {
 		isThereAnyHistoryOfAutoimmuneDisordersInYourFamily.SetActive(true);
 		areThereAnyOtherChronicMedicalConditionsThatRunInYourFamily.SetActive(true);
 		backToHistoryFromFH.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[9] 	{"Were you adopted", "Tell me about your parents health",
+												"Did anyone in your family, including grandparents, die at a young age", "What was the cause of death",
+												"Do any members of your family have blood clotting problems", "Is there any history of cancer in your family",
+												"Do any members of your family have heart problems", "Is there any history of autoimmune disorders in your family",
+												"Are there any other chronic medical conditions that run in your family"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Tell me about your parents health") {
+				menuOption.GetComponentInChildren<Text>().text = "Tell me about your parents' health.";
+			}
+			if (menuOption.name == "Did anyone in your family, including grandparents, die at a young age") {
+				menuOption.GetComponentInChildren<Text>().text = "Did anyone in your family die at a young age?";
+			}
+			if (menuOption.name == "Do any members of your family have blood clotting problems") {
+				menuOption.GetComponentInChildren<Text>().text = "Do any members of your family have clotting problems?";
+			}
+			if (menuOption.name == "Is there any history of autoimmune disorders in your family") {
+				menuOption.GetComponentInChildren<Text>().text = "Any history of autoimmune disorders in your family?";
+			}
+			if (menuOption.name == "Are there any other chronic medical conditions that run in your family") {
+				menuOption.GetComponentInChildren<Text>().text = "Any other chronic conditions run in your family?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { History (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void SHPage1 () {
@@ -1158,7 +1268,35 @@ public class MenuManager : MonoBehaviour {
 		howManyYearsHaveYouSmoked.SetActive(true);
 		shNextPage.SetActive(true);
 		backToHistoryFromSH.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"Describe your lifestyle and where you are living", "Are you currently employed", "What is your marital status",
+												"Is your preferred sexual partner of the opposite sex or the same sex", "Who lives at home with you",
+												"Do you drink any alcohol", "How much do you drink in a week", "Have you ever thought about cutting down",
+												"Do you smoke", "How many years have you smoked"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Describe your lifestyle and where you are living") {
+				menuOption.GetComponentInChildren<Text>().text = "Describe your lifestyle and where you are living.";
+			}
+			if (menuOption.name == "Is your preferred sexual partner of the opposite sex or the same sex") {
+				menuOption.GetComponentInChildren<Text>().text = "Is your preferred partner the opposite or same sex?";
+			}
+		}
+		GameObject nextButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		nextButton.GetComponentInChildren<Text> ().text = "Next";
+		nextButton.GetComponent<Button>().onClick.AddListener (() => { SHPage2 (); } );
+		nextButton.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { History (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
+		
 
 	public void SHPage2 () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
@@ -1171,9 +1309,32 @@ public class MenuManager : MonoBehaviour {
 		whatIsYourFinancialSituation.SetActive(true);
 		howActiveAreYou.SetActive(true);
 		shPreviousPage.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[8] 	{"How many packs per day have you smoked", "Have you ever thought about quitting",
+												"Do you do any illicit or recreational drugs", "Which drugs do you use and how frequently do you use them",
+												"Have you ever tried to quit using drugs or have been in a detoxification program", "Where were you born",
+												"What is your financial situation", "How active are you"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Which drugs do you use and how frequently do you use them") {
+				menuOption.GetComponentInChildren<Text>().text = "Which drugs do you use and how frequently?";
+			}
+			if (menuOption.name == "Have you ever tried to quit using drugs or have been in a detoxification program") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you ever tried to quit using drugs?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { SHPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
-	public void ROS () {
+	public void ROSPage1 () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		generalROS.SetActive(true);
 		musculoskeletalROS.SetActive(true);
@@ -1185,6 +1346,50 @@ public class MenuManager : MonoBehaviour {
 		hematologicROS.SetActive(true);
 		endocrineROS.SetActive(true);
 		genitourinaryROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"General", "Musculoskeletal", "Psychiatric", "Respiratory", "Cardiovascular", "Gastrointestinal",
+												"Neurologic", "Hematologic", "Endocrine", "Genitourinary"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerMenuButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "General") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSGeneral (); } );
+			} else if (menuOption.name == "Musculoskeletal") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSMSK (); } );
+			} else if (menuOption.name == "Psychiatric") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSPsych (); } );
+			} else if (menuOption.name == "Respiratory") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSRespPage1 (); } );
+			} else if (menuOption.name == "Cardiovascular") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSCardPage1 (); } );
+			} else if (menuOption.name == "Gastrointestinal") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSGIPage1 (); } );
+			} else if (menuOption.name == "Neurologic") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSNeuroPage1 (); } );
+			} else if (menuOption.name == "Hematologic") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSHeme (); } );
+			} else if (menuOption.name == "Endocrine") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSEndo (); } );
+			} else if (menuOption.name == "Genitourinary") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSGU (); } );
+			}
+		}
+		GameObject nextButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		nextButton.GetComponentInChildren<Text> ().text = "Next";
+		nextButton.GetComponent<Button>().onClick.AddListener (() => { ROSPage2 (); } );
+		nextButton.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { History (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
+	}
+
+	public void ROSPage2 () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		oropharynxROS.SetActive(true);
 		noseAndSinusROS.SetActive(true);
 		earsROS.SetActive(true);
@@ -1192,6 +1397,33 @@ public class MenuManager : MonoBehaviour {
 		headROS.SetActive(true);
 		dermatologicROS.SetActive(true);
 		backToHistoryFromROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[6] 	{"Oropharynx", "Nose and Sinus", "Ears", "Eyes", "Head", "Dermatologic"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerMenuButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Oropharynx") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSOropharynx (); } );
+			} else if (menuOption.name == "Nose and Sinus") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSNoseSinus (); } );
+			} else if (menuOption.name == "Ears") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSEars (); } );
+			} else if (menuOption.name == "Eyes") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSEyes (); } );
+			} else if (menuOption.name == "Head") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSHead (); } );
+			} else if (menuOption.name == "Dermatologic") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSDerm (); } );
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSGeneral () {
@@ -1203,6 +1435,22 @@ public class MenuManager : MonoBehaviour {
 		haveYouExperiencedAnyFeversOrChills.SetActive(true);
 		haveYouExperiencedAnyDrenchingNightSweats.SetActive(true);
 		backToROSFromGeneralROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[6] 	{"How are your energy levels", "Have you noticed any significant weight gain",
+												"Have you noticed any significant weight loss", "Do you have any difficulty sleeping",
+												"Have you experienced any fevers or chills", "Have you experienced any drenching night sweats"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSMSK () {
@@ -1212,6 +1460,24 @@ public class MenuManager : MonoBehaviour {
 		doYouHavePainsInYourLegs.SetActive(true);
 		doYouHavePainsOrCrampsinYourMuscles.SetActive(true);
 		backToROSFromMSKROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[4] 	{"Do you have any pains, stiffness, or swelling in your joints", "Do you have backaches",
+												"Do you have pains in your legs", "Do you have pains or cramps in your muscles"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Do you have any pains, stiffness, or swelling in your joints") {
+				menuOption.GetComponentInChildren<Text>().text = "Do you have pains, stiffness, or swelling in your joints?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSPsych () {
@@ -1220,6 +1486,20 @@ public class MenuManager : MonoBehaviour {
 		doYouFeelAnxious.SetActive(true);
 		doYouFeelDepressed.SetActive(true);
 		backToROSFromPsychROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[3] 	{"Do you feel nervous", "Do you feel anxious", "Do you feel depressed"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSRespPage1 () {
@@ -1236,6 +1516,34 @@ public class MenuManager : MonoBehaviour {
 		haveYouEverLivedInAShelterOrPrison.SetActive(true);
 		respROSNextPage.SetActive(true);
 		backToROSFromRespROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"Do you ever feel short of breath on exertion", "Has your breathing changed over the past month",
+												"Do you suffer from a cough", "Is your cough productive", "What color is the sputum",
+												"Have you traveled anywhere outside of the country recently", "Did you travel by airplane for long distances",
+												"Have you been in contact with any individuals who are sick",
+												"Do you work in or frequently visit a healthcare facility", "Have you ever lived in a shelter or prison"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you traveled anywhere outside of the country recently") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you traveled outside the country recently?";
+			}
+			if (menuOption.name == "Have you been in contact with any individuals who are sick") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you been in contact with sick people?";
+			}
+		}
+		GameObject nextButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		nextButton.GetComponentInChildren<Text> ().text = "Next";
+		nextButton.GetComponent<Button>().onClick.AddListener (() => { ROSRespPage2 (); } );
+		nextButton.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSRespPage2 () {
@@ -1244,6 +1552,25 @@ public class MenuManager : MonoBehaviour {
 		haveYouEverBeenExposedOrInContactWithAnIndividualWhoIsDiagnosedWithTuberculosis.SetActive(true);
 		haveYouEverHadATuberculosisSkinTest.SetActive(true);
 		respROSPreviousPage.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[3] 	{"Have you ever worked in a shipyard",
+												"Have you ever been exposed or in contact with an individual who is diagnosed with tuberculosis",
+												"Have you ever had a tuberculosis skin test"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you ever been exposed or in contact with an individual who is diagnosed with tuberculosis") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you ever been exposed to tuberculosis?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSRespPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSCardPage1 () {
@@ -1260,6 +1587,39 @@ public class MenuManager : MonoBehaviour {
 		haveYouExperiencedAnyPainInYourLegsWhileWalking.SetActive(true);
 		cardROSNextPage.SetActive(true);
 		backToROSFromCardROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"Have you ever experienced chest pain on exertion before", "Do you experience palpitations",
+			"Have you ever had a heart attack", "Have you noticed any swelling in your ankles", "Have you noticed any change in waist circumference",
+			"Do you ever wake up in the middle of the night gasping for air", "Do you experience any difficulty with your breathing when you lie flat",
+			"How many pillows do you sleep with at night", "Have you ever fainted", "Have you experienced any pain in your legs while walking"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you ever experienced chest pain on exertion before") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you ever experienced chest pain on exertion?";
+			}
+			if (menuOption.name == "Do you ever wake up in the middle of the night gasping for air") {
+				menuOption.GetComponentInChildren<Text>().text = "Do you ever wake up in the night gasping for air?";
+			}
+			if (menuOption.name == "Do you experience any difficulty with your breathing when you lie flat") {
+				menuOption.GetComponentInChildren<Text>().text = "Do you experience difficulty breathing when lying flat?";
+			}
+			if (menuOption.name == "Have you experienced any pain in your legs while walking") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you experienced pain in your legs while walking?";
+			}
+		}
+		GameObject nextButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		nextButton.GetComponentInChildren<Text> ().text = "Next";
+		nextButton.GetComponent<Button>().onClick.AddListener (() => { ROSCardPage2 (); } );
+		nextButton.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSCardPage2 () {
@@ -1270,6 +1630,24 @@ public class MenuManager : MonoBehaviour {
 		haveYouEverBeenToldYouHaveAHeartMurmur.SetActive(true);
 		didYouEverHaveRheumaticHeartDiseaseAsAChild.SetActive(true);
 		cardROSPrevousPage.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[5] 	{"Do your legs feel cold", "Is there any history in your family of sudden cardiac death",
+			"Have you recently had a cold or flu", "Have you ever been told you have a heart murmur", "Did you ever have rheumatic heart disease as a child"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Is there any history in your family of sudden cardiac death") {
+				menuOption.GetComponentInChildren<Text>().text = "Any history in your family of sudden cardiac death?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSCardPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSGIPage1 () {
@@ -1286,6 +1664,33 @@ public class MenuManager : MonoBehaviour {
 		haveYouHadAnyConstipation.SetActive(true);
 		giROSToPage2.SetActive(true);
 		backToROSFromGIROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"How is your appetite", "Does food ever get stuck in your throat", "Do you ever experience pain while swallowing",
+												"Do you have difficulty swallowing solids, or liquids, or both", "Do you suffer from heartburn",
+												"Have you ever felt that you get full really quickly during meals", "Have you experienced any nausea or vomiting",
+												"Have you experienced any abdominal bloating", "Have you had any diarrhea", "Have you had any constipation"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Do you have difficulty swallowing solids, or liquids, or both") {
+				menuOption.GetComponentInChildren<Text>().text = "Difficulty with swallowing solids, or liquids, or both?";
+			}
+			if (menuOption.name == "Have you ever felt that you get full really quickly during meals") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you felt that you get full quickly during meals?";
+			}
+		}
+		GameObject nextButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		nextButton.GetComponentInChildren<Text> ().text = "Next";
+		nextButton.GetComponent<Button>().onClick.AddListener (() => { ROSGIPage2 (); } );
+		nextButton.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSGIPage2 () {
@@ -1302,6 +1707,30 @@ public class MenuManager : MonoBehaviour {
 		haveYouEverHadAColonoscopy.SetActive(true);
 		giROSToPage3.SetActive(true);
 		backToGIROSPage1.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"Have you ever had any blood in your stool", "Have you ever had any black, tarry stools",
+												"Do you experience any pain while passing bowel movements", "Do you ever have any pale, fatty stools",
+												"Have you taken any antibiotics recently", "Are your stools foul-smelling", "Have you ever vomited blood",
+												"Was it bright red blood", "Did it look like coffee grounds", "Have you ever had a colonoscopy"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Do you experience any pain while passing bowel movements") {
+				menuOption.GetComponentInChildren<Text>().text = "Do you ever experience pain with bowel movements?";
+			}
+		}
+		GameObject nextButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		nextButton.GetComponentInChildren<Text> ().text = "Next";
+		nextButton.GetComponent<Button>().onClick.AddListener (() => { ROSGIPage3 (); } );
+		nextButton.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSGIPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSGIPage3 () {
@@ -1313,6 +1742,28 @@ public class MenuManager : MonoBehaviour {
 		haveYouNoticedAnyEnlargementofYourBreastTissue.SetActive(true);
 		haveYouNoticedAnyMuscleWasting.SetActive(true);
 		backToGIROSPage2.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[6] 	{"Have you ever had a gastroscopy", "Have you had any recent travel outside of the country",
+												"Have you noticed any yellowing of the eyes or skin", "Have you experienced any easy bruising or bleeding",
+												"Have you noticed any enlargement of your breast tissue", "Have you noticed any muscle wasting"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you had any recent travel outside of the country") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you had any recent travel outside the country?";
+			}
+			if (menuOption.name == "Have you noticed any enlargement of your breast tissue") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you noticed enlargement of your breast tissue?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSGIPage2 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSNeuroPage1 () {
@@ -1329,6 +1780,37 @@ public class MenuManager : MonoBehaviour {
 		haveYouExperiencedAnyWeaknessOnOneSideOfYourBody.SetActive(true);
 		neuroROSToPage2.SetActive(true);
 		backToROSFromNeuroROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"Have you ever had a stroke", "Was it due to a blood clot or a bleed", "Do you have any residual symptoms",
+												"Have you ever had a seizure", "Have you experienced double-vision", "Have you experienced blurred vision",
+												"Have you or others noticed any asymmetry in your face", "Have you experienced any slurring of your speech",
+												"Have you experienced any numbness or tingling in your body",
+												"Have you experienced any weakness on one side of your body"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you or others noticed any asymmetry in your face") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you noticed any asymmetry in your face?";
+			}
+			if (menuOption.name == "Have you experienced any numbness or tingling in your body") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you experienced any numbness or tingling?";
+			}
+			if (menuOption.name == "Have you experienced any weakness on one side of your body") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you had weakness on one side of your body?";
+			}
+		}
+		GameObject nextButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		nextButton.GetComponentInChildren<Text> ().text = "Next";
+		nextButton.GetComponent<Button>().onClick.AddListener (() => { ROSNeuroPage2 (); } );
+		nextButton.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSNeuroPage2 () {
@@ -1345,15 +1827,63 @@ public class MenuManager : MonoBehaviour {
 		doYouDriveACar.SetActive(true);
 		neuroROSToPage3.SetActive(true);
 		backToNeuroROSPage1.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"Have you ever lost control of your bowels or bladder", "Do you use any walking aids",
+			"Do you have difficulty buttoning your shirts", "Have you noticed a tremor", "Have you had any problems with balance or coordination",
+			"Have you noticed any changes in your voice", "Do you find that you choke or cough when you eat or drink",
+			"Have you noticed any changes with your memory", "Have you ever left the tap or the stove on in your house", "Do you drive a car"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you had any problems with balance or coordination") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you had problems with balance or coordination?";
+			}
+			if (menuOption.name == "Do you find that you choke or cough when you eat or drink") {
+				menuOption.GetComponentInChildren<Text>().text = "Do you choke or cough when you eat or drink?";
+			}
+			if (menuOption.name == "Have you ever left the tap or the stove on in your house") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you ever left the tap or stove on in your house?";
+			}
+		}
+		GameObject nextButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		nextButton.GetComponentInChildren<Text> ().text = "Next";
+		nextButton.GetComponent<Button>().onClick.AddListener (() => { ROSNeuroPage3 (); } );
+		nextButton.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSNeuroPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSNeuroPage3 () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		doYouSufferFromAnyHeadache.SetActive(true);
-		isItTheWorstHeadacheYouveEverDad.SetActive(true);
+		isItTheWorstHeadacheYouveEverHad.SetActive(true);
 		haveYouHadAnyAssociatedNauseaOrVomiting.SetActive(true);
 		haveYouExperiencedAnyScalpTendernessOrPainInYourJaw.SetActive(true);
 		backToNeuroROSPage2.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[4] 	{"Do you suffer from any headache", "Is it the worst headache you've ever had",
+												"Have you had any associated nausea or vomiting", "Have you experienced any scalp tenderness or pain in your jaw"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you experienced any scalp tenderness or pain in your jaw") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you experienced scalp tenderness or jaw pain?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSNeuroPage2 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSHeme () {
@@ -1364,6 +1894,28 @@ public class MenuManager : MonoBehaviour {
 		didYouExperienceAnyProblemsWithTheBloodTransfusion.SetActive(true);
 		doYouBruiseEasily.SetActive(true);
 		backToROSFromHemeROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[5] 	{"How difficult is it to stop bleeding when you have a small cut", "Do you have anemia",
+												"Have you ever had a blood transfusion", "Did you experience any problems with the blood transfusion",
+												"Do you bruise easily"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "How difficult is it to stop bleeding when you have a small cut") {
+				menuOption.GetComponentInChildren<Text>().text = "Do you bleed easily?";
+			}
+			if (menuOption.name == "Did you experience any problems with the blood transfusion") {
+				menuOption.GetComponentInChildren<Text>().text = "Did you have problems with the transfusion?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSEndo () {
@@ -1376,6 +1928,25 @@ public class MenuManager : MonoBehaviour {
 		doYouSweatExcessively.SetActive(true);
 		haveYouNoticedAnyChangesToYourSkinOrHair.SetActive(true);
 		backToROSFromEndoROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[7] 	{"How well do you tolerate the heat", "How well do you tolerate the cold", "Do you urinate frequently",
+												"Are you excessively hungry", "Are you excessively thirsty", "Do you sweat excessively",
+												"Have you noticed any changes to your skin or hair"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "How difficult is it to stop bleeding when you have a small cut") {
+				menuOption.GetComponentInChildren<Text>().text = "Do you bleed easily?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSGU () {
@@ -1390,6 +1961,29 @@ public class MenuManager : MonoBehaviour {
 		haveYouBeenExperiencingAnyFlankPain.SetActive(true);
 		haveYouNoticedAnySkinChangesToYourExternalGenitalia.SetActive(true);
 		backToROSFromGUROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[9] 	{"Do you have any pain on urination", "Have you experienced an increased frequency in urinating",
+												"How often do you urinate at night", "Do you often feel the urge to urinate",
+												"Do you find it difficult to begin urinating", "Have you ever had blood in your urine", "Is your urine foamy",
+												"Have you been experiencing any flank pain", "Have you noticed any skin changes to your external genitalia"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you experienced an increased frequency in urinating") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you had an increased frequency in urinating?";
+			}
+			if (menuOption.name == "Have you noticed any skin changes to your external genitalia") {
+				menuOption.GetComponentInChildren<Text>().text = "Any skin changes to your external genitalia?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSOropharynx () {
@@ -1399,6 +1993,21 @@ public class MenuManager : MonoBehaviour {
 		doYouHaveAnyProblemsWithYourTeethOrGums.SetActive(true);
 		doYouHaveAnyBleedingInYourMouth.SetActive(true);
 		backToROSFromOropharynxROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[4] 	{"Have you experienced any change in your voice", "Do you get frequent sore throats",
+												"Do you have any problems with your teeth or gums", "Do you have any bleeding in your mouth"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage2 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSNoseSinus () {
@@ -1408,6 +2017,24 @@ public class MenuManager : MonoBehaviour {
 		doYouHaveDifficultyBreathingThroughYourNose.SetActive(true);
 		haveYouHadARecentColdOrInfectionInYourSinuses.SetActive(true);
 		backToROSFromNoseSinusROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[4] 	{"How often do you have nosebleeds", "Do you have any discharge from your nose",
+												"Do you have difficulty breathing through your nose", "Have you had a recent cold or infection in your sinuses"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you had a recent cold or infection in your sinuses") {
+				menuOption.GetComponentInChildren<Text>().text = "Any recent colds or infections in your sinuses?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage2 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSEars () {
@@ -1417,6 +2044,24 @@ public class MenuManager : MonoBehaviour {
 		doYouHaveEaraches.SetActive(true);
 		haveYouHadAnInfectionOrDischargeFromYourEars.SetActive(true);
 		backToROSFromEarsROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[4] 	{"Do you have problems hearing", "Have you experienced a ringing in your ears", "Do you have earaches",
+												"Have you had an infection or discharge from your ears"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you had an infection or discharge from your ears") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you had any discharge from your ears?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage2 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSEyes () {
@@ -1427,6 +2072,22 @@ public class MenuManager : MonoBehaviour {
 		doYouHaveExcessiveTearingInYourEyes.SetActive(true);
 		haveYouHadAnyPainOrRednessInYourEyes.SetActive(true);
 		backToROSFromEyesROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[5] 	{"Do you wear glasses or contact lenses", "When was your last eye examination",
+												"Have you had any recent changes to your vision", "Do you have excessive tearing in your eyes",
+												"Have you had any pain or redness in your eyes"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage2 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSHead () {
@@ -1434,6 +2095,20 @@ public class MenuManager : MonoBehaviour {
 		haveYouHadAnyInjuryToYourHead.SetActive(true);
 		haveYouHadAStiffNeck.SetActive(true);
 		backToROSFromHeadROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[2] 	{"Have you had any injury to your head", "Have you had a stiff neck"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage2 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void ROSDerm () {
@@ -1444,6 +2119,22 @@ public class MenuManager : MonoBehaviour {
 		haveYouNoticedAnyChangesToYourFingernails.SetActive(true);
 		haveYouNoticedAnyChangesToYourHairGrowth.SetActive(true);
 		backToROSFromDermROS.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[5] 	{"Do you have any lumps on your skin", "Do you have any rashes on your skin",
+												"Do you have any itching, or dry skin", "Have you noticed any changes to your fingernails",
+												"Have you noticed any changes to your hair growth"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage2 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PhysicalMain () {

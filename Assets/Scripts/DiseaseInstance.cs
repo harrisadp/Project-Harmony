@@ -22,7 +22,7 @@ public class DiseaseInstance {
 		{"Intro", "When were you last completely well", "When did the pain first start", "How would you describe your pain", "Where is the pain located",
 		"Does the pain move anywhere", "How did the pain first start", "How severe is your pain", "Have you ever had a similar pain in the past",
 		"Does anything make the pain better or worse", "What has been the impact of this problem on your life", "Who else have you seen about this problem",
-		"What treatments have been recommended for this problem", "What medications, including non-prescription medication, have you used for this problem",
+		"What treatments have been recommended for this problem", "What medications, including non-prescription medications, have you used for this problem",
 		"Have you had any tests related to this problem", "Is there anything else bothering you", "What medical conditions have you been diagnosed with",
 		"Have you ever had any operations", "What diseases have you had as a child", "What prescription medications do you take",
 		"Do you take any over-the-counter medications", "Are you allergic to any medications", "Are you adherent with your medications", "Were you adopted",
@@ -81,7 +81,7 @@ public class DiseaseInstance {
 		"When was your last eye examination", "Have you had any recent changes to your vision", "Do you have excessive tearing in your eyes",
 		"Have you had any pain or redness in your eyes", "Have you had any injury to your head", "Have you had a stiff neck",
 		"Do you have any lumps on your skin", "Do you have any rashes on your skin", "Do you have any itching, or dry skin",
-		"Have you noticed any changes to your finger nails", "Have you noticed any changes to your hair growth"};
+		"Have you noticed any changes to your fingernails", "Have you noticed any changes to your hair growth"};
 
 	// Answers
 	public string[,] answers = new string[186,2];
