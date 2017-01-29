@@ -480,7 +480,9 @@ public class MenuManager : MonoBehaviour {
 	// Other random things
 	public DifferentialManager differentialManager;
 	public TextAsset textAsset;
-	public GameObject playerOptionButtonPrefab;
+	public GameObject playerMenuButtonPrefab;
+	public GameObject playerSelectionButtonPrefab;
+	public GameObject backButtonPrefab;
 	public bool victory = false;
 	public bool displayImage = false;
 	public bool isFirstTurn = true;
@@ -1064,13 +1066,30 @@ public class MenuManager : MonoBehaviour {
 		ros.SetActive (true);
 		backToMainFromHistory.SetActive (true);
 		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
 		string[] menuOptions = new string[5] {"History of Present Illness", "Past Medical History", "Social History", "Family History", "Review of Systems"};
 		foreach (string i in menuOptions) {
-			GameObject menuOption = Instantiate (playerOptionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			GameObject menuOption = Instantiate (playerMenuButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
 			menuOption.name = i;
 			menuOption.GetComponentInChildren<Text> ().text = i;
 			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "History of Present Illness") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { HPIPage1 (); } );
+			} else if (menuOption.name == "Past Medical History") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PMH (); } );
+			} else if (menuOption.name == "Social History") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { SHPage1 (); } );
+			} else if (menuOption.name == "Family History") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { FH (); } );
+			} else if (menuOption.name == "Review of Systems") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROS (); } );
+			}
 		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { MainMenu (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void HPIPage1 () {
