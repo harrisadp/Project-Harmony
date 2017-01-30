@@ -117,15 +117,21 @@ public class DiseaseInstance {
 		{-1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f,
 		-1f, -1f, -1f, -1f, -1f, -1f, 1f};
 
+	// Imaging Studies
+	public int[] imagingStudies = new int[9] {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
 	// Performance Tracking
 	public List<int> goodQuestions = new List<int>();
 	public List<int> badQuestions = new List<int>();
 	public List<int> goodPhysicalManeuvers = new List<int>();
 	public List<int> badPhysicalManeuvers = new List<int>();
+	public List<int> goodLabs = new List<int>();
+	public List<int> badLabs = new List<int>();
 
 	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability,
 							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, string[] diseasePhysical, float[,] diseaseLabMaxMin,
-							int[] goodQuestionIDs, int[] badQuestionIDs, int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs) {
+							int[] images, int[] goodQuestionIDs, int[] badQuestionIDs, int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs, int[]goodLabIDs,
+							int[]badLabIDs) {
 		Debug.Log ("Instance of disease " + diseaseName + " created.");
 		this.disease_name = diseaseName;
 		this.age = RandomAge (ageMin, ageMax);
@@ -135,10 +141,13 @@ public class DiseaseInstance {
 		this.answers = diseaseAnswers;
 		this.physicalResults = diseasePhysical;
 		RandomLabValue(diseaseLabMaxMin);
+		this.imagingStudies = images;
 		foreach (int i in goodQuestionIDs) {goodQuestions.Add (i);}
 		foreach (int i in badQuestionIDs) {badQuestions.Add (i);}
 		foreach (int i in goodPhysicalManeuverIDs) {goodPhysicalManeuvers.Add (i);}
 		foreach (int i in badPhysicalManeuverIDs) {badPhysicalManeuvers.Add (i);}
+		foreach (int i in goodLabIDs) {goodLabs.Add (i);}
+		foreach (int i in badLabIDs) {badLabs.Add (i);}
 	}
 
 	public int RandomAge (int ageMin, int ageMax) {

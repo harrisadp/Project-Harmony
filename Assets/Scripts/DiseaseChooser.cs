@@ -11,6 +11,7 @@ public class DiseaseChooser : MonoBehaviour {
 	public DiseaseStruct diseaseStruct;
 	public int diseaseChosen;
 	public DiseaseInstance disease_data;
+
 	private History history;
 	private PhysicalExam physical;
 	private LabValues labValues;

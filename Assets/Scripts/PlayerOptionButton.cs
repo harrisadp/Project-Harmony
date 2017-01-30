@@ -15,6 +15,7 @@ public class PlayerOptionButton : MonoBehaviour {
 	private History history;
 	private PhysicalExam physical;
 	private LabValues labValues;
+	private Images images;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,7 @@ public class PlayerOptionButton : MonoBehaviour {
 		history = FindObjectOfType<History> ();
 		physical = FindObjectOfType<PhysicalExam> ();
 		labValues = FindObjectOfType<LabValues> ();
+		images = FindObjectOfType<Images> ();
 	}
 
 	public void ButtonPushed () {		
@@ -33,6 +35,10 @@ public class PlayerOptionButton : MonoBehaviour {
 			CheckIfGoodQuestion ();
 		} else if (physical.physical.ContainsKey (this.name)) {
 			CheckIfGoodPhysical ();
+		} else if (labValues.labStudies.Contains (this.name)) {
+			CheckIfGoodLab ();
+		} else if (images.imagingStudies.Contains (this.name)) {
+			Imaging ();
 		} else {
 			return;
 		}
@@ -62,6 +68,12 @@ public class PlayerOptionButton : MonoBehaviour {
 					dialogueManager.NewTalk ();
 					menuManager.Reset ();
 					return;
+				} else if (line.Contains (this.name)) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 3);
+					dialogueManager.NewTalk ();
+					menuManager.Reset ();
+					return;
 				}
 			}
 		}
@@ -80,7 +92,7 @@ public class PlayerOptionButton : MonoBehaviour {
 				performanceTracker.energyValue += 2;
 			}
 			performanceTracker.UpdateScore ();
-		} else {
+		} else if (diseaseChooser.disease_data.badQuestions.Contains (questionNumber)){
 			performanceTracker.score -= 100;
 			performanceTracker.UpdateScore ();
 		}
@@ -99,9 +111,52 @@ public class PlayerOptionButton : MonoBehaviour {
 				performanceTracker.energyValue += 2;
 			}
 			performanceTracker.UpdateScore ();
-		} else {
+		} else if (diseaseChooser.disease_data.badPhysicalManeuvers.Contains (physicalNumber)){
 			performanceTracker.score -= 100;
 			performanceTracker.UpdateScore ();
+		}
+	}
+
+	private void CheckIfGoodLab () {
+		int labNumber = 0;
+		foreach (string labStudy in labValues.labStudies) {
+			if (labStudy == this.name) {
+				labNumber = labValues.labStudies.IndexOf (labStudy);
+			}
+		}
+		if (diseaseChooser.disease_data.goodLabs.Contains (labNumber)) {
+			performanceTracker.score += 100;
+			if (performanceTracker.energyValue < 10) {
+				performanceTracker.energyValue += 2;
+			}
+			performanceTracker.UpdateScore ();
+		} else if (diseaseChooser.disease_data.badLabs.Contains (labNumber)) {
+			performanceTracker.score -= 100;
+			performanceTracker.UpdateScore ();
+		}
+	}
+
+	private void Imaging () {
+		int imageNumber = images.imagingStudies.IndexOf (this.name);
+		menuManager.displayImage = true;
+		if (imageNumber == 0) {
+			menuManager.imageToDisplay = images.xrayChests[diseaseChooser.disease_data.imagingStudies[0]];
+		} else if (imageNumber == 1) {
+			menuManager.imageToDisplay = images.xrayAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
+		} else if (imageNumber == 2) {
+			menuManager.imageToDisplay = images.xraySpines[diseaseChooser.disease_data.imagingStudies[0]];
+		} else if (imageNumber == 3) {
+			menuManager.imageToDisplay = images.ctHeads[diseaseChooser.disease_data.imagingStudies[0]];
+		} else if (imageNumber == 4) {
+			menuManager.imageToDisplay = images.ctChests[diseaseChooser.disease_data.imagingStudies[0]];
+		} else if (imageNumber == 5) {
+			menuManager.imageToDisplay = images.ctAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
+		} else if (imageNumber == 6) {
+			menuManager.imageToDisplay = images.mriBrains[diseaseChooser.disease_data.imagingStudies[0]];
+		} else if (imageNumber == 7) {
+			menuManager.imageToDisplay = images.ultrasoundAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
+		} else if (imageNumber == 8) {
+			menuManager.imageToDisplay = images.ultrasoundExtremities[diseaseChooser.disease_data.imagingStudies[0]];
 		}
 	}
 

@@ -20,17 +20,17 @@ public class MenuManager : MonoBehaviour {
 	public DifferentialManager differentialManager;
 	public TextAsset textAsset;
 	public GameObject playerMenuPanel;
+	public GameObject imagePanel;
 	public GameObject playerMenuButtonPrefab;
 	public GameObject playerSelectionButtonPrefab;
 	public GameObject backButtonPrefab;
+	public Sprite imageToDisplay;
 	public bool victory = false;
 	public bool displayImage = false;
 	public bool isFirstTurn = true;
 
 	private DialogueManager dialogueManager;
 	private LevelManager levelManager;
-	private Canvas menuCanvas;
-	private string imageToDisplay;
 
 	// Use this for initialization
 	void Start () {
@@ -44,7 +44,7 @@ public class MenuManager : MonoBehaviour {
 		// Other identifiers
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		levelManager = FindObjectOfType<LevelManager> ();
-		menuCanvas = GetComponentInParent<Canvas> ();
+		proceedAfterImaging = GameObject.Find ("Proceed After Imaging");
 
 		// Actual initialization
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
@@ -52,6 +52,7 @@ public class MenuManager : MonoBehaviour {
 			Destroy (child.gameObject);
 		}
 		playerMenuPanel.SetActive (false);
+		imagePanel.SetActive (false);
 	}
 
 	public void Reset () {
@@ -64,14 +65,10 @@ public class MenuManager : MonoBehaviour {
 
 	public void NewTurn () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		foreach (Transform child in playerMenuPanel.transform){
-			Destroy (child.gameObject);
-		}
+		foreach (Transform child in playerMenuPanel.transform){Destroy (child.gameObject);}
 		playerMenuPanel.SetActive (false);
-		// Destroys an image, if there is one
-		if (GameObject.Find ("Image") != null) {
-			Destroy (GameObject.Find ("Image"));
-		}
+		// Hides image, if there is one
+		if (imagePanel.activeSelf) {imagePanel.SetActive (false);}
 
 		if (isFirstTurn) {
 			FirstTurn ();
@@ -119,36 +116,15 @@ public class MenuManager : MonoBehaviour {
 		}
 	}
 
-	public void HasImage(string imageType){
-		displayImage = true;
-		imageToDisplay = imageType;
-	}
-
 	public void DisplayImage(){
-		Debug.Log ("Image to display: " + imageToDisplay);
-		GameObject image = new GameObject ("Image");
-		image.transform.SetParent (menuCanvas.transform);
-		image.AddComponent<RectTransform> ();
-		image.AddComponent<CanvasRenderer> ();
-		image.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 0.5f);
-		image.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 0.5f);
-		image.GetComponent<RectTransform> ().pivot = new Vector2 (0.5f, 0.5f);
-		image.GetComponent<RectTransform> ().localPosition = new Vector3 (0, 0, 0);
-		image.GetComponent<RectTransform> ().sizeDelta = new Vector2 (450f, 450f);
-		image.AddComponent<Image> ();
-//		if (imageToDisplay == "xray") {
-//			image.GetComponent<Image> ().sprite = disease.xray;
-//		} else if (imageToDisplay == "ct") {
-//			image.GetComponent<Image> ().sprite = disease.ct;
-//		} else if (imageToDisplay == "mri") {
-//			image.GetComponent<Image> ().sprite = disease.mri;
-//		} else if (imageToDisplay == "us") {
-//			image.GetComponent<Image> ().sprite = disease.us;
-//		} else if (imageToDisplay == "pet") {
-//			image.GetComponent<Image> ().sprite = disease.pet;
-//		} else if (imageToDisplay == null) {
-//			Debug.LogError ("No sprite exists for this image type");
-//		}
+		Image[] images = imagePanel.GetComponentsInChildren<Image>();
+		foreach (Image image in images) {
+			Debug.Log (image.name);
+			if (image.gameObject.name != "Image Panel") {
+				image.sprite = imageToDisplay;
+			}
+		}
+		imagePanel.SetActive (true);
 		proceedAfterImaging.SetActive (true);
 		displayImage = false;
 	}
@@ -1429,7 +1405,24 @@ public class MenuManager : MonoBehaviour {
 	}
 
 	public void Imaging () {
-		
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		playerMenuPanel.SetActive (true);
+		foreach (Transform child in GameObject.Find("Player Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[9] 	{"X-ray (chest)", "X-ray (abdomen)", "X-ray (spine)", "CT (head)", "CT (chest)", "CT (abdomen)", "MRI (brain)",
+												"Ultrasound (abdomen)", "Ultrasound (extremities)"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, playerMenuPanel.transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (0.196f, 0.784f, 1f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, playerMenuPanel.transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { MainMenu (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 }
