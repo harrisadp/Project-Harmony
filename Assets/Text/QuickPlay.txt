@@ -870,6 +870,10 @@ Emdee: You've already performed this maneuver! Check your journal if you can't r
 Emdee: You've already ordered this lab! Check your journal if you can't remember the result.
 // Image already ordered
 Emdee: You've already ordered this imaging study! Check your journal if you can't remember the result.
+
+// Insufficient energy
+Emdee: You don't have enough energy to do that! You need 2 energy units to order a lab test and 3 energy units to order an imaging study. Try asking good questions and performing good physical exam maneuvers to build up more energy!
+
 // Victory
 Emdee: That's the correct diagnosis!
 

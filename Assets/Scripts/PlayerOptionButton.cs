@@ -16,6 +16,7 @@ public class PlayerOptionButton : MonoBehaviour {
 	private PhysicalExam physical;
 	private LabValues labValues;
 	private Images images;
+	private bool sufficientEnergy = false;
 
 	// Use this for initialization
 	void Start () {
@@ -55,12 +56,27 @@ public class PlayerOptionButton : MonoBehaviour {
 			CheckIfGoodPhysical ();
 		}
 		else if (labValues.labStudies.Contains (this.name)) {
-			performanceTracker.labsOrdered.Add (this.name);
-			CheckIfGoodLab ();
+			CheckIfSufficientEnergy ();
+			if (sufficientEnergy) {
+				performanceTracker.energyValue -= 4;
+				performanceTracker.labsOrdered.Add (this.name);
+				CheckIfGoodLab ();
+			} else {
+				InsufficientEnergy ();
+				return;
+			}
 		}
 		else if (images.imagingStudies.Contains (this.name)) {
-			performanceTracker.imagesOrdered.Add (this.name);
-			Imaging ();
+			CheckIfSufficientEnergy ();
+			if (sufficientEnergy) {
+				performanceTracker.energyValue -= 6;
+				performanceTracker.imagesOrdered.Add (this.name);
+				performanceTracker.UpdateScore ();
+				Imaging ();
+			} else {
+				InsufficientEnergy ();
+				return;
+			}
 		}
 		else {return;}
 		PlayDialogue ();
@@ -93,6 +109,33 @@ public class PlayerOptionButton : MonoBehaviour {
 				} else if (line.Contains (this.name)) {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 3);
+					dialogueManager.NewTalk ();
+					menuManager.Reset ();
+					return;
+				}
+			}
+		}
+	}
+
+	private void CheckIfSufficientEnergy (){
+		if (labValues.labStudies.Contains (this.name) && performanceTracker.energyValue >= 4) {
+			sufficientEnergy = true;
+		} else if (images.imagingStudies.Contains (this.name) && performanceTracker.energyValue >= 6) {
+			sufficientEnergy = true;
+		} else {
+			sufficientEnergy = false;
+		}
+	}
+
+	private void InsufficientEnergy () {
+		int lineNum = 0;
+		using (StringReader reader = new StringReader (textAsset.text)) {
+			string line;
+			while ((line = reader.ReadLine ()) != null) {
+				lineNum++;
+				if (line.Contains ("Insufficient energy")) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 1);
 					dialogueManager.NewTalk ();
 					menuManager.Reset ();
 					return;
@@ -149,7 +192,6 @@ public class PlayerOptionButton : MonoBehaviour {
 		if (diseaseChooser.disease_data.goodLabs.Contains (labNumber)) {
 			performanceTracker.score += 100;
 			if (performanceTracker.energyValue < 10) {
-				performanceTracker.energyValue += 2;
 			}
 			performanceTracker.UpdateScore ();
 		} else if (diseaseChooser.disease_data.badLabs.Contains (labNumber)) {

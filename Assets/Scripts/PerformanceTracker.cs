@@ -23,6 +23,10 @@ public class PerformanceTracker : MonoBehaviour {
 		guiBar.Value = 0;
 		guiBar.CurrentValue = 0;
 		guiBar.ForceUpdate ();
+		questionsAsked.Clear();
+		physicalManeuversPerformed.Clear();
+		labsOrdered.Clear();
+		imagesOrdered.Clear();
 	}
 
 	public void UpdateScore () {

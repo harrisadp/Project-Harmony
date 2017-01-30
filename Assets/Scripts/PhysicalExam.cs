@@ -34,7 +34,7 @@ public class PhysicalExam : MonoBehaviour {
 		physical ["Abd - Percussion"] = "No abnormalities.";
 		physical ["Abd - Auscultation"] = "No abnormalities.";
 		// Neck
-		physical ["JVP"] = "[JVP]";
+		physical ["JVP"] = "5 cm above the sternal angle.";
 		physical ["Thyroid gland"] = "No abnormalities.";
 		physical ["Carotids"] = "No abnormalities.";
 		physical ["Lymph node palpation"] = "No abnormalities.";
