@@ -9,6 +9,10 @@ public class PerformanceTracker : MonoBehaviour {
 	public int score = 0;
 	public Text scoreText;
 	public int energyValue;
+	public List<string> questionsAsked = new List<string>();
+	public List<string> physicalManeuversPerformed = new List<string>();
+	public List<string> labsOrdered = new List<string>();
+	public List<string> imagesOrdered = new List<string>();
 
 	private GUIBarScript guiBar;
 

@@ -30,18 +30,40 @@ public class PlayerOptionButton : MonoBehaviour {
 	}
 
 	public void ButtonPushed () {		
-		PlayDialogue ();
-		if (history.history.ContainsKey (this.name)) {
-			CheckIfGoodQuestion ();
-		} else if (physical.physical.ContainsKey (this.name)) {
-			CheckIfGoodPhysical ();
-		} else if (labValues.labStudies.Contains (this.name)) {
-			CheckIfGoodLab ();
-		} else if (images.imagingStudies.Contains (this.name)) {
-			Imaging ();
-		} else {
+		if (performanceTracker.questionsAsked.Contains (this.name)) {
+			QuestionAlreadyAsked();
 			return;
 		}
+		else if (performanceTracker.physicalManeuversPerformed.Contains (this.name)) {
+			PhysicalManeuverAlreadyPerformed();
+			return;
+		}
+		else if (performanceTracker.labsOrdered.Contains (this.name)) {
+			LabAlreadyOrdered();
+			return;
+		}
+		else if (performanceTracker.imagesOrdered.Contains (this.name)) {
+			ImageAlreadyOrdered();
+			return;
+		}
+		else if (history.history.ContainsKey (this.name)) {
+			performanceTracker.questionsAsked.Add (this.name);
+			CheckIfGoodQuestion ();
+		}
+		else if (physical.physical.ContainsKey (this.name)) {
+			performanceTracker.physicalManeuversPerformed.Add (this.name);
+			CheckIfGoodPhysical ();
+		}
+		else if (labValues.labStudies.Contains (this.name)) {
+			performanceTracker.labsOrdered.Add (this.name);
+			CheckIfGoodLab ();
+		}
+		else if (images.imagingStudies.Contains (this.name)) {
+			performanceTracker.imagesOrdered.Add (this.name);
+			Imaging ();
+		}
+		else {return;}
+		PlayDialogue ();
 	}
 
 	private void PlayDialogue () {
@@ -160,4 +182,71 @@ public class PlayerOptionButton : MonoBehaviour {
 		}
 	}
 
+	private void QuestionAlreadyAsked () {
+		int lineNum = 0;
+		using (StringReader reader = new StringReader (textAsset.text)) {
+			string line;
+			while ((line = reader.ReadLine ()) != null) {
+				lineNum++;
+				if (line.Contains ("Question already asked")) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 1);
+					dialogueManager.NewTalk ();
+					menuManager.Reset ();
+					return;
+				}
+			}
+		}
+	}
+
+	private void PhysicalManeuverAlreadyPerformed () {
+		int lineNum = 0;
+		using (StringReader reader = new StringReader (textAsset.text)) {
+			string line;
+			while ((line = reader.ReadLine ()) != null) {
+				lineNum++;
+				if (line.Contains ("Physical exam maneuver already performed")) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 1);
+					dialogueManager.NewTalk ();
+					menuManager.Reset ();
+					return;
+				}
+			}
+		}
+	}
+
+	private void LabAlreadyOrdered () {
+		int lineNum = 0;
+		using (StringReader reader = new StringReader (textAsset.text)) {
+			string line;
+			while ((line = reader.ReadLine ()) != null) {
+				lineNum++;
+				if (line.Contains ("Lab already ordered")) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 1);
+					dialogueManager.NewTalk ();
+					menuManager.Reset ();
+					return;
+				}
+			}
+		}
+	}
+
+	private void ImageAlreadyOrdered () {
+		int lineNum = 0;
+		using (StringReader reader = new StringReader (textAsset.text)) {
+			string line;
+			while ((line = reader.ReadLine ()) != null) {
+				lineNum++;
+				if (line.Contains ("Image already ordered")) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 1);
+					dialogueManager.NewTalk ();
+					menuManager.Reset ();
+					return;
+				}
+			}
+		}
+	}
 }
