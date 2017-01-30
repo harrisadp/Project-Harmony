@@ -10,7 +10,7 @@ public class PhysicalExam : MonoBehaviour {
 		// General inspection
 		physical ["General appearance"] = "Patient appears well.";
 		physical ["Glasgow Coma Scale"] = "15/15.";
-		// Respiratory
+		// Pulmonary
 		physical ["Pulm - Inspection"] = "No abnormalities.";
 		physical ["Pulm - Palpation"] = "No abnormalities.";
 		physical ["Pulm - Percussion"] = "No abnormalities.";

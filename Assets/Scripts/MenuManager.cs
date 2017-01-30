@@ -898,7 +898,7 @@ public class MenuManager : MonoBehaviour {
 					cnVMotorTemporalisAndMasseters = GameObject.Find("CN V - Motor - Temporalis and masseters");
 					cnVMotorJawJerkReflex = GameObject.Find("CN V - Motor - Jaw Jerk Reflex");
 					cnVMotorLateralAndMedialPterygoids = GameObject.Find("CN V - Motor - Lateral and Medial pterygoids");
-					backToCNFromCNV = GameObject.Find("Back to CN From CN V");
+					backToCNFromCNV = GameObject.Find("Back to CN from CN V");
 				facialNerveCNVII = GameObject.Find("Facial Nerve (CN VII)");
 					// CN VII
 					cnVIIInspection = GameObject.Find("CN VII - Inspection");
@@ -972,10 +972,10 @@ public class MenuManager : MonoBehaviour {
 
 	public void Reset () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		// Testing menu autopopulation
-		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
-			Destroy (child.gameObject);
-		}
+//		// Testing menu autopopulation
+//		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+//			Destroy (child.gameObject);
+//		}
 	}
 
 	public void NewTurn () {
@@ -2147,6 +2147,37 @@ public class MenuManager : MonoBehaviour {
 		mskExam.SetActive(true);
 		neuroExam.SetActive(true);
 		backToMainFromPhysical.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[7] 	{"General Exam", "Head, Eyes, Ears, Nose, and Throat Exam", "Pulmonary Exam", "Cardiovascular Exam",
+												"Abdominal Exam", "Neurologic Exam", "Musculoskeletal Exam"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerMenuButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "General Exam") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalGeneral (); } );
+			} else if (menuOption.name == "Head, Eyes, Ears, Nose, and Throat Exam") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalHEENT (); } );
+			} else if (menuOption.name == "Pulmonary Exam") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalPulmonary (); } );
+			} else if (menuOption.name == "Cardiovascular Exam") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalCardiovascular (); } );
+			} else if (menuOption.name == "Abdominal Exam") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalAbdominal (); } );
+			} else if (menuOption.name == "Neurologic Exam") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalNeurologic (); } );
+			} else if (menuOption.name == "Musculoskeletal Exam") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalMSK (); } );
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { MainMenu (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PhysicalGeneral () {
@@ -2154,40 +2185,21 @@ public class MenuManager : MonoBehaviour {
 		generalApperance.SetActive(true);
 		glasgowComaScale.SetActive(true);
 		backToPhysicalFromGeneral.SetActive(true);
-	}
-
-	public void PhysicalPulmonary () {
-		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		pulmInspection.SetActive(true);
-		pulmPalpation.SetActive(true);
-		pulmPercussion.SetActive(true);
-		pulmAuscultation.SetActive(true);
-		tactileFremitus.SetActive(true);
-		whispheredPectoriloquy.SetActive(true);
-		egophony.SetActive(true);
-		backToPhysicalFromPulmonary.SetActive(true);
-	}
-
-	public void PhysicalCardiovascular () {
-		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		cardInspection.SetActive(true);
-		cardPalpation.SetActive(true);
-		cardAuscultation.SetActive(true);
-		abdVascInspectionPalpationAndAuscultation.SetActive(true);
-		upperLimbVascInspectionPalpationAndAuscultation.SetActive(true);
-		lowerLimbVascInspectionPalpationAndAuscultation.SetActive(true);
-		backToPhysicalFromCardiovascular.SetActive(true);
-	}
-
-	public void PhysicalAbdominal () {
-		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		abdInspection.SetActive(true);
-		abdInspectionFromTheSideEyesAtBedsideLevel.SetActive(true);
-		abdPalpationSuperficial.SetActive(true);
-		abdPalpationDeep.SetActive(true);
-		abdPercussion.SetActive(true);
-		abdAuscultation.SetActive(true);
-		backToPhysicalFromAbdominal.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[2] 	{"General appearance", "Glasgow Coma Scale"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMain (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PhysicalHEENT () {
@@ -2203,57 +2215,133 @@ public class MenuManager : MonoBehaviour {
 		otoscopicExamination.SetActive(true);
 		oroGeneralInspection.SetActive(true);
 		backToPhysicalFromHEENT.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"JVP", "Thyroid gland", "Carotids", "Lymph node palpation", "Oph - General inspection", "Fundoscopy",
+			"Slit lamp exam", "Ears - General examination", "Otoscopic examination", "Oro - General inspection"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("JVP")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("JVP", "Jugular Venous Pressure");
+			} else if (menuOption.name.Contains ("Oph - G")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Oph - G", "Eyes - g");
+			} else if (menuOption.name.Contains ("Fundoscopy")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Fundoscopy", "Fundoscopic examination");
+			} else if (menuOption.name.Contains ("Oro - G")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Oro - G", "Oropharynx - g");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMain (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
-	public void PhysicalMSK () {
+	public void PhysicalPulmonary () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		knees.SetActive(true);
-		hips.SetActive(true);
-		shoulder.SetActive(true);
-		spine.SetActive(true);
-		backToPhysicalFromMSK.SetActive(true);
+		pulmInspection.SetActive(true);
+		pulmPalpation.SetActive(true);
+		pulmPercussion.SetActive(true);
+		pulmAuscultation.SetActive(true);
+		tactileFremitus.SetActive(true);
+		whispheredPectoriloquy.SetActive(true);
+		egophony.SetActive(true);
+		backToPhysicalFromPulmonary.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[7] 	{"Pulm - Inspection", "Pulm - Palpation", "Pulm - Percussion", "Pulm - Auscultation", "Tactile fremitus",
+												"Whispered pectoriloquy", "Egophony"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("Pulm - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Pulm - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMain (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
-	public void PhysicalKnees () {
+	public void PhysicalCardiovascular () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		kneesInspectionAndGaitAssessment.SetActive(true);
-		kneesRangeOfMovement.SetActive(true);
-		kneesPalpation.SetActive(true);
-		kneesSpecialTests.SetActive(true);
-		backToMSKFromKnees.SetActive(true);
+		cardInspection.SetActive(true);
+		cardPalpation.SetActive(true);
+		cardAuscultation.SetActive(true);
+		abdVascInspectionPalpationAndAuscultation.SetActive(true);
+		upperLimbVascInspectionPalpationAndAuscultation.SetActive(true);
+		lowerLimbVascInspectionPalpationAndAuscultation.SetActive(true);
+		backToPhysicalFromCardiovascular.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[6] 	{"Card - Inspection", "Card - Palpation", "Card - Auscultation",
+												"Abd vasc - Inspection, palpation, and auscultation", "Upper limb vasc - Inspection, palpation, and auscultation",
+												"Lower limb vasc - Inspection, palpation, and auscultation"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("Card - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Card - ", "");
+			} else if (menuOption.name.Contains ("Abd vasc")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace
+					("Abd vasc - Inspection, palpation, and auscultation", "Abdominal vasculature - insp, palp, and ausc");
+			} else if (menuOption.name.Contains ("limb vasc")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("vasc", "vasculature");
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace
+					("Inspection, palpation, and auscultation", "insp, palp, and ausc");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMain (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
-	public void PhysicalHips () {
+	public void PhysicalAbdominal () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		hipsGait.SetActive(true);
-		hipsInspection.SetActive(true);
-		hipsRangeOfMovement.SetActive(true);
-		hipsPalpation.SetActive(true);
-		thomasTest.SetActive(true);
-		trendelenbergSign.SetActive(true);
-		backToMSKFromHips.SetActive(true);
-	}
-
-	public void PhysicalShoulder () {
-		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		shoulderInspection.SetActive(true);
-		shoulderRangeOfMovementActive.SetActive(true);
-		shoulderRangeOfMovementPassive.SetActive(true);
-		shoulderPalpation.SetActive(true);
-		liftOffTest.SetActive(true);
-		speedsTest.SetActive(true);
-		yergasonsTest.SetActive(true);
-		backToMSKFromShoulder.SetActive(true);
-	}
-
-	public void PhysicalSpine () {
-		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
-		spineInspection.SetActive(true);
-		spineRangeOfMovement.SetActive(true);
-		spinePalpation.SetActive(true);
-		straightLegTest.SetActive(true);
-		schobersTest.SetActive(true);
-		backToMSKFromSpine.SetActive(true);
+		abdInspection.SetActive(true);
+		abdInspectionFromTheSideEyesAtBedsideLevel.SetActive(true);
+		abdPalpationSuperficial.SetActive(true);
+		abdPalpationDeep.SetActive(true);
+		abdPercussion.SetActive(true);
+		abdAuscultation.SetActive(true);
+		backToPhysicalFromAbdominal.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[6] 	{"Abd - Inspection", "Abd - Inspection from the side, eyes at bedside level", "Abd - Palpation - Superficial",
+												"Abd - Palpation - Deep", "Abd - Percussion", "Abd - Auscultation"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains (", eyes at bedside level")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace (", eyes at bedside level", "");
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Abd - ", "");
+			} else if (menuOption.name.Contains ("Abd - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Abd - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMain (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PhysicalNeurologic () {
@@ -2262,6 +2350,28 @@ public class MenuManager : MonoBehaviour {
 		peripheralNervousSystem.SetActive(true);
 		cerebellarExamination.SetActive(true);
 		backToPhysicalFromNeuro.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[3] 	{"Cranial Nerves", "Peripheral Nervous System", "Cerebellar Examination"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerMenuButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Cranial Nerves") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalCranialNerves (); } );
+			} else if (menuOption.name == "Peripheral Nervous System") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalPeripheralNervousSystem (); } );
+			} else if (menuOption.name == "Cerebellar Examination") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalCerebellar (); } );
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMain (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PhysicalCranialNerves () {
@@ -2276,8 +2386,57 @@ public class MenuManager : MonoBehaviour {
 		spinalAccessoryNerveCNXI.SetActive(true);
 		hypoglossalNerveCNXII.SetActive(true);
 		backToNeuroFromCN.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions1 = new string[3] 	{"Olfactory Nerve (CN I)", "Optic Nerve (CN II)", "Oculomotor, Trochlear, and Abducens Nerves (CN III, IV, VI)"};
+		foreach (string i in menuOptions1) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		string[] menuOptions2 = new string[2] 	{"Trigeminal Nerve (CN V)", "Facial Nerve (CN VII)"};
+		foreach (string i in menuOptions2) {
+			GameObject menuOption = Instantiate (playerMenuButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Trigeminal Nerve (CN V)") {
+				menuOption.GetComponent<Button> ().onClick.AddListener (() => { PhysicalCNV (); } );
+			} else if (menuOption.name == "Facial Nerve (CN VII)") {
+				menuOption.GetComponent<Button> ().onClick.AddListener (() => { PhysicalCNVII (); } );
+			}
+		}
+		string[] menuOptions3 = new string[2] 	{"Vestibulocochlear Nerve (CN VIII)", "Glosspharyngeal and Vagus Nerves (CN IX, X)"};
+		foreach (string i in menuOptions3) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		string[] menuOptions4 = new string[2] 	{"Spinal Accessory Nerve (CN XI)", "Hypoglossal Nerve (CN XII)"};
+		foreach (string i in menuOptions4) {
+			GameObject menuOption = Instantiate (playerMenuButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Spinal Accessory Nerve (CN XI)") {
+				menuOption.GetComponent<Button> ().onClick.AddListener (() => { PhysicalCNXI (); } );
+			} else if (menuOption.name == "Hypoglossal Nerve (CN XII)") {
+				menuOption.GetComponent<Button> ().onClick.AddListener (() => { PhysicalCNXII (); } );
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalNeurologic (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
-		
+
 	public void PhysicalCNV () {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		cnVSensationLightTouch.SetActive(true);
@@ -2287,6 +2446,26 @@ public class MenuManager : MonoBehaviour {
 		cnVMotorJawJerkReflex.SetActive(true);
 		cnVMotorLateralAndMedialPterygoids.SetActive(true);
 		backToCNFromCNV.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[6] 	{"CN V - Sensation - Light touch", "CN V - Sensation - Pain and Temperature", "CN V - Sensation - Corneal Reflex",
+												"CN V - Motor - Temporalis and masseters", "CN V - Motor - Jaw Jerk Reflex",
+												"CN V - Motor - Lateral and Medial pterygoids"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("CN V - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("CN V - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalCranialNerves (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PhysicalCNVII () {
@@ -2295,6 +2474,24 @@ public class MenuManager : MonoBehaviour {
 		cnVIIMotorMusclesOfFacialExpression.SetActive(true);
 		cnVIIReflexes.SetActive(true);
 		backToCNFromCNVII.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[3] 	{"CN VII - Inspection", "CN VII - Motor - Muscles of facial expression", "CN VII - Reflexes"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("CN VII - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("CN VII - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalCranialNerves (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PhysicalCNXI () {
@@ -2302,6 +2499,24 @@ public class MenuManager : MonoBehaviour {
 		cnXIInspection.SetActive(true);
 		cnXIMotor.SetActive(true);
 		backToCNFromCNXI.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[2] 	{"CN XI - Inspection", "CN XI - Motor"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("CN XI - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("CN XI - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalCranialNerves (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PhysicalCNXII () {
@@ -2309,6 +2524,24 @@ public class MenuManager : MonoBehaviour {
 		cnXIIInspection.SetActive(true);
 		cnXIIMotor.SetActive(true);
 		backToCNFromCNXII.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[2] 	{"CN XII - Inspection", "CN XII - Motor"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("CN XII - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("CN XII - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalCranialNerves (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PhysicalPeripheralNervousSystem () {
@@ -2321,6 +2554,25 @@ public class MenuManager : MonoBehaviour {
 		neuroProprioception.SetActive(true);
 		neuroReflexes.SetActive(true);
 		backToNeuroFromPeripheral.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[7] 	{"Neuro - General inspection", "Neuro - Tone", "Neuro - Power", "Neuro - Sensation", "Neuro - Vibration",
+												"Neuro - Proprioception", "Neuro - Reflexes"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("Neuro - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Neuro - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalNeurologic (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void PhysicalCerebellar () {
@@ -2331,6 +2583,174 @@ public class MenuManager : MonoBehaviour {
 		cereCoordination.SetActive(true);
 		cereMotor.SetActive(true);
 		backToNeuroFromCerebellar.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[5] 	{"Cere - General inspection", "Cere - Gait", "Cere - Speech", "Cere - Coordination", "Cere - Motor"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("Cere - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Cere - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalNeurologic (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
+	}
+
+	public void PhysicalMSK () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		knees.SetActive(true);
+		hips.SetActive(true);
+		shoulder.SetActive(true);
+		spine.SetActive(true);
+		backToPhysicalFromMSK.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[4] 	{"Knees", "Hips", "Shoulder", "Spine"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerMenuButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Knees") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalKnees (); } );
+			} else if (menuOption.name == "Hips") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalHips (); } );
+			} else if (menuOption.name == "Shoulder") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalShoulder (); } );
+			} else if (menuOption.name == "Spine") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { PhysicalSpine (); } );
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMain (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
+	}
+
+	public void PhysicalKnees () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		kneesInspectionAndGaitAssessment.SetActive(true);
+		kneesRangeOfMovement.SetActive(true);
+		kneesPalpation.SetActive(true);
+		kneesSpecialTests.SetActive(true);
+		backToMSKFromKnees.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[4] 	{"Knees - Inspection and gait assessment", "Knees - Range of movement", "Knees - Palpation",
+												"Knees - Special tests"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("Knees - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Knees - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMSK (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
+	}
+
+	public void PhysicalHips () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		hipsGait.SetActive(true);
+		hipsInspection.SetActive(true);
+		hipsRangeOfMovement.SetActive(true);
+		hipsPalpation.SetActive(true);
+		thomasTest.SetActive(true);
+		trendelenbergSign.SetActive(true);
+		backToMSKFromHips.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[6] 	{"Hips - Gait", "Hips - Inspection", "Hips - Range of movement", "Hips - Palpation", "Thomas Test",
+												"Trendelenberg Sign"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("Hips - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Hips - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMSK (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
+	}
+
+	public void PhysicalShoulder () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		shoulderInspection.SetActive(true);
+		shoulderRangeOfMovementActive.SetActive(true);
+		shoulderRangeOfMovementPassive.SetActive(true);
+		shoulderPalpation.SetActive(true);
+		liftOffTest.SetActive(true);
+		speedsTest.SetActive(true);
+		yergasonsTest.SetActive(true);
+		backToMSKFromShoulder.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[7] 	{"Shoulder - Inspection", "Shoulder - Range of movement - active", "Shoulder - Range of movement - passive",
+												"Shoulder - Palpation", "Lift-off Test", "Speed's Test", "Yergason's Test"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("Shoulder - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Shoulder - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMSK (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
+	}
+
+	public void PhysicalSpine () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
+		spineInspection.SetActive(true);
+		spineRangeOfMovement.SetActive(true);
+		spinePalpation.SetActive(true);
+		straightLegTest.SetActive(true);
+		schobersTest.SetActive(true);
+		backToMSKFromSpine.SetActive(true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[5] 	{"Spine - Inspection", "Spine - Range of movement", "Spine - Palpation", "Straight Leg Test", "Schober's Test"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (1f, 0.588f, 0.196f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("Spine - ")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Spine - ", "");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { PhysicalMSK (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void Labs () {
@@ -2338,6 +2758,24 @@ public class MenuManager : MonoBehaviour {
 		blood.SetActive (true);
 		urinalysis.SetActive (true);
 		backToMainFromLabs.SetActive (true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		GameObject menuOption1 = Instantiate (playerMenuButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		menuOption1.name = "Blood";
+		menuOption1.GetComponent<Image> ().color = new Color (0.392f, 1f, 0.392f, 1f);
+		menuOption1.GetComponentInChildren<Text> ().text = "Blood";
+		menuOption1.transform.localScale = new Vector3 (1, 1, 1);
+		menuOption1.GetComponent<Button> ().onClick.AddListener( () => { Blood (); } );
+		GameObject menuOption2 = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		menuOption2.name = "Urinalysis";
+		menuOption2.GetComponent<Image> ().color = new Color (0.392f, 1f, 0.392f, 1f);
+		menuOption2.GetComponentInChildren<Text> ().text = "Urine";
+		menuOption2.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { MainMenu (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void Blood () {
@@ -2353,6 +2791,33 @@ public class MenuManager : MonoBehaviour {
 		troponinI.SetActive (true);
 		cortisolRandom.SetActive (true);
 		backToLabsFromBlood.SetActive (true);
+		// Testing menu autopopulation
+		foreach (Transform child in GameObject.Find("Test Menu Panel").transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[10] 	{"CBC", "BMP", "Coag", "LFT", "ABG", "ESR, CRP", "Amylase, lipase", "Thyroid hormones", "Troponin I",
+												"Cortisol (random)"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+			menuOption.name = i;
+			menuOption.GetComponent<Image> ().color = new Color (0.392f, 1f, 0.392f, 1f);
+			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("CBC")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("CBC", "Complete Blood Count");
+			} else if (menuOption.name.Contains ("BMP")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("BMP", "Basic Metabolic Panel");
+			} else if (menuOption.name.Contains ("Coag")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Coag", "Coagulation studies");
+			} else if (menuOption.name.Contains ("LFT")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("LFT", "Liver Function Tests");
+			} else if (menuOption.name.Contains ("ABG")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("ABG", "Arterial Blood Gas");
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, GameObject.Find ("Test Menu Panel").transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { Labs (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
 	public void Imaging () {
