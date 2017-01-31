@@ -120,6 +120,9 @@ public class DiseaseInstance {
 	// Imaging Studies
 	public int[] imagingStudies = new int[9] {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
+	// Differential
+	public string[] differential = new string[10];
+
 	// Performance Tracking
 	public List<int> goodQuestions = new List<int>();
 	public List<int> badQuestions = new List<int>();
@@ -133,7 +136,7 @@ public class DiseaseInstance {
 	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability,
 							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, string[] diseasePhysical, float[,] diseaseLabMaxMin,
 							int[] images, int[] goodQuestionIDs, int[] badQuestionIDs, int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs,
-							int[] goodLabIDs, int[] badLabIDs, int[] goodImageIDs, int[] badImageIDs) {
+							int[] goodLabIDs, int[] badLabIDs, int[] goodImageIDs, int[] badImageIDs, string[] differentialOptions) {
 		Debug.Log ("Instance of disease " + diseaseName + " created.");
 		this.disease_name = diseaseName;
 		this.age = RandomAge (ageMin, ageMax);
@@ -144,6 +147,7 @@ public class DiseaseInstance {
 		this.physicalResults = diseasePhysical;
 		RandomLabValue(diseaseLabMaxMin);
 		this.imagingStudies = images;
+		this.differential = differentialOptions;
 		foreach (int i in goodQuestionIDs) {goodQuestions.Add (i);}
 		foreach (int i in badQuestionIDs) {badQuestions.Add (i);}
 		foreach (int i in goodPhysicalManeuverIDs) {goodPhysicalManeuvers.Add (i);}
