@@ -47,7 +47,7 @@ public class DragAndDropItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                                             GetComponent<RectTransform>().sizeDelta.y);
 		// Rescale icon text
 		iconText.GetComponent<RectTransform> ().localScale = new Vector3 (1f, 1f, 1f);
-		iconText.GetComponent<RectTransform> ().localPosition = new Vector3 (0, 0, 0);
+		iconText.GetComponent<RectTransform> ().localPosition = new Vector3 (-260f, 0, 0);
 		if (canvas != null)
         {
             // Display on top of all GUI (in parent canvas)

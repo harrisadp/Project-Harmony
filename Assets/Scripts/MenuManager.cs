@@ -6,10 +6,13 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
 
+	private DiseaseChooser diseaseChooser;
+
 	public TextAsset textAsset;
 	public GameObject playerSelectionPanel;
 	public GameObject imagePanel;
 	public GameObject differentialPanel;
+	public GameObject differentialDiagnosisItem;
 	public GameObject diagnoseButton;
 	public GameObject playerMenuButtonPrefab;
 	public GameObject playerSelectionButtonPrefab;
@@ -26,6 +29,7 @@ public class MenuManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Identifiers
+		diseaseChooser = FindObjectOfType<DiseaseChooser>();
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		levelManager = FindObjectOfType<LevelManager> ();
 
@@ -80,10 +84,21 @@ public class MenuManager : MonoBehaviour {
 	}
 
 	public void Differential () {
+		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		playerSelectionPanel.SetActive (false);
 		differentialPanel.SetActive (true);
 		if (!hasDifferential) {
 			diagnoseButton.SetActive (false);
+			GameObject differentialOptionsPanel = GameObject.Find ("Options Panel");
+			int itemNumber = 0;
+			foreach (Transform child in differentialOptionsPanel.transform) {
+				Debug.Log (child.name);
+				GameObject item = Instantiate (differentialDiagnosisItem, child);
+				item.transform.localScale = new Vector3 (1, 1, 1);
+				item.GetComponentInChildren<Text> ().text = diseaseChooser.disease_data.differential [itemNumber];
+				itemNumber += 1;
+
+			}
 		} else {
 			diagnoseButton.SetActive (true);
 		}
