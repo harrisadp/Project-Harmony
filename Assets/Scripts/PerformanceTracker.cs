@@ -8,21 +8,16 @@ public class PerformanceTracker : MonoBehaviour {
 
 	public int score = 0;
 	public Text scoreText;
-	public int energyValue;
+	public int energyValue = 0;
+	public GameObject energyIcon;
 	public List<string> questionsAsked = new List<string>();
 	public List<string> physicalManeuversPerformed = new List<string>();
 	public List<string> labsOrdered = new List<string>();
 	public List<string> imagesOrdered = new List<string>();
 
-	private GUIBarScript guiBar;
-
 	// Use this for initialization
 	void Start () {
 		scoreText.text = score.ToString();
-		guiBar = FindObjectOfType<GUIBarScript> ();
-		guiBar.Value = 0;
-		guiBar.CurrentValue = 0;
-		guiBar.ForceUpdate ();
 		questionsAsked.Clear();
 		physicalManeuversPerformed.Clear();
 		labsOrdered.Clear();
@@ -31,7 +26,25 @@ public class PerformanceTracker : MonoBehaviour {
 
 	public void UpdateScore () {
 		scoreText.text = score.ToString ();
-		guiBar.Value = (float)energyValue / 10;
+	}
+
+	public void AddEnergy () {
+		if (GameObject.Find ("Energy Panel").transform.childCount < 5) {
+			GameObject energy = Instantiate (energyIcon, GameObject.Find ("Energy Panel").transform);
+			energy.transform.localScale = new Vector3 (1, 1, 1);
+		}
+	}
+
+	public void RemoveEnergy (int numberToRemove) {
+		int numberDestroyed = 0;
+		if (GameObject.Find ("Energy Panel").transform.childCount > 0) {
+			foreach (Transform child in GameObject.Find("Energy Panel").transform){
+				if (numberDestroyed <= numberToRemove) {
+					GameObject.Destroy (child.gameObject);
+					numberDestroyed += 1;
+				}
+			}
+		}
 	}
 
 }

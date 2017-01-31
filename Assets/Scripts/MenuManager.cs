@@ -119,7 +119,6 @@ public class MenuManager : MonoBehaviour {
 	public void DisplayImage(){
 		Image[] images = imagePanel.GetComponentsInChildren<Image>();
 		foreach (Image image in images) {
-			Debug.Log (image.name);
 			if (image.gameObject.name != "Image Panel") {
 				image.sprite = imageToDisplay;
 			}

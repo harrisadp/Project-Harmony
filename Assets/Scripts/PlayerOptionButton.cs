@@ -58,7 +58,8 @@ public class PlayerOptionButton : MonoBehaviour {
 		else if (labValues.labStudies.Contains (this.name)) {
 			CheckIfSufficientEnergy ();
 			if (sufficientEnergy) {
-				performanceTracker.energyValue -= 4;
+				performanceTracker.energyValue -= 2;
+				performanceTracker.RemoveEnergy (2);
 				performanceTracker.labsOrdered.Add (this.name);
 				CheckIfGoodLab ();
 			} else {
@@ -69,8 +70,10 @@ public class PlayerOptionButton : MonoBehaviour {
 		else if (images.imagingStudies.Contains (this.name)) {
 			CheckIfSufficientEnergy ();
 			if (sufficientEnergy) {
-				performanceTracker.energyValue -= 6;
+				performanceTracker.energyValue -= 3;
+				performanceTracker.RemoveEnergy (3);
 				performanceTracker.imagesOrdered.Add (this.name);
+				CheckIfGoodImage ();
 				performanceTracker.UpdateScore ();
 				Imaging ();
 			} else {
@@ -118,9 +121,9 @@ public class PlayerOptionButton : MonoBehaviour {
 	}
 
 	private void CheckIfSufficientEnergy (){
-		if (labValues.labStudies.Contains (this.name) && performanceTracker.energyValue >= 4) {
+		if (labValues.labStudies.Contains (this.name) && performanceTracker.energyValue >= 2) {
 			sufficientEnergy = true;
-		} else if (images.imagingStudies.Contains (this.name) && performanceTracker.energyValue >= 6) {
+		} else if (images.imagingStudies.Contains (this.name) && performanceTracker.energyValue >= 3) {
 			sufficientEnergy = true;
 		} else {
 			sufficientEnergy = false;
@@ -153,8 +156,9 @@ public class PlayerOptionButton : MonoBehaviour {
 		}
 		if (diseaseChooser.disease_data.goodQuestions.Contains (questionNumber)) {
 			performanceTracker.score += 100;
-			if (performanceTracker.energyValue < 10) {
-				performanceTracker.energyValue += 2;
+			if (performanceTracker.energyValue < 5) {
+				performanceTracker.energyValue += 1;
+				performanceTracker.AddEnergy();
 			}
 			performanceTracker.UpdateScore ();
 		} else if (diseaseChooser.disease_data.badQuestions.Contains (questionNumber)){
@@ -172,8 +176,9 @@ public class PlayerOptionButton : MonoBehaviour {
 		}
 		if (diseaseChooser.disease_data.goodPhysicalManeuvers.Contains (physicalNumber)) {
 			performanceTracker.score += 100;
-			if (performanceTracker.energyValue < 10) {
-				performanceTracker.energyValue += 2;
+			if (performanceTracker.energyValue < 5) {
+				performanceTracker.energyValue += 1;
+				performanceTracker.AddEnergy();
 			}
 			performanceTracker.UpdateScore ();
 		} else if (diseaseChooser.disease_data.badPhysicalManeuvers.Contains (physicalNumber)){
@@ -191,11 +196,29 @@ public class PlayerOptionButton : MonoBehaviour {
 		}
 		if (diseaseChooser.disease_data.goodLabs.Contains (labNumber)) {
 			performanceTracker.score += 100;
-			if (performanceTracker.energyValue < 10) {
-			}
 			performanceTracker.UpdateScore ();
 		} else if (diseaseChooser.disease_data.badLabs.Contains (labNumber)) {
 			performanceTracker.score -= 100;
+			performanceTracker.UpdateScore ();
+		} else {
+			performanceTracker.UpdateScore ();
+		}
+	}
+
+	private void CheckIfGoodImage() {
+		int imageNumber = 0;
+		foreach (string image in images.imagingStudies) {
+			if (image == this.name) {
+				imageNumber = images.imagingStudies.IndexOf (image);
+			}
+		}
+		if (diseaseChooser.disease_data.goodImages.Contains (imageNumber)) {
+			performanceTracker.score += 100;
+			performanceTracker.UpdateScore ();
+		} else if (diseaseChooser.disease_data.badImages.Contains (imageNumber)) {
+			performanceTracker.score -= 100;
+			performanceTracker.UpdateScore ();
+		} else {
 			performanceTracker.UpdateScore ();
 		}
 	}
