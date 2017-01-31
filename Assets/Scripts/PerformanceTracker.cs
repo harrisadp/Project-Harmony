@@ -39,7 +39,7 @@ public class PerformanceTracker : MonoBehaviour {
 		int numberDestroyed = 0;
 		if (GameObject.Find ("Energy Panel").transform.childCount > 0) {
 			foreach (Transform child in GameObject.Find("Energy Panel").transform){
-				if (numberDestroyed <= numberToRemove) {
+				if (numberDestroyed < numberToRemove) {
 					GameObject.Destroy (child.gameObject);
 					numberDestroyed += 1;
 				}
