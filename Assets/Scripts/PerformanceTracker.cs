@@ -14,6 +14,9 @@ public class PerformanceTracker : MonoBehaviour {
 	public int energyValue = 0;
 	public GameObject energyIcon;
 	public Animator emdeeAnimator;
+	private AudioSource audioSource;
+	public AudioClip goodSound;
+	public AudioClip badSound;
 	public List<string> questionsAsked = new List<string>();
 	public List<string> physicalManeuversPerformed = new List<string>();
 	public List<string> labsOrdered = new List<string>();
@@ -22,6 +25,8 @@ public class PerformanceTracker : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad (gameObject);
+		audioSource = FindObjectOfType<AudioSource> ();
+		audioSource.volume = 0.25f;
 	}
 
 	void OnEnable()
@@ -66,10 +71,14 @@ public class PerformanceTracker : MonoBehaviour {
 
 	public void PositiveAnimation () {
 		emdeeAnimator.SetTrigger ("Positive Reaction");
+		audioSource.clip = goodSound;
+		audioSource.Play ();
 	}
 
 	public void NegativeAnimation () {
 		emdeeAnimator.SetTrigger ("Negative Reaction");
+		audioSource.clip = badSound;
+		audioSource.Play ();
 	}
 
 }
