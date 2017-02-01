@@ -156,6 +156,7 @@ public class PlayerOptionButton : MonoBehaviour {
 		}
 		if (diseaseChooser.disease_data.goodQuestions.Contains (questionNumber)) {
 			performanceTracker.score += 100;
+			performanceTracker.PositiveAnimation ();
 			if (performanceTracker.energyValue < 5) {
 				performanceTracker.energyValue += 1;
 				performanceTracker.AddEnergy();
@@ -163,6 +164,7 @@ public class PlayerOptionButton : MonoBehaviour {
 			performanceTracker.UpdateScore ();
 		} else if (diseaseChooser.disease_data.badQuestions.Contains (questionNumber)){
 			performanceTracker.score -= 100;
+			performanceTracker.NegativeAnimation ();
 			performanceTracker.UpdateScore ();
 		}
 	}
@@ -176,6 +178,7 @@ public class PlayerOptionButton : MonoBehaviour {
 		}
 		if (diseaseChooser.disease_data.goodPhysicalManeuvers.Contains (physicalNumber)) {
 			performanceTracker.score += 100;
+			performanceTracker.PositiveAnimation ();
 			if (performanceTracker.energyValue < 5) {
 				performanceTracker.energyValue += 1;
 				performanceTracker.AddEnergy();
@@ -183,6 +186,7 @@ public class PlayerOptionButton : MonoBehaviour {
 			performanceTracker.UpdateScore ();
 		} else if (diseaseChooser.disease_data.badPhysicalManeuvers.Contains (physicalNumber)){
 			performanceTracker.score -= 100;
+			performanceTracker.NegativeAnimation ();
 			performanceTracker.UpdateScore ();
 		}
 	}
@@ -196,9 +200,11 @@ public class PlayerOptionButton : MonoBehaviour {
 		}
 		if (diseaseChooser.disease_data.goodLabs.Contains (labNumber)) {
 			performanceTracker.score += 100;
+			performanceTracker.PositiveAnimation ();
 			performanceTracker.UpdateScore ();
 		} else if (diseaseChooser.disease_data.badLabs.Contains (labNumber)) {
 			performanceTracker.score -= 100;
+			performanceTracker.NegativeAnimation ();
 			performanceTracker.UpdateScore ();
 		} else {
 			performanceTracker.UpdateScore ();
@@ -214,9 +220,11 @@ public class PlayerOptionButton : MonoBehaviour {
 		}
 		if (diseaseChooser.disease_data.goodImages.Contains (imageNumber)) {
 			performanceTracker.score += 100;
+			performanceTracker.PositiveAnimation ();
 			performanceTracker.UpdateScore ();
 		} else if (diseaseChooser.disease_data.badImages.Contains (imageNumber)) {
 			performanceTracker.score -= 100;
+			performanceTracker.NegativeAnimation ();
 			performanceTracker.UpdateScore ();
 		} else {
 			performanceTracker.UpdateScore ();

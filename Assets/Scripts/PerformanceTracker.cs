@@ -13,6 +13,7 @@ public class PerformanceTracker : MonoBehaviour {
 	public int score = 0;
 	public int energyValue = 0;
 	public GameObject energyIcon;
+	public Animator emdeeAnimator;
 	public List<string> questionsAsked = new List<string>();
 	public List<string> physicalManeuversPerformed = new List<string>();
 	public List<string> labsOrdered = new List<string>();
@@ -61,6 +62,14 @@ public class PerformanceTracker : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	public void PositiveAnimation () {
+		emdeeAnimator.SetTrigger ("Positive Reaction");
+	}
+
+	public void NegativeAnimation () {
+		emdeeAnimator.SetTrigger ("Negative Reaction");
 	}
 
 }
