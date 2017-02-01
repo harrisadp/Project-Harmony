@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PerformanceTracker : MonoBehaviour {
 
+	private Canvas canvas;
+	private Text scoreText;
+
 	public int score = 0;
-	public Text scoreText;
 	public int energyValue = 0;
 	public GameObject energyIcon;
 	public List<string> questionsAsked = new List<string>();
@@ -17,6 +20,19 @@ public class PerformanceTracker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		DontDestroyOnLoad (gameObject);
+	}
+
+	void OnEnable()
+	{
+		SceneManager.sceneLoaded += OnLevelFinishedLoading;
+	}
+
+	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
+		canvas = FindObjectOfType<Canvas> ();
+		if (canvas.transform.FindChild ("Score/Score")) {scoreText = canvas.transform.Find ("Score/Score").GetComponent<Text> ();}
+		else if (canvas.transform.FindChild ("Score")) {scoreText = canvas.transform.Find ("Score").GetComponent<Text> ();}
+		else {Debug.LogWarning ("No score text found!");}
 		scoreText.text = score.ToString();
 		questionsAsked.Clear();
 		physicalManeuversPerformed.Clear();

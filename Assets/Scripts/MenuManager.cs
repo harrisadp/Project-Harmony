@@ -22,6 +22,7 @@ public class MenuManager : MonoBehaviour {
 	public bool displayImage = false;
 	public bool isFirstTurn = true;
 	public bool hasDifferential = false;
+	public bool backToDifferential = false;
 
 	private DialogueManager dialogueManager;
 	private LevelManager levelManager;
@@ -52,7 +53,8 @@ public class MenuManager : MonoBehaviour {
 		if (displayImage) {DisplayImage ();}
 		else if (isFirstTurn) {StartUp ();}
 		else if (!hasDifferential) {Differential ();}
-		else if (victory) {levelManager.LoadLevel ("01a_Start");}
+		else if (victory) {levelManager.LoadLevel ("03a_Victory");}
+		else if (backToDifferential) {Differential ();}
 		else {MainMenu ();}
 	}
 
@@ -64,6 +66,7 @@ public class MenuManager : MonoBehaviour {
 		playerSelectionPanel.SetActive (false);
 		imagePanel.SetActive (false);
 		differentialPanel.SetActive (false);
+		backToDifferential = false;
 	}
 
 	public void StartUp() {
@@ -92,7 +95,6 @@ public class MenuManager : MonoBehaviour {
 			GameObject differentialOptionsPanel = GameObject.Find ("Options Panel");
 			int itemNumber = 0;
 			foreach (Transform child in differentialOptionsPanel.transform) {
-				Debug.Log (child.name);
 				GameObject item = Instantiate (differentialDiagnosisItem, child);
 				item.transform.localScale = new Vector3 (1, 1, 1);
 				item.GetComponentInChildren<Text> ().text = diseaseChooser.disease_data.differential [itemNumber];
