@@ -9,6 +9,7 @@ public class PerformanceTracker : MonoBehaviour {
 
 	private Canvas canvas;
 	private Text scoreText;
+	private Animator energyAnimator;
 
 	public int score = 0;
 	public int energyValue = 0;
@@ -62,7 +63,9 @@ public class PerformanceTracker : MonoBehaviour {
 		if (GameObject.Find ("Energy Panel").transform.childCount > 0) {
 			foreach (Transform child in GameObject.Find("Energy Panel").transform){
 				if (numberDestroyed < numberToRemove) {
-					GameObject.Destroy (child.gameObject);
+					energyAnimator = child.GetComponent<Animator> ();
+					energyAnimator.SetTrigger ("Energy Depletion");
+//					GameObject.Destroy (child.gameObject);
 					numberDestroyed += 1;
 				}
 			}

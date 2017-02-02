@@ -37,6 +37,11 @@ public class MusicManager : MonoBehaviour {
 			audioSource.Play ();
 			oldMusic = thisLevelMusic;
 		}
+		if (level == 7) {
+			audioSource.volume = 0;
+		} else {
+			audioSource.volume = PlayerPrefsManager.GetMastervolume ();
+		}
 	}
 	
 	public void ChangeVolume (float volume){

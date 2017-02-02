@@ -134,7 +134,7 @@ public class DiseaseInstance {
 	public List<int> badImages = new List<int>();
 
 	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability,
-							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, string[] diseasePhysical, float[,] diseaseLabMaxMin,
+							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, string[] diseasePhysical, float[,] diseaseLabMinMax,
 							int[] images, int[] goodQuestionIDs, int[] badQuestionIDs, int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs,
 							int[] goodLabIDs, int[] badLabIDs, int[] goodImageIDs, int[] badImageIDs, string[] differentialOptions) {
 		Debug.Log ("Instance of disease " + diseaseName + " created.");
@@ -145,7 +145,7 @@ public class DiseaseInstance {
 		this.personality = RandomPersonality (age, male, race);
 		this.answers = diseaseAnswers;
 		this.physicalResults = diseasePhysical;
-		RandomLabValue(diseaseLabMaxMin);
+		RandomLabValue(diseaseLabMinMax);
 		this.imagingStudies = images;
 		this.differential = differentialOptions;
 		foreach (int i in goodQuestionIDs) {goodQuestions.Add (i);}
