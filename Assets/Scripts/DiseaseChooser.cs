@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.Animations;
 using AssemblyCSharp;
 
 public class DiseaseChooser : MonoBehaviour {
@@ -13,7 +12,7 @@ public class DiseaseChooser : MonoBehaviour {
 	public enum DiseaseID {disease1, disease2, disease3};
 	public int diseaseChosen;
 	public Sprite[] sprites;
-	public AnimatorController[] animatorControllers;
+	public RuntimeAnimatorController[] animatorControllers;
 
 	private History history;
 	private PhysicalExam physical;
@@ -36,24 +35,17 @@ public class DiseaseChooser : MonoBehaviour {
 	public void ChooseDisease() {
 		diseaseChosen = (int)(DiseaseID)UnityEngine.Random.Range (0, 3);
 		disease_data = diseaseStruct.GetDiseaseFromList(diseaseChosen);
+		SpriteRenderer patientSpriteRenderer = patient.GetComponent<SpriteRenderer> ();
+		Animator patientAnimator = patient.GetComponent<Animator> ();
 		Debug.Log ("Disease chosen by DiseaseChooser is " + disease_data.disease_name);
 		Debug.Log ("Race chosen by DiseaseChooser is " + disease_data.race);
 		Debug.Log ("Personality chosen by DiseaseChooser is " + disease_data.personality);
-		SpriteRenderer[] patientSpriteRenderers = patient.GetComponentsInChildren<SpriteRenderer> ();
-		Animator[] patientAnimators = patient.GetComponentsInChildren<Animator> ();
-		foreach (SpriteRenderer spriteRenderer in patientSpriteRenderers) {
-			if (disease_data.personality == DiseaseInstance.Personality.personalityA) {
-				spriteRenderer.sprite = sprites [1];
-			} else if (disease_data.personality == DiseaseInstance.Personality.personalityB) {
-				spriteRenderer.sprite = sprites [0];
-			}
-		}
-		foreach (Animator animatorController in patientAnimators) {
-			if (disease_data.personality == DiseaseInstance.Personality.personalityA) {
-				animatorController.runtimeAnimatorController = animatorControllers [1];
-			} else if (disease_data.personality == DiseaseInstance.Personality.personalityB) {
-				animatorController.runtimeAnimatorController = animatorControllers [0];
-			}
+		if (disease_data.personality == DiseaseInstance.Personality.personalityA) {
+			patientSpriteRenderer.sprite = sprites [0];
+			patientAnimator.runtimeAnimatorController = animatorControllers [0];
+		} else if (disease_data.personality == DiseaseInstance.Personality.personalityB) {
+			patientSpriteRenderer.sprite = sprites [1];
+			patientAnimator.runtimeAnimatorController = animatorControllers [1];
 		}
 		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the history object without using MonoBehaviour (at least with my limited knowledge)
 		foreach (string question in disease_data.questions) {

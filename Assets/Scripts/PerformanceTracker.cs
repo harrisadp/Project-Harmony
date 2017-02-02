@@ -9,13 +9,13 @@ public class PerformanceTracker : MonoBehaviour {
 
 	private Canvas canvas;
 	private Text scoreText;
+	private Animator emdeeAnimator;
 	private Animator energyAnimator;
+	private AudioSource audioSource;
 
 	public int score = 0;
 	public int energyValue = 0;
 	public GameObject energyIcon;
-	public Animator emdeeAnimator;
-	private AudioSource audioSource;
 	public AudioClip goodSound;
 	public AudioClip badSound;
 	public List<string> questionsAsked = new List<string>();
@@ -26,8 +26,6 @@ public class PerformanceTracker : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad (gameObject);
-		audioSource = FindObjectOfType<AudioSource> ();
-		audioSource.volume = 0.25f;
 	}
 
 	void OnEnable()
@@ -37,6 +35,9 @@ public class PerformanceTracker : MonoBehaviour {
 
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
 		canvas = FindObjectOfType<Canvas> ();
+		audioSource = GameObject.Find ("Sound Effects").GetComponent<AudioSource> ();
+		audioSource.volume = 0.25f;
+		emdeeAnimator = GameObject.Find ("Emdee").GetComponent<Animator> ();
 		if (canvas.transform.FindChild ("Score/Score")) {scoreText = canvas.transform.Find ("Score/Score").GetComponent<Text> ();}
 		else if (canvas.transform.FindChild ("Score")) {scoreText = canvas.transform.Find ("Score").GetComponent<Text> ();}
 		else {Debug.LogWarning ("No score text found!");}
@@ -63,9 +64,7 @@ public class PerformanceTracker : MonoBehaviour {
 		if (GameObject.Find ("Energy Panel").transform.childCount > 0) {
 			foreach (Transform child in GameObject.Find("Energy Panel").transform){
 				if (numberDestroyed < numberToRemove) {
-					energyAnimator = child.GetComponent<Animator> ();
-					energyAnimator.SetTrigger ("Energy Depletion");
-//					GameObject.Destroy (child.gameObject);
+					Destroy (child.gameObject);
 					numberDestroyed += 1;
 				}
 			}
