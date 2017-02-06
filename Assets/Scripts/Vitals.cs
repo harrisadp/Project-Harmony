@@ -33,9 +33,14 @@ public class Vitals : MonoBehaviour {
 		rrText.text = vitals ["RR"].ToString ();
 		spo2Text.text = vitals ["SpO2"].ToString () + "%";
 	}
-
-	// Update is called once per frame
-	void Update () {
 		
+	public void UpdateDisplay () {
+		tText.text = vitals ["T"].ToString ();
+		hrText.text = vitals ["HR"].ToString ();
+		sbpText.text = vitals ["SBP"].ToString ();
+		dbpText.text = vitals ["DBP"].ToString ();
+		rrText.text = vitals ["RR"].ToString ();
+		spo2Text.text = vitals ["SpO2"].ToString () + "%";
 	}
+
 }

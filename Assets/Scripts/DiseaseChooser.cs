@@ -15,6 +15,7 @@ public class DiseaseChooser : MonoBehaviour {
 	public RuntimeAnimatorController[] animatorControllers;
 
 	private History history;
+	private Vitals vitals;
 	private PhysicalExam physical;
 	private LabValues labValues;
 	private Text ageText, sexText;
@@ -24,6 +25,7 @@ public class DiseaseChooser : MonoBehaviour {
 	void Awake () {
 		diseaseStruct = RunOnStart.global_disease_list;
 		history = FindObjectOfType<History> ();
+		vitals = FindObjectOfType<Vitals> ();
 		physical = FindObjectOfType<PhysicalExam> ();
 		labValues = FindObjectOfType<LabValues> ();
 		ageText = GameObject.Find ("Age Text").GetComponent<Text> ();
@@ -47,11 +49,21 @@ public class DiseaseChooser : MonoBehaviour {
 		foreach (string question in disease_data.questions) {
 			disease_data.OverwriteHistory (history, question, disease_data.answers [Array.IndexOf(disease_data.questions, question), (int)(disease_data.personality)]);
 		}
-		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the history object without using MonoBehaviour (at least with my limited knowledge)
+		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the vitals object without using MonoBehaviour (at least with my limited knowledge)
+		foreach (string vitalSign in disease_data.vitalStrings) {
+			if (vitalSign == "T") {disease_data.OverwriteVitals (vitals, vitalSign, disease_data.temperature);}
+			else if (vitalSign == "HR") {disease_data.OverwriteVitals (vitals, vitalSign, disease_data.heartRate);}
+			else if (vitalSign == "SBP") {disease_data.OverwriteVitals (vitals, vitalSign, disease_data.systolicBP);}
+			else if (vitalSign == "DBP") {disease_data.OverwriteVitals (vitals, vitalSign, disease_data.diastolicBP);}
+			else if (vitalSign == "RR") {disease_data.OverwriteVitals (vitals, vitalSign, disease_data.respiratoryRate);}
+			else if (vitalSign == "SpO2") {disease_data.OverwriteVitals (vitals, vitalSign, disease_data.spO2);}
+		}
+		vitals.UpdateDisplay ();
+		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the physical object without using MonoBehaviour (at least with my limited knowledge)
 		foreach (string physicalManeuver in disease_data.physicalManeuvers) {
 			disease_data.OverwritePhysical (physical, physicalManeuver, disease_data.physicalResults [Array.IndexOf(disease_data.physicalManeuvers, physicalManeuver)]);
 		}
-		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the history object without using MonoBehaviour (at least with my limited knowledge)
+		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the lab object without using MonoBehaviour (at least with my limited knowledge)
 		foreach (string labStudy in disease_data.labStudies) {
 			disease_data.OverwriteLabs (labValues, labStudy, disease_data.labResults [Array.IndexOf(disease_data.labStudies, labStudy)]);
 		}

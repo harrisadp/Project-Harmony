@@ -86,6 +86,10 @@ public class DiseaseInstance {
 	// Answers
 	public string[,] answers = new string[186,2];
 
+	// Vitals
+	public string [] vitalStrings = new string[6] {"T", "HR", "SBP", "DBP", "RR", "SpO2"};
+	public float temperature, heartRate, systolicBP, diastolicBP, respiratoryRate, spO2;
+
 	// Physical Exam Maneuvers
 	public string[] physicalManeuvers = new string[83]
 		{"General appearance", "Glasgow Coma Scale", "Pulm - Inspection", "Pulm - Palpation", "Pulm - Percussion", "Pulm - Auscultation", "Tactile fremitus",
@@ -133,10 +137,12 @@ public class DiseaseInstance {
 	public List<int> goodImages = new List<int>();
 	public List<int> badImages = new List<int>();
 
-	public DiseaseInstance (string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability,
-							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, string[] diseasePhysical, float[,] diseaseLabMinMax,
-							int[] images, int[] goodQuestionIDs, int[] badQuestionIDs, int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs,
-							int[] goodLabIDs, int[] badLabIDs, int[] goodImageIDs, int[] badImageIDs, string[] differentialOptions) {
+	public DiseaseInstance 	(string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability,
+							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, float diseaseTMin, float diseaseTMax, float diseaseHRMin,
+							float diseaseHRMax, float diseaseDBPMin, float diseaseDBPMax, float diseaseSBPMin, float diseaseSBPMax, float diseaseRRMin,
+							float diseaseRRMax, float diseaseSpO2Min, float diseaseSpO2Max, string[] diseasePhysical, float[,] diseaseLabMinMax, int[] images, int[] goodQuestionIDs,
+							int[] badQuestionIDs, int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs, int[] goodLabIDs, int[] badLabIDs,
+							int[] goodImageIDs, int[] badImageIDs, string[] differentialOptions) {
 		Debug.Log ("Instance of disease " + diseaseName + " created.");
 		this.disease_name = diseaseName;
 		this.age = RandomAge (ageMin, ageMax);
@@ -145,6 +151,7 @@ public class DiseaseInstance {
 		this.personality = RandomPersonality (age, male, race);
 		this.answers = diseaseAnswers;
 		this.physicalResults = diseasePhysical;
+		RandomVitals (diseaseTMin, diseaseTMax, diseaseHRMin, diseaseHRMax, diseaseSBPMin, diseaseSBPMax, diseaseDBPMin, diseaseDBPMax, diseaseRRMin, diseaseRRMax, diseaseSpO2Min, diseaseSpO2Max);
 		RandomLabValue(diseaseLabMinMax);
 		this.imagingStudies = images;
 		this.differential = differentialOptions;
@@ -188,6 +195,15 @@ public class DiseaseInstance {
 		} else {return Personality.OldMale;}
 	}
 
+	public void RandomVitals (float tMin, float tMax, float hrMin, float hrMax, float sbpMin, float sbpMax, float dbpMin, float dbpMax, float rrMin, float rrMax, float spo2Min, float spo2Max) {
+		this.temperature = Mathf.Round(10*(UnityEngine.Random.Range (tMin, tMax)))/10;
+		this.heartRate = Mathf.Round(UnityEngine.Random.Range (hrMin, hrMax));
+		this.systolicBP = Mathf.Round(UnityEngine.Random.Range (sbpMin, sbpMax));
+		this.diastolicBP = Mathf.Round(UnityEngine.Random.Range (dbpMin, dbpMax));
+		this.respiratoryRate = Mathf.Round(UnityEngine.Random.Range (rrMin, rrMax));
+		this.spO2 = Mathf.Round(10*(UnityEngine.Random.Range (spo2Min, spo2Max)))/10;
+	}
+
 	public void RandomLabValue (float[,] diseaseLabMaxMin){
 		foreach (string i in labStudies) {
 			if (diseaseLabMaxMin [Array.IndexOf (labStudies, i), 0] != -1f && diseaseLabMaxMin [Array.IndexOf (labStudies, i), 1] != -1f) {
@@ -198,6 +214,10 @@ public class DiseaseInstance {
 
 	public void OverwriteHistory (History history, string historyKey, string historyValue) {
 		history.history [historyKey] = historyValue;
+	}
+
+	public void OverwriteVitals (Vitals vitals, string vitalsKey, float vitalsValue) {
+		vitals.vitals [vitalsKey] = vitalsValue;
 	}
 
 	public void OverwritePhysical (PhysicalExam physical, string physicalKey, string physicalValue) {
