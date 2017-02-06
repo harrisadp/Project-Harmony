@@ -40,13 +40,9 @@ public class DiseaseChooser : MonoBehaviour {
 		Debug.Log ("Disease chosen by DiseaseChooser is " + disease_data.disease_name);
 		Debug.Log ("Race chosen by DiseaseChooser is " + disease_data.race);
 		Debug.Log ("Personality chosen by DiseaseChooser is " + disease_data.personality);
-		if (disease_data.personality == DiseaseInstance.Personality.personalityA) {
-			patientSpriteRenderer.sprite = sprites [0];
-			patientAnimator.runtimeAnimatorController = animatorControllers [0];
-		} else if (disease_data.personality == DiseaseInstance.Personality.personalityB) {
-			patientSpriteRenderer.sprite = sprites [1];
-			patientAnimator.runtimeAnimatorController = animatorControllers [1];
-		}
+		patientSpriteRenderer.sprite = sprites [(int)(disease_data.personality)];
+		patientAnimator.runtimeAnimatorController = animatorControllers [(int)(disease_data.personality)];
+
 		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the history object without using MonoBehaviour (at least with my limited knowledge)
 		foreach (string question in disease_data.questions) {
 			disease_data.OverwriteHistory (history, question, disease_data.answers [Array.IndexOf(disease_data.questions, question), (int)(disease_data.personality)]);

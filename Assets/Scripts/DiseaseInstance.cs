@@ -14,7 +14,7 @@ public class DiseaseInstance {
 	public bool male;
 	public enum Race {asian, black, hispanic, white};
 	public Race race;
-	public enum Personality {personalityA, personalityB};
+	public enum Personality {Schoolgirl, BaseballBoy, GenericFemale, BasicGirl, HairGirl, GenericMale, AsianMale, BasketballMale, JockMale, OldMale};
 	public Personality personality;
 
 	// Questions
@@ -177,8 +177,15 @@ public class DiseaseInstance {
 	}
 
 	public Personality RandomPersonality (int age, bool male, Race race) {
-		if (age <= 50) {return Personality.personalityA;}
-		else {return Personality.personalityB;}
+		if (age <= 15 && male == false) {
+			return Personality.Schoolgirl;
+		} else if (age <= 15 && male == true) {
+			return Personality.BaseballBoy;
+		} else if (age > 15 && age <= 60 && male == false) {
+			return (Personality)(UnityEngine.Random.Range (2, 4));
+		} else if (age > 15 && age <= 60 && male == true) {
+			return (Personality)(UnityEngine.Random.Range (5, 8));
+		} else {return Personality.OldMale;}
 	}
 
 	public void RandomLabValue (float[,] diseaseLabMaxMin){
