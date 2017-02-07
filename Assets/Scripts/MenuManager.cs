@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -142,8 +143,20 @@ public class MenuManager : MonoBehaviour {
 				questionText.transform.localScale = new Vector3 (1, 1, 1);
 				GameObject answerText = Instantiate (journalEntry, journal.transform);
 				answerText.GetComponent<Text> ().text = history.history [question];
-				answerText.GetComponent<Text> ().color = Color.yellow;
 				answerText.transform.localScale = new Vector3 (1, 1, 1);
+				answerText.GetComponent<Text> ().color = Color.yellow;
+				// Check if good question
+				int questionNumber = 0;
+				foreach (string questionFromList in diseaseChooser.disease_data.questions) {
+					if (questionFromList == question) {
+						questionNumber = Array.IndexOf (diseaseChooser.disease_data.questions, question);
+					}
+				}
+				if (diseaseChooser.disease_data.goodQuestions.Contains (questionNumber)) {
+					answerText.GetComponent<Text> ().color = Color.green;
+				} else if (diseaseChooser.disease_data.badQuestions.Contains (questionNumber)){
+					answerText.GetComponent<Text> ().color = Color.red;
+				}
 			}
 		} else if (journalOpen == true) {
 			journalOpen = false;
