@@ -189,9 +189,9 @@ public class DiseaseInstance {
 		} else if (age <= 15 && male == true) {
 			return Personality.BaseballBoy;
 		} else if (age > 15 && age <= 60 && male == false) {
-			return (Personality)(UnityEngine.Random.Range (2, 4));
+			return (Personality)(UnityEngine.Random.Range (2, 5));
 		} else if (age > 15 && age <= 60 && male == true) {
-			return (Personality)(UnityEngine.Random.Range (5, 8));
+			return (Personality)(UnityEngine.Random.Range (5, 9));
 		} else {return Personality.OldMale;}
 	}
 

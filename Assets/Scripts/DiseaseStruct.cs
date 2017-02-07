@@ -391,7 +391,7 @@ new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0}, new int [] {0, 1, 2, 3, 4, 5}, new int []
 36.5f, 37.3f, 60f, 100f, 110f, 130f, 70f, 90f, 10f, 14f, 95.0f, 100.0f,
 new string[] {"x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"},
 new float[,] {{-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}},
-new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1}, new int [] {0, 1, 2, 3, 4, 5}, new int [] {6, 7}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3},
+new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0}, new int [] {0, 1, 2, 3, 4, 5}, new int [] {6, 7}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3},
 				new string [] {"Asthma", "Bronchitis", "COPD", "Pneumonia", "Tuberculosis", "Myocardial Infarction", "Pneumothorax", "GERD", "Pericarditis", "Appendicitis"});
 			disease_list[2] = new DiseaseInstance ("COPD", 60, 90, 0.7f, 0.25f, 0.25f, 0.25f, 0.25f, new string [,] {{"1_Schoolgirl", "1_Baseball Boy",
 "1_Generic Female", "1_Basic Girl", "1_Hair Girl", "1_Generic Male", "1_Asian Male", "1_Basketball Male", "1_Jock Male", "1_Old Male"}, {"2_Schoolgirl", "2_Baseball Boy",
@@ -583,8 +583,8 @@ new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1}, new int [] {0, 1, 2, 3, 4, 5}, new int []
 36.5f, 37.3f, 60f, 100f, 110f, 130f, 70f, 90f, 10f, 14f, 95.0f, 100.0f,
 new string[] {"x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"},
 new float[,] {{-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}, {-1f, -1f}},
-new int[] {2, 2, 2, 2, 2, 2, 2, 2, 2}, new int [] {0, 1, 2, 3, 4, 5}, new int [] {6, 7}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3},
-				new string [] {"Asthma", "Bronchitis", "COPD", "Pneumonia", "Tuberculosis", "Myocardial Infarction", "Pneumothorax", "GERD", "Pericarditis", "Appendicitis"});
+new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0}, new int [] {0, 1, 2, 3, 4, 5}, new int [] {6, 7}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3},
+new string [] {"Asthma", "Bronchitis", "COPD", "Pneumonia", "Tuberculosis", "Myocardial Infarction", "Pneumothorax", "GERD", "Pericarditis", "Appendicitis"});
 		}
 
 		public DiseaseInstance GetDiseaseFromList(int index) {

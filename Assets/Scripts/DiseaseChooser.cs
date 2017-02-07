@@ -12,6 +12,7 @@ public class DiseaseChooser : MonoBehaviour {
 	public enum DiseaseID {disease1, disease2, disease3};
 	public int diseaseChosen;
 	public Sprite[] sprites;
+	public Sprite[] headSprites;
 	public RuntimeAnimatorController[] animatorControllers;
 
 	private History history;
@@ -20,6 +21,7 @@ public class DiseaseChooser : MonoBehaviour {
 	private LabValues labValues;
 	private Text ageText, sexText;
 	private GameObject patient;
+	private RPGTalk rpgTalk;
 
 	// Use this for initialization
 	void Awake () {
@@ -31,6 +33,7 @@ public class DiseaseChooser : MonoBehaviour {
 		ageText = GameObject.Find ("Age Text").GetComponent<Text> ();
 		sexText = GameObject.Find ("Sex Text").GetComponent<Text> ();
 		patient = GameObject.Find ("Patient");
+		rpgTalk = FindObjectOfType<RPGTalk> ();
 		ChooseDisease ();
 	}
 
@@ -44,6 +47,7 @@ public class DiseaseChooser : MonoBehaviour {
 		Debug.Log ("Personality chosen by DiseaseChooser is " + disease_data.personality);
 		patientSpriteRenderer.sprite = sprites [(int)(disease_data.personality)];
 		patientAnimator.runtimeAnimatorController = animatorControllers [(int)(disease_data.personality)];
+		rpgTalk.photos [1].photo = headSprites [(int)(disease_data.personality)];
 
 		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the history object without using MonoBehaviour (at least with my limited knowledge)
 		foreach (string question in disease_data.questions) {
