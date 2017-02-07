@@ -73,7 +73,7 @@ public class MenuManager : MonoBehaviour {
 		foreach (Transform child in playerSelectionPanel.transform){
 			Destroy (child.gameObject);
 		}
-		foreach (Transform child in journal.transform) {
+		foreach (Transform child in journal.transform.FindChild("Viewport/Journal")) {
 			Destroy (child.gameObject);
 		}
 		playerSelectionPanel.SetActive (false);
@@ -138,10 +138,10 @@ public class MenuManager : MonoBehaviour {
 			journalOpen = true;
 			journal.SetActive (true);
 			foreach (string question in performanceTracker.questionsAsked) {
-				GameObject questionText = Instantiate (journalEntry, journal.transform);
+				GameObject questionText = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
 				questionText.GetComponent<Text> ().text = question + "?";
 				questionText.transform.localScale = new Vector3 (1, 1, 1);
-				GameObject answerText = Instantiate (journalEntry, journal.transform);
+				GameObject answerText = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
 				answerText.GetComponent<Text> ().text = history.history [question];
 				answerText.transform.localScale = new Vector3 (1, 1, 1);
 				answerText.GetComponent<Text> ().color = Color.yellow;
