@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class MusicManager : MonoBehaviour {
 
 	public AudioClip[] levelMusicChangeArray;
-	
+
 	private AudioSource audioSource;
 	private AudioClip oldMusic;
 
@@ -36,11 +36,6 @@ public class MusicManager : MonoBehaviour {
 			audioSource.loop = true;
 			audioSource.Play ();
 			oldMusic = thisLevelMusic;
-		}
-		if (level == 7) {
-			audioSource.volume = 0;
-		} else {
-			audioSource.volume = PlayerPrefsManager.GetMastervolume ();
 		}
 	}
 	

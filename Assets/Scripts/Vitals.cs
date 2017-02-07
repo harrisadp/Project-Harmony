@@ -16,10 +16,6 @@ public class Vitals : MonoBehaviour {
 		vitals ["DBP"] = vitals ["SBP"] -40f + Mathf.Round(Random.Range (-5f, 5f));
 		vitals ["RR"] = Mathf.Round(Random.Range (10f, 14f));
 		vitals ["SpO2"] = Mathf.Round(10*(Random.Range (95.0f, 100.0f)))/10;
-	}
-
-	// Use this for initialization
-	void Start () {
 		tText = GameObject.Find ("T Text").GetComponent<Text>();
 		hrText = GameObject.Find ("HR Text").GetComponent<Text>();
 		sbpText = GameObject.Find ("SBP Text").GetComponent<Text>();

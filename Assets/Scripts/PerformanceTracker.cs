@@ -35,13 +35,24 @@ public class PerformanceTracker : MonoBehaviour {
 
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
 		canvas = FindObjectOfType<Canvas> ();
-		audioSource = GameObject.Find ("Sound Effects").GetComponent<AudioSource> ();
-		audioSource.volume = 0.25f;
-		emdeeAnimator = GameObject.Find ("Emdee").GetComponent<Animator> ();
-		if (canvas.transform.FindChild ("Score/Score")) {scoreText = canvas.transform.Find ("Score/Score").GetComponent<Text> ();}
-		else if (canvas.transform.FindChild ("Score")) {scoreText = canvas.transform.Find ("Score").GetComponent<Text> ();}
-		else {Debug.LogWarning ("No score text found!");}
-		scoreText.text = score.ToString();
+		if (canvas.transform.FindChild ("Score/Score")) {
+			scoreText = canvas.transform.Find ("Score/Score").GetComponent<Text> ();
+			scoreText.text = score.ToString();
+		}
+		else if (canvas.transform.FindChild ("Score")) {
+			scoreText = canvas.transform.Find ("Score").GetComponent<Text> ();
+			scoreText.text = score.ToString ();
+		}
+		else {
+			Debug.Log ("No score text found!");
+		}
+		if (GameObject.Find ("Sound Effects") != null) {
+			audioSource = GameObject.Find ("Sound Effects").GetComponent<AudioSource> ();
+			audioSource.volume = 0.25f;
+		}
+		if (GameObject.Find ("Emdee") != null) {
+			emdeeAnimator = GameObject.Find ("Emdee").GetComponent<Animator> ();
+		}
 		questionsAsked.Clear();
 		physicalManeuversPerformed.Clear();
 		labsOrdered.Clear();

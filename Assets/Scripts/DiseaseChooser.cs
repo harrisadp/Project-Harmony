@@ -58,7 +58,6 @@ public class DiseaseChooser : MonoBehaviour {
 			else if (vitalSign == "RR") {disease_data.OverwriteVitals (vitals, vitalSign, disease_data.respiratoryRate);}
 			else if (vitalSign == "SpO2") {disease_data.OverwriteVitals (vitals, vitalSign, disease_data.spO2);}
 		}
-		vitals.UpdateDisplay ();
 		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the physical object without using MonoBehaviour (at least with my limited knowledge)
 		foreach (string physicalManeuver in disease_data.physicalManeuvers) {
 			disease_data.OverwritePhysical (physical, physicalManeuver, disease_data.physicalResults [Array.IndexOf(disease_data.physicalManeuvers, physicalManeuver)]);
@@ -74,6 +73,7 @@ public class DiseaseChooser : MonoBehaviour {
 		ageText.text = disease_data.age.ToString ();
 		if (disease_data.male) {sexText.text = "Male";}
 		else {sexText.text = "Female";}
+		vitals.UpdateDisplay ();
 	}
 
 }
