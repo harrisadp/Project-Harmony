@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
 
-	private DiseaseChooser diseaseChooser;
-
 	public TextAsset textAsset;
 	public GameObject playerSelectionPanel;
 	public GameObject imagePanel;
@@ -16,6 +14,9 @@ public class MenuManager : MonoBehaviour {
 	public GameObject diagnoseButton;
 	public GameObject playerMenuButtonPrefab;
 	public GameObject playerSelectionButtonPrefab;
+	public GameObject journal;
+	public GameObject journalEntry;
+	public GameObject journalButton;
 	public GameObject backButtonPrefab;
 	public Sprite imageToDisplay;
 	public bool victory = false;
@@ -24,15 +25,21 @@ public class MenuManager : MonoBehaviour {
 	public bool hasDifferential = false;
 	public bool backToDifferential = false;
 
-	private DialogueManager dialogueManager;
 	private LevelManager levelManager;
+	private DiseaseChooser diseaseChooser;
+	private DialogueManager dialogueManager;
+	private PerformanceTracker performanceTracker;
+	private History history;
+	private bool journalOpen = false;
 
 	// Use this for initialization
 	void Start () {
 		// Identifiers
+		levelManager = FindObjectOfType<LevelManager> ();
 		diseaseChooser = FindObjectOfType<DiseaseChooser>();
 		dialogueManager = FindObjectOfType<DialogueManager> ();
-		levelManager = FindObjectOfType<LevelManager> ();
+		performanceTracker = FindObjectOfType<PerformanceTracker> ();
+		history = FindObjectOfType<History> ();
 
 		// Actual initialization
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
@@ -40,6 +47,8 @@ public class MenuManager : MonoBehaviour {
 		playerSelectionPanel.SetActive (false);
 		imagePanel.SetActive (false);
 		differentialPanel.SetActive (false);
+		journal.SetActive (false);
+		journalButton.SetActive (false);
 	}
 
 	public void Reset () {
@@ -63,10 +72,15 @@ public class MenuManager : MonoBehaviour {
 		foreach (Transform child in playerSelectionPanel.transform){
 			Destroy (child.gameObject);
 		}
+		foreach (Transform child in journal.transform) {
+			Destroy (child.gameObject);
+		}
 		playerSelectionPanel.SetActive (false);
 		imagePanel.SetActive (false);
 		differentialPanel.SetActive (false);
 		backToDifferential = false;
+		journal.SetActive (false);
+		journalButton.SetActive (true);
 	}
 
 	public void StartUp() {
@@ -116,6 +130,25 @@ public class MenuManager : MonoBehaviour {
 		}
 		imagePanel.SetActive (true);
 		displayImage = false;
+	}
+
+	public void Journal () {
+		if (journalOpen == false) {
+			journalOpen = true;
+			journal.SetActive (true);
+			foreach (string question in performanceTracker.questionsAsked) {
+				GameObject questionText = Instantiate (journalEntry, journal.transform);
+				questionText.GetComponent<Text> ().text = question + "?";
+				questionText.transform.localScale = new Vector3 (1, 1, 1);
+				GameObject answerText = Instantiate (journalEntry, journal.transform);
+				answerText.GetComponent<Text> ().text = history.history [question];
+				answerText.GetComponent<Text> ().color = Color.yellow;
+				answerText.transform.localScale = new Vector3 (1, 1, 1);
+			}
+		} else if (journalOpen == true) {
+			journalOpen = false;
+			MainMenu ();
+		}
 	}
 
 	// Boring menu navigation below
