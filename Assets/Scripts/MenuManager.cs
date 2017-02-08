@@ -31,6 +31,7 @@ public class MenuManager : MonoBehaviour {
 	private DialogueManager dialogueManager;
 	private PerformanceTracker performanceTracker;
 	private History history;
+	private PhysicalExam physicalExam;
 	private bool journalOpen = false;
 
 	// Use this for initialization
@@ -41,6 +42,7 @@ public class MenuManager : MonoBehaviour {
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		performanceTracker = FindObjectOfType<PerformanceTracker> ();
 		history = FindObjectOfType<History> ();
+		physicalExam = FindObjectOfType<PhysicalExam> ();
 
 		// Actual initialization
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
@@ -137,9 +139,17 @@ public class MenuManager : MonoBehaviour {
 		if (journalOpen == false) {
 			journalOpen = true;
 			journal.SetActive (true);
+			// Journal header
 			GameObject title = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
 			title.GetComponent<Text> ().text = "JOURNAL";
 			title.transform.localScale = new Vector3 (1, 1, 1);
+			title.GetComponent<Text> ().alignment = TextAnchor.UpperCenter;
+			// History header
+			GameObject historyHeader = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
+			historyHeader.GetComponent<Text> ().text = "HISTORY";
+			historyHeader.transform.localScale = new Vector3 (1, 1, 1);
+			historyHeader.GetComponent<Text> ().fontStyle = FontStyle.BoldAndItalic;
+			// History population
 			foreach (string question in performanceTracker.questionsAsked) {
 				GameObject questionText = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
 				questionText.GetComponent<Text> ().text = question + "?";
@@ -154,7 +164,7 @@ public class MenuManager : MonoBehaviour {
 				TextGenerator tgAnswers = answerText.GetComponent<Text> ().cachedTextGenerator;
 				Canvas.ForceUpdateCanvases ();
 				answerText.GetComponent<LayoutElement> ().minHeight = 30f * tgAnswers.lineCount;
-				// Check if good question
+				// Check if good question and change text color accordingly
 				int questionNumber = 0;
 				foreach (string questionFromList in diseaseChooser.disease_data.questions) {
 					if (questionFromList == question) {
@@ -166,6 +176,51 @@ public class MenuManager : MonoBehaviour {
 				} else if (diseaseChooser.disease_data.badQuestions.Contains (questionNumber)){
 					answerText.GetComponent<Text> ().color = Color.red;
 				}
+			}
+			// If no history
+			if (performanceTracker.questionsAsked.Count == 0) {
+				GameObject noHistory = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
+				noHistory.GetComponent<Text> ().text = "No history obtained";
+				noHistory.transform.localScale = new Vector3 (1, 1, 1);
+			}
+			// Physical header
+			GameObject physicalHeader = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
+			physicalHeader.GetComponent<Text> ().text = "PHYSICAL";
+			physicalHeader.transform.localScale = new Vector3 (1, 1, 1);
+			physicalHeader.GetComponent<Text> ().fontStyle = FontStyle.BoldAndItalic;
+			// Physical population
+			foreach (string physicalManeuver in performanceTracker.physicalManeuversPerformed) {
+				GameObject physicalText = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
+				physicalText.GetComponent<Text> ().text = physicalManeuver;
+				physicalText.transform.localScale = new Vector3 (1, 1, 1);
+				TextGenerator tgPhysicalManeuvers = physicalText.GetComponent<Text> ().cachedTextGenerator;
+				Canvas.ForceUpdateCanvases ();
+				physicalText.GetComponent<LayoutElement> ().minHeight = 30f * tgPhysicalManeuvers.lineCount;
+				GameObject physicalResult = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
+				physicalResult.GetComponent<Text> ().text = physicalExam.physical [physicalManeuver];
+				physicalResult.transform.localScale = new Vector3 (1, 1, 1);
+				physicalResult.GetComponent<Text> ().color = Color.yellow;
+				TextGenerator tgPhysicalResults = physicalResult.GetComponent<Text> ().cachedTextGenerator;
+				Canvas.ForceUpdateCanvases ();
+				physicalResult.GetComponent<LayoutElement> ().minHeight = 30f * tgPhysicalResults.lineCount;
+				// Check if good physical and change text color accordingly
+				int physicalNumber = 0;
+				foreach (string physicalFromList in diseaseChooser.disease_data.physicalManeuvers) {
+					if (physicalFromList == physicalManeuver) {
+						physicalNumber = Array.IndexOf (diseaseChooser.disease_data.physicalManeuvers, physicalManeuver);
+					}
+				}
+				if (diseaseChooser.disease_data.goodPhysicalManeuvers.Contains (physicalNumber)) {
+					physicalResult.GetComponent<Text> ().color = Color.green;
+				} else if (diseaseChooser.disease_data.badPhysicalManeuvers.Contains (physicalNumber)){
+					physicalResult.GetComponent<Text> ().color = Color.red;
+				}
+			}
+			// If no physical
+			if (performanceTracker.physicalManeuversPerformed.Count == 0) {
+				GameObject noPhysical = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
+				noPhysical.GetComponent<Text> ().text = "No physical exam maneuvers performed";
+				noPhysical.transform.localScale = new Vector3 (1, 1, 1);
 			}
 		} else if (journalOpen == true) {
 			journalOpen = false;
