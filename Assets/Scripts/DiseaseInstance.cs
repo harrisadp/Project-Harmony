@@ -14,7 +14,7 @@ public class DiseaseInstance {
 	public bool male;
 	public enum Race {asian, black, hispanic, white};
 	public Race race;
-	public enum Personality {Schoolgirl, BaseballBoy, GenericFemale, BasicGirl, HairGirl, GenericMale, AsianMale, BasketballMale, JockMale, OldMale};
+	public enum Personality {Schoolgirl, BaseballBoy, GenericFemale, BasicGirl, HairGirl, GenericMale, AsianMale, BasketballMale, JockMale, CatLady, OldMale};
 	public Personality personality;
 
 	// Questions
@@ -84,7 +84,7 @@ public class DiseaseInstance {
 		"Have you noticed any changes to your fingernails", "Have you noticed any changes to your hair growth"};
 
 	// Answers
-	public string[,] answers = new string[186,2];
+	public string[,] answers = new string[186,11];
 
 	// Vitals
 	public string [] vitalStrings = new string[6] {"T", "HR", "SBP", "DBP", "RR", "SpO2"};
@@ -192,7 +192,11 @@ public class DiseaseInstance {
 			return (Personality)(UnityEngine.Random.Range (2, 5));
 		} else if (age > 15 && age <= 60 && male == true) {
 			return (Personality)(UnityEngine.Random.Range (5, 9));
-		} else {return Personality.OldMale;}
+		} else if (age > 60 && male == false) {
+			return Personality.CatLady;
+		} else if (age > 60 && male == true) {
+			return Personality.OldMale;
+		} else {return Personality.GenericMale;}
 	}
 
 	public void RandomVitals (float tMin, float tMax, float hrMin, float hrMax, float sbpMin, float sbpMax, float dbpMin, float dbpMax, float rrMin, float rrMax, float spo2Min, float spo2Max) {
