@@ -137,14 +137,23 @@ public class MenuManager : MonoBehaviour {
 		if (journalOpen == false) {
 			journalOpen = true;
 			journal.SetActive (true);
+			GameObject title = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
+			title.GetComponent<Text> ().text = "JOURNAL";
+			title.transform.localScale = new Vector3 (1, 1, 1);
 			foreach (string question in performanceTracker.questionsAsked) {
 				GameObject questionText = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
 				questionText.GetComponent<Text> ().text = question + "?";
 				questionText.transform.localScale = new Vector3 (1, 1, 1);
+				TextGenerator tgQuestions = questionText.GetComponent<Text> ().cachedTextGenerator;
+				Canvas.ForceUpdateCanvases ();
+				questionText.GetComponent<LayoutElement> ().minHeight = 30f * tgQuestions.lineCount;
 				GameObject answerText = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
 				answerText.GetComponent<Text> ().text = history.history [question];
 				answerText.transform.localScale = new Vector3 (1, 1, 1);
 				answerText.GetComponent<Text> ().color = Color.yellow;
+				TextGenerator tgAnswers = answerText.GetComponent<Text> ().cachedTextGenerator;
+				Canvas.ForceUpdateCanvases ();
+				answerText.GetComponent<LayoutElement> ().minHeight = 30f * tgAnswers.lineCount;
 				// Check if good question
 				int questionNumber = 0;
 				foreach (string questionFromList in diseaseChooser.disease_data.questions) {
