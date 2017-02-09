@@ -15,10 +15,9 @@ public class MenuManager : MonoBehaviour {
 	public GameObject diagnoseButton;
 	public GameObject playerMenuButtonPrefab;
 	public GameObject playerSelectionButtonPrefab;
-	public GameObject journal;
-	public GameObject journalEntry;
-	public GameObject journalButton;
 	public GameObject backButtonPrefab;
+	public GameObject journal;
+	public GameObject journalButton;
 	public Sprite imageToDisplay;
 	public bool victory = false;
 	public bool displayImage = false;
@@ -29,10 +28,6 @@ public class MenuManager : MonoBehaviour {
 	private LevelManager levelManager;
 	private DiseaseChooser diseaseChooser;
 	private DialogueManager dialogueManager;
-	private PerformanceTracker performanceTracker;
-	private History history;
-	private PhysicalExam physicalExam;
-	private bool journalOpen = false;
 
 	// Use this for initialization
 	void Start () {
@@ -40,9 +35,6 @@ public class MenuManager : MonoBehaviour {
 		levelManager = FindObjectOfType<LevelManager> ();
 		diseaseChooser = FindObjectOfType<DiseaseChooser>();
 		dialogueManager = FindObjectOfType<DialogueManager> ();
-		performanceTracker = FindObjectOfType<PerformanceTracker> ();
-		history = FindObjectOfType<History> ();
-		physicalExam = FindObjectOfType<PhysicalExam> ();
 
 		// Actual initialization
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
@@ -58,6 +50,7 @@ public class MenuManager : MonoBehaviour {
 		foreach (Transform child in transform) {child.gameObject.SetActive (false);}
 		foreach (Transform child in playerSelectionPanel.transform){Destroy (child.gameObject);}
 		playerSelectionPanel.SetActive (false);
+		journalButton.SetActive (false);
 	}
 
 	public void NewTurn () {
@@ -75,15 +68,11 @@ public class MenuManager : MonoBehaviour {
 		foreach (Transform child in playerSelectionPanel.transform){
 			Destroy (child.gameObject);
 		}
-		foreach (Transform child in journal.transform.FindChild("Viewport/Journal")) {
-			Destroy (child.gameObject);
-		}
 		playerSelectionPanel.SetActive (false);
 		imagePanel.SetActive (false);
 		differentialPanel.SetActive (false);
-		backToDifferential = false;
-		journal.SetActive (false);
 		journalButton.SetActive (true);
+		backToDifferential = false;
 	}
 
 	public void StartUp() {
@@ -133,99 +122,6 @@ public class MenuManager : MonoBehaviour {
 		}
 		imagePanel.SetActive (true);
 		displayImage = false;
-	}
-
-	public void Journal () {
-		if (journalOpen == false) {
-			journalOpen = true;
-			journal.SetActive (true);
-			// Journal header
-			GameObject title = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
-			title.GetComponent<Text> ().text = "JOURNAL";
-			title.transform.localScale = new Vector3 (1, 1, 1);
-			title.GetComponent<Text> ().alignment = TextAnchor.UpperCenter;
-			// History header
-			GameObject historyHeader = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
-			historyHeader.GetComponent<Text> ().text = "HISTORY";
-			historyHeader.transform.localScale = new Vector3 (1, 1, 1);
-			historyHeader.GetComponent<Text> ().fontStyle = FontStyle.BoldAndItalic;
-			// History population
-			foreach (string question in performanceTracker.questionsAsked) {
-				GameObject questionText = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
-				questionText.GetComponent<Text> ().text = question + "?";
-				questionText.transform.localScale = new Vector3 (1, 1, 1);
-				TextGenerator tgQuestions = questionText.GetComponent<Text> ().cachedTextGenerator;
-				Canvas.ForceUpdateCanvases ();
-				questionText.GetComponent<LayoutElement> ().minHeight = 30f * tgQuestions.lineCount;
-				GameObject answerText = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
-				answerText.GetComponent<Text> ().text = history.history [question];
-				answerText.transform.localScale = new Vector3 (1, 1, 1);
-				answerText.GetComponent<Text> ().color = Color.yellow;
-				TextGenerator tgAnswers = answerText.GetComponent<Text> ().cachedTextGenerator;
-				Canvas.ForceUpdateCanvases ();
-				answerText.GetComponent<LayoutElement> ().minHeight = 30f * tgAnswers.lineCount;
-				// Check if good question and change text color accordingly
-				int questionNumber = 0;
-				foreach (string questionFromList in diseaseChooser.disease_data.questions) {
-					if (questionFromList == question) {
-						questionNumber = Array.IndexOf (diseaseChooser.disease_data.questions, question);
-					}
-				}
-				if (diseaseChooser.disease_data.goodQuestions.Contains (questionNumber)) {
-					answerText.GetComponent<Text> ().color = Color.green;
-				} else if (diseaseChooser.disease_data.badQuestions.Contains (questionNumber)){
-					answerText.GetComponent<Text> ().color = Color.red;
-				}
-			}
-			// If no history
-			if (performanceTracker.questionsAsked.Count == 0) {
-				GameObject noHistory = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
-				noHistory.GetComponent<Text> ().text = "No history obtained";
-				noHistory.transform.localScale = new Vector3 (1, 1, 1);
-			}
-			// Physical header
-			GameObject physicalHeader = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
-			physicalHeader.GetComponent<Text> ().text = "PHYSICAL";
-			physicalHeader.transform.localScale = new Vector3 (1, 1, 1);
-			physicalHeader.GetComponent<Text> ().fontStyle = FontStyle.BoldAndItalic;
-			// Physical population
-			foreach (string physicalManeuver in performanceTracker.physicalManeuversPerformed) {
-				GameObject physicalText = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
-				physicalText.GetComponent<Text> ().text = physicalManeuver;
-				physicalText.transform.localScale = new Vector3 (1, 1, 1);
-				TextGenerator tgPhysicalManeuvers = physicalText.GetComponent<Text> ().cachedTextGenerator;
-				Canvas.ForceUpdateCanvases ();
-				physicalText.GetComponent<LayoutElement> ().minHeight = 30f * tgPhysicalManeuvers.lineCount;
-				GameObject physicalResult = Instantiate (journalEntry, journal.transform.FindChild("Viewport/Journal"));
-				physicalResult.GetComponent<Text> ().text = physicalExam.physical [physicalManeuver];
-				physicalResult.transform.localScale = new Vector3 (1, 1, 1);
-				physicalResult.GetComponent<Text> ().color = Color.yellow;
-				TextGenerator tgPhysicalResults = physicalResult.GetComponent<Text> ().cachedTextGenerator;
-				Canvas.ForceUpdateCanvases ();
-				physicalResult.GetComponent<LayoutElement> ().minHeight = 30f * tgPhysicalResults.lineCount;
-				// Check if good physical and change text color accordingly
-				int physicalNumber = 0;
-				foreach (string physicalFromList in diseaseChooser.disease_data.physicalManeuvers) {
-					if (physicalFromList == physicalManeuver) {
-						physicalNumber = Array.IndexOf (diseaseChooser.disease_data.physicalManeuvers, physicalManeuver);
-					}
-				}
-				if (diseaseChooser.disease_data.goodPhysicalManeuvers.Contains (physicalNumber)) {
-					physicalResult.GetComponent<Text> ().color = Color.green;
-				} else if (diseaseChooser.disease_data.badPhysicalManeuvers.Contains (physicalNumber)){
-					physicalResult.GetComponent<Text> ().color = Color.red;
-				}
-			}
-			// If no physical
-			if (performanceTracker.physicalManeuversPerformed.Count == 0) {
-				GameObject noPhysical = Instantiate (journalEntry, journal.transform.FindChild ("Viewport/Journal"));
-				noPhysical.GetComponent<Text> ().text = "No physical exam maneuvers performed";
-				noPhysical.transform.localScale = new Vector3 (1, 1, 1);
-			}
-		} else if (journalOpen == true) {
-			journalOpen = false;
-			MainMenu ();
-		}
 	}
 
 	// Boring menu navigation below
