@@ -14,6 +14,7 @@ public class DiseaseChooser : MonoBehaviour {
 	public Sprite[] sprites;
 	public Sprite[] headSprites;
 	public RuntimeAnimatorController[] animatorControllers;
+	public GameObject runOnStart;
 
 	private History history;
 	private Vitals vitals;
@@ -78,6 +79,13 @@ public class DiseaseChooser : MonoBehaviour {
 		if (disease_data.male) {sexText.text = "Male";}
 		else {sexText.text = "Female";}
 		vitals.UpdateDisplay ();
+	}
+
+	public void HardReset () {
+		Debug.Log ("Hard reset");
+		Destroy (FindObjectOfType<RunOnStart> ().gameObject);
+		Instantiate (runOnStart);
+		diseaseStruct = RunOnStart.global_disease_list;
 	}
 
 }

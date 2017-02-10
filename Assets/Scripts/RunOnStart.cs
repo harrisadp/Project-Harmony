@@ -10,6 +10,7 @@ public class RunOnStart : MonoBehaviour {
 	void Awake () {
 		DontDestroyOnLoad (gameObject);
 		global_disease_list = new DiseaseStruct (3);
+		Debug.Log ("New DiseaseStruct created");
 	}
 
 }
