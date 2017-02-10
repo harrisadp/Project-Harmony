@@ -67,8 +67,8 @@ public class DiseaseChooser : MonoBehaviour {
 			disease_data.OverwritePhysical (physical, physicalManeuver, disease_data.physicalResults [Array.IndexOf(disease_data.physicalManeuvers, physicalManeuver)]);
 		}
 		// The following is part of this DiseaseChooser class and not the DiseaseInstance class because I can't reference the lab object without using MonoBehaviour (at least with my limited knowledge)
-		foreach (string labStudy in disease_data.labStudies) {
-			disease_data.OverwriteLabs (labValues, labStudy, disease_data.labResults [Array.IndexOf(disease_data.labStudies, labStudy)]);
+		foreach (string labStudy in disease_data.labComponents) {
+			disease_data.OverwriteLabs (labValues, labStudy, disease_data.labResults [Array.IndexOf(disease_data.labComponents, labStudy)]);
 		}
 		UpdateDisplays ();
 	}

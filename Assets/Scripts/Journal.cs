@@ -6,24 +6,22 @@ using UnityEngine.UI;
 
 public class Journal : MonoBehaviour {
 
+	public GameObject scrollView;
 	public GameObject journalEntry;
+	public PerformanceTracker performanceTracker;
 
-	private PerformanceTracker performanceTracker;
 	private DiseaseChooser diseaseChooser;
 	private History history;
 	private PhysicalExam physicalExam;
 	private LabValues labValues;
-	private GameObject scrollView;
 	private bool journalOpen = false;
 
 	// Use this for initialization
 	void Start () {
-		performanceTracker = FindObjectOfType<PerformanceTracker> ();
 		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
 		history = FindObjectOfType<History> ();
 		physicalExam = FindObjectOfType<PhysicalExam> ();
 		labValues = FindObjectOfType<LabValues> ();
-		scrollView = gameObject.transform.parent.parent.gameObject;
 	}
 
 	public void ToggleJournal () {
@@ -37,14 +35,30 @@ public class Journal : MonoBehaviour {
 	public void OpenJournal () {
 		journalOpen = true;
 		scrollView.SetActive (true);
+		foreach (Transform child in this.transform) {Destroy (child.gameObject);}
 		// Journal header
 		GameObject title = Instantiate (journalEntry, this.transform);
 		title.GetComponent<Text> ().text = "JOURNAL";
 		title.transform.localScale = new Vector3 (1, 1, 1);
 		title.GetComponent<Text> ().alignment = TextAnchor.UpperCenter;
+		JournalHistory ();
+		JournalPhysical ();
+		JournalLabs ();
+		JournalImaging ();
+	}
+
+	public void CloseJournal () {
+		journalOpen = false;
+		foreach (Transform child in this.transform) {
+			Destroy (child.gameObject);
+		}
+		scrollView.SetActive (false);
+	}
+
+	private void JournalHistory () {
 		// History header
 		GameObject historyHeader = Instantiate (journalEntry, this.transform);
-		historyHeader.GetComponent<Text> ().text = "HISTORY";
+		historyHeader.GetComponent<Text> ().text = "History";
 		historyHeader.transform.localScale = new Vector3 (1, 1, 1);
 		historyHeader.GetComponent<Text> ().fontStyle = FontStyle.BoldAndItalic;
 		// History population
@@ -63,15 +77,9 @@ public class Journal : MonoBehaviour {
 			Canvas.ForceUpdateCanvases ();
 			answerText.GetComponent<LayoutElement> ().minHeight = 30f * tgAnswers.lineCount;
 			// Check if good question and change text color accordingly
-			int questionNumber = 0;
-			foreach (string questionFromList in diseaseChooser.disease_data.questions) {
-				if (questionFromList == question) {
-					questionNumber = Array.IndexOf (diseaseChooser.disease_data.questions, question);
-				}
-			}
-			if (diseaseChooser.disease_data.goodQuestions.Contains (questionNumber)) {
+			if (diseaseChooser.disease_data.goodQuestions.Contains (Array.IndexOf (diseaseChooser.disease_data.questions, question))) {
 				answerText.GetComponent<Text> ().color = Color.green;
-			} else if (diseaseChooser.disease_data.badQuestions.Contains (questionNumber)) {
+			} else if (diseaseChooser.disease_data.badQuestions.Contains (Array.IndexOf (diseaseChooser.disease_data.questions, question))) {
 				answerText.GetComponent<Text> ().color = Color.red;
 			}
 		}
@@ -81,9 +89,12 @@ public class Journal : MonoBehaviour {
 			noHistory.GetComponent<Text> ().text = "No history obtained";
 			noHistory.transform.localScale = new Vector3 (1, 1, 1);
 		}
+	}
+
+	private void JournalPhysical () {
 		// Physical header
 		GameObject physicalHeader = Instantiate (journalEntry, this.transform);
-		physicalHeader.GetComponent<Text> ().text = "PHYSICAL";
+		physicalHeader.GetComponent<Text> ().text = "Physical";
 		physicalHeader.transform.localScale = new Vector3 (1, 1, 1);
 		physicalHeader.GetComponent<Text> ().fontStyle = FontStyle.BoldAndItalic;
 		// Physical population
@@ -101,16 +112,10 @@ public class Journal : MonoBehaviour {
 			TextGenerator tgPhysicalResults = physicalResult.GetComponent<Text> ().cachedTextGenerator;
 			Canvas.ForceUpdateCanvases ();
 			physicalResult.GetComponent<LayoutElement> ().minHeight = 30f * tgPhysicalResults.lineCount;
-			// Check if good physical and change text color accordingly
-			int physicalNumber = 0;
-			foreach (string physicalFromList in diseaseChooser.disease_data.physicalManeuvers) {
-				if (physicalFromList == physicalManeuver) {
-					physicalNumber = Array.IndexOf (diseaseChooser.disease_data.physicalManeuvers, physicalManeuver);
-				}
-			}
-			if (diseaseChooser.disease_data.goodPhysicalManeuvers.Contains (physicalNumber)) {
+			// Check if good physical exam maneuver and change text color accordingly
+			if (diseaseChooser.disease_data.goodPhysicalManeuvers.Contains (Array.IndexOf (diseaseChooser.disease_data.physicalManeuvers, physicalManeuver))) {
 				physicalResult.GetComponent<Text> ().color = Color.green;
-			} else if (diseaseChooser.disease_data.badPhysicalManeuvers.Contains (physicalNumber)) {
+			} else if (diseaseChooser.disease_data.badPhysicalManeuvers.Contains (Array.IndexOf (diseaseChooser.disease_data.physicalManeuvers, physicalManeuver))) {
 				physicalResult.GetComponent<Text> ().color = Color.red;
 			}
 		}
@@ -120,10 +125,12 @@ public class Journal : MonoBehaviour {
 			noPhysical.GetComponent<Text> ().text = "No physical exam maneuvers performed";
 			noPhysical.transform.localScale = new Vector3 (1, 1, 1);
 		}
+	}
 
+	void JournalLabs () {
 		// Labs header
 		GameObject labsHeader = Instantiate (journalEntry, this.transform);
-		labsHeader.GetComponent<Text> ().text = "LABS";
+		labsHeader.GetComponent<Text> ().text = "Labs";
 		labsHeader.transform.localScale = new Vector3 (1, 1, 1);
 		labsHeader.GetComponent<Text> ().fontStyle = FontStyle.BoldAndItalic;
 		// Labs population
@@ -134,27 +141,20 @@ public class Journal : MonoBehaviour {
 			TextGenerator tgLabTest = labTest.GetComponent<Text> ().cachedTextGenerator;
 			Canvas.ForceUpdateCanvases ();
 			labTest.GetComponent<LayoutElement> ().minHeight = 30f * tgLabTest.lineCount;
-
-			foreach (string labValueInStudy in labValues.labValuesInEachStudy[labStudy]) {
+			foreach (string labValueInStudy in labValues.labValuesInEachStudy [labStudy]) {
 				GameObject labResult = Instantiate (journalEntry, this.transform);
 				labResult.GetComponent<Text> ().text = labValueInStudy + ": " + labValues.labValues [labValueInStudy];
 				labResult.transform.localScale = new Vector3 (1, 1, 1);
 				labResult.GetComponent<Text> ().color = Color.yellow;
+				// Check if good lab and change text color accordingly
+				if (diseaseChooser.disease_data.goodLabs.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy))) {
+					labResult.GetComponent<Text> ().color = Color.green;
+				} else if (diseaseChooser.disease_data.badLabs.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy))) {
+					labResult.GetComponent<Text> ().color = Color.red;
+				}
 				TextGenerator tgLabResult = labResult.GetComponent<Text> ().cachedTextGenerator;
 				Canvas.ForceUpdateCanvases ();
 				labResult.GetComponent<LayoutElement> ().minHeight = 30f * tgLabResult.lineCount;
-				// Check if good lab and change text color accordingly
-				int labNumber = 0;
-				foreach (string labFromList in diseaseChooser.disease_data.labStudies) {
-					if (labFromList == labStudy) {
-						labNumber = Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy);
-					}
-				}
-				if (diseaseChooser.disease_data.goodLabs.Contains (labNumber)) {
-					labResult.GetComponent<Text> ().color = Color.green;
-				} else if (diseaseChooser.disease_data.badLabs.Contains (labNumber)) {
-					labResult.GetComponent<Text> ().color = Color.red;
-				}
 			}
 		}
 		// If no labs
@@ -165,12 +165,19 @@ public class Journal : MonoBehaviour {
 		}
 	}
 
-	public void CloseJournal () {
-		journalOpen = false;
-		foreach (Transform child in this.transform) {
-			Destroy (child.gameObject);
+	private void JournalImaging () {
+		// Imaging header
+		GameObject labsHeader = Instantiate (journalEntry, this.transform);
+		labsHeader.GetComponent<Text> ().text = "Imaging";
+		labsHeader.transform.localScale = new Vector3 (1, 1, 1);
+		labsHeader.GetComponent<Text> ().fontStyle = FontStyle.BoldAndItalic;
+		// Imaging population
+		// If no imaging
+		if (performanceTracker.labsOrdered.Count == 0) {
+			GameObject noLabs = Instantiate (journalEntry, this.transform);
+			noLabs.GetComponent<Text> ().text = "No imaging studies ordered";
+			noLabs.transform.localScale = new Vector3 (1, 1, 1);
 		}
-		scrollView.SetActive (false);
 	}
 
 }

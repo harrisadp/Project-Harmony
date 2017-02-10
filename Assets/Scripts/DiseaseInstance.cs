@@ -112,7 +112,10 @@ public class DiseaseInstance {
 	public string[] physicalResults = new string[83];
 
 	// Lab Studies
-	public string[] labStudies = new string[37]
+	public string[] labStudies = new string[11]
+	{"CBC", "BMP", "Coag", "LFT", "ABG", "ESR, CRP", "Amylase, lipase", "Thyroid hormones", "Troponin I", "Cortisol", "Urinalysis"};
+		
+	public string[] labComponents = new string[37]
 		{"WBC", "HGB", "PLT", "Na", "K", "Cl", "HCO3", "BUN", "Cr", "Glu", "AST", "ALT", "AlkPhos", "Ca", "TotalProt", "Albumin", "TotalBili", "PT", "PTT", "INR",
 		"Amylase", "Lipase", "Lactate", "Troponin I", "CK", "CRP", "ESR", "Cortisol (random)", "TSH", "T3", "T4", "pH", "paCO2", "paO2", "upH", "uSpGrav", "uGluc"};
 	
@@ -209,9 +212,9 @@ public class DiseaseInstance {
 	}
 
 	public void RandomLabValue (float[,] diseaseLabMaxMin){
-		foreach (string i in labStudies) {
-			if (diseaseLabMaxMin [Array.IndexOf (labStudies, i), 0] != -1f && diseaseLabMaxMin [Array.IndexOf (labStudies, i), 1] != -1f) {
-				labResults [Array.IndexOf (labStudies, i)] = UnityEngine.Random.Range (diseaseLabMaxMin [Array.IndexOf (labStudies, i), 0], diseaseLabMaxMin [Array.IndexOf (labStudies, i), 1]);
+		foreach (string i in labComponents) {
+			if (diseaseLabMaxMin [Array.IndexOf (labComponents, i), 0] != -1f && diseaseLabMaxMin [Array.IndexOf (labComponents, i), 1] != -1f) {
+				labResults [Array.IndexOf (labComponents, i)] = UnityEngine.Random.Range (diseaseLabMaxMin [Array.IndexOf (labComponents, i), 0], diseaseLabMaxMin [Array.IndexOf (labComponents, i), 1]);
 			}
 		}
 	}
