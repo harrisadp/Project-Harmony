@@ -8,16 +8,15 @@ public class JournalImageButton : MonoBehaviour {
 	public GameObject imagePanel;
 	public GameObject backButtonPrefab;
 
-	private GameObject scrollView;
 	private DiseaseChooser diseaseChooser;
 	private Images images;
-	private 
+	private GameObject scrollView;
 
 	// Use this for initialization
 	void Start () {
-		scrollView = GameObject.Find ("Scroll View");
 		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
 		images = FindObjectOfType<Images> ();
+		scrollView = GameObject.Find ("Scroll View");
 	}
 
 	public void DisplayImage () {
@@ -51,11 +50,11 @@ public class JournalImageButton : MonoBehaviour {
 		imagingStudy.transform.localScale = new Vector3 (1, 1, 1);
 		backButton.transform.localPosition = new Vector3 (0, -350f, 0);
 		backButton.GetComponent<Button> ().onClick.AddListener (() => { CloseImage (); } );
-
 	}
 
 	private void CloseImage () {
 		Destroy (GameObject.Find ("Journal Image Popup"));
+		scrollView.SetActive (true);
 	}
 
 }

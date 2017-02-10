@@ -17,8 +17,7 @@ public class Journal : MonoBehaviour {
 	private LabValues labValues;
 	private bool journalOpen = false;
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
 		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
 		history = FindObjectOfType<History> ();
 		physicalExam = FindObjectOfType<PhysicalExam> ();
