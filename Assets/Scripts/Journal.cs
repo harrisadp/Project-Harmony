@@ -8,6 +8,7 @@ public class Journal : MonoBehaviour {
 
 	public GameObject scrollView;
 	public GameObject journalEntry;
+	public GameObject journalEntryImage;
 	public PerformanceTracker performanceTracker;
 
 	private DiseaseChooser diseaseChooser;
@@ -172,11 +173,22 @@ public class Journal : MonoBehaviour {
 		labsHeader.transform.localScale = new Vector3 (1, 1, 1);
 		labsHeader.GetComponent<Text> ().fontStyle = FontStyle.BoldAndItalic;
 		// Imaging population
+		foreach (string image in performanceTracker.imagesOrdered) {
+			GameObject imageText = Instantiate (journalEntry, this.transform);
+			imageText.GetComponent<Text> ().text = image;
+			imageText.transform.localScale = new Vector3 (1, 1, 1);
+			TextGenerator tgImages = imageText.GetComponent<Text> ().cachedTextGenerator;
+			Canvas.ForceUpdateCanvases ();
+			imageText.GetComponent<LayoutElement> ().minHeight = 30f * tgImages.lineCount;
+			GameObject imageButton = Instantiate (journalEntryImage, this.transform);
+			imageButton.name = image;
+			imageButton.transform.localScale = new Vector3 (1, 1, 1);
+		}
 		// If no imaging
-		if (performanceTracker.labsOrdered.Count == 0) {
-			GameObject noLabs = Instantiate (journalEntry, this.transform);
-			noLabs.GetComponent<Text> ().text = "No imaging studies ordered";
-			noLabs.transform.localScale = new Vector3 (1, 1, 1);
+		if (performanceTracker.imagesOrdered.Count == 0) {
+			GameObject noImages = Instantiate (journalEntry, this.transform);
+			noImages.GetComponent<Text> ().text = "No imaging studies ordered";
+			noImages.transform.localScale = new Vector3 (1, 1, 1);
 		}
 	}
 
