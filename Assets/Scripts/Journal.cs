@@ -61,6 +61,16 @@ public class Journal : MonoBehaviour {
 		historyHeader.GetComponent<Text> ().text = "History";
 		historyHeader.transform.localScale = new Vector3 (1, 1, 1);
 		historyHeader.GetComponent<Text> ().fontStyle = FontStyle.BoldAndItalic;
+		GameObject chiefComplaintHeader = Instantiate (journalEntry, this.transform);
+		chiefComplaintHeader.GetComponent<Text> ().text = "Chief Complaint";
+		chiefComplaintHeader.transform.localScale = new Vector3 (1, 1, 1);
+		GameObject chiefComplaint = Instantiate (journalEntry, this.transform);
+		chiefComplaint.GetComponent<Text> ().text = history.history["Intro"];
+		chiefComplaint.transform.localScale = new Vector3 (1, 1, 1);
+		chiefComplaint.GetComponent<Text> ().color = Color.green;
+		TextGenerator tgChiefComplaint = chiefComplaint.GetComponent<Text> ().cachedTextGenerator;
+		Canvas.ForceUpdateCanvases ();
+		chiefComplaint.GetComponent<LayoutElement> ().minHeight = 30f * tgChiefComplaint.lineCount;
 		// History population
 		foreach (string question in performanceTracker.questionsAsked) {
 			GameObject questionText = Instantiate (journalEntry, this.transform);
@@ -86,7 +96,7 @@ public class Journal : MonoBehaviour {
 		// If no history
 		if (performanceTracker.questionsAsked.Count == 0) {
 			GameObject noHistory = Instantiate (journalEntry, this.transform);
-			noHistory.GetComponent<Text> ().text = "No history obtained";
+			noHistory.GetComponent<Text> ().text = "No further history obtained";
 			noHistory.transform.localScale = new Vector3 (1, 1, 1);
 		}
 	}

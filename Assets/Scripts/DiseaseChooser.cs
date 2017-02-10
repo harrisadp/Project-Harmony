@@ -39,7 +39,7 @@ public class DiseaseChooser : MonoBehaviour {
 	}
 
 	public void ChooseDisease() {
-		diseaseChosen = (int)(DiseaseID)UnityEngine.Random.Range (0, 3);
+		diseaseChosen = (int)(DiseaseID)UnityEngine.Random.Range (0, 4);
 		disease_data = diseaseStruct.GetDiseaseFromList(diseaseChosen);
 		SpriteRenderer patientSpriteRenderer = patient.GetComponent<SpriteRenderer> ();
 		Animator patientAnimator = patient.GetComponent<Animator> ();

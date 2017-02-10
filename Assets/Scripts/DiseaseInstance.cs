@@ -142,7 +142,7 @@ public class DiseaseInstance {
 
 	public DiseaseInstance 	(string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability,
 							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, float diseaseTMin, float diseaseTMax, float diseaseHRMin,
-							float diseaseHRMax, float diseaseDBPMin, float diseaseDBPMax, float diseaseSBPMin, float diseaseSBPMax, float diseaseRRMin,
+							float diseaseHRMax, float diseaseSBPMin, float diseaseSBPMax, float diseaseDBPMin, float diseaseDBPMax, float diseaseRRMin,
 							float diseaseRRMax, float diseaseSpO2Min, float diseaseSpO2Max, string[] diseasePhysical, float[,] diseaseLabMinMax, int[] images, int[] goodQuestionIDs,
 							int[] badQuestionIDs, int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs, int[] goodLabIDs, int[] badLabIDs,
 							int[] goodImageIDs, int[] badImageIDs, string[] differentialOptions) {
@@ -174,7 +174,7 @@ public class DiseaseInstance {
 
 	public bool RandomSex (float maleProbability) {
 		float randomSex = UnityEngine.Random.value;
-		if (maleProbability <= randomSex) {return true;}
+		if (randomSex < maleProbability) {return true;}
 		else {return false;}
 	}
 
