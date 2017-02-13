@@ -6,9 +6,11 @@ public class BackgroundChooser : MonoBehaviour {
 
 	public Sprite[] backgrounds;
 	public RuntimeAnimatorController[] animatorControllers;
+	public AudioClip[] bgm;
 
 	private int currentBackground;
 	private GameObject background;
+	private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +20,9 @@ public class BackgroundChooser : MonoBehaviour {
 			background.AddComponent<Animator> ().runtimeAnimatorController = animatorControllers [0];
 		}
 		currentBackground = 0;
+		audioSource = GameObject.Find ("Music Manager").GetComponent<AudioSource> ();
+		audioSource.clip = bgm [currentBackground];
+		audioSource.Play ();
 	}
 
 	public void NewBackground () {
@@ -26,6 +31,8 @@ public class BackgroundChooser : MonoBehaviour {
 		} else {
 			currentBackground = 0;
 		}
+		audioSource.clip = bgm [currentBackground];
+		audioSource.Play ();
 		background.GetComponent<SpriteRenderer> ().sprite = backgrounds [currentBackground];
 		if (animatorControllers [currentBackground] != null && background.GetComponent<Animator> () == null) {
 			background.AddComponent<Animator> ().runtimeAnimatorController = animatorControllers [currentBackground];
