@@ -11,6 +11,12 @@ public class RunOnStart : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 		global_disease_list = new DiseaseStruct (4);
 		Debug.Log ("New DiseaseStruct created");
+		RunOnStart[] runOnStarts = FindObjectsOfType<RunOnStart> ();
+		foreach (RunOnStart i in runOnStarts) {
+			if (i.gameObject != this.gameObject) {
+				Destroy (i.gameObject);
+			}
+		}
 	}
 
 }

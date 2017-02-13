@@ -23,9 +23,12 @@ public class PerformanceTracker : MonoBehaviour {
 	public List<string> labsOrdered = new List<string>();
 	public List<string> imagesOrdered = new List<string>();
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
 		DontDestroyOnLoad (gameObject);
+		PerformanceTracker[] performanceTrackers = FindObjectsOfType<PerformanceTracker> ();
+		if (performanceTrackers.Length > 1) {
+			Destroy (this.gameObject);
+		}
 	}
 
 	void OnEnable()
@@ -57,6 +60,10 @@ public class PerformanceTracker : MonoBehaviour {
 		physicalManeuversPerformed.Clear();
 		labsOrdered.Clear();
 		imagesOrdered.Clear();
+		if (scene.name == "02c_QuickPlay") {
+			score = 0;
+		}
+		UpdateScore ();
 	}
 
 	public void UpdateScore () {
