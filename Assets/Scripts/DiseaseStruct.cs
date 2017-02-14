@@ -9,7 +9,7 @@ namespace AssemblyCSharp {
 
 		public DiseaseStruct (int size) {
 			disease_list = new DiseaseInstance[size];
-			disease_list[0] = new DiseaseInstance ("Asthma", 5, 10, 0.5f, 0.25f, 0.25f, 0.25f, 0.25f, new string [,] {{"1_Schoolgirl","1_Baseball Boy","1_Generic Female","1_Basic Girl","1_Hair Girl","1_Generic Male","1_Asian Male","1_Basketball Male","1_Jock Male","1_Cat Lady","1_Old Male"}, 
+			disease_list[0] = new DiseaseInstance ("Asthma", 5, 10, 0.5f, 18.5f, 25.0f, 0.25f, 0.25f, 0.25f, 0.25f, new string [,] {{"1_Schoolgirl","1_Baseball Boy","1_Generic Female","1_Basic Girl","1_Hair Girl","1_Generic Male","1_Asian Male","1_Basketball Male","1_Jock Male","1_Cat Lady","1_Old Male"}, 
 				{"2_Schoolgirl","2_Baseball Boy","2_Generic Female","2_Basic Girl","2_Hair Girl","2_Generic Male","2_Asian Male","2_Basketball Male","2_Jock Male","2_Cat Lady","2_Old Male"}, 
 				{"3_Schoolgirl","3_Baseball Boy","3_Generic Female","3_Basic Girl","3_Hair Girl","3_Generic Male","3_Asian Male","3_Basketball Male","3_Jock Male","3_Cat Lady","3_Old Male"}, 
 				{"4_Schoolgirl","4_Baseball Boy","4_Generic Female","4_Basic Girl","4_Hair Girl","4_Generic Male","4_Asian Male","4_Basketball Male","4_Jock Male","4_Cat Lady","4_Old Male"}, 
@@ -199,7 +199,7 @@ namespace AssemblyCSharp {
 				new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0},
 				new int [] {0, 1, 2, 3, 4, 5}, new int [] {6, 7}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3},
 				new string [] {"Asthma", "Bronchitis", "COPD", "Pneumonia", "Tuberculosis", "Pneumothorax", "Myocardial Infarction", "GERD", "Pericarditis", "Appendicitis"});
-			disease_list[1] = new DiseaseInstance ("Bronchitis", 20, 50, 0.5f, 0.25f, 0.25f, 0.25f, 0.25f, new string [,] {{"1_Schoolgirl","1_Baseball Boy","1_Generic Female","1_Basic Girl","1_Hair Girl","1_Generic Male","1_Asian Male","1_Basketball Male","1_Jock Male","1_Cat Lady","1_Old Male"}, 
+			disease_list[1] = new DiseaseInstance ("Bronchitis", 20, 50, 0.5f, 18.5f, 25.0f, 0.25f, 0.25f, 0.25f, 0.25f, new string [,] {{"1_Schoolgirl","1_Baseball Boy","1_Generic Female","1_Basic Girl","1_Hair Girl","1_Generic Male","1_Asian Male","1_Basketball Male","1_Jock Male","1_Cat Lady","1_Old Male"}, 
 				{"2_Schoolgirl","2_Baseball Boy","2_Generic Female","2_Basic Girl","2_Hair Girl","2_Generic Male","2_Asian Male","2_Basketball Male","2_Jock Male","2_Cat Lady","2_Old Male"}, 
 				{"3_Schoolgirl","3_Baseball Boy","3_Generic Female","3_Basic Girl","3_Hair Girl","3_Generic Male","3_Asian Male","3_Basketball Male","3_Jock Male","3_Cat Lady","3_Old Male"}, 
 				{"4_Schoolgirl","4_Baseball Boy","4_Generic Female","4_Basic Girl","4_Hair Girl","4_Generic Male","4_Asian Male","4_Basketball Male","4_Jock Male","4_Cat Lady","4_Old Male"}, 
@@ -389,7 +389,7 @@ namespace AssemblyCSharp {
 				new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0},
 				new int [] {0, 1, 2, 3, 4, 5}, new int [] {6, 7}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3},
 				new string [] {"Asthma", "Bronchitis", "COPD", "Pneumonia", "Tuberculosis", "Pneumothorax", "Myocardial Infarction", "GERD", "Pericarditis", "Appendicitis"});
-			disease_list[2] = new DiseaseInstance ("COPD", 60, 90, 0.7f, 0.25f, 0.25f, 0.25f, 0.25f, new string [,] {{"1_Schoolgirl","1_Baseball Boy","1_Generic Female","1_Basic Girl","1_Hair Girl","1_Generic Male","1_Asian Male","1_Basketball Male","1_Jock Male","1_Cat Lady","1_Old Male"}, 
+			disease_list[2] = new DiseaseInstance ("COPD", 60, 90, 0.5f, 18.5f, 25.0f, 0.25f, 0.25f, 0.25f, 0.25f, new string [,] {{"1_Schoolgirl","1_Baseball Boy","1_Generic Female","1_Basic Girl","1_Hair Girl","1_Generic Male","1_Asian Male","1_Basketball Male","1_Jock Male","1_Cat Lady","1_Old Male"}, 
 				{"2_Schoolgirl","2_Baseball Boy","2_Generic Female","2_Basic Girl","2_Hair Girl","2_Generic Male","2_Asian Male","2_Basketball Male","2_Jock Male","2_Cat Lady","2_Old Male"}, 
 				{"3_Schoolgirl","3_Baseball Boy","3_Generic Female","3_Basic Girl","3_Hair Girl","3_Generic Male","3_Asian Male","3_Basketball Male","3_Jock Male","3_Cat Lady","3_Old Male"}, 
 				{"4_Schoolgirl","4_Baseball Boy","4_Generic Female","4_Basic Girl","4_Hair Girl","4_Generic Male","4_Asian Male","4_Basketball Male","4_Jock Male","4_Cat Lady","4_Old Male"}, 
@@ -579,7 +579,7 @@ namespace AssemblyCSharp {
 				new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0},
 				new int [] {0, 1, 2, 3, 4, 5}, new int [] {6, 7}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3}, new int [] {0, 1}, new int [] {2, 3},
 				new string [] {"Asthma", "Bronchitis", "COPD", "Pneumonia", "Tuberculosis", "Pneumothorax", "Myocardial Infarction", "GERD", "Pericarditis", "Appendicitis"});
-			disease_list[3] = new DiseaseInstance ("Anovulatory Cycle", 20, 50, 0f, 0.25f, 0.25f, 0.25f, 0.25f, new string [,] {{"1_Schoolgirl","1_Baseball Boy","I've been having some vaginal bleeding.","I've been having vaginal bleeding. You've gotta help me out!","This is super embarassing, but I've been having some vaginal bleeding.","1_Generic Male","1_Asian Male","1_Basketball Male","1_Jock Male","1_Cat Lady","1_Old Male"}, 
+			disease_list[3] = new DiseaseInstance ("Anovulatory Cycle", 20, 50, 0f, 25.0f, 35.0f, 0.25f, 0.25f, 0.25f, 0.25f, new string [,] {{"1_Schoolgirl","1_Baseball Boy","I've been having some vaginal bleeding.","I've been having vaginal bleeding. You've gotta help me out!","This is super embarassing, but I've been having some vaginal bleeding.","1_Generic Male","1_Asian Male","1_Basketball Male","1_Jock Male","1_Cat Lady","1_Old Male"}, 
 				{"2_Schoolgirl","2_Baseball Boy","2_Generic Female","2_Basic Girl","2_Hair Girl","2_Generic Male","2_Asian Male","2_Basketball Male","2_Jock Male","2_Cat Lady","2_Old Male"}, 
 				{"3_Schoolgirl","3_Baseball Boy","3_Generic Female","3_Basic Girl","3_Hair Girl","3_Generic Male","3_Asian Male","3_Basketball Male","3_Jock Male","3_Cat Lady","3_Old Male"}, 
 				{"4_Schoolgirl","4_Baseball Boy","4_Generic Female","4_Basic Girl","4_Hair Girl","4_Generic Male","4_Asian Male","4_Basketball Male","4_Jock Male","4_Cat Lady","4_Old Male"}, 

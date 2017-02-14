@@ -12,17 +12,19 @@ public class DiseaseInstance {
 	// Demographics
 	public int age;
 	public bool male;
+	public float bmi;
 	public enum Race {asian, black, hispanic, white};
 	public Race race;
-	public enum Personality {Schoolgirl, BaseballBoy, GenericFemale, BasicGirl, HairGirl, GenericMale, AsianMale, BasketballMale, JockMale, CatLady, OldMale};
+	public enum Personality	{Schoolgirl, BaseballBoy, GenericFemale, BasicGirl, HairGirl, GenericMale, AsianMale, BasketballMale, JockMale, CatLady, OldMale,
+							PunkGirl, RockDude, ObeseBlackFemale, ObeseWhiteFemale, ObeseBlackMale, ObeseWhiteMale};
 	public Personality personality;
 
 	private List <Personality> youngFemales = new List <Personality> {Personality.Schoolgirl};
 	private List <Personality> youngMales = new List <Personality> {Personality.BaseballBoy};
-	private List <Personality> adultFemales = new List <Personality> {Personality.GenericFemale, Personality.BasicGirl, Personality.HairGirl};
-	private List <Personality> adultFemalesObese = new List <Personality> {};
-	private List <Personality> adultMales = new List <Personality> {Personality.GenericMale, Personality.AsianMale, Personality.BasketballMale, Personality.JockMale};
-	private List <Personality> adultMalesObese = new List <Personality> {};
+	private List <Personality> adultFemales = new List <Personality> {Personality.GenericFemale, Personality.BasicGirl, Personality.HairGirl, Personality.PunkGirl};
+	private List <Personality> adultFemalesObese = new List <Personality> {Personality.ObeseBlackFemale, Personality.ObeseWhiteFemale};
+	private List <Personality> adultMales = new List <Personality> {Personality.GenericMale, Personality.AsianMale, Personality.BasketballMale, Personality.JockMale, Personality.RockDude};
+	private List <Personality> adultMalesObese = new List <Personality> {Personality.ObeseBlackMale, Personality.ObeseWhiteMale};
 	private List <Personality> elderlyFemales = new List <Personality> {Personality.CatLady};
 	private List <Personality> elderlyMales = new List <Personality> {Personality.OldMale};
 
@@ -93,7 +95,7 @@ public class DiseaseInstance {
 		"Have you noticed any changes to your fingernails", "Have you noticed any changes to your hair growth"};
 
 	// Answers
-	public string[,] answers = new string[186,11];
+	public string[,] answers = new string[186, Enum.GetNames(typeof(Personality)).Length];
 
 	// Vitals
 	public string [] vitalStrings = new string[6] {"T", "HR", "SBP", "DBP", "RR", "SpO2"};
@@ -149,7 +151,7 @@ public class DiseaseInstance {
 	public List<int> goodImages = new List<int>();
 	public List<int> badImages = new List<int>();
 
-	public DiseaseInstance 	(string diseaseName, int ageMin, int ageMax, float maleProbability, float asianProbability, float blackProbability,
+	public DiseaseInstance 	(string diseaseName, int ageMin, int ageMax, float maleProbability, float bmiMin, float bmiMax, float asianProbability, float blackProbability,
 							float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, float diseaseTMin, float diseaseTMax, float diseaseHRMin,
 							float diseaseHRMax, float diseaseSBPMin, float diseaseSBPMax, float diseaseDBPMin, float diseaseDBPMax, float diseaseRRMin,
 							float diseaseRRMax, float diseaseSpO2Min, float diseaseSpO2Max, string[] diseasePhysical, float[,] diseaseLabMinMax, int[] images, int[] goodQuestionIDs,
@@ -159,6 +161,7 @@ public class DiseaseInstance {
 		this.disease_name = diseaseName;
 		this.age = RandomAge (ageMin, ageMax);
 		this.male = RandomSex (maleProbability);
+		this.bmi = RandomBMI (bmiMin, bmiMax);
 		this.race = RandomRace (asianProbability, blackProbability, hispanicProbability, whiteProbability);
 		this.personality = RandomPersonality (age, male, race);
 		this.answers = diseaseAnswers;
@@ -187,6 +190,10 @@ public class DiseaseInstance {
 		else {return false;}
 	}
 
+	public float RandomBMI (float bmiMin, float bmiMax) {
+		return UnityEngine.Random.Range (bmiMin, bmiMax);
+	}
+
 	public Race RandomRace (float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability) {
 		float randomRace = UnityEngine.Random.value;
 		if (randomRace <= asianProbability) {return Race.asian;}
@@ -200,10 +207,14 @@ public class DiseaseInstance {
 			return youngFemales [(UnityEngine.Random.Range (0, youngFemales.Count))];
 		} else if (age <= 15 && male == true) {
 			return youngMales [(UnityEngine.Random.Range (0, youngMales.Count))];
-		} else if (age > 15 && age <= 60 && male == false) {
+		} else if (age > 15 && age <= 60 && male == false && bmi < 30.0f) {
 			return adultFemales [(UnityEngine.Random.Range (0, adultFemales.Count))];
-		} else if (age > 15 && age <= 60 && male == true) {
+		} else if (age > 15 && age <= 60 && male == false && bmi >= 30.0f) {
+			return adultFemalesObese [(UnityEngine.Random.Range (0, adultFemalesObese.Count))];
+		} else if (age > 15 && age <= 60 && male == true && bmi < 30.0f) {
 			return adultMales [(UnityEngine.Random.Range (0, adultMales.Count))];
+		} else if (age > 15 && age <= 60 && male == true && bmi >= 30.0f) {
+			return adultMalesObese [(UnityEngine.Random.Range (0, adultMalesObese.Count))];
 		} else if (age > 60 && male == false) {
 			return elderlyFemales [(UnityEngine.Random.Range (0, elderlyFemales.Count))];
 		} else if (age > 60 && male == true) {
