@@ -44,6 +44,7 @@ public class DiseaseChooser : MonoBehaviour {
 		SpriteRenderer patientSpriteRenderer = patient.GetComponent<SpriteRenderer> ();
 		Animator patientAnimator = patient.GetComponent<Animator> ();
 		Debug.Log ("Disease chosen by DiseaseChooser is " + disease_data.disease_name);
+		Debug.Log ("BMI is " + disease_data.bmi);
 		Debug.Log ("Race chosen by DiseaseChooser is " + disease_data.race);
 		Debug.Log ("Personality chosen by DiseaseChooser is " + disease_data.personality);
 		patientSpriteRenderer.sprite = sprites [(int)(disease_data.personality)];

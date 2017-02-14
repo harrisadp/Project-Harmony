@@ -191,7 +191,7 @@ public class DiseaseInstance {
 	}
 
 	public float RandomBMI (float bmiMin, float bmiMax) {
-		return UnityEngine.Random.Range (bmiMin, bmiMax);
+		return (Mathf.Round(10*(UnityEngine.Random.Range (bmiMin, bmiMax))))/10;
 	}
 
 	public Race RandomRace (float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability) {

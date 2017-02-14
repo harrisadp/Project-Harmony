@@ -13,6 +13,10 @@ public class MusicManager : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 		audioSource = GetComponent<AudioSource>();
 		audioSource.volume = PlayerPrefsManager.GetMastervolume();
+		MusicManager[] musicManagers = FindObjectsOfType<MusicManager> ();
+		if (musicManagers.Length > 1) {
+			Destroy (this.gameObject);
+		}
 	}
 
 	void OnEnable() {
