@@ -17,6 +17,15 @@ public class DiseaseInstance {
 	public enum Personality {Schoolgirl, BaseballBoy, GenericFemale, BasicGirl, HairGirl, GenericMale, AsianMale, BasketballMale, JockMale, CatLady, OldMale};
 	public Personality personality;
 
+	private List <Personality> youngFemales = new List <Personality> {Personality.Schoolgirl};
+	private List <Personality> youngMales = new List <Personality> {Personality.BaseballBoy};
+	private List <Personality> adultFemales = new List <Personality> {Personality.GenericFemale, Personality.BasicGirl, Personality.HairGirl};
+	private List <Personality> adultFemalesObese = new List <Personality> {};
+	private List <Personality> adultMales = new List <Personality> {Personality.GenericMale, Personality.AsianMale, Personality.BasketballMale, Personality.JockMale};
+	private List <Personality> adultMalesObese = new List <Personality> {};
+	private List <Personality> elderlyFemales = new List <Personality> {Personality.CatLady};
+	private List <Personality> elderlyMales = new List <Personality> {Personality.OldMale};
+
 	// Questions
 	public string[] questions = new string[186]
 		{"Intro", "When were you last completely well", "When did the pain first start", "How would you describe your pain", "Where is the pain located",
@@ -188,17 +197,17 @@ public class DiseaseInstance {
 
 	public Personality RandomPersonality (int age, bool male, Race race) {
 		if (age <= 15 && male == false) {
-			return Personality.Schoolgirl;
+			return youngFemales [(UnityEngine.Random.Range (0, youngFemales.Count))];
 		} else if (age <= 15 && male == true) {
-			return Personality.BaseballBoy;
+			return youngMales [(UnityEngine.Random.Range (0, youngMales.Count))];
 		} else if (age > 15 && age <= 60 && male == false) {
-			return (Personality)(UnityEngine.Random.Range (2, 5));
+			return adultFemales [(UnityEngine.Random.Range (0, adultFemales.Count))];
 		} else if (age > 15 && age <= 60 && male == true) {
-			return (Personality)(UnityEngine.Random.Range (5, 9));
+			return adultMales [(UnityEngine.Random.Range (0, adultMales.Count))];
 		} else if (age > 60 && male == false) {
-			return Personality.CatLady;
+			return elderlyFemales [(UnityEngine.Random.Range (0, elderlyFemales.Count))];
 		} else if (age > 60 && male == true) {
-			return Personality.OldMale;
+			return elderlyMales [(UnityEngine.Random.Range (0, elderlyMales.Count))];
 		} else {return Personality.GenericMale;}
 	}
 

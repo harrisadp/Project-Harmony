@@ -20,7 +20,7 @@ public class BackgroundChooser : MonoBehaviour {
 			background.AddComponent<Animator> ().runtimeAnimatorController = animatorControllers [0];
 		}
 		currentBackground = 0;
-		audioSource = GameObject.Find ("Music Manager").GetComponent<AudioSource> ();
+		audioSource = GameObject.FindObjectOfType<MusicManager>().GetComponent<AudioSource> ();
 		audioSource.clip = bgm [currentBackground];
 		audioSource.Play ();
 	}
