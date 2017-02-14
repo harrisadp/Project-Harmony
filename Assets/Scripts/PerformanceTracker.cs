@@ -62,6 +62,7 @@ public class PerformanceTracker : MonoBehaviour {
 		imagesOrdered.Clear();
 		if (scene.name == "02c_QuickPlay") {
 			score = 0;
+			energyValue = 0;
 		}
 		UpdateScore ();
 	}

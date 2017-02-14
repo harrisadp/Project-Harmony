@@ -9,9 +9,9 @@ public class Journal : MonoBehaviour {
 	public GameObject scrollView;
 	public GameObject journalEntry;
 	public GameObject journalEntryImage;
-	public PerformanceTracker performanceTracker;
 
 	private DiseaseChooser diseaseChooser;
+	private PerformanceTracker performanceTracker;
 	private History history;
 	private PhysicalExam physicalExam;
 	private LabValues labValues;
@@ -19,6 +19,7 @@ public class Journal : MonoBehaviour {
 
 	void Awake () {
 		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
+		performanceTracker = FindObjectOfType<PerformanceTracker> ();
 		history = FindObjectOfType<History> ();
 		physicalExam = FindObjectOfType<PhysicalExam> ();
 		labValues = FindObjectOfType<LabValues> ();
