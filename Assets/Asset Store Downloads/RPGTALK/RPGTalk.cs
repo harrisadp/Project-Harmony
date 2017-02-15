@@ -445,7 +445,7 @@ public class RPGTalk : MonoBehaviour {
 	void blink(){
 		if (blinkWhenReady) {
 			blinkWhenReady.SetActive (!blinkWhenReady.activeInHierarchy);
-			Invoke ("blink", .5f);
+			Invoke ("blink", 1f);
 		}
 	}
 
