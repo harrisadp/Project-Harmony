@@ -14,13 +14,16 @@ public class DiseaseChooser : MonoBehaviour {
 	public Sprite[] sprites;
 	public Sprite[] headSprites;
 	public RuntimeAnimatorController[] animatorControllers;
+	public Sprite maleGenderSymbol;
+	public Sprite femaleGenderSymbol;
 	public GameObject runOnStart;
 
 	private History history;
 	private Vitals vitals;
 	private PhysicalExam physical;
 	private LabValues labValues;
-	private Text ageText, sexText;
+	private Text ageText, BMIText;
+	private Image genderSymbol;
 	private GameObject patient;
 	private RPGTalk rpgTalk;
 
@@ -32,7 +35,8 @@ public class DiseaseChooser : MonoBehaviour {
 		physical = FindObjectOfType<PhysicalExam> ();
 		labValues = FindObjectOfType<LabValues> ();
 		ageText = GameObject.Find ("Age Text").GetComponent<Text> ();
-		sexText = GameObject.Find ("Sex Text").GetComponent<Text> ();
+		BMIText = GameObject.Find ("BMI Text").GetComponent<Text> ();
+		genderSymbol = GameObject.Find ("Sex Icon").GetComponent<Image> ();
 		patient = GameObject.Find ("Patient");
 		rpgTalk = FindObjectOfType<RPGTalk> ();
 		ChooseDisease ();
@@ -77,8 +81,9 @@ public class DiseaseChooser : MonoBehaviour {
 
 	public void UpdateDisplays () {
 		ageText.text = disease_data.age.ToString ();
-		if (disease_data.male) {sexText.text = "Male";}
-		else {sexText.text = "Female";}
+		if (disease_data.male) {genderSymbol.sprite = maleGenderSymbol;}
+		else {genderSymbol.sprite = femaleGenderSymbol;}
+		BMIText.text = disease_data.bmi.ToString ();
 		vitals.UpdateDisplay ();
 	}
 
