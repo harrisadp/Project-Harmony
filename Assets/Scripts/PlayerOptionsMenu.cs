@@ -10,10 +10,10 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	public GameObject playerSelectionButtonPrefab;
 	public GameObject backButtonPrefab;
 
-	private MenuManager menuManager;
+	private GameManager gameManager;
 
 	void Awake () {
-		menuManager = FindObjectOfType<MenuManager> ();
+		gameManager = FindObjectOfType<GameManager> ();
 	}
 
 	public void SetRootMenuActive () {
@@ -46,7 +46,7 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		}
 		GameObject backButton = Instantiate (backButtonPrefab, this.transform);
 		backButton.GetComponent<Button> ().onClick.AddListener (() => { SetRootMenuActive (); } );
-		backButton.GetComponent<Button> ().onClick.AddListener (() => { menuManager.MainMenu (); } );
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { gameManager.MainMenu (); } );
 		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
@@ -815,7 +815,7 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		}
 		GameObject backButton = Instantiate (backButtonPrefab, this.transform);
 		backButton.GetComponent<Button> ().onClick.AddListener (() => { SetRootMenuActive (); } );
-		backButton.GetComponent<Button> ().onClick.AddListener (() => { menuManager.MainMenu (); } );
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { gameManager.MainMenu (); } );
 		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
@@ -1263,7 +1263,7 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		menuOption2.transform.localScale = new Vector3 (1, 1, 1);
 		GameObject backButton = Instantiate (backButtonPrefab, this.transform);
 		backButton.GetComponent<Button> ().onClick.AddListener (() => { SetRootMenuActive (); } );
-		backButton.GetComponent<Button> ().onClick.AddListener (() => { menuManager.MainMenu (); } );
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { gameManager.MainMenu (); } );
 		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
@@ -1314,7 +1314,7 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		}
 		GameObject backButton = Instantiate (backButtonPrefab, this.transform);
 		backButton.GetComponent<Button> ().onClick.AddListener (() => { SetRootMenuActive (); } );
-		backButton.GetComponent<Button> ().onClick.AddListener (() => { menuManager.MainMenu (); } );
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { gameManager.MainMenu (); } );
 		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 

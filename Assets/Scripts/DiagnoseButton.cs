@@ -11,13 +11,13 @@ public class DiagnoseButton : MonoBehaviour {
 	private DiseaseChooser diseaseChooser;
 	private GameObject topDiagnosis;
 	private DialogueManager dialogueManager;
-	private MenuManager menuManager;
+	private GameManager menuManager;
 
 	void Start () {
 		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
 		topDiagnosis = GameObject.Find ("Top Diagnosis");
 		dialogueManager = FindObjectOfType<DialogueManager> ();
-		menuManager = FindObjectOfType<MenuManager> ();
+		menuManager = FindObjectOfType<GameManager> ();
 	}
 
 	public void CheckDiagnosis () {

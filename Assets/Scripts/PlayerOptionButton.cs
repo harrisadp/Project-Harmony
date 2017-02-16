@@ -9,7 +9,7 @@ public class PlayerOptionButton : MonoBehaviour {
 	public TextAsset textAsset;
 
 	private DialogueManager dialogueManager;
-	private MenuManager menuManager;
+	private GameManager gameManager;
 	private DiseaseChooser diseaseChooser;
 	private PerformanceTracker performanceTracker;
 	private History history;
@@ -21,7 +21,7 @@ public class PlayerOptionButton : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		dialogueManager = FindObjectOfType<DialogueManager> ();
-		menuManager = FindObjectOfType<MenuManager> ();
+		gameManager = FindObjectOfType<GameManager> ();
 		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
 		performanceTracker = FindObjectOfType<PerformanceTracker> ();
 		history = FindObjectOfType<History> ();
@@ -95,25 +95,25 @@ public class PlayerOptionButton : MonoBehaviour {
 					dialogueManager.LineStart (lineNum);
 					dialogueManager.LineBreak (lineNum + 1);
 					dialogueManager.NewTalk ();
-					menuManager.Reset ();
+					gameManager.Reset ();
 					return;
 				} else if (line.Contains (this.name) && physical.physical.ContainsKey (this.name)) {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 3);
 					dialogueManager.NewTalk ();
-					menuManager.Reset ();
+					gameManager.Reset ();
 					return;
 				} else if (line.Contains (this.name) && labValues.labStudies.Contains (this.name)) {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 5);
 					dialogueManager.NewTalk ();
-					menuManager.Reset ();
+					gameManager.Reset ();
 					return;
 				} else if (line.Contains (this.name)) {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 3);
 					dialogueManager.NewTalk ();
-					menuManager.Reset ();
+					gameManager.Reset ();
 					return;
 				}
 			}
@@ -140,7 +140,7 @@ public class PlayerOptionButton : MonoBehaviour {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 1);
 					dialogueManager.NewTalk ();
-					menuManager.Reset ();
+					gameManager.Reset ();
 					return;
 				}
 			}
@@ -233,25 +233,25 @@ public class PlayerOptionButton : MonoBehaviour {
 
 	private void Imaging () {
 		int imageNumber = images.imagingStudies.IndexOf (this.name);
-		menuManager.displayImage = true;
+		gameManager.displayImage = true;
 		if (imageNumber == 0) {
-			menuManager.imageToDisplay = images.xrayChests[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.imageToDisplay = images.xrayChests[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 1) {
-			menuManager.imageToDisplay = images.xrayAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.imageToDisplay = images.xrayAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 2) {
-			menuManager.imageToDisplay = images.xraySpines[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.imageToDisplay = images.xraySpines[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 3) {
-			menuManager.imageToDisplay = images.ctHeads[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.imageToDisplay = images.ctHeads[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 4) {
-			menuManager.imageToDisplay = images.ctChests[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.imageToDisplay = images.ctChests[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 5) {
-			menuManager.imageToDisplay = images.ctAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.imageToDisplay = images.ctAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 6) {
-			menuManager.imageToDisplay = images.mriBrains[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.imageToDisplay = images.mriBrains[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 7) {
-			menuManager.imageToDisplay = images.ultrasoundAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.imageToDisplay = images.ultrasoundAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 8) {
-			menuManager.imageToDisplay = images.ultrasoundExtremities[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.imageToDisplay = images.ultrasoundExtremities[diseaseChooser.disease_data.imagingStudies[0]];
 		}
 	}
 
@@ -265,7 +265,7 @@ public class PlayerOptionButton : MonoBehaviour {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 1);
 					dialogueManager.NewTalk ();
-					menuManager.Reset ();
+					gameManager.Reset ();
 					return;
 				}
 			}
@@ -282,7 +282,7 @@ public class PlayerOptionButton : MonoBehaviour {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 1);
 					dialogueManager.NewTalk ();
-					menuManager.Reset ();
+					gameManager.Reset ();
 					return;
 				}
 			}
@@ -299,7 +299,7 @@ public class PlayerOptionButton : MonoBehaviour {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 1);
 					dialogueManager.NewTalk ();
-					menuManager.Reset ();
+					gameManager.Reset ();
 					return;
 				}
 			}
@@ -316,7 +316,7 @@ public class PlayerOptionButton : MonoBehaviour {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 1);
 					dialogueManager.NewTalk ();
-					menuManager.Reset ();
+					gameManager.Reset ();
 					return;
 				}
 			}

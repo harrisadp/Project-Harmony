@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 
 	public TextAsset textAsset;
 	public GameObject rootMenu;
@@ -29,6 +29,7 @@ public class MenuManager : MonoBehaviour {
 	private LevelManager levelManager;
 	private DiseaseChooser diseaseChooser;
 	private DialogueManager dialogueManager;
+	private int turnCount;
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +45,8 @@ public class MenuManager : MonoBehaviour {
 		differentialPanel.SetActive (false);
 		journal.SetActive (false);
 		journalButton.SetActive (false);
+		turnCount = 1;
+		Debug.Log ("Turn count is " + turnCount);
 	}
 
 	public void Reset () {
@@ -53,14 +56,17 @@ public class MenuManager : MonoBehaviour {
 	}
 
 	public void NewTurn () {
-		Debug.Log ("New Turn");
 		if (imagePanel.activeSelf) {imagePanel.SetActive (false);}
 		if (displayImage) {DisplayImage ();}
 		else if (isFirstTurn) {StartUp ();}
 		else if (!hasDifferential) {Differential ();}
 		else if (victory) {levelManager.LoadLevel ("03a_Victory");}
 		else if (backToDifferential) {Differential ();}
-		else {MainMenu ();}
+		else {
+			turnCount++;
+			Debug.Log ("Turn count is " + turnCount);
+			MainMenu ();
+		}
 	}
 
 	public void MainMenu () {

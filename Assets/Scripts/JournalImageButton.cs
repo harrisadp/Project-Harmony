@@ -50,6 +50,7 @@ public class JournalImageButton : MonoBehaviour {
 		imagingStudy.transform.localScale = new Vector3 (1, 1, 1);
 		backButton.transform.localPosition = new Vector3 (0, -350f, 0);
 		backButton.GetComponent<Button> ().onClick.AddListener (() => { CloseImage (); } );
+		backButton.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 	}
 
 	private void CloseImage () {
