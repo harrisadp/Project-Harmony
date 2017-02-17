@@ -7,12 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PerformanceTracker : MonoBehaviour {
 
-	private Canvas canvas;
-	private Text scoreText;
-	private Animator emdeeAnimator;
-	private Animator energyAnimator;
-	private AudioSource audioSource;
-
 	public int score = 0;
 	public int energyValue = 0;
 	public GameObject energyIcon;
@@ -22,6 +16,13 @@ public class PerformanceTracker : MonoBehaviour {
 	public List<string> physicalManeuversPerformed = new List<string>();
 	public List<string> labsOrdered = new List<string>();
 	public List<string> imagesOrdered = new List<string>();
+
+	private Canvas canvas;
+	private Text scoreText;
+	private Animator emdeeAnimator;
+	private Animator energyAnimator;
+	private AudioSource audioSource;
+	private GameObject energyTag;
 
 	void Awake () {
 		DontDestroyOnLoad (gameObject);
@@ -72,7 +73,7 @@ public class PerformanceTracker : MonoBehaviour {
 	}
 
 	public void AddEnergy () {
-		if (GameObject.Find ("Energy Panel").transform.childCount < 5) {
+		if (GameObject.Find ("Energy Panel").transform.childCount < 6) {
 			GameObject energy = Instantiate (energyIcon, GameObject.Find ("Energy Panel").transform);
 			energy.transform.localScale = new Vector3 (1, 1, 1);
 		}
@@ -80,9 +81,9 @@ public class PerformanceTracker : MonoBehaviour {
 
 	public void RemoveEnergy (int numberToRemove) {
 		int numberDestroyed = 0;
-		if (GameObject.Find ("Energy Panel").transform.childCount > 0) {
+		if (GameObject.Find ("Energy Panel").transform.childCount > 1) {
 			foreach (Transform child in GameObject.Find("Energy Panel").transform){
-				if (numberDestroyed < numberToRemove) {
+				if (numberDestroyed < numberToRemove && child.gameObject.name != "Energy Tag") {
 					Destroy (child.gameObject);
 					numberDestroyed += 1;
 				}

@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour {
 				item.transform.localScale = new Vector3 (1, 1, 1);
 				item.GetComponentInChildren<Text> ().text = diseaseChooser.disease_data.differential [itemNumber];
 				itemNumber += 1;
-
 			}
 		} else {
 			diagnoseButton.SetActive (true);

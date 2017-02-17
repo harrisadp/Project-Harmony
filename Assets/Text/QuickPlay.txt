@@ -1,6 +1,6 @@
 // Introduction
 Patient: [Intro]
-Player: I'll do the best I can!
+Player: I'll do my best to help!
 
 // History of Presenting Illness
 Player: When were you last completely well?
@@ -872,7 +872,7 @@ Emdee: You've already ordered this lab! Check your journal if you can't remember
 Emdee: You've already ordered this imaging study! Check your journal if you can't remember the result.
 
 // Insufficient energy
-Emdee: You don't have enough energy to do that! You need 2 energy units to order a lab test and 3 energy units to order an imaging study. Try asking good questions and performing good physical exam maneuvers to build up more energy!
+Emdee: I don't have enough energy to do that! You need to build up 2 charges to order a lab test and 3 charges to order an imaging study. Try asking good questions and performing good physical exam maneuvers to build up more charges!
 
 // Correct diagnosis
 Emdee: That's the correct diagnosis!
