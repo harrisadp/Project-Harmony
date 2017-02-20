@@ -47,7 +47,11 @@ public class History : MonoBehaviour {
 		history ["Describe your lifestyle and where you are living"] = "[Describe your lifestyle and where you are living]";
 		history ["Are you currently employed"] = "[Are you currently employed]";
 		history ["What is your marital status"] = "[What is your marital status]";
+		history ["Are you currently sexually active"] = "[Are you currently sexually active]";
 		history ["Is your preferred sexual partner of the opposite sex or the same sex"] = "[Is your preferred sexual partner of the opposite sex of the same sex]";
+		history ["Do you use contraception"] = "[Do you use contraception]";
+		history ["Have you ever been diagnosed with a sexually transmitted infection"] = "[Have you ever been diagnosed with a sexually transmitted infection]";
+		history ["Have you ever been the victim of sexual abuse"] = "[Have you ever been the victim of sexual abuse]";
 		history ["Who lives at home with you"] = "[Who lives at home with you]";
 		history ["Do you drink any alcohol"] = "[Do you drink any alcohol]";
 		history ["How much do you drink in a week"] = "[How much do you drink in a week]";
@@ -186,6 +190,14 @@ public class History : MonoBehaviour {
 		history ["Is your urine foamy"] = "[Is your urine foamy]";
 		history ["Have you been experiencing any flank pain"] = "[Have you been experiencing any flank pain]";
 		history ["Have you noticed any skin changes to your external genitalia"] = "[Have you noticed any skin changes to your external genitalia]";
+		// Gynecologic
+		history ["How many times have you been pregnant"] = "[How many times have you been pregnant]";
+		history ["How many children have you had"] = "[How many children have you had]";
+		history ["Have you ever had an abortion (spontaneous or elective)"] = "[Have you ever had an abortion (spontaneous or elective)]";
+		history ["When was your last menstrual period"] = "[When was your last menstrual period]";
+		history ["What are your periods usually like"] = "[What are your periods usually like]";
+		history ["When was your last Pap smear"] = "[When was your last Pap smear]";
+		history ["Have you ever had an abnormal Pap smear" ] = "[Have you ever had an abnormal Pap smear]";
 		// Oropharynx
 		history ["Have you experienced any change in your voice"] = "[Have you experienced any change in your voice]";
 		history ["Do you get frequent sore throats"] = "[Do you get frequent sore throats]";

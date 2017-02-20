@@ -159,9 +159,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 			Destroy (child.gameObject);
 		}
 		string[] menuOptions = new string[10] 	{"Describe your lifestyle and where you are living", "Are you currently employed", "What is your marital status",
-			"Is your preferred sexual partner of the opposite sex or the same sex", "Who lives at home with you",
-			"Do you drink any alcohol", "How much do you drink in a week", "Have you ever thought about cutting down",
-			"Do you smoke", "How many years have you smoked"};
+			"Are you currently sexually active", "Is your preferred sexual partner of the opposite sex or the same sex", "Do you use contraception",
+			"Have you ever been diagnosed with a sexually transmitted infection", "Have you ever been the victim of sexual abuse", "Who lives at home with you",
+			"Do you drink any alcohol"};
 		foreach (string i in menuOptions) {
 			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, this.transform);
 			menuOption.name = i;
@@ -172,6 +172,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 			}
 			if (menuOption.name == "Is your preferred sexual partner of the opposite sex or the same sex") {
 				menuOption.GetComponentInChildren<Text>().text = "Is your preferred partner the opposite or same sex?";
+			}
+			if (menuOption.name == "Have you ever been diagnosed with a sexually transmitted infection") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you ever been diagnosed with an STI?";
 			}
 		}
 		GameObject nextButton = Instantiate (backButtonPrefab, this.transform);
@@ -188,10 +191,10 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
 		}
-		string[] menuOptions = new string[8] 	{"How many packs per day have you smoked", "Have you ever thought about quitting",
+		string[] menuOptions = new string[10] 	{"How much do you drink in a week", "Have you ever thought about cutting down",
+			"Do you smoke", "How many years have you smoked", "How many packs per day have you smoked", "Have you ever thought about quitting",
 			"Do you do any illicit or recreational drugs", "Which drugs do you use and how frequently do you use them",
-			"Have you ever tried to quit using drugs or have been in a detoxification program", "Where were you born",
-			"What is your financial situation", "How active are you"};
+			"Have you ever tried to quit using drugs or have been in a detoxification program", "Where were you born"};
 		foreach (string i in menuOptions) {
 			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, this.transform);
 			menuOption.name = i;
@@ -204,8 +207,28 @@ public class PlayerOptionsMenu : MonoBehaviour {
 				menuOption.GetComponentInChildren<Text>().text = "Have you ever tried to quit using drugs?";
 			}
 		}
+		GameObject nextButton = Instantiate (backButtonPrefab, this.transform);
+		nextButton.GetComponentInChildren<Text> ().text = "Next";
+		nextButton.GetComponent<Button>().onClick.AddListener (() => { SHPage3 (); } );
+		nextButton.transform.localScale = new Vector3 (1, 1, 1);
 		GameObject backButton = Instantiate (backButtonPrefab, this.transform);
 		backButton.GetComponent<Button> ().onClick.AddListener (() => { SHPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
+	}
+
+	public void SHPage3 () {
+		foreach (Transform child in this.transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[2] 	{"What is your financial situation", "How active are you"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, this.transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, this.transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { SHPage2 (); } );
 		backButton.transform.localScale = new Vector3 (1, 1, 1);
 	}
 
@@ -255,13 +278,15 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
 		}
-		string[] menuOptions = new string[6] 	{"Oropharynx", "Nose and Sinus", "Ears", "Eyes", "Head", "Dermatologic"};
+		string[] menuOptions = new string[7] 	{"Gynecologic", "Oropharynx", "Nose and Sinus", "Ears", "Eyes", "Head", "Dermatologic"};
 		foreach (string i in menuOptions) {
 			GameObject menuOption = Instantiate (playerMenuButtonPrefab, this.transform);
 			menuOption.name = i;
 			menuOption.GetComponentInChildren<Text> ().text = i;
 			menuOption.transform.localScale = new Vector3 (1, 1, 1);
-			if (menuOption.name == "Oropharynx") {
+			if (menuOption.name == "Gynecologic") {
+				menuOption.GetComponent<Button> ().onClick.AddListener (() => { ROSGynecologic (); } );
+			} else if (menuOption.name == "Oropharynx") {
 				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSOropharynx (); } );
 			} else if (menuOption.name == "Nose and Sinus") {
 				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSNoseSinus (); } );
@@ -667,6 +692,27 @@ public class PlayerOptionsMenu : MonoBehaviour {
 			}
 			if (menuOption.name == "Have you noticed any skin changes to your external genitalia") {
 				menuOption.GetComponentInChildren<Text>().text = "Any skin changes to your external genitalia?";
+			}
+		}
+		GameObject backButton = Instantiate (backButtonPrefab, this.transform);
+		backButton.GetComponent<Button> ().onClick.AddListener (() => { ROSPage1 (); } );
+		backButton.transform.localScale = new Vector3 (1, 1, 1);
+	}
+
+	public void ROSGynecologic () {
+		foreach (Transform child in this.transform){
+			Destroy (child.gameObject);
+		}
+		string[] menuOptions = new string[7] 	{"How many times have you been pregnant", "How many children have you had",
+			"Have you ever had an abortion (spontaneous or elective)", "When was your last menstrual period", "What are your periods usually like",
+			"When was your last Pap smear", "Have you ever had an abnormal Pap smear"};
+		foreach (string i in menuOptions) {
+			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, this.transform);
+			menuOption.name = i;
+			menuOption.GetComponentInChildren<Text> ().text = i + "?";
+			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name == "Have you ever had an abortion (spontaneous or elective)") {
+				menuOption.GetComponentInChildren<Text>().text = "Have you ever had an abortion?";
 			}
 		}
 		GameObject backButton = Instantiate (backButtonPrefab, this.transform);

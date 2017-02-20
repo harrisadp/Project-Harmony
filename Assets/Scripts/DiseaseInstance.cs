@@ -29,7 +29,7 @@ public class DiseaseInstance {
 	private List <Personality> elderlyMales = new List <Personality> {Personality.OldMale};
 
 	// Questions
-	public string[] questions = new string[186]
+	public string[] questions = new string[197]
 		{"Intro", "When were you last completely well", "When did the pain first start", "How would you describe your pain", "Where is the pain located",
 		"Does the pain move anywhere", "How did the pain first start", "How severe is your pain", "Have you ever had a similar pain in the past",
 		"Does anything make the pain better or worse", "What has been the impact of this problem on your life", "Who else have you seen about this problem",
@@ -41,13 +41,15 @@ public class DiseaseInstance {
 		"Do any members of your family have blood clotting problems", "Is there any history of cancer in your family",
 		"Do any members of your family have heart problems", "Is there any history of autoimmune disorders in your family",
 		"Are there any other chronic medical conditions that run in your family", "Describe your lifestyle and where you are living",
-		"Are you currently employed", "What is your marital status", "Is your preferred sexual partner of the opposite sex or the same sex",
-		"Who lives at home with you","Do you drink any alcohol", "How much do you drink in a week", "Have you ever thought about cutting down", "Do you smoke",
-		"How many years have you smoked", "How many packs per day have you smoked", "Have you ever thought about quitting",
-		"Do you do any illicit or recreational drugs", "Which drugs do you use and how frequently do you use them",
-		"Have you ever tried to quit using drugs or have been in a detoxification program", "Where were you born", "What is your financial situation",
-		"How active are you", "How are your energy levels", "Have you noticed any significant weight gain", "Have you noticed any significant weight loss",
-		"Do you have any difficulty sleeping", "Have you experienced any fevers or chills", "Have you experienced any drenching night sweats",
+		"Are you currently employed", "What is your marital status", "Are you currently sexually active",
+		"Is your preferred sexual partner of the opposite sex or the same sex", "Do you use contraception",
+		"Have you ever been diagnosed with a sexually transmitted infection", "Have you ever been the victim of sexual abuse", "Who lives at home with you",
+		"Do you drink any alcohol", "How much do you drink in a week", "Have you ever thought about cutting down", "Do you smoke", "How many years have you smoked",
+		"How many packs per day have you smoked", "Have you ever thought about quitting", "Do you do any illicit or recreational drugs",
+		"Which drugs do you use and how frequently do you use them", "Have you ever tried to quit using drugs or have been in a detoxification program",
+		"Where were you born", "What is your financial situation", "How active are you", "How are your energy levels",
+		"Have you noticed any significant weight gain", "Have you noticed any significant weight loss", "Do you have any difficulty sleeping",
+		"Have you experienced any fevers or chills", "Have you experienced any drenching night sweats",
 		"Do you have any pains, stiffness, or swelling in your joints", "Do you have backaches", "Do you have pains in your legs",
 		"Do you have pains or cramps in your muscles", "Do you feel nervous", "Do you feel anxious", "Do you feel depressed",
 		"Do you ever feel short of breath on exertion", "Has your breathing changed over the past month", "Do you suffer from a cough",
@@ -84,9 +86,11 @@ public class DiseaseInstance {
 		"Are you excessively thirsty", "Do you sweat excessively", "Have you noticed any changes to your skin or hair", "Do you have any pain on urination",
 		"Have you experienced an increased frequency in urinating", "How often do you urinate at night", "Do you often feel the urge to urinate",
 		"Do you find it difficult to begin urinating", "Have you ever had blood in your urine", "Is your urine foamy", "Have you been experiencing any flank pain",
-		"Have you noticed any skin changes to your external genitalia", "Have you experienced any change in your voice", "Do you get frequent sore throats",
-		"Do you have any problems with your teeth or gums", "Do you have any bleeding in your mouth", "How often do you have nosebleeds",
-		"Do you have any discharge from your nose", "Do you have difficulty breathing through your nose",
+		"Have you noticed any skin changes to your external genitalia", "How many times have you been pregnant", "How many children have you had",
+		"Have you ever had an abortion (spontaneous or elective)", "When was your last menstrual period", "What are your periods usually like",
+		"When was your last Pap smear", "Have you ever had an abnormal Pap smear", "Have you experienced any change in your voice",
+		"Do you get frequent sore throats", "Do you have any problems with your teeth or gums", "Do you have any bleeding in your mouth",
+		"How often do you have nosebleeds", "Do you have any discharge from your nose", "Do you have difficulty breathing through your nose",
 		"Have you had a recent cold or infection in your sinuses", "Do you have problems hearing", "Have you experienced a ringing in your ears",
 		"Do you have earaches", "Have you had an infection or discharge from your ears", "Do you wear glasses or contact lenses",
 		"When was your last eye examination", "Have you had any recent changes to your vision", "Do you have excessive tearing in your eyes",
@@ -95,7 +99,7 @@ public class DiseaseInstance {
 		"Have you noticed any changes to your fingernails", "Have you noticed any changes to your hair growth"};
 
 	// Answers
-	public string[,] answers = new string[186, Enum.GetNames(typeof(Personality)).Length];
+	public string[,] answers = new string[197, Enum.GetNames(typeof(Personality)).Length];
 
 	// Vitals
 	public string [] vitalStrings = new string[6] {"T", "HR", "SBP", "DBP", "RR", "SpO2"};

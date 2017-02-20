@@ -77,8 +77,16 @@ Player: Are you currently employed?
 Patient: [Are you currently employed]
 Player: What is your marital status?
 Patient: [What is your marital status]
+Player: Are you currently sexually active?
+Patient: [Are you currently sexually active]
 Player: Is your preferred sexual partner of the opposite sex or the same sex?
 Patient: [Is your preferred sexual partner of the opposite sex or the same sex]
+Player: Do you use contraception?
+Patient: [Do you use contraception]
+Player: Have you ever been diagnosed with a sexually transmitted infection?
+Patient: [Have you ever been diagnosed with a sexually transmitted infection]
+Player: Have you ever been the victim of sexual abuse?
+Patient: [Have you ever been the victim of sexual abuse]
 Player: Who lives at home with you?
 Patient: [Who lives at home with you]
 Player: Do you drink any alcohol?
@@ -352,6 +360,22 @@ Player: Have you been experiencing any flank pain?
 Patient: [Have you been experiencing any flank pain]
 Player: Have you noticed any skin changes to your external genitalia?
 Patient: [Have you noticed any skin changes to your external genitalia]
+
+// Gynecologic
+Player: How many times have you been pregnant?
+Patient: [How many times have you been pregnant]
+Player: How many children have you had?
+Patient: [How many children have you had]
+Player: Have you ever had an abortion (spontaneous or elective)?
+Patient: [Have you ever had an abortion (spontaneous or elective)]
+Player: When was your last menstrual period?
+Patient: [When was your last menstrual period]
+Player: What are your periods usually like?
+Patient: [What are your periods usually like]
+Player: When was your last Pap smear?
+Patient: [When was your last Pap smear]
+Player: Have you ever had an abnormal Pap smear?
+Patient: [Have you ever had an abnormal Pap smear]
 
 // Oropharynx
 Player: Have you experienced any change in your voice?

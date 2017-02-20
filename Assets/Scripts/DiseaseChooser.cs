@@ -9,7 +9,8 @@ public class DiseaseChooser : MonoBehaviour {
 
 	public DiseaseStruct diseaseStruct;
 	public DiseaseInstance disease_data;
-	public enum DiseaseID {disease1, disease2, disease3};
+	public enum DiseaseID {Asthma, Bronchitis, COPD, AnovulatoryCycle};
+	public DiseaseID SelectDisease;
 	public int diseaseChosen;
 	public Sprite[] sprites;
 	public Sprite[] headSprites;
@@ -43,7 +44,7 @@ public class DiseaseChooser : MonoBehaviour {
 	}
 
 	public void ChooseDisease() {
-		diseaseChosen = (int)(DiseaseID)UnityEngine.Random.Range (0, 4);
+		diseaseChosen = (int)(SelectDisease);
 		disease_data = diseaseStruct.GetDiseaseFromList(diseaseChosen);
 		SpriteRenderer patientSpriteRenderer = patient.GetComponent<SpriteRenderer> ();
 		Animator patientAnimator = patient.GetComponent<Animator> ();
