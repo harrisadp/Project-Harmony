@@ -152,17 +152,37 @@ public class Journal : MonoBehaviour {
 			TextGenerator tgLabTest = labTest.GetComponent<Text> ().cachedTextGenerator;
 			Canvas.ForceUpdateCanvases ();
 			labTest.GetComponent<LayoutElement> ().minHeight = 30f * tgLabTest.lineCount;
-			foreach (string labValueInStudy in labValues.labValuesInEachStudy [labStudy]) {
+			if (labValues.labValuesInEachStudy.ContainsKey(labStudy)){
+				foreach (string labValueInStudy in labValues.labValuesInEachStudy [labStudy]) {
+					GameObject labResult = Instantiate (journalEntry, this.transform);
+					labResult.GetComponent<Text> ().text = labValueInStudy + ": " + labValues.labValues [labValueInStudy];
+					labResult.transform.localScale = new Vector3 (1, 1, 1);
+					labResult.GetComponent<Text> ().color = Color.yellow;
+					// Check if good lab and change text color accordingly
+					if (diseaseChooser.disease_data.goodLabs.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy))) {
+						labResult.GetComponent<Text> ().color = Color.green;
+					} else if (diseaseChooser.disease_data.badLabs.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy))) {
+						labResult.GetComponent<Text> ().color = Color.red;
+					}
+					TextGenerator tgLabResult = labResult.GetComponent<Text> ().cachedTextGenerator;
+					Canvas.ForceUpdateCanvases ();
+					labResult.GetComponent<LayoutElement> ().minHeight = 30f * tgLabResult.lineCount;
+				}
+			} else if (labValues.labValuesBinary.ContainsKey(labStudy)) {
 				GameObject labResult = Instantiate (journalEntry, this.transform);
-				labResult.GetComponent<Text> ().text = labValueInStudy + ": " + labValues.labValues [labValueInStudy];
+				if (labValues.labValuesBinary [labStudy] == false){
+					labResult.GetComponent<Text> ().text = "Negative";
+				} else if (labValues.labValuesBinary [labStudy] == true){
+					labResult.GetComponent<Text> ().text = "Positive";
+				}
 				labResult.transform.localScale = new Vector3 (1, 1, 1);
 				labResult.GetComponent<Text> ().color = Color.yellow;
 				// Check if good lab and change text color accordingly
-				if (diseaseChooser.disease_data.goodLabs.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy))) {
-					labResult.GetComponent<Text> ().color = Color.green;
-				} else if (diseaseChooser.disease_data.badLabs.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy))) {
-					labResult.GetComponent<Text> ().color = Color.red;
-				}
+				// if (diseaseChooser.disease_data.goodLabs.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy))) {
+				// 	labResult.GetComponent<Text> ().color = Color.green;
+				// } else if (diseaseChooser.disease_data.badLabs.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy))) {
+				// 	labResult.GetComponent<Text> ().color = Color.red;
+				// }
 				TextGenerator tgLabResult = labResult.GetComponent<Text> ().cachedTextGenerator;
 				Canvas.ForceUpdateCanvases ();
 				labResult.GetComponent<LayoutElement> ().minHeight = 30f * tgLabResult.lineCount;

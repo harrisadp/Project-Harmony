@@ -147,6 +147,9 @@ public class RPGTalk : MonoBehaviour {
 		foreach (string i in labValues.labValues.Keys) {
 			variableDict ["[" + i + "]"] = i;
 		}
+		foreach (string i in labValues.labValuesBinary.Keys) {
+			variableDict ["[" + i + "]"] = i;
+		}
 		if (startOnAwake) {
 			NewTalk ();
 		}
@@ -269,6 +272,12 @@ public class RPGTalk : MonoBehaviour {
 				line = line.Replace(i, physicalExam.physical[variableDict[i]]);
 			} else if (line.Contains (i) && labValues.labValues.ContainsKey(variableDict[i])){
 				line = line.Replace(i, labValues.labValues[variableDict[i]].ToString());
+			} else if (line.Contains (i) && labValues.labValuesBinary.ContainsKey(variableDict[i])){
+				if (labValues.labValuesBinary[variableDict[i]] == false){
+					line = line.Replace(i, "negative");
+				} else if (labValues.labValuesBinary[variableDict[i]] == true){
+					line = line.Replace(i, "positive");
+				}
 			}
 		}
 
