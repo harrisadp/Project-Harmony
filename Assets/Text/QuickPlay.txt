@@ -368,10 +368,24 @@ Player: How many children have you had?
 Patient: [How many children have you had]
 Player: Have you ever had an abortion (spontaneous or elective)?
 Patient: [Have you ever had an abortion (spontaneous or elective)]
+Player: Do you have a history of infertility?
+Patient: [Do you have a history of infertility]
+Player: How old were you when you had your first period?
+Patient: [How old were you when you had your first period]
 Player: When was your last menstrual period?
 Patient: [When was your last menstrual period]
-Player: What are your periods usually like?
-Patient: [What are your periods usually like]
+Player: What is the typical length of your periods?
+Patient: [What is the typical length of your periods]
+Player: How many days are usually between your periods?
+Patient: [How many days are usually between your periods]
+Player: Have you had any recent changes in your periods?
+Patient: [Have you had any recent changes in your periods]
+Player: Have you ever had a history of irregular periods?
+Patient: [Have you ever had a history of irregular periods]
+Player: Have you ever had vaginal bleeding between your periods?
+Patient: [Have you ever had vaginal bleeding between your periods]
+Player: Have you ever experienced vaginal bleeding during or immediately after sexual intercourse?
+Patient: [Have you ever experienced vaginal bleeding during or immediately after sexual intercourse]
 Player: When was your last Pap smear?
 Patient: [When was your last Pap smear]
 Player: Have you ever had an abnormal Pap smear?
@@ -778,6 +792,36 @@ Player: I'm going to assess your fine motor skills.
 Player: ...
 Player: [Cere - Motor]
 
+// Breast - Inspection
+Player: I'm going to examine your breasts, specifically to assess for any asymmetry or discoloration.
+Player ...
+Player: [Breast - Inspection]
+// Breast - Palpation
+Player: I'm going to gently palpate your breasts, specifically to assess for any nodules or other abnormalities.
+Player ...
+Player: [Breast - Palpation]
+
+// Inspection of external genitalia
+Player: I'm going to examine your external genitalia.
+Player ...
+Player: [Inspection of external genitalia]
+// Palpation of Bartholin glands
+Player: I'm going to lightly palpate the glands in the vaginal wall.
+Player ...
+Player: [Palpation of Bartholin glands]
+// Speculum examination
+Player: I'm going to gently insert a speculum in order to better visualize the inside of the vagina.
+Player: ...
+Player: [Speculum examination]
+// Bimanual examination
+Player: I'm now going to gently insert two fingers into the vagina and place my other hand on your abdomen so that I can palpate the uterus and ovaries.
+Player ...
+Player: [Bimanual examination]
+// Rectovaginal examination
+Player: I'm now going to gently insert one finger into the vagina and another finger into the rectum so that I can assess a variety of pelvic structures.
+Player ...
+Player: [Rectovaginal examination]
+
 // Labs
 
 // Blood
@@ -847,6 +891,12 @@ Emdee: Collecting...
 Emdee: Analyzing...
 Emdee: Done!
 Emdee: The urine pH is [upH], the urine specific gravity is [uSpGrav], and the urine glucose is [uGluc].
+// Pregnancy Test
+Player: Let's get a pregnancy test.
+Emdee: Collecting...
+Emdee: Analyzing...
+Emdee: Done!
+Emdee: The pregnancy test is [Pregnancy Test].
 
 // Imaging
 // X-ray (chest)

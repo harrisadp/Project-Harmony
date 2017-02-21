@@ -9,6 +9,7 @@ public class PerformanceTracker : MonoBehaviour {
 
 	public int score = 0;
 	public int energyValue = 0;
+	public int maxEnergyValue = 10;
 	public GameObject energyIcon;
 	public AudioClip goodSound;
 	public AudioClip badSound;
@@ -73,7 +74,7 @@ public class PerformanceTracker : MonoBehaviour {
 	}
 
 	public void AddEnergy () {
-		if (GameObject.Find ("Energy Panel").transform.childCount < 6) {
+		if (GameObject.Find ("Energy Panel").transform.childCount < maxEnergyValue + 1) {
 			GameObject energy = Instantiate (energyIcon, GameObject.Find ("Energy Panel").transform);
 			energy.transform.localScale = new Vector3 (1, 1, 1);
 		}

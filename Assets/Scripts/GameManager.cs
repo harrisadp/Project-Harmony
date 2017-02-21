@@ -25,11 +25,11 @@ public class GameManager : MonoBehaviour {
 	public bool isFirstTurn = true;
 	public bool hasDifferential = false;
 	public bool backToDifferential = false;
+	public int turnCount;
 
 	private LevelManager levelManager;
 	private DiseaseChooser diseaseChooser;
 	private DialogueManager dialogueManager;
-	private int turnCount;
 
 	// Use this for initialization
 	void Start () {

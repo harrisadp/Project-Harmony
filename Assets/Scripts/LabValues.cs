@@ -6,6 +6,7 @@ public class LabValues : MonoBehaviour {
 
 	public List <string> labStudies = new List <string>();
 	public Dictionary<string, float> labValues = new Dictionary <string, float>();
+	public Dictionary<string, bool> labValuesBinary = new Dictionary <string, bool>();
 	public Dictionary<string, string[]> labValuesInEachStudy = new Dictionary <string, string[]>();
 
 	void Awake () {
@@ -57,6 +58,7 @@ public class LabValues : MonoBehaviour {
 		labValues ["upH"] = Mathf.Round (10 * (Random.Range (4.5f, 8.0f))) / 10;
 		labValues ["uSpGrav"] = Mathf.Round (1000 * (Random.Range (1.005f, 1.025f))) / 1000;
 		labValues ["uGluc"] = Mathf.Round (Random.Range (0f, 130f));
+		labValuesBinary ["Pregnancy Test"] = false;
 		labValuesInEachStudy ["CBC"] = new string[] { "WBC", "HGB", "PLT" };
 		labValuesInEachStudy ["BMP"] = new string[] { "Na", "K", "Cl", "HCO3", "BUN", "Cr", "Glu" };
 		labValuesInEachStudy ["Coag"] = new string[] { "PT", "PTT", "INR" };

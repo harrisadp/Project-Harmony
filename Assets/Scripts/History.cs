@@ -194,8 +194,16 @@ public class History : MonoBehaviour {
 		history ["How many times have you been pregnant"] = "[How many times have you been pregnant]";
 		history ["How many children have you had"] = "[How many children have you had]";
 		history ["Have you ever had an abortion (spontaneous or elective)"] = "[Have you ever had an abortion (spontaneous or elective)]";
+		history ["Do you have a history of infertility"] = "[Do you have a history of infertility]";
+		history ["How old were you when you had your first period"] = "[How old were you when you had your first period]";
 		history ["When was your last menstrual period"] = "[When was your last menstrual period]";
-		history ["What are your periods usually like"] = "[What are your periods usually like]";
+		history ["What is the typical length of your periods"] = "[What is the typical length of your periods]";
+		history ["How many days are usually between your periods"] = "[How many days are usually between your periods]";
+		history ["Have you had any recent changes in your periods"] = "[Have you had any recent changes in your periods]";
+		history ["Have you ever had a history of irregular periods"] = "[Have you ever had a history of irregular periods]";
+		history ["Have you ever had vaginal bleeding between your periods"] = "[Have you ever had vaginal bleeding between your periods]";
+		history ["Have you ever experienced vaginal bleeding during or immediately after sexual intercourse"] = "[Have you ever experienced vaginal bleeding during or immediately after sexual intercourse]";
+
 		history ["When was your last Pap smear"] = "[When was your last Pap smear]";
 		history ["Have you ever had an abnormal Pap smear" ] = "[Have you ever had an abnormal Pap smear]";
 		// Oropharynx

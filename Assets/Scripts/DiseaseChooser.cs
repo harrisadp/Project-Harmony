@@ -77,6 +77,9 @@ public class DiseaseChooser : MonoBehaviour {
 		foreach (string labStudy in disease_data.labComponents) {
 			disease_data.OverwriteLabs (labValues, labStudy, disease_data.labResults [Array.IndexOf(disease_data.labComponents, labStudy)]);
 		}
+		foreach (string labStudy in disease_data.labStudiesBinary) {
+			disease_data.OverwriteLabsBinary (labValues, labStudy, disease_data.labResultsBinary [Array.IndexOf(disease_data.labStudiesBinary, labStudy)]);
+		}
 		UpdateDisplays ();
 	}
 

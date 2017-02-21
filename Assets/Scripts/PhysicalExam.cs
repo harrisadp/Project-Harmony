@@ -112,6 +112,18 @@ public class PhysicalExam : MonoBehaviour {
 		physical ["Cere - Speech"] = "No abnormalities.]";
 		physical ["Cere - Coordination"] = "No abnormalities.";
 		physical ["Cere - Motor"] = "No abnormalities.";
+	
+		// Breast
+		physical ["Breast - Inspection"] = "No abnormalities.";
+		physical ["Breast - Palpation"] = "No abnormalities.";
+
+		// Pelvic
+		physical ["Inspection of external genitalia"] = "No abnormalities.";
+		physical ["Palpation of Bartholin glands"] = "No abnormalities.";
+		physical ["Speculum examination"] = "No abnormalities.";
+		physical ["Bimanual examination"] = "No abnormalities.";
+		physical ["Rectovaginal examination"] = "No abnormalities.";
+
 	}
 
 }

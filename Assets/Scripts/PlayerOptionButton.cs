@@ -67,6 +67,18 @@ public class PlayerOptionButton : MonoBehaviour {
 				return;
 			}
 		}
+		else if (labValues.labValuesBinary.ContainsKey (this.name)) {
+			CheckIfSufficientEnergy ();
+			if (sufficientEnergy) {
+				performanceTracker.energyValue -= 2;
+				performanceTracker.RemoveEnergy (2);
+				performanceTracker.labsOrdered.Add (this.name);
+				CheckIfGoodLabBinary ();
+			} else {
+				InsufficientEnergy ();
+				return;
+			}
+		}
 		else if (images.imagingStudies.Contains (this.name)) {
 			CheckIfSufficientEnergy ();
 			if (sufficientEnergy) {
@@ -109,7 +121,13 @@ public class PlayerOptionButton : MonoBehaviour {
 					dialogueManager.NewTalk ();
 					gameManager.Reset ();
 					return;
-				} else if (line.Contains (this.name)) {
+				} else if (line.Contains (this.name) && labValues.labValuesBinary.ContainsKey (this.name)) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 5);
+					dialogueManager.NewTalk ();
+					gameManager.Reset ();
+					return;
+				}else if (line.Contains (this.name)) {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 3);
 					dialogueManager.NewTalk ();
@@ -122,6 +140,8 @@ public class PlayerOptionButton : MonoBehaviour {
 
 	private void CheckIfSufficientEnergy (){
 		if (labValues.labStudies.Contains (this.name) && performanceTracker.energyValue >= 2) {
+			sufficientEnergy = true;
+		} else if (labValues.labValuesBinary.ContainsKey (this.name) && performanceTracker.energyValue >= 2) {
 			sufficientEnergy = true;
 		} else if (images.imagingStudies.Contains (this.name) && performanceTracker.energyValue >= 3) {
 			sufficientEnergy = true;
@@ -157,7 +177,7 @@ public class PlayerOptionButton : MonoBehaviour {
 		if (diseaseChooser.disease_data.goodQuestions.Contains (questionNumber)) {
 			performanceTracker.score += 100;
 			performanceTracker.PositiveAnimation ();
-			if (performanceTracker.energyValue < 5) {
+			if (performanceTracker.energyValue < performanceTracker.maxEnergyValue) {
 				performanceTracker.energyValue += 1;
 				performanceTracker.AddEnergy();
 			}
@@ -179,7 +199,7 @@ public class PlayerOptionButton : MonoBehaviour {
 		if (diseaseChooser.disease_data.goodPhysicalManeuvers.Contains (physicalNumber)) {
 			performanceTracker.score += 100;
 			performanceTracker.PositiveAnimation ();
-			if (performanceTracker.energyValue < 5) {
+			if (performanceTracker.energyValue < performanceTracker.maxEnergyValue) {
 				performanceTracker.energyValue += 1;
 				performanceTracker.AddEnergy();
 			}
@@ -209,6 +229,10 @@ public class PlayerOptionButton : MonoBehaviour {
 		} else {
 			performanceTracker.UpdateScore ();
 		}
+	}
+
+	private void CheckIfGoodLabBinary () {
+		Debug.Log ("Checking if good binary lab.");
 	}
 
 	private void CheckIfGoodImage() {
@@ -256,6 +280,7 @@ public class PlayerOptionButton : MonoBehaviour {
 	}
 
 	private void QuestionAlreadyAsked () {
+		gameManager.turnCount --;
 		int lineNum = 0;
 		using (StringReader reader = new StringReader (textAsset.text)) {
 			string line;
@@ -273,6 +298,7 @@ public class PlayerOptionButton : MonoBehaviour {
 	}
 
 	private void PhysicalManeuverAlreadyPerformed () {
+		gameManager.turnCount --;
 		int lineNum = 0;
 		using (StringReader reader = new StringReader (textAsset.text)) {
 			string line;
@@ -290,6 +316,7 @@ public class PlayerOptionButton : MonoBehaviour {
 	}
 
 	private void LabAlreadyOrdered () {
+		gameManager.turnCount --;
 		int lineNum = 0;
 		using (StringReader reader = new StringReader (textAsset.text)) {
 			string line;
@@ -307,6 +334,7 @@ public class PlayerOptionButton : MonoBehaviour {
 	}
 
 	private void ImageAlreadyOrdered () {
+		gameManager.turnCount --;
 		int lineNum = 0;
 		using (StringReader reader = new StringReader (textAsset.text)) {
 			string line;
