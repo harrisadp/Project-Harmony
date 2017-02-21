@@ -232,7 +232,23 @@ public class PlayerOptionButton : MonoBehaviour {
 	}
 
 	private void CheckIfGoodLabBinary () {
-		Debug.Log ("Checking if good binary lab.");
+		int labNumber = 0;
+		foreach (string labStudy in labValues.labStudiesBinary) {
+			if (labStudy == this.name) {
+				labNumber = labValues.labStudiesBinary.IndexOf (labStudy);
+			}
+		}
+		if (diseaseChooser.disease_data.goodLabs.Contains (labNumber)) {
+			performanceTracker.score += 100;
+			performanceTracker.PositiveAnimation ();
+			performanceTracker.UpdateScore ();
+		} else if (diseaseChooser.disease_data.badLabs.Contains (labNumber)) {
+			performanceTracker.score -= 100;
+			performanceTracker.NegativeAnimation ();
+			performanceTracker.UpdateScore ();
+		} else {
+			performanceTracker.UpdateScore ();
+		}
 	}
 
 	private void CheckIfGoodImage() {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class LabValues : MonoBehaviour {
 
 	public List <string> labStudies = new List <string>();
+	public List <string> labStudiesBinary = new List <string>();
 	public Dictionary<string, float> labValues = new Dictionary <string, float>();
 	public Dictionary<string, bool> labValuesBinary = new Dictionary <string, bool>();
 	public Dictionary<string, string[]> labValuesInEachStudy = new Dictionary <string, string[]>();
@@ -21,6 +22,18 @@ public class LabValues : MonoBehaviour {
 		labStudies.Add ("Troponin I");
 		labStudies.Add ("Cortisol (random)");
 		labStudies.Add ("Urinalysis");
+		labStudiesBinary.Add ("Pregnancy Test");
+		labStudiesBinary.Add ("Blood cultures");
+		labStudiesBinary.Add ("Urine cultures");
+		labStudiesBinary.Add ("Sputum cultures");
+		labStudiesBinary.Add ("Chlamydia");
+		labStudiesBinary.Add ("Ghonorrea");
+		labStudiesBinary.Add ("Herpes");
+		labStudiesBinary.Add ("HPV");
+		labStudiesBinary.Add ("Syphilis");
+		labStudiesBinary.Add ("HIV");
+		labStudiesBinary.Add ("Lab - Pap smear");
+		labStudiesBinary.Add ("Endometrial biopsy");
 		labValues ["WBC"] = Mathf.Round (10 * (Random.Range (3.5f, 10.5f))) / 10;
 		labValues ["HGB"] = Mathf.Round (10 * (Random.Range (13.5f, 15.5f))) / 10;
 		labValues ["PLT"] = Mathf.Round (Random.Range (150f, 450f));
@@ -59,6 +72,17 @@ public class LabValues : MonoBehaviour {
 		labValues ["uSpGrav"] = Mathf.Round (1000 * (Random.Range (1.005f, 1.025f))) / 1000;
 		labValues ["uGluc"] = Mathf.Round (Random.Range (0f, 130f));
 		labValuesBinary ["Pregnancy Test"] = false;
+		labValuesBinary ["Blood cultures"] = false;
+		labValuesBinary ["Urine cultures"] = false;
+		labValuesBinary ["Sputum cultures"] = false;
+		labValuesBinary ["Chlamydia"] = false;
+		labValuesBinary ["Ghonorrea"] = false;
+		labValuesBinary ["Herpes"] = false;
+		labValuesBinary ["HPV"] = false;
+		labValuesBinary ["Syphilis"] = false;
+		labValuesBinary ["HIV"] = false;
+		labValuesBinary ["Lab - Pap smear"] = false;
+		labValuesBinary ["Endometrial biopsy"] = false;
 		labValuesInEachStudy ["CBC"] = new string[] { "WBC", "HGB", "PLT" };
 		labValuesInEachStudy ["BMP"] = new string[] { "Na", "K", "Cl", "HCO3", "BUN", "Cr", "Glu" };
 		labValuesInEachStudy ["Coag"] = new string[] { "PT", "PTT", "INR" };

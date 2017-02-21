@@ -178,11 +178,11 @@ public class Journal : MonoBehaviour {
 				labResult.transform.localScale = new Vector3 (1, 1, 1);
 				labResult.GetComponent<Text> ().color = Color.yellow;
 				// Check if good lab and change text color accordingly
-				// if (diseaseChooser.disease_data.goodLabs.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy))) {
-				// 	labResult.GetComponent<Text> ().color = Color.green;
-				// } else if (diseaseChooser.disease_data.badLabs.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudies, labStudy))) {
-				// 	labResult.GetComponent<Text> ().color = Color.red;
-				// }
+				if (diseaseChooser.disease_data.goodLabsBinary.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudiesBinary, labStudy))) {
+					labResult.GetComponent<Text> ().color = Color.green;
+				} else if (diseaseChooser.disease_data.badLabsBinary.Contains (Array.IndexOf (diseaseChooser.disease_data.labStudiesBinary, labStudy))) {
+					labResult.GetComponent<Text> ().color = Color.red;
+				}
 				TextGenerator tgLabResult = labResult.GetComponent<Text> ().cachedTextGenerator;
 				Canvas.ForceUpdateCanvases ();
 				labResult.GetComponent<LayoutElement> ().minHeight = 30f * tgLabResult.lineCount;

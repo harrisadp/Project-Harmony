@@ -1293,6 +1293,7 @@ public class PlayerOptionsMenu : MonoBehaviour {
 			GameObject menuOption = Instantiate (playerMenuButtonPrefab, this.transform);
 			menuOption.name = i;
 			menuOption.GetComponentInChildren<Text> ().text = i;
+			menuOption.GetComponent<Image> ().color = new Color (0.392f, 1f, 0.392f, 1f);
 			menuOption.transform.localScale = new Vector3 (1, 1, 1);
 			if (menuOption.name == "Blood") {
 				menuOption.GetComponent<Button> ().onClick.AddListener( () => { Blood (); } );
@@ -1300,7 +1301,7 @@ public class PlayerOptionsMenu : MonoBehaviour {
 				menuOption.GetComponent<Button> ().onClick.AddListener( () => { Urine (); } );
 			} else if (menuOption.name == "Microbiology") {
 				menuOption.GetComponent<Button> ().onClick.AddListener( () => { Microbiology (); } );
-			} else if (menuOption.name == "Biopsy") {
+			} else if (menuOption.name == "Pathology") {
 				menuOption.GetComponent<Button> ().onClick.AddListener( () => { Pathology (); } );
 			}
 		}
@@ -1359,7 +1360,7 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
 		}
-		string[] menuOptions = new string[9] 	{"Blood cultures", "Urine cultures", "Sputum cultures", "Chlamydia", "Ghonorrea", "Herpes", "HPV", "Syphilis", "HIV"};
+		string[] menuOptions = new string[9] {"Blood cultures", "Urine cultures", "Sputum cultures", "Chlamydia", "Ghonorrea", "Herpes", "HPV", "Syphilis", "HIV"};
 		foreach (string i in menuOptions) {
 			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, this.transform);
 			menuOption.name = i;
@@ -1376,13 +1377,16 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
 		}
-		string[] menuOptions = new string[2] 	{"Pap smear", "Endometrial biopsy"};
+		string[] menuOptions = new string[2] {"Lab - Pap smear", "Endometrial biopsy"};
 		foreach (string i in menuOptions) {
 			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, this.transform);
 			menuOption.name = i;
 			menuOption.GetComponent<Image> ().color = new Color (0.392f, 1f, 0.392f, 1f);
 			menuOption.GetComponentInChildren<Text> ().text = i;
 			menuOption.transform.localScale = new Vector3 (1, 1, 1);
+			if (menuOption.name.Contains ("Lab - Pap smear")) {
+				menuOption.GetComponentInChildren<Text> ().text = menuOption.GetComponentInChildren<Text> ().text.Replace ("Lab - Pap smear", "Pap smear");
+			}
 		}
 		GameObject backButton = Instantiate (backButtonPrefab, this.transform);
 		backButton.GetComponent<Button> ().onClick.AddListener (() => { Labs (); } );

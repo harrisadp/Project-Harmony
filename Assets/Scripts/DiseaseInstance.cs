@@ -48,7 +48,7 @@ public class DiseaseInstance {
 		
 	public string[] labComponents = new string[37] {"WBC", "HGB", "PLT", "Na", "K", "Cl", "HCO3", "BUN", "Cr", "Glu", "AST", "ALT", "AlkPhos", "Ca", "TotalProt", "Albumin", "TotalBili", "PT", "PTT", "INR", "Amylase", "Lipase", "Lactate", "Troponin I", "CK", "CRP", "ESR", "Cortisol (random)", "TSH", "T3", "T4", "pH", "paCO2", "paO2", "upH", "uSpGrav", "uGluc"};
 
-	public string[] labStudiesBinary = new string[1] {"Pregnancy Test"};
+	public string[] labStudiesBinary = new string[12] {"Pregnancy Test", "Blood cultures", "Urine cultures", "Sputum cultures", "Chlamydia", "Ghonorrea", "Herpes", "HPV", "Syphilis", "HIV", "Lab - Pap smear", "Endometrial biopsy"};
 	
 	// Lab Results
 	public float[] labResults = new float[37] {-1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, 1f};
@@ -68,10 +68,12 @@ public class DiseaseInstance {
 	public List<int> badPhysicalManeuvers = new List<int>();
 	public List<int> goodLabs = new List<int>();
 	public List<int> badLabs = new List<int>();
+	public List<int> goodLabsBinary = new List<int>();
+	public List<int> badLabsBinary = new List<int>();
 	public List<int> goodImages = new List<int>();
 	public List<int> badImages = new List<int>();
 
-	public DiseaseInstance 	(string diseaseName, int ageMin, int ageMax, float maleProbability, float bmiMin, float bmiMax, float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, float diseaseTMin, float diseaseTMax, float diseaseHRMin, float diseaseHRMax, float diseaseSBPMin, float diseaseSBPMax, float diseaseDBPMin, float diseaseDBPMax, float diseaseRRMin, float diseaseRRMax, float diseaseSpO2Min, float diseaseSpO2Max, string[] diseasePhysical, float[,] diseaseLabMinMax, bool[] diseaseLabsBinary, int[] images, int[] goodQuestionIDs, int[] badQuestionIDs, int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs, int[] goodLabIDs, int[] badLabIDs, int[] goodImageIDs, int[] badImageIDs, string[] differentialOptions) {
+	public DiseaseInstance 	(string diseaseName, int ageMin, int ageMax, float maleProbability, float bmiMin, float bmiMax, float asianProbability, float blackProbability, float hispanicProbability, float whiteProbability, string[,] diseaseAnswers, float diseaseTMin, float diseaseTMax, float diseaseHRMin, float diseaseHRMax, float diseaseSBPMin, float diseaseSBPMax, float diseaseDBPMin, float diseaseDBPMax, float diseaseRRMin, float diseaseRRMax, float diseaseSpO2Min, float diseaseSpO2Max, string[] diseasePhysical, float[,] diseaseLabMinMax, bool[] diseaseLabsBinary, int[] images, int[] goodQuestionIDs, int[] badQuestionIDs, int[] goodPhysicalManeuverIDs, int[] badPhysicalManeuverIDs, int[] goodLabIDs, int[] badLabIDs, int[] goodLabBinaryIDs, int[] badLabBinaryIDs, int[] goodImageIDs, int[] badImageIDs, string[] differentialOptions) {
 		Debug.Log ("Instance of disease " + diseaseName + " created.");
 		this.disease_name = diseaseName;
 		this.age = RandomAge (ageMin, ageMax);
@@ -92,6 +94,8 @@ public class DiseaseInstance {
 		foreach (int i in badPhysicalManeuverIDs) {badPhysicalManeuvers.Add (i);}
 		foreach (int i in goodLabIDs) {goodLabs.Add (i);}
 		foreach (int i in badLabIDs) {badLabs.Add (i);}
+		foreach (int i in goodLabBinaryIDs) {goodLabsBinary.Add (i);}
+		foreach (int i in badLabBinaryIDs) {badLabsBinary.Add (i);}
 		foreach (int i in goodImageIDs) {goodImages.Add (i);}
 		foreach (int i in badImageIDs) {badImages.Add (i);}
 	}
