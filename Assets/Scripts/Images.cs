@@ -14,11 +14,12 @@ public class Images : MonoBehaviour {
 	public Sprite[] ctAbdomens;
 	public Sprite[] mriBrains;
 	public Sprite[] ultrasoundAbdomens;
-	public Sprite[] ultrasoundExtremities;
+	public Sprite[] ultrasoundPelvis;
+	public string[] ultrasoundPelvisCitations;
 
 	void Awake () {
 		foreach (string i in new string[]{"X-ray (chest)", "X-ray (abdomen)", "X-ray (spine)", "CT (head)", "CT (chest)", "CT (abdomen)", "MRI (brain)",
-			"Ultrasound (abdomen)", "Ultrasound (extremities)"}) {
+			"Ultrasound (abdomen)", "Ultrasound (pelvis)"}) {
 			imagingStudies.Add (i);
 		}
 	}

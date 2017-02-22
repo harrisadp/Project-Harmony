@@ -997,8 +997,8 @@ Emdee: Here you go!
 Player: Let's get an ultrasound of the abdomen.
 Emdee: Scanning...
 Emdee: Here you go!
-// Ultrasound (extremities)
-Player: Let's get an ultrasound of the extremity.
+// Ultrasound (pelvis)
+Player: Let's get an ultrasound of the pelvis.
 Emdee: Scanning...
 Emdee: Here you go!
 

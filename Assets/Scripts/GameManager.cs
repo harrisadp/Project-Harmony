@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject rootMenu;
 	public GameObject playerSelectionPanel;
 	public GameObject imagePanel;
+	public Text citation;
 	public GameObject differentialPanel;
 	public GameObject differentialDiagnosisItem;
 	public GameObject diagnoseButton;

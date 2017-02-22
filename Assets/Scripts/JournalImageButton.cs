@@ -7,6 +7,7 @@ public class JournalImageButton : MonoBehaviour {
 
 	public GameObject imagePanel;
 	public GameObject backButtonPrefab;
+	public GameObject citationPrefab;
 
 	private DiseaseChooser diseaseChooser;
 	private Images images;
@@ -25,6 +26,10 @@ public class JournalImageButton : MonoBehaviour {
 		imagingStudy.transform.localScale = new Vector3 (1, 1, 1);
 		imagingStudy.transform.localPosition = new Vector3 (0, 0, 0);
 		imagingStudy.name = "Journal Image Popup";
+		GameObject citation = Instantiate (citationPrefab, imagingStudy.transform);
+		citation.transform.localScale = new Vector3 (1, 1, 1);
+		citation.transform.localPosition = new Vector3 (0, -420, 0);
+		citation.name = "Citation";
 		Image image = imagingStudy.transform.FindChild ("Image").GetComponent<Image> ();
 		int imageNumber = images.imagingStudies.IndexOf (this.name);
 		if (imageNumber == 0) {
@@ -44,7 +49,8 @@ public class JournalImageButton : MonoBehaviour {
 		} else if (imageNumber == 7) {
 			image.sprite = images.ultrasoundAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 8) {
-			image.sprite = images.ultrasoundExtremities[diseaseChooser.disease_data.imagingStudies[0]];
+			image.sprite = images.ultrasoundPelvis[diseaseChooser.disease_data.imagingStudies[0]];
+			citation.GetComponentInChildren<Text>().text = images.ultrasoundPelvisCitations[diseaseChooser.disease_data.imagingStudies[0]];
 		}
 		GameObject backButton = Instantiate (backButtonPrefab, imagingStudy.transform);
 		imagingStudy.transform.localScale = new Vector3 (1, 1, 1);

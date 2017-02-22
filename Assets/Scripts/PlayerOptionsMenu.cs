@@ -1399,7 +1399,7 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
 		}
-		string[] menuOptions = new string[9] 	{"X-ray (chest)", "X-ray (abdomen)", "X-ray (spine)", "CT (head)", "CT (chest)", "CT (abdomen)", "MRI (brain)", "Ultrasound (abdomen)", "Ultrasound (extremities)"};
+		string[] menuOptions = new string[9] 	{"X-ray (chest)", "X-ray (abdomen)", "X-ray (spine)", "CT (head)", "CT (chest)", "CT (abdomen)", "MRI (brain)", "Ultrasound (abdomen)", "Ultrasound (pelvis)"};
 		foreach (string i in menuOptions) {
 			GameObject menuOption = Instantiate (playerSelectionButtonPrefab, this.transform);
 			menuOption.name = i;

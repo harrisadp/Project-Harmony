@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerOptionButton : MonoBehaviour {
 
@@ -299,7 +300,8 @@ public class PlayerOptionButton : MonoBehaviour {
 		} else if (imageNumber == 7) {
 			gameManager.imageToDisplay = images.ultrasoundAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 8) {
-			gameManager.imageToDisplay = images.ultrasoundExtremities[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.imageToDisplay = images.ultrasoundPelvis[diseaseChooser.disease_data.imagingStudies[0]];
+			gameManager.citation.text = images.ultrasoundPelvisCitations[diseaseChooser.disease_data.imagingStudies[0]];
 		}
 	}
 
