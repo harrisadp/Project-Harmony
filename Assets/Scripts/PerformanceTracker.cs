@@ -17,6 +17,7 @@ public class PerformanceTracker : MonoBehaviour {
 	public List<string> physicalManeuversPerformed = new List<string>();
 	public List<string> labsOrdered = new List<string>();
 	public List<string> imagesOrdered = new List<string>();
+	public int inappropriateFemaleExams = 0;
 
 	private Canvas canvas;
 	private Text scoreText;

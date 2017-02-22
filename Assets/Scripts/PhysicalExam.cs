@@ -5,6 +5,7 @@ using UnityEngine;
 public class PhysicalExam : MonoBehaviour {
 
 	public Dictionary<string, string> physical = new Dictionary<string, string>();
+	public List <string> femaleOnlyPhysical = new List <string> ();
 
 	void Awake () {
 		// General inspection
@@ -119,10 +120,15 @@ public class PhysicalExam : MonoBehaviour {
 
 		// Pelvic
 		physical ["Inspection of external genitalia"] = "No abnormalities.";
+		femaleOnlyPhysical.Add("Inspection of external genitalia");
 		physical ["Palpation of Bartholin glands"] = "No abnormalities.";
+		femaleOnlyPhysical.Add("Palpation of Bartholin glands");
 		physical ["Speculum examination"] = "No abnormalities.";
+		femaleOnlyPhysical.Add("Speculum examination");
 		physical ["Bimanual examination"] = "No abnormalities.";
+		femaleOnlyPhysical.Add("Bimanual examination");
 		physical ["Rectovaginal examination"] = "No abnormalities.";
+		femaleOnlyPhysical.Add("Rectovaginal examination");
 
 	}
 

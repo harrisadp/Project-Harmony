@@ -31,7 +31,15 @@ public class PlayerOptionButton : MonoBehaviour {
 	}
 
 	public void ButtonPushed () {		
-		if (performanceTracker.questionsAsked.Contains (this.name)) {
+		if (diseaseChooser.disease_data.male == true && physical.femaleOnlyPhysical.Contains(this.name)){
+			FemaleOnlyPhysical();
+			return;
+		}
+		else if (diseaseChooser.disease_data.male == true && labValues.labsFemaleOnly.Contains(this.name)){
+			FemaleOnlyLab();
+			return;
+		}
+		else if (performanceTracker.questionsAsked.Contains (this.name)) {
 			QuestionAlreadyAsked();
 			return;
 		}
@@ -292,6 +300,51 @@ public class PlayerOptionButton : MonoBehaviour {
 			gameManager.imageToDisplay = images.ultrasoundAbdomens[diseaseChooser.disease_data.imagingStudies[0]];
 		} else if (imageNumber == 8) {
 			gameManager.imageToDisplay = images.ultrasoundExtremities[diseaseChooser.disease_data.imagingStudies[0]];
+		}
+	}
+
+	private void FemaleOnlyPhysical () {
+		gameManager.turnCount --;
+		performanceTracker.inappropriateFemaleExams ++;
+		int lineNum = 0;
+		using (StringReader reader = new StringReader (textAsset.text)) {
+			string line;
+			while ((line = reader.ReadLine ()) != null) {
+				lineNum++;
+				if (performanceTracker.inappropriateFemaleExams < 3 && line.Contains ("Female only physical")) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 1);
+					dialogueManager.NewTalk ();
+					gameManager.Reset ();
+					return;
+				} else if (performanceTracker.inappropriateFemaleExams >= 3 && line.Contains ("Female only physical repeated")) {
+					performanceTracker.score -= 100;
+					performanceTracker.NegativeAnimation ();
+					performanceTracker.UpdateScore ();
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 1);
+					dialogueManager.NewTalk ();
+					gameManager.Reset ();
+				}
+			}
+		}
+	}
+
+	private void FemaleOnlyLab () {
+		gameManager.turnCount --;
+		int lineNum = 0;
+		using (StringReader reader = new StringReader (textAsset.text)) {
+			string line;
+			while ((line = reader.ReadLine ()) != null) {
+				lineNum++;
+				if (line.Contains ("Female only lab")) {
+					dialogueManager.LineStart (lineNum + 1);
+					dialogueManager.LineBreak (lineNum + 1);
+					dialogueManager.NewTalk ();
+					gameManager.Reset ();
+					return;
+				}
+			}
 		}
 	}
 

@@ -6,6 +6,7 @@ public class LabValues : MonoBehaviour {
 
 	public List <string> labStudies = new List <string>();
 	public List <string> labStudiesBinary = new List <string>();
+	public List <string> labsFemaleOnly = new List <string>();
 	public Dictionary<string, float> labValues = new Dictionary <string, float>();
 	public Dictionary<string, bool> labValuesBinary = new Dictionary <string, bool>();
 	public Dictionary<string, string[]> labValuesInEachStudy = new Dictionary <string, string[]>();
@@ -23,6 +24,7 @@ public class LabValues : MonoBehaviour {
 		labStudies.Add ("Cortisol (random)");
 		labStudies.Add ("Urinalysis");
 		labStudiesBinary.Add ("Pregnancy Test");
+		labsFemaleOnly.Add ("Pregnancy Test");
 		labStudiesBinary.Add ("Blood cultures");
 		labStudiesBinary.Add ("Urine cultures");
 		labStudiesBinary.Add ("Sputum cultures");
@@ -33,7 +35,9 @@ public class LabValues : MonoBehaviour {
 		labStudiesBinary.Add ("Syphilis");
 		labStudiesBinary.Add ("HIV");
 		labStudiesBinary.Add ("Lab - Pap smear");
+		labsFemaleOnly.Add ("Lab - Pap smear");
 		labStudiesBinary.Add ("Endometrial biopsy");
+		labsFemaleOnly.Add("Endometrial biopsy");
 		labValues ["WBC"] = Mathf.Round (10 * (Random.Range (3.5f, 10.5f))) / 10;
 		labValues ["HGB"] = Mathf.Round (10 * (Random.Range (13.5f, 15.5f))) / 10;
 		labValues ["PLT"] = Mathf.Round (Random.Range (150f, 450f));

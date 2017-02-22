@@ -1002,6 +1002,15 @@ Player: Let's get an ultrasound of the extremity.
 Emdee: Scanning...
 Emdee: Here you go!
 
+// Female only physical
+Emdee: Yeah, I don't think that's such a great idea for a male patient. Let's try something else.
+
+// Female only physical repeated
+Emdee: Seriously, what's wrong with you? Your patient is a dude.
+
+// Female only lab
+Emdee: ... Are you serious right now?
+
 // Question already asked
 Emdee: You've already asked this question! Check your journal if you can't remember the answer.
 // Physical exam maneuver already performed

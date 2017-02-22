@@ -51,6 +51,7 @@ public class DiseaseChooser : MonoBehaviour {
 		Debug.Log ("Disease chosen by DiseaseChooser is " + disease_data.disease_name);
 		Debug.Log ("BMI is " + disease_data.bmi);
 		Debug.Log ("Race chosen by DiseaseChooser is " + disease_data.race);
+		Debug.Log ("Patient is male: " + disease_data.male);
 		Debug.Log ("Personality chosen by DiseaseChooser is " + disease_data.personality);
 		patientSpriteRenderer.sprite = sprites [(int)(disease_data.personality)];
 		patientAnimator.runtimeAnimatorController = animatorControllers [(int)(disease_data.personality)];
