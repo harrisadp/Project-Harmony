@@ -59,7 +59,7 @@ public class DiseaseInstance {
 	public int[] imagingStudies = new int[9] {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 	// Differential
-	public string[] differential = new string[10];
+	public string[] differential = new string[18];
 
 	// Performance Tracking
 	public List<int> goodQuestions = new List<int>();
