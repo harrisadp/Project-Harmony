@@ -156,6 +156,9 @@ public class DiseaseInstance {
 			if (diseaseLabMaxMin [Array.IndexOf (labComponents, i), 0] != -1f && diseaseLabMaxMin [Array.IndexOf (labComponents, i), 1] != -1f) {
 				labResults [Array.IndexOf (labComponents, i)] = UnityEngine.Random.Range (diseaseLabMaxMin [Array.IndexOf (labComponents, i), 0], diseaseLabMaxMin [Array.IndexOf (labComponents, i), 1]);
 			}
+			if (i == "HGB"){
+				labResults [Array.IndexOf (labComponents, i)] = Mathf.Round(10*(labResults [Array.IndexOf (labComponents, i)]))/10;
+			}
 		}
 	}
 
