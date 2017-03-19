@@ -24,13 +24,12 @@ public class GameManager : MonoBehaviour {
 	public bool victory = false;
 	public bool displayImage = false;
 	public bool isFirstTurn = true;
-	public bool hasDifferential = false;
-	public bool backToDifferential = false;
 	public int turnCount;
 
 	private LevelManager levelManager;
 	private DiseaseChooser diseaseChooser;
 	private DialogueManager dialogueManager;
+	private bool initializeDifferential = true;
 
 	// Use this for initialization
 	void Start () {
@@ -60,9 +59,7 @@ public class GameManager : MonoBehaviour {
 		if (imagePanel.activeSelf) {imagePanel.SetActive (false);}
 		if (displayImage) {DisplayImage ();}
 		else if (isFirstTurn) {StartUp ();}
-		else if (!hasDifferential) {Differential ();}
 		else if (victory) {levelManager.LoadLevel ("03a_Victory");}
-		else if (backToDifferential) {Differential ();}
 		else {
 			turnCount++;
 			Debug.Log ("Turn count is " + turnCount);
@@ -76,12 +73,12 @@ public class GameManager : MonoBehaviour {
 		imagePanel.SetActive (false);
 		differentialPanel.SetActive (false);
 		journalButton.SetActive (true);
-		backToDifferential = false;
 	}
 
 	public void StartUp() {
 		isFirstTurn = false;
 		rootMenu.SetActive (false);
+		turnCount--;
 		int lineNum = 0;
 		using (StringReader reader = new StringReader (textAsset.text)) {
 			string line;
@@ -100,20 +97,17 @@ public class GameManager : MonoBehaviour {
 		rootMenu.SetActive (false);
 		playerSelectionPanel.SetActive (false);
 		differentialPanel.SetActive (true);
-		if (!hasDifferential) {
-			diagnoseButton.SetActive (false);
-			GameObject differentialOptionsPanel = GameObject.Find ("Options Panel");
-			int itemNumber = 0;
+		GameObject differentialOptionsPanel = GameObject.Find ("Options Panel");
+		int itemNumber = 0;
+		if (initializeDifferential == true){
 			foreach (Transform child in differentialOptionsPanel.transform) {
 				GameObject item = Instantiate (differentialDiagnosisItem, child);
 				item.transform.localScale = new Vector3 (1, 1, 1);
 				item.GetComponentInChildren<Text> ().text = diseaseChooser.disease_data.differential [itemNumber];
 				itemNumber += 1;
+				initializeDifferential = false;
 			}
-		} else {
-			diagnoseButton.SetActive (true);
 		}
-		hasDifferential = true;
 	}
 
 	public void DisplayImage(){

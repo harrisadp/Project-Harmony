@@ -218,7 +218,7 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
 		}
-		string[] menuOptions = new string[10] 	{"General", "Musculoskeletal", "Psychiatric", "Respiratory", "Cardiovascular", "Gastrointestinal", "Neurologic", "Hematologic", "Endocrine", "Genitourinary"};
+		string[] menuOptions = new string[10] 	{"General", "Musculoskeletal", "Psychiatric", "Respiratory", "Cardiovascular", "Gastrointestinal", "Neurologic", "Hematologic", "Endocrine", "Gynecologic"};
 		foreach (string i in menuOptions) {
 			GameObject menuOption = Instantiate (playerMenuButtonPrefab, this.transform);
 			menuOption.name = i;
@@ -242,8 +242,8 @@ public class PlayerOptionsMenu : MonoBehaviour {
 				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSHeme (); } );
 			} else if (menuOption.name == "Endocrine") {
 				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSEndo (); } );
-			} else if (menuOption.name == "Genitourinary") {
-				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSGU (); } );
+			} else if (menuOption.name == "Gynecologic") {
+				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSGynecologicPage1 (); } );
 			}
 		}
 		GameObject nextButton = Instantiate (backButtonPrefab, this.transform);
@@ -259,14 +259,14 @@ public class PlayerOptionsMenu : MonoBehaviour {
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
 		}
-		string[] menuOptions = new string[7] 	{"Gynecologic", "Oropharynx", "Nose and Sinus", "Ears", "Eyes", "Head", "Dermatologic"};
+		string[] menuOptions = new string[7] 	{"Genitourinary", "Oropharynx", "Nose and Sinus", "Ears", "Eyes", "Head", "Dermatologic"};
 		foreach (string i in menuOptions) {
 			GameObject menuOption = Instantiate (playerMenuButtonPrefab, this.transform);
 			menuOption.name = i;
 			menuOption.GetComponentInChildren<Text> ().text = i;
 			menuOption.transform.localScale = new Vector3 (1, 1, 1);
-			if (menuOption.name == "Gynecologic") {
-				menuOption.GetComponent<Button> ().onClick.AddListener (() => { ROSGynecologicPage1 (); } );
+			if (menuOption.name == "Genitourinary") {
+				menuOption.GetComponent<Button> ().onClick.AddListener (() => { ROSGU (); } );
 			} else if (menuOption.name == "Oropharynx") {
 				menuOption.GetComponent<Button> ().onClick.AddListener( () => { ROSOropharynx (); } );
 			} else if (menuOption.name == "Nose and Sinus") {

@@ -15,7 +15,7 @@ public class DiagnoseButton : MonoBehaviour {
 
 	void Start () {
 		diseaseChooser = FindObjectOfType<DiseaseChooser> ();
-		topDiagnosis = GameObject.Find ("Top Diagnosis");
+		topDiagnosis = GameObject.Find ("Top Diagnosis Panel").transform.FindChild("Top Diagnosis").gameObject;
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		menuManager = FindObjectOfType<GameManager> ();
 	}
@@ -50,7 +50,6 @@ public class DiagnoseButton : MonoBehaviour {
 	}
 
 	private void DiagnosisIncorrect () {
-		menuManager.backToDifferential = true;
 		int lineNum = 0;
 		using (StringReader reader = new StringReader (textAsset.text)) {
 			string line;
@@ -66,7 +65,6 @@ public class DiagnoseButton : MonoBehaviour {
 	}
 
 	private void NoDiagnosis () {
-		menuManager.backToDifferential = true;
 		int lineNum = 0;
 		using (StringReader reader = new StringReader (textAsset.text)) {
 			string line;
