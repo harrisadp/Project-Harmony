@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
 	public bool displayImage = false;
 	public bool isFirstTurn = true;
 	public int turnCount;
+	public string currentMenu;
 
 	private LevelManager levelManager;
 	private DiseaseChooser diseaseChooser;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour {
 		journal.SetActive (false);
 		journalButton.SetActive (false);
 		turnCount = 1;
+		currentMenu = "MainMenu";
 		Debug.Log ("Turn count is " + turnCount);
 	}
 
@@ -63,11 +65,13 @@ public class GameManager : MonoBehaviour {
 		else {
 			turnCount++;
 			Debug.Log ("Turn count is " + turnCount);
-			MainMenu ();
+			Debug.Log ("Current menu is" + currentMenu);
+			playerSelectionPanel.GetComponent<PlayerOptionsMenu>().SetMenu();
 		}
 	}
 
 	public void MainMenu () {
+		currentMenu = "MainMenu";
 		rootMenu.SetActive (true);
 		playerSelectionPanel.SetActive (false);
 		imagePanel.SetActive (false);

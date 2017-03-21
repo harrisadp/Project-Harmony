@@ -1030,7 +1030,7 @@ Emdee: That's the correct diagnosis!
 Emdee: That's not the correct diagnosis. Try again!
 
 // No top diagnosis
-Emdee: You need a diagnosis in the top slot of your differential!
+Emdee: You need a diagnosis in your diagnosis slot!
 
 // First turn
-Emdee: Time to build your differential! What do you think might be going on? You can always reassess after you've gathered more information!
+Emdee: Time to gather some more information! Start by asking questions and performing physical exam maneuvers, then you can order labs and imaging once I've charged up enough!
