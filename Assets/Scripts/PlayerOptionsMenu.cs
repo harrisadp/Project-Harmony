@@ -27,12 +27,13 @@ public class PlayerOptionsMenu : MonoBehaviour {
 
 	public void MainMenu () {
 		rootMenu.SetActive (true);
+		journalButton.SetActive(true);
 	}
 
 	public void History () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
 		}
@@ -62,9 +63,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void HPIPage1 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "HPIPage1";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -89,9 +90,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void HPIPage2 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "HPIPage2";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -115,9 +116,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PMH () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PMH";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -138,9 +139,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void FH () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "FH";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -173,9 +174,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void SHPage1 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "SHPage1";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -207,9 +208,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 
 
 	public void SHPage2 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "SHPage2";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -237,9 +238,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void SHPage3 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "SHPage3";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -257,9 +258,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSPage1 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSPage1";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -302,9 +303,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSPage2 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSPage2";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -337,9 +338,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSGeneral () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSGeneral";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -357,9 +358,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSMSK () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSMSK";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -380,9 +381,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSPsych () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSPsych";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -400,9 +401,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSRespPage1 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSRespPage1";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -430,9 +431,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSRespPage2 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSRespPage2";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -453,9 +454,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSCardPage1 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSCardPage1";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -489,9 +490,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSCardPage2 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSCardPage2";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -512,9 +513,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSGIPage1 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSGIPage1";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -542,9 +543,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSGIPage2 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSGIPage2";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -569,9 +570,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSGIPage3 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSGIPage3";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -595,9 +596,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSNeuroPage1 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSNeuroPage1";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -628,9 +629,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSNeuroPage2 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSNeuroPage2";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -661,9 +662,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSNeuroPage3 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSNeuroPage3";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -684,9 +685,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSHeme () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSHeme";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -710,9 +711,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSEndo () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSEndo";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -733,9 +734,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSGU () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSGU";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -759,9 +760,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSGynecologicPage1 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSGynecologicPage1";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -786,9 +787,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSGynecologicPage2 () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSGynecologicPage2";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -812,9 +813,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSOropharynx () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSOropharynx";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -832,9 +833,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSNoseSinus () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSNoseSinus";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -855,9 +856,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSEars () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSEars";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -878,9 +879,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSEyes () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSEyes";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -898,9 +899,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSHead () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSHead";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -918,9 +919,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void ROSDerm () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "ROSDerm";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -938,9 +939,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalMain () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalMain";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -979,9 +980,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalGeneral () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalGeneral";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1000,9 +1001,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalHEENT () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalHEENT";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1030,9 +1031,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalPulmonary () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalPulmonary";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1054,9 +1055,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalCardiovascular () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalCardiovascular";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1086,9 +1087,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalAbdominal () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalAbdominal";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1113,9 +1114,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalNeurologic () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalNeurologic";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1141,9 +1142,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalCranialNerves () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalCranialNerves";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1196,9 +1197,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalCNV () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalCNV";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1220,9 +1221,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalCNVII () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalCNVII";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1244,9 +1245,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalCNXI () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalCNXI";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1268,9 +1269,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalCNXII () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalCNXII";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1292,9 +1293,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalPeripheralNervousSystem () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalPeripheralNervousSystem";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1316,9 +1317,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalCerebellar () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalCerebellar";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1340,9 +1341,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalMSK () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalMSK";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1370,9 +1371,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalKnees () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalKnees";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1394,9 +1395,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalHips () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalHips";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1418,9 +1419,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalShoulder () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalShoulder";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1442,9 +1443,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalSpine () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalSpine";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1466,9 +1467,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalBreast () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalBreast";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1490,9 +1491,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void PhysicalPelvic () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "PhysicalPelvic";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1511,9 +1512,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void Labs () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "Labs";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1542,9 +1543,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void Blood () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "Blood";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1574,9 +1575,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void Urine () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "Urine";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1595,9 +1596,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void Microbiology () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "Microbiology";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1616,9 +1617,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void Pathology () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "Pathology";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);
@@ -1640,9 +1641,9 @@ public class PlayerOptionsMenu : MonoBehaviour {
 	}
 
 	public void Imaging () {
+		rootMenu.SetActive (false);
 		this.gameObject.SetActive (true);
 		journalButton.SetActive (true);
-		rootMenu.SetActive (false);
 		gameManager.currentMenu = "Imaging";
 		foreach (Transform child in this.transform){
 			Destroy (child.gameObject);

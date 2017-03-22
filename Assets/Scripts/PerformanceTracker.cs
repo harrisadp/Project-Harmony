@@ -96,14 +96,12 @@ public class PerformanceTracker : MonoBehaviour {
 	public void PositiveAnimation () {
 		emdeeAnimator.SetTrigger ("Positive Reaction");
 		audioSource.clip = goodSound;
-		audioSource.volume = PlayerPrefsManager.GetMastervolume();
 		audioSource.Play ();
 	}
 
 	public void NegativeAnimation () {
 		emdeeAnimator.SetTrigger ("Negative Reaction");
 		audioSource.clip = badSound;
-		audioSource.volume = PlayerPrefsManager.GetMastervolume();
 		audioSource.Play ();
 	}
 

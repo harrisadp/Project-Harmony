@@ -120,23 +120,23 @@ public class PlayerOptionButton : MonoBehaviour {
 					return;
 				} else if (line.Contains (this.name) && physical.physical.ContainsKey (this.name)) {
 					dialogueManager.LineStart (lineNum + 1);
-					dialogueManager.LineBreak (lineNum + 3);
+					dialogueManager.LineBreak (lineNum + 2);
 					dialogueManager.NewTalk ();
 					gameManager.Reset ();
 					return;
 				} else if (line.Contains (this.name) && labValues.labStudies.Contains (this.name)) {
 					dialogueManager.LineStart (lineNum + 1);
-					dialogueManager.LineBreak (lineNum + 5);
+					dialogueManager.LineBreak (lineNum + 3);
 					dialogueManager.NewTalk ();
 					gameManager.Reset ();
 					return;
 				} else if (line.Contains (this.name) && labValues.labValuesBinary.ContainsKey (this.name)) {
 					dialogueManager.LineStart (lineNum + 1);
-					dialogueManager.LineBreak (lineNum + 5);
+					dialogueManager.LineBreak (lineNum + 3);
 					dialogueManager.NewTalk ();
 					gameManager.Reset ();
 					return;
-				}else if (line.Contains (this.name)) {
+				} else if (line.Contains (this.name)) {
 					dialogueManager.LineStart (lineNum + 1);
 					dialogueManager.LineBreak (lineNum + 3);
 					dialogueManager.NewTalk ();
