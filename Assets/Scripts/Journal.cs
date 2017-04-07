@@ -9,6 +9,7 @@ public class Journal : MonoBehaviour {
 	public GameObject scrollView;
 	public GameObject journalEntry;
 	public GameObject journalEntryImage;
+	public Animator animator;
 
 	private DiseaseChooser diseaseChooser;
 	private PerformanceTracker performanceTracker;
@@ -35,6 +36,7 @@ public class Journal : MonoBehaviour {
 
 	public void OpenJournal () {
 		journalOpen = true;
+		animator.SetTrigger("Journal Open");
 		scrollView.SetActive (true);
 		foreach (Transform child in this.transform) {Destroy (child.gameObject);}
 		// Journal header
@@ -50,6 +52,7 @@ public class Journal : MonoBehaviour {
 
 	public void CloseJournal () {
 		journalOpen = false;
+		animator.SetTrigger("Journal Close");
 		foreach (Transform child in this.transform) {
 			Destroy (child.gameObject);
 		}

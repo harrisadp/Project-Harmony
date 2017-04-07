@@ -8,10 +8,15 @@ public class MusicManager : MonoBehaviour {
 
 	private AudioSource audioSource;
 	private AudioClip oldMusic;
+	private float initialVolume;
 
 	void Awake () {
 		DontDestroyOnLoad (gameObject);
 		audioSource = GetComponent<AudioSource>();
+		initialVolume = PlayerPrefsManager.GetMastervolume();
+		if (initialVolume == 0){
+			PlayerPrefsManager.SetMasterVolume(0.8f);
+		}
 		audioSource.volume = PlayerPrefsManager.GetMastervolume();
 		MusicManager[] musicManagers = FindObjectsOfType<MusicManager> ();
 		if (musicManagers.Length > 1) {
